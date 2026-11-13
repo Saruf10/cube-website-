@@ -26,48 +26,48 @@ export default function VisionMissionPage() {
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {/* Vision Card (Architectural Light Palette) */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-white text-[#24272B] shadow-sm hover:shadow-xl border border-[#E5E7EB] transition-all flex flex-col justify-between">
+            <div className="p-8 sm:p-10 rounded-3xl bg-white text-[#1F2633] shadow-sm hover:shadow-xl border border-[#E7E3D9] transition-all flex flex-col justify-between">
               <div>
-                <div className="p-3 bg-[#EAF2F8] text-[#070E5C] rounded-2xl w-fit mb-6 border border-[#BBD6EA]">
-                  <Compass className="w-8 h-8 text-[#D99A42]" />
+                <div className="p-3 bg-[#F4F2EC] text-[#0B1324] rounded-2xl w-fit mb-6 border border-[#E7E3D9]">
+                  <Compass className="w-8 h-8 text-[#C29A3E]" />
                 </div>
-                <span className="text-xs font-bold uppercase tracking-widest text-[#D99A42]">
+                <span className="text-xs font-bold uppercase tracking-widest text-[#C29A3E]">
                   Our Institutional Vision
                 </span>
-                <h2 className="text-2xl sm:text-3xl font-serif font-light text-[#24272B] mt-2">
+                <h2 className="text-2xl sm:text-3xl font-serif font-light text-[#1F2633] mt-2">
                   World-Class Applied Urban Excellence
                 </h2>
-                <p className="mt-6 text-sm sm:text-base text-[#747B83] leading-relaxed font-sans font-normal">
+                <p className="mt-6 text-sm sm:text-base text-[#5B6474] leading-relaxed font-sans font-normal">
                   &ldquo;{aboutContent.vision}&rdquo;
                 </p>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-[#E5E7EB] text-xs text-[#747B83]">
+              <div className="mt-8 pt-6 border-t border-[#E7E3D9] text-xs text-[#5B6474]">
                 Endorsed by the Governing Board &bull; IIT Madras &bull; Government of Tamil Nadu
               </div>
             </div>
 
             {/* Mission Card (Architectural Light Sky Palette) */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-white text-[#24272B] border border-[#E5E7EB] shadow-sm hover:shadow-xl transition-all flex flex-col justify-between">
+            <div className="p-8 sm:p-10 rounded-3xl bg-white text-[#1F2633] border border-[#E7E3D9] shadow-sm hover:shadow-xl transition-all flex flex-col justify-between">
               <div>
-                <div className="p-3 bg-[#EAF2F8] text-[#070E5C] rounded-2xl w-fit mb-6 border border-[#BBD6EA]">
-                  <Target className="w-8 h-8 text-[#D99A42]" />
+                <div className="p-3 bg-[#F4F2EC] text-[#0B1324] rounded-2xl w-fit mb-6 border border-[#E7E3D9]">
+                  <Target className="w-8 h-8 text-[#C29A3E]" />
                 </div>
-                <span className="text-xs font-bold uppercase tracking-widest text-[#D99A42]">
+                <span className="text-xs font-bold uppercase tracking-widest text-[#C29A3E]">
                   Our Execution Mission
                 </span>
-                <h2 className="text-2xl sm:text-3xl font-serif font-light text-[#24272B] mt-2">
+                <h2 className="text-2xl sm:text-3xl font-serif font-light text-[#1F2633] mt-2">
                   Applied Engineering for Public Good
                 </h2>
-                <p className="mt-6 text-sm sm:text-base text-[#747B83] leading-relaxed font-sans font-normal">
+                <p className="mt-6 text-sm sm:text-base text-[#5B6474] leading-relaxed font-sans font-normal">
                   &ldquo;{aboutContent.mission}&rdquo;
                 </p>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-[#E5E7EB]">
+              <div className="mt-8 pt-6 border-t border-[#E7E3D9]">
                 <Link
                   href="/about/objectives"
-                  className="inline-flex items-center text-xs font-semibold text-[#070E5C] hover:text-[#D99A42] transition-colors"
+                  className="inline-flex items-center text-xs font-semibold text-[#0B1324] hover:text-[#C29A3E] transition-colors"
                 >
                   <span>Explore 10 Institutional Objectives</span>
                   <ArrowUpRight className="w-3.5 h-3.5 ml-1" />

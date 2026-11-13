@@ -58,7 +58,7 @@ export default function ClientsWall({ clients }: { clients: ClientPartner[] }) {
           eyebrow="Trusted Institutional Ecosystem"
           title={
             <>
-              Government departments <span className="text-stone-400">&amp; industry partners.</span>
+              Government departments <span className="text-brass-300">&amp; industry partners.</span>
             </>
           }
           description="Powering state infrastructure, third-party quality assurance, precast engineering, and environmental stewardship across India."

@@ -35,7 +35,7 @@ export default function ChairmanMessagePage() {
                   className="object-cover"
                 />
               </div>
-              <h3 className="text-lg font-bold text-navy-950 font-display">
+              <h3 className="text-lg font-bold text-ink font-display">
                 Prof. V. Kamakoti
               </h3>
               <p className="text-xs text-teal-700 font-bold mt-0.5">
@@ -55,7 +55,7 @@ export default function ChairmanMessagePage() {
                 <Quote className="w-8 h-8" />
               </div>
 
-              <h2 className="text-2xl sm:text-3xl font-display font-extrabold text-navy-950">
+              <h2 className="text-2xl sm:text-3xl font-display font-extrabold text-ink">
                 Fostering Sustainable &amp; Technologically Advanced Urbanization
               </h2>
 
@@ -66,7 +66,7 @@ export default function ChairmanMessagePage() {
               </div>
 
               <div className="pt-6 border-t border-slate-200">
-                <div className="font-bold text-navy-950 text-base">Prof. V. Kamakoti</div>
+                <div className="font-bold text-ink text-base">Prof. V. Kamakoti</div>
                 <div className="text-xs text-slate-500">Director, Indian Institute of Technology Madras</div>
                 <div className="text-xs text-teal-700 font-semibold">Chairman, CUBE Governing Board</div>
               </div>

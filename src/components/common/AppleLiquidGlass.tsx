@@ -21,11 +21,11 @@ export function GlassPanel({
       case 'nav':
         return 'bg-white/70 backdrop-blur-[28px] saturate-[180%] border border-white/80 shadow-[0_8px_32px_rgba(36,39,43,0.06),inset_0_1px_1px_rgba(255,255,255,0.95)]';
       case 'card':
-        return 'bg-gradient-to-br from-white/90 via-[#F7FAFC]/80 to-[#EAF2F8]/85 backdrop-blur-[24px] saturate-[175%] border border-[#BDD7E8] shadow-[0_12px_36px_rgba(36,39,43,0.05),inset_0_1px_1.5px_rgba(255,255,255,0.95)] rounded-3xl';
+        return 'bg-gradient-to-br from-white/90 via-[#FAF9F6]/80 to-[#F4F2EC]/85 backdrop-blur-[24px] saturate-[175%] border border-[#E7E3D9] shadow-[0_12px_36px_rgba(36,39,43,0.05),inset_0_1px_1.5px_rgba(255,255,255,0.95)] rounded-3xl';
       case 'modal':
         return 'bg-white/85 backdrop-blur-[32px] saturate-[190%] border border-white/90 shadow-[0_24px_64px_rgba(36,39,43,0.14),inset_0_1px_2px_rgba(255,255,255,1)] rounded-3xl';
       case 'pill':
-        return 'bg-white/75 backdrop-blur-[20px] saturate-[160%] border border-[#BDD7E8]/80 shadow-[0_4px_16px_rgba(36,39,43,0.04),inset_0_1px_1px_rgba(255,255,255,0.9)] rounded-full';
+        return 'bg-white/75 backdrop-blur-[20px] saturate-[160%] border border-[#E7E3D9]/80 shadow-[0_4px_16px_rgba(36,39,43,0.04),inset_0_1px_1px_rgba(255,255,255,0.9)] rounded-full';
       case 'subtle':
         return 'bg-white/45 backdrop-blur-[16px] border border-white/60 shadow-[0_4px_20px_rgba(36,39,43,0.03)] rounded-2xl';
       case 'panel':
@@ -68,13 +68,13 @@ export function GlassButton({
 
   const variantStyles = {
     solid:
-      'bg-white/90 text-[#070E5C] border border-[#BDD7E8] hover:bg-white hover:shadow-md hover:border-[#5B9BD5]',
+      'bg-white/90 text-[#0B1324] border border-[#E7E3D9] hover:bg-white hover:shadow-md hover:border-[#A8832F]',
     outline:
-      'bg-white/40 text-[#24272B] border border-white/80 hover:bg-white/80 hover:border-[#BDD7E8]',
+      'bg-white/40 text-[#1F2633] border border-white/80 hover:bg-white/80 hover:border-[#E7E3D9]',
     pill:
-      'bg-[#EAF2F8]/90 text-[#070E5C] border border-[#BDD7E8] hover:bg-[#D99A42] hover:text-white hover:border-transparent',
+      'bg-[#F4F2EC]/90 text-[#0B1324] border border-[#E7E3D9] hover:bg-[#C29A3E] hover:text-white hover:border-transparent',
     ghost:
-      'bg-transparent text-[#747B83] hover:text-[#24272B] hover:bg-white/50 border border-transparent',
+      'bg-transparent text-[#5B6474] hover:text-[#1F2633] hover:bg-white/50 border border-transparent',
   }[variant];
 
   return (
@@ -103,16 +103,16 @@ export function GlassStat({
   return (
     <GlassPanel variant="card" interactive className={`p-6 ${className}`}>
       <div className="flex items-center justify-between mb-3">
-        <span className="text-[11px] uppercase tracking-widest text-[#747B83] font-bold">
+        <span className="text-[11px] uppercase tracking-widest text-[#5B6474] font-bold">
           {label}
         </span>
-        {Icon && <Icon className="w-4 h-4 text-[#D99A42]" />}
+        {Icon && <Icon className="w-4 h-4 text-[#C29A3E]" />}
       </div>
-      <div className="font-serif text-3xl sm:text-4xl font-light text-[#24272B] tracking-tight">
+      <div className="font-serif text-3xl sm:text-4xl font-light text-[#1F2633] tracking-tight">
         {value}
       </div>
       {subtext && (
-        <p className="text-xs text-[#747B83] mt-1.5 leading-relaxed">
+        <p className="text-xs text-[#5B6474] mt-1.5 leading-relaxed">
           {subtext}
         </p>
       )}

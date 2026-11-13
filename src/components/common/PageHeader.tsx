@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { ChevronRight, ArrowLeft, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 
 interface PageHeaderProps {
   badge: string;
@@ -14,8 +14,31 @@ interface PageHeaderProps {
   backHref?: string;
 }
 
+/**
+ * Split a title so its last real word can be set in the gold italic accent used on
+ * the home hero ("Shaping Tomorrow."). A trailing parenthetical such as "(CEL)"
+ * stays plain: "CUBE Environmental *Laboratory* (CEL)".
+ */
+function splitTitle(title: string) {
+  const words = title.trim().split(/\s+/);
+  let i = words.length - 1;
+  while (i > 0 && !/^[A-Za-z]/.test(words[i])) i -= 1;
+  if (words.length < 2 || i === 0) return { before: '', accent: '', after: title };
+  return {
+    before: words.slice(0, i).join(' '),
+    accent: words[i],
+    after: words.slice(i + 1).join(' '),
+  };
+}
+
+/**
+ * Inner-page hero, matching the home page: full-bleed dark navy band with the
+ * blueprint grid, a metadata rail (back + breadcrumbs), gold eyebrow, large display
+ * headline with a gold italic accent word, and a supporting paragraph.
+ */
 export default function PageHeader({ badge, title, description, breadcrumbs, backHref }: PageHeaderProps) {
   const router = useRouter();
+  const { before, accent, after } = splitTitle(title);
 
   const handleBack = () => {
     if (backHref) {
@@ -38,84 +61,89 @@ export default function PageHeader({ badge, title, description, breadcrumbs, bac
   };
 
   return (
-    <div className="bg-gradient-to-b from-[#FFFFFF] via-[#F6FAFD] to-[#EAF2F8] text-[#24272B] pt-28 sm:pt-32 pb-12 sm:pb-16 border-b border-[#E5E7EB] relative overflow-hidden select-none">
-      {/* Subtle Architectural Dot Grid */}
-      <div 
-        className="absolute inset-0 pointer-events-none opacity-[0.035]"
-        style={{
-          backgroundImage: 'radial-gradient(#24272B 1px, transparent 1px)',
-          backgroundSize: '24px 24px',
-        }}
-      />
+    <section className="relative flex min-h-[clamp(520px,72svh,820px)] w-full select-none flex-col overflow-hidden bg-ink-950 pt-[5.5rem] text-white sm:pt-28 lg:pt-[7rem]">
+      {/* Background: blueprint grid, brass glow and a directional ink wash */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-ink-950 via-ink-900 to-ink-950" />
+        <div
+          aria-hidden
+          className="absolute inset-0 blueprint-grid-dark opacity-70 [mask-image:radial-gradient(ellipse_at_30%_60%,black_20%,transparent_75%)]"
+        />
+        <div className="absolute -left-40 top-1/3 h-[520px] w-[520px] rounded-full bg-brass-500/10 blur-[140px]" />
+        <div className="absolute -right-32 -top-32 h-[420px] w-[420px] rounded-full bg-ink-600/30 blur-[120px]" />
+      </div>
 
-      {/* Soft Light Atmosphere Accent (Zero Dark Gradient) */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-[#EAF2F8] to-transparent rounded-full blur-3xl pointer-events-none opacity-70" />
-
-      <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        
-        {/* Navigation Strip: Back Button + Breadcrumbs */}
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-6 pb-4 border-b border-[#E5E7EB]">
-          
-          {/* Universal Clean Light Back Button */}
+      {/* Metadata rail: back button + breadcrumbs */}
+      <div className="relative z-10 w-full px-5 sm:px-8 lg:px-12">
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
           <button
             onClick={handleBack}
-            className="group inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-white hover:bg-[#EAF2F8] text-[#24272B] hover:text-[#070E5C] text-xs font-semibold border border-[#E5E7EB] transition-all duration-200 shadow-sm"
+            className="group inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-white/70 transition-colors hover:text-brass-300"
             title="Go back to previous page"
             aria-label="Back"
           >
-            <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform text-[#747B83]" />
+            <ArrowLeft className="h-3.5 w-3.5 transition-transform group-hover:-translate-x-1" />
             <span>Back</span>
           </button>
 
-          {/* Clean Light Breadcrumbs */}
-          <nav className="flex items-center space-x-2 text-xs text-[#747B83] overflow-x-auto py-1 font-sans">
-            <Link href="/" className="hover:text-[#070E5C] transition flex-shrink-0">Home</Link>
+          <nav
+            aria-label="Breadcrumb"
+            className="flex items-center gap-3 overflow-x-auto py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-white/45 no-scrollbar"
+          >
+            <Link href="/" className="shrink-0 transition-colors hover:text-brass-300">
+              Home
+            </Link>
             {breadcrumbs.map((b, i) => (
               <React.Fragment key={i}>
-                <ChevronRight className="w-3.5 h-3.5 text-[#E5E7EB] flex-shrink-0" />
+                <span className="shrink-0 text-white/25">/</span>
                 {b.href ? (
-                  <Link href={b.href} className="hover:text-[#070E5C] transition flex-shrink-0">{b.label}</Link>
+                  <Link href={b.href} className="shrink-0 transition-colors hover:text-brass-300">
+                    {b.label}
+                  </Link>
                 ) : (
-                  <span className="text-[#070E5C] font-semibold truncate">{b.label}</span>
+                  <span className="truncate text-white/90">{b.label}</span>
                 )}
               </React.Fragment>
             ))}
           </nav>
         </div>
+      </div>
 
-        {/* Editorial Light Header Content */}
-        <div className="w-full space-y-4">
+      {/* Headline block, anchored to the bottom of the band */}
+      <div className="relative z-10 flex w-full flex-1 items-end px-5 pb-[clamp(2.5rem,7vh,5rem)] pt-12 sm:px-8 lg:px-12">
+        <div className="max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="inline-block"
+            className="eyebrow eyebrow-light"
           >
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#070E5C] bg-[#EAF2F8] border border-[#BBD6EA] px-3.5 py-1.5 rounded-full shadow-sm">
-              {badge}
-            </span>
+            {badge}
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-light text-[#24272B] leading-tight tracking-tight"
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="display-xl mt-6 text-[clamp(2.4rem,6vw,5.4rem)] text-white"
           >
-            {title}
+            {before && <>{before} </>}
+            {accent && (
+              <span className="font-editorial italic font-medium tracking-[-0.02em] text-brass-300">{accent}</span>
+            )}
+            {after && <> {after}</>}
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-sm sm:text-base md:text-lg text-[#747B83] leading-relaxed max-w-4xl font-sans"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="mt-6 max-w-3xl text-base leading-relaxed text-white/70 sm:text-lg"
           >
             {description}
           </motion.p>
         </div>
-
       </div>
-    </div>
+    </section>
   );
 }

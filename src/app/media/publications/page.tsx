@@ -40,7 +40,7 @@ export default function PublicationsPage() {
                     <span className="text-slate-500 font-medium">Published: {pub.year}</span>
                   </div>
 
-                  <h3 className="text-lg font-bold font-display text-navy-950 leading-snug">
+                  <h3 className="text-lg font-bold font-display text-ink leading-snug">
                     {pub.title}
                   </h3>
 

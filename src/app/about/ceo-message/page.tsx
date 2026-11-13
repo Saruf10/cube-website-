@@ -35,7 +35,7 @@ export default function CEOMessagePage() {
                   className="object-cover"
                 />
               </div>
-              <h3 className="text-lg font-bold text-navy-950 font-display">
+              <h3 className="text-lg font-bold text-ink font-display">
                 L. Padmanaban
               </h3>
               <p className="text-xs text-teal-700 font-bold mt-0.5">
@@ -52,7 +52,7 @@ export default function CEOMessagePage() {
                 <Quote className="w-8 h-8" />
               </div>
 
-              <h2 className="text-2xl sm:text-3xl font-display font-extrabold text-navy-950">
+              <h2 className="text-2xl sm:text-3xl font-display font-extrabold text-ink">
                 Delivering Data-Backed Engineering Solutions for Public Good
               </h2>
 
@@ -63,7 +63,7 @@ export default function CEOMessagePage() {
               </div>
 
               <div className="pt-6 border-t border-slate-200">
-                <div className="font-bold text-navy-950 text-base">Office of the CEO</div>
+                <div className="font-bold text-ink text-base">Office of the CEO</div>
                 <div className="text-xs text-teal-700 font-semibold">Centre for Urbanization, Buildings &amp; Environment (CUBE)</div>
                 <div className="text-xs text-slate-500">IIT Madras Research Park, Chennai</div>
               </div>

@@ -37,7 +37,7 @@ export default function CoreValuesPage() {
                     <div className="p-3 bg-teal-50 text-teal-700 rounded-2xl w-fit mb-4 border border-teal-200">
                       <Icon className="w-6 h-6" />
                     </div>
-                    <h3 className="text-xl font-bold font-display text-navy-950">
+                    <h3 className="text-xl font-bold font-display text-ink">
                       {val.title}
                     </h3>
                     <p className="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed">

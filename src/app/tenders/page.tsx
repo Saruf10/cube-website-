@@ -32,7 +32,7 @@ export default async function TendersPage() {
             <div className="space-y-6">
               <div className="flex items-center justify-between pb-4 border-b border-slate-200">
                 <div>
-                  <h2 className="text-xl font-bold font-display text-navy-950">
+                  <h2 className="text-xl font-bold font-display text-ink">
                     Active Procurement Notices ({activeTenders.length})
                   </h2>
                   <p className="text-xs text-slate-500 mt-0.5">
@@ -49,11 +49,11 @@ export default async function TendersPage() {
                 {activeTenders.map((tender: any) => (
                   <div
                     key={tender.id}
-                    className="p-6 rounded-2xl bg-[#F7F7F4] border border-[#E5E7EB] hover:shadow-md transition space-y-4"
+                    className="p-6 rounded-2xl bg-[#F7F7F4] border border-[#E7E3D9] hover:shadow-md transition space-y-4"
                   >
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                       <div className="flex items-center gap-2">
-                        <span className="font-mono text-xs font-bold px-2.5 py-1 rounded-lg bg-[#EAF2F8] text-[#070E5C] border border-[#BBD6EA]">
+                        <span className="font-mono text-xs font-bold px-2.5 py-1 rounded-lg bg-[#F4F2EC] text-[#0B1324] border border-[#E7E3D9]">
                           REF: {tender.referenceNumber}
                         </span>
                         <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-semibold">
@@ -61,13 +61,13 @@ export default async function TendersPage() {
                         </span>
                       </div>
                       <div className="flex items-center gap-2 text-xs text-slate-500">
-                        <Calendar className="w-3.5 h-3.5 text-[#070E5C]" />
+                        <Calendar className="w-3.5 h-3.5 text-[#0B1324]" />
                         <span>Closing: <strong className="text-slate-800">{tender.closingDate}</strong></span>
                       </div>
                     </div>
 
                     <div>
-                      <h3 className="text-lg font-bold text-[#24272B] font-display">
+                      <h3 className="text-lg font-bold text-[#1F2633] font-display">
                         {tender.title}
                       </h3>
                       <p className="text-xs text-slate-600 mt-1 leading-relaxed">
@@ -84,7 +84,7 @@ export default async function TendersPage() {
                           href={tender.documentUrl}
                           target="_blank"
                           rel="noreferrer"
-                          className="px-4 py-1.5 rounded-full bg-[#EAF2F8] hover:bg-[#D99A42] text-[#070E5C] hover:text-white border border-[#BDD7E8] text-xs font-semibold flex items-center gap-1.5 transition"
+                          className="px-4 py-1.5 rounded-full bg-[#F4F2EC] hover:bg-[#C29A3E] text-[#0B1324] hover:text-white border border-[#E7E3D9] text-xs font-semibold flex items-center gap-1.5 transition"
                         >
                           <Download className="w-3.5 h-3.5" />
                           <span>Download Tender Document</span>
@@ -92,7 +92,7 @@ export default async function TendersPage() {
                       ) : (
                         <a
                           href="mailto:contact@cubeiitm.org"
-                          className="px-4 py-1.5 rounded-full bg-[#EAF2F8] hover:bg-[#D99A42] text-[#070E5C] hover:text-white border border-[#BBD6EA] text-xs font-semibold flex items-center gap-1.5 transition"
+                          className="px-4 py-1.5 rounded-full bg-[#F4F2EC] hover:bg-[#C29A3E] text-[#0B1324] hover:text-white border border-[#E7E3D9] text-xs font-semibold flex items-center gap-1.5 transition"
                         >
                           <Mail className="w-3.5 h-3.5" />
                           <span>Request Document via Email</span>
@@ -114,7 +114,7 @@ export default async function TendersPage() {
                 Procurement Notice
               </span>
 
-              <h2 className="text-2xl font-bold font-display text-navy-950 mt-2">
+              <h2 className="text-2xl font-bold font-display text-ink mt-2">
                 No Active Tenders Currently Published
               </h2>
 

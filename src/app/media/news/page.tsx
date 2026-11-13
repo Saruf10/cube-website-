@@ -30,7 +30,7 @@ export default async function NewsPage() {
             {newsList.map((item) => (
               <article
                 key={item.id}
-                className="group rounded-2xl bg-white border border-[#E5E7EB] overflow-hidden shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                className="group rounded-2xl bg-white border border-[#E7E3D9] overflow-hidden shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
                   <div className="relative h-48 w-full bg-[#F7F7F4] overflow-hidden">
@@ -41,26 +41,26 @@ export default async function NewsPage() {
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-3 left-3">
-                      <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/95 text-[#070E5C] border border-[#BBD6EA] shadow-2xs backdrop-blur-md">
+                      <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/95 text-[#0B1324] border border-[#E7E3D9] shadow-2xs backdrop-blur-md">
                         {item.category}
                       </span>
                     </div>
                   </div>
 
                   <div className="p-6">
-                    <div className="flex items-center text-xs text-[#747B83] space-x-3 mb-2.5">
+                    <div className="flex items-center text-xs text-[#5B6474] space-x-3 mb-2.5">
                       <span className="flex items-center">
-                        <Calendar className="w-3.5 h-3.5 mr-1 text-[#070E5C]" />
+                        <Calendar className="w-3.5 h-3.5 mr-1 text-[#0B1324]" />
                         {item.date}
                       </span>
                       <span>&bull;</span>
                       <span className="flex items-center">
-                        <User className="w-3.5 h-3.5 mr-1 text-[#747B83]" />
+                        <User className="w-3.5 h-3.5 mr-1 text-[#5B6474]" />
                         {item.author || 'CUBE Editorial'}
                       </span>
                     </div>
 
-                    <h2 className="text-base font-serif font-bold text-[#24272B] group-hover:text-[#070E5C] transition-colors line-clamp-2 leading-snug">
+                    <h2 className="text-base font-serif font-bold text-[#1F2633] group-hover:text-[#0B1324] transition-colors line-clamp-2 leading-snug">
                       {item.title}
                     </h2>
 
@@ -71,10 +71,10 @@ export default async function NewsPage() {
                 </div>
 
                 <div className="p-6 pt-0">
-                  <div className="pt-4 border-t border-[#E5E7EB] flex items-center justify-between">
+                  <div className="pt-4 border-t border-[#E7E3D9] flex items-center justify-between">
                     <Link
                       href={`/media/news/${item.slug || item.id}`}
-                      className="text-xs font-semibold text-[#070E5C] group-hover:text-[#D99A42] group-hover:translate-x-0.5 transition-all flex items-center"
+                      className="text-xs font-semibold text-[#0B1324] group-hover:text-[#C29A3E] group-hover:translate-x-0.5 transition-all flex items-center"
                     >
                       <span>Read Full Press Release</span>
                       <ArrowRight className="w-3.5 h-3.5 ml-1" />

@@ -201,7 +201,7 @@ export default function HomePage() {
             title={
               <>
                 Four core engineering{' '}
-                <span className="block text-[1.45em] leading-[0.95] text-stone-400">verticals.</span>
+                <span className="block text-[1.45em] leading-[0.95] text-brass-300">verticals.</span>
               </>
             }
             description="Open each discipline to explore core capabilities, testing domains, and verified state projects guided by CUBE specialists."
@@ -228,7 +228,7 @@ export default function HomePage() {
             eyebrow="Applied Execution"
             title={
               <>
-                Featured applied <span className="text-stone-400">projects.</span>
+                Featured applied <span className="text-brass-300">projects.</span>
               </>
             }
             description="Independent Third Party Quality Assurance (TPQA), PMC, and structural proof checking across 40+ premier public schemes."
@@ -285,7 +285,7 @@ export default function HomePage() {
             eyebrow="Analytical Testing · IIT Madras Research Park"
             title={
               <>
-                CUBE Environmental <span className="text-stone-400">Laboratory.</span>
+                CUBE Environmental <span className="text-brass-300">Laboratory.</span>
               </>
             }
             description="CEL is a precision environmental and materials testing facility delivering physical, chemical, and microbiological analysis for water, wastewater, soil, heavy metals, and building materials in compliance with BIS, ISO, and CPCB protocols."
@@ -369,7 +369,7 @@ export default function HomePage() {
             eyebrow="Media & Dispatches"
             title={
               <>
-                Latest news <span className="text-stone-400">&amp; updates.</span>
+                Latest news <span className="text-brass-300">&amp; updates.</span>
               </>
             }
             action={

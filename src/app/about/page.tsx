@@ -70,7 +70,7 @@ export default function CompleteAboutExperience() {
   };
 
   return (
-    <div className="bg-[#FFFFFF] text-[#24272B] min-h-screen">
+    <div className="bg-[#FFFFFF] text-[#1F2633] min-h-screen">
       <PageHeader
         badge="Centre of Excellence"
         title="About CUBE IIT Madras"
@@ -79,7 +79,7 @@ export default function CompleteAboutExperience() {
       />
 
       {/* Sticky Apple Glass Anchor Navigation Bar */}
-      <section className="sticky top-[var(--nav-offset,84px)] transition-[top] duration-500 z-40 bg-white/85 backdrop-blur-2xl border-y border-[#BDD7E8]/70 py-3.5 px-4 sm:px-6 shadow-xs">
+      <section className="sticky top-[var(--nav-offset,84px)] transition-[top] duration-500 z-40 bg-white/85 backdrop-blur-2xl border-y border-[#E7E3D9]/70 py-3.5 px-4 sm:px-6 shadow-xs">
         <div ref={anchorBarRef} className="relative max-w-none mx-auto flex items-center justify-start gap-2 overflow-x-auto scrollbar-none no-scrollbar py-1">
           <div className="flex items-center space-x-1.5 sm:space-x-2 shrink-0">
             {navAnchors.map((item) => (
@@ -91,8 +91,8 @@ export default function CompleteAboutExperience() {
                 onClick={() => scrollTo(item.id)}
                 className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wider transition-all duration-300 whitespace-nowrap cursor-pointer active:scale-95 ${
                   activeSection === item.id
-                    ? 'bg-[#070E5C] text-white shadow-sm'
-                    : 'bg-white/80 text-[#24272B] hover:bg-[#EAF2F8] hover:text-[#070E5C] border border-[#BDD7E8]'
+                    ? 'bg-[#0B1324] text-white shadow-sm'
+                    : 'bg-white/80 text-[#1F2633] hover:bg-[#F4F2EC] hover:text-[#0B1324] border border-[#E7E3D9]'
                 }`}
               >
                 {item.label}
@@ -103,41 +103,41 @@ export default function CompleteAboutExperience() {
       </section>
 
       {/* 1. INSTITUTIONAL OVERVIEW */}
-      <section id="overview" className="py-20 sm:py-24 bg-gradient-to-b from-[#FFFFFF] via-[#F6FAFD] to-[#EAF2F8] border-b border-[#E5E7EB]">
+      <section id="overview" className="py-20 sm:py-24 bg-gradient-to-b from-[#FFFFFF] via-[#FAF9F6] to-[#F4F2EC] border-b border-[#E7E3D9]">
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             <div className="lg:col-span-7 space-y-6">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#070E5C] bg-white px-3.5 py-1 rounded-full border border-[#BDD7E8] shadow-xs">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-white px-3.5 py-1 rounded-full border border-[#E7E3D9] shadow-xs">
                 Foundational Mandate
               </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#070E5C] tracking-tight leading-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#0B1324] tracking-tight leading-tight">
                 Bridging Premier Academic Intellect with Public Infrastructure Delivery
               </h2>
 
-              <div className="space-y-4 text-sm sm:text-base text-[#24272B]/85 leading-relaxed font-sans">
+              <div className="space-y-4 text-sm sm:text-base text-[#1F2633]/85 leading-relaxed font-sans">
                 {aboutContent.overview.map((para, i) => (
                   <p key={i}>{para}</p>
                 ))}
               </div>
 
               <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="p-5 rounded-3xl bg-white/95 backdrop-blur-xl border border-[#BDD7E8] shadow-xs">
-                  <div className="font-bold text-[#070E5C] text-sm flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4 text-[#D99A42]" />
+                <div className="p-5 rounded-3xl bg-white/95 backdrop-blur-xl border border-[#E7E3D9] shadow-xs">
+                  <div className="font-bold text-[#0B1324] text-sm flex items-center gap-2">
+                    <ShieldCheck className="w-4 h-4 text-[#C29A3E]" />
                     <span>Government of Tamil Nadu</span>
                   </div>
-                  <p className="text-xs text-[#747B83] mt-2 leading-relaxed">
+                  <p className="text-xs text-[#5B6474] mt-2 leading-relaxed">
                     Apex state sponsorship, regulatory alignment, and mandates across housing, transit terminals, and hydrology.
                   </p>
                 </div>
 
-                <div className="p-5 rounded-3xl bg-white/95 backdrop-blur-xl border border-[#BDD7E8] shadow-xs">
-                  <div className="font-bold text-[#070E5C] text-sm flex items-center gap-2">
-                    <Award className="w-4 h-4 text-[#D99A42]" />
+                <div className="p-5 rounded-3xl bg-white/95 backdrop-blur-xl border border-[#E7E3D9] shadow-xs">
+                  <div className="font-bold text-[#0B1324] text-sm flex items-center gap-2">
+                    <Award className="w-4 h-4 text-[#C29A3E]" />
                     <span>IIT Madras Research Excellence</span>
                   </div>
-                  <p className="text-xs text-[#747B83] mt-2 leading-relaxed">
+                  <p className="text-xs text-[#5B6474] mt-2 leading-relaxed">
                     Faculty mentorship, world-class civil testing laboratories, and independent structural proof checking rigor.
                   </p>
                 </div>
@@ -146,8 +146,8 @@ export default function CompleteAboutExperience() {
 
             {/* Right: Institutional Glass Plaque */}
             <div className="lg:col-span-5 flex flex-col items-center">
-              <div className="rounded-3xl bg-white/90 backdrop-blur-2xl border border-[#BDD7E8] shadow-[0_20px_50px_rgba(7,14,92,0.08)] p-8 text-center w-full max-w-md relative overflow-hidden">
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#D99A42] to-transparent opacity-90" />
+              <div className="rounded-3xl bg-white/90 backdrop-blur-2xl border border-[#E7E3D9] shadow-[0_20px_50px_rgba(7,14,92,0.08)] p-8 text-center w-full max-w-md relative overflow-hidden">
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C29A3E] to-transparent opacity-90" />
 
                 <div className="relative h-44 w-44 mx-auto mb-6 flex items-center justify-center">
                   <Image
@@ -158,14 +158,14 @@ export default function CompleteAboutExperience() {
                   />
                 </div>
 
-                <h3 className="text-xl font-bold text-[#070E5C] font-serif">
+                <h3 className="text-xl font-bold text-[#0B1324] font-serif">
                   Centre of Excellence
                 </h3>
-                <p className="text-xs text-[#D99A42] font-semibold tracking-wider uppercase mt-1">
+                <p className="text-xs text-[#C29A3E] font-semibold tracking-wider uppercase mt-1">
                   IIT Madras &bull; Government of Tamil Nadu
                 </p>
 
-                <div className="mt-5 pt-5 border-t border-[#E5E7EB] text-xs text-[#747B83] leading-relaxed">
+                <div className="mt-5 pt-5 border-t border-[#E7E3D9] text-xs text-[#5B6474] leading-relaxed">
                   First Floor, IIT Madras Research Park, Kanagam Road, Taramani, Chennai 600113
                 </div>
               </div>
@@ -176,33 +176,33 @@ export default function CompleteAboutExperience() {
       </section>
 
       {/* 2. VISION & MISSION */}
-      <section id="vision-mission" className="py-20 sm:py-24 bg-white border-b border-[#E5E7EB]">
+      <section id="vision-mission" className="py-20 sm:py-24 bg-white border-b border-[#E7E3D9]">
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#070E5C] bg-[#EAF2F8] px-3.5 py-1 rounded-full border border-[#BDD7E8]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3.5 py-1 rounded-full border border-[#E7E3D9]">
               Strategic Blueprint
             </span>
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#070E5C] mt-3">
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#0B1324] mt-3">
               Vision &amp; Mission Mandates
             </h2>
-            <p className="text-xs sm:text-sm text-[#747B83] mt-2">
+            <p className="text-xs sm:text-sm text-[#5B6474] mt-2">
               Transforming built environments through scientific rigor and public accountability.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#F6FAFD] to-white border border-[#BDD7E8] shadow-sm relative overflow-hidden">
-              <Compass className="w-10 h-10 text-[#D99A42] mb-4" />
-              <h3 className="font-serif text-2xl font-bold text-[#070E5C] mb-3">Institutional Vision</h3>
-              <p className="text-sm text-[#24272B]/85 leading-relaxed font-sans">
+            <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#FAF9F6] to-white border border-[#E7E3D9] shadow-sm relative overflow-hidden">
+              <Compass className="w-10 h-10 text-[#C29A3E] mb-4" />
+              <h3 className="font-serif text-2xl font-bold text-[#0B1324] mb-3">Institutional Vision</h3>
+              <p className="text-sm text-[#1F2633]/85 leading-relaxed font-sans">
                 {aboutContent.vision}
               </p>
             </div>
 
-            <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#EAF2F8] to-white border border-[#BDD7E8] shadow-sm relative overflow-hidden">
-              <Target className="w-10 h-10 text-[#D99A42] mb-4" />
-              <h3 className="font-serif text-2xl font-bold text-[#070E5C] mb-3">Institutional Mission</h3>
-              <p className="text-sm text-[#24272B]/85 leading-relaxed font-sans">
+            <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#F4F2EC] to-white border border-[#E7E3D9] shadow-sm relative overflow-hidden">
+              <Target className="w-10 h-10 text-[#C29A3E] mb-4" />
+              <h3 className="font-serif text-2xl font-bold text-[#0B1324] mb-3">Institutional Mission</h3>
+              <p className="text-sm text-[#1F2633]/85 leading-relaxed font-sans">
                 {aboutContent.mission}
               </p>
             </div>
@@ -211,14 +211,14 @@ export default function CompleteAboutExperience() {
       </section>
 
       {/* 3. OBJECTIVES & VALUES */}
-      <section id="objectives-values" className="py-20 sm:py-24 bg-gradient-to-b from-[#F6FAFD] to-[#FFFFFF] border-b border-[#E5E7EB]">
+      <section id="objectives-values" className="py-20 sm:py-24 bg-gradient-to-b from-[#FAF9F6] to-[#FFFFFF] border-b border-[#E7E3D9]">
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#070E5C] bg-[#EAF2F8] px-3.5 py-1 rounded-full border border-[#BDD7E8]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3.5 py-1 rounded-full border border-[#E7E3D9]">
               Operational Pillars
             </span>
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#070E5C] mt-3">
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#0B1324] mt-3">
               10 Institutional Objectives &amp; Core Values
             </h2>
           </div>
@@ -226,14 +226,14 @@ export default function CompleteAboutExperience() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {/* Objectives List */}
             <div className="space-y-4">
-              <h3 className="font-serif text-xl font-bold text-[#070E5C] pb-2 border-b border-[#BDD7E8]">
+              <h3 className="font-serif text-xl font-bold text-[#0B1324] pb-2 border-b border-[#E7E3D9]">
                 Institutional Objectives
               </h3>
               <div className="space-y-3">
                 {aboutContent.objectives.map((obj, i) => (
-                  <div key={i} className="flex items-start gap-3 p-3.5 rounded-2xl bg-white border border-[#BDD7E8]/70 shadow-2xs">
-                    <CheckCircle2 className="w-4 h-4 text-[#D99A42] shrink-0 mt-0.5" />
-                    <span className="text-xs sm:text-sm text-[#24272B]/90 font-medium leading-relaxed">{obj}</span>
+                  <div key={i} className="flex items-start gap-3 p-3.5 rounded-2xl bg-white border border-[#E7E3D9]/70 shadow-2xs">
+                    <CheckCircle2 className="w-4 h-4 text-[#C29A3E] shrink-0 mt-0.5" />
+                    <span className="text-xs sm:text-sm text-[#1F2633]/90 font-medium leading-relaxed">{obj}</span>
                   </div>
                 ))}
               </div>
@@ -241,17 +241,17 @@ export default function CompleteAboutExperience() {
 
             {/* Core Values List */}
             <div className="space-y-4">
-              <h3 className="font-serif text-xl font-bold text-[#070E5C] pb-2 border-b border-[#BDD7E8]">
+              <h3 className="font-serif text-xl font-bold text-[#0B1324] pb-2 border-b border-[#E7E3D9]">
                 Foundational Values
               </h3>
               <div className="space-y-3">
                 {aboutContent.coreValues.map((val, i) => (
-                  <div key={i} className="p-4 rounded-2xl bg-white border border-[#BDD7E8]/70 shadow-2xs">
-                    <h4 className="text-sm font-bold text-[#070E5C] flex items-center gap-2">
-                      <HeartHandshake className="w-4 h-4 text-[#D99A42]" />
+                  <div key={i} className="p-4 rounded-2xl bg-white border border-[#E7E3D9]/70 shadow-2xs">
+                    <h4 className="text-sm font-bold text-[#0B1324] flex items-center gap-2">
+                      <HeartHandshake className="w-4 h-4 text-[#C29A3E]" />
                       <span>{val.title}</span>
                     </h4>
-                    <p className="text-xs text-[#747B83] mt-1.5 leading-relaxed">
+                    <p className="text-xs text-[#5B6474] mt-1.5 leading-relaxed">
                       {val.description}
                     </p>
                   </div>
@@ -264,9 +264,9 @@ export default function CompleteAboutExperience() {
       </section>
 
       {/* 4. CHAIRMAN MESSAGE */}
-      <section id="chairman-message" className="py-14 sm:py-16 bg-white border-b border-[#E5E7EB] relative overflow-hidden">
+      <section id="chairman-message" className="py-14 sm:py-16 bg-white border-b border-[#E7E3D9] relative overflow-hidden">
         {/* Soft Ambient Refractive Glow */}
-        <div className="absolute top-1/2 left-10 w-96 h-96 bg-[#BBD6EA]/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-1/2 left-10 w-96 h-96 bg-[#E7E3D9]/20 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -275,7 +275,7 @@ export default function CompleteAboutExperience() {
             <div className="md:col-span-4 flex flex-col items-center text-center">
               <div className="relative group">
                 {/* Soft ambient aura behind floating portrait */}
-                <div className="absolute -inset-4 bg-gradient-to-tr from-[#5B9BD5]/20 via-[#BBD6EA]/30 to-[#D99A42]/15 rounded-full blur-xl opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute -inset-4 bg-gradient-to-tr from-[#A8832F]/20 via-[#E7E3D9]/30 to-[#C29A3E]/15 rounded-full blur-xl opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
                 
                 <div className="relative h-56 w-56 rounded-full overflow-hidden shadow-[0_16px_40px_rgba(7,14,92,0.12)] border-4 border-white">
                   <Image
@@ -288,13 +288,13 @@ export default function CompleteAboutExperience() {
               </div>
 
               <div className="mt-5">
-                <h3 className="text-xl font-bold text-[#070E5C] font-serif tracking-tight">
+                <h3 className="text-xl font-bold text-[#0B1324] font-serif tracking-tight">
                   Prof. V. Kamakoti
                 </h3>
-                <p className="text-xs text-[#D99A42] font-bold uppercase tracking-wider mt-1">
+                <p className="text-xs text-[#C29A3E] font-bold uppercase tracking-wider mt-1">
                   Chairman, CUBE
                 </p>
-                <p className="text-xs text-[#747B83] mt-0.5 font-medium">
+                <p className="text-xs text-[#5B6474] mt-0.5 font-medium">
                   Director, IIT Madras
                 </p>
               </div>
@@ -302,16 +302,16 @@ export default function CompleteAboutExperience() {
 
             {/* Seamless Content Flow Without Box */}
             <div className="md:col-span-8 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EAF2F8] border border-[#BDD7E8] text-xs font-bold uppercase tracking-wider text-[#070E5C]">
-                <Quote className="w-3.5 h-3.5 text-[#D99A42]" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F2EC] border border-[#E7E3D9] text-xs font-bold uppercase tracking-wider text-[#0B1324]">
+                <Quote className="w-3.5 h-3.5 text-[#C29A3E]" />
                 <span>Executive Address from the Chairman</span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#070E5C] leading-tight">
+              <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#0B1324] leading-tight">
                 Managing Sustainable Urbanization in an Era of High Growth
               </h3>
 
-              <div className="space-y-3.5 text-xs sm:text-sm text-[#24272B]/85 leading-relaxed font-sans">
+              <div className="space-y-3.5 text-xs sm:text-sm text-[#1F2633]/85 leading-relaxed font-sans">
                 {aboutContent.chairmanMessage.map((p, idx) => (
                   <p key={idx}>{p}</p>
                 ))}
@@ -323,9 +323,9 @@ export default function CompleteAboutExperience() {
       </section>
 
       {/* 5. CEO MESSAGE */}
-      <section id="ceo-message" className="py-14 sm:py-16 bg-gradient-to-b from-[#FFFFFF] to-[#F6FAFD] border-b border-[#E5E7EB] relative overflow-hidden">
+      <section id="ceo-message" className="py-14 sm:py-16 bg-gradient-to-b from-[#FFFFFF] to-[#FAF9F6] border-b border-[#E7E3D9] relative overflow-hidden">
         {/* Soft Ambient Refractive Glow */}
-        <div className="absolute top-1/2 right-10 w-96 h-96 bg-[#BBD6EA]/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-1/2 right-10 w-96 h-96 bg-[#E7E3D9]/20 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -334,7 +334,7 @@ export default function CompleteAboutExperience() {
             <div className="md:col-span-4 flex flex-col items-center text-center">
               <div className="relative group">
                 {/* Soft ambient aura behind floating portrait */}
-                <div className="absolute -inset-4 bg-gradient-to-tr from-[#D99A42]/15 via-[#BBD6EA]/30 to-[#5B9BD5]/20 rounded-full blur-xl opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute -inset-4 bg-gradient-to-tr from-[#C29A3E]/15 via-[#E7E3D9]/30 to-[#A8832F]/20 rounded-full blur-xl opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
                 
                 <div className="relative h-56 w-56 rounded-full overflow-hidden shadow-[0_16px_40px_rgba(7,14,92,0.12)] border-4 border-white">
                   <Image
@@ -347,13 +347,13 @@ export default function CompleteAboutExperience() {
               </div>
 
               <div className="mt-5">
-                <h3 className="text-xl font-bold text-[#070E5C] font-serif tracking-tight">
+                <h3 className="text-xl font-bold text-[#0B1324] font-serif tracking-tight">
                   L. Padmanaban
                 </h3>
-                <p className="text-xs text-[#D99A42] font-bold uppercase tracking-wider mt-1">
+                <p className="text-xs text-[#C29A3E] font-bold uppercase tracking-wider mt-1">
                   CEO, CUBE (Major General, Retired)
                 </p>
-                <p className="text-xs text-[#747B83] mt-0.5 font-medium">
+                <p className="text-xs text-[#5B6474] mt-0.5 font-medium">
                   IIT Madras Research Park
                 </p>
               </div>
@@ -361,16 +361,16 @@ export default function CompleteAboutExperience() {
 
             {/* Seamless Content Flow Without Box */}
             <div className="md:col-span-8 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EAF2F8] border border-[#BDD7E8] text-xs font-bold uppercase tracking-wider text-[#070E5C]">
-                <Quote className="w-3.5 h-3.5 text-[#D99A42]" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F2EC] border border-[#E7E3D9] text-xs font-bold uppercase tracking-wider text-[#0B1324]">
+                <Quote className="w-3.5 h-3.5 text-[#C29A3E]" />
                 <span>Operational Leadership Address</span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#070E5C] leading-tight">
+              <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#0B1324] leading-tight">
                 Multidisciplinary Engineering as a Force Multiplier for Public Good
               </h3>
 
-              <div className="space-y-3.5 text-xs sm:text-sm text-[#24272B]/85 leading-relaxed font-sans">
+              <div className="space-y-3.5 text-xs sm:text-sm text-[#1F2633]/85 leading-relaxed font-sans">
                 {aboutContent.ceoMessage.map((p, idx) => (
                   <p key={idx}>{p}</p>
                 ))}
@@ -393,29 +393,29 @@ export default function CompleteAboutExperience() {
       />
 
       {/* 7. IIT ADVISORY PANEL */}
-      <section id="advisory-panel" className="py-20 sm:py-24 bg-gradient-to-b from-[#F6FAFD] to-[#FFFFFF] border-b border-[#E5E7EB]">
+      <section id="advisory-panel" className="py-20 sm:py-24 bg-gradient-to-b from-[#FAF9F6] to-[#FFFFFF] border-b border-[#E7E3D9]">
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#070E5C] bg-[#EAF2F8] px-3.5 py-1 rounded-full border border-[#BDD7E8]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3.5 py-1 rounded-full border border-[#E7E3D9]">
               Academic Intellect
             </span>
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#070E5C] mt-3">
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#0B1324] mt-3">
               IIT Madras Advisory Faculty Panel
             </h2>
-            <p className="text-xs sm:text-sm text-[#747B83] mt-2">
+            <p className="text-xs sm:text-sm text-[#5B6474] mt-2">
               Over 25 distinguished professors across Civil Engineering, Environmental Science, Hydrology, and Transportation.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {advisoryPanel.map((advisor, i) => (
-              <div key={i} className="p-5 rounded-3xl bg-white border border-[#BDD7E8] text-center shadow-2xs hover:shadow-xs transition">
-                <div className="relative w-24 h-24 mx-auto rounded-2xl overflow-hidden mb-3 border border-white ring-1 ring-[#BDD7E8]">
+              <div key={i} className="p-5 rounded-3xl bg-white border border-[#E7E3D9] text-center shadow-2xs hover:shadow-xs transition">
+                <div className="relative w-24 h-24 mx-auto rounded-2xl overflow-hidden mb-3 border border-white ring-1 ring-[#E7E3D9]">
                   <Image src={advisor.image || '/images/leadership/about_leader.jpg'} alt={advisor.name} fill className="object-cover" />
                 </div>
-                <h4 className="font-serif font-bold text-[#070E5C] text-sm leading-snug">{advisor.name}</h4>
-                <p className="text-[11px] font-semibold text-[#D99A42] mt-0.5">{advisor.role}</p>
-                <p className="text-[10px] text-[#747B83] mt-0.5">{advisor.organization || 'IIT Madras'}</p>
+                <h4 className="font-serif font-bold text-[#0B1324] text-sm leading-snug">{advisor.name}</h4>
+                <p className="text-[11px] font-semibold text-[#C29A3E] mt-0.5">{advisor.role}</p>
+                <p className="text-[10px] text-[#5B6474] mt-0.5">{advisor.organization || 'IIT Madras'}</p>
               </div>
             ))}
           </div>
@@ -423,16 +423,16 @@ export default function CompleteAboutExperience() {
       </section>
 
       {/* 8. OUR ENGINEERING TEAM (80+) */}
-      <section id="our-team" className="py-20 sm:py-24 bg-white border-b border-[#E5E7EB]">
+      <section id="our-team" className="py-20 sm:py-24 bg-white border-b border-[#E7E3D9]">
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#070E5C] bg-[#EAF2F8] px-3.5 py-1 rounded-full border border-[#BDD7E8]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3.5 py-1 rounded-full border border-[#E7E3D9]">
               Multidisciplinary Specialists
             </span>
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#070E5C] mt-3">
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#0B1324] mt-3">
               Our Applied Engineering Team (80+)
             </h2>
-            <p className="text-xs sm:text-sm text-[#747B83] mt-2">
+            <p className="text-xs sm:text-sm text-[#5B6474] mt-2">
               Professional structural engineers, hydrodynamic modelers, laboratory chemists, and project managers.
             </p>
           </div>
@@ -441,15 +441,15 @@ export default function CompleteAboutExperience() {
             {(showAllTeam ? teamMembers : teamMembers.slice(0, 12)).map((tm, i) => (
               <div 
                 key={i} 
-                className="p-5 rounded-3xl bg-[#F6FAFD] border border-[#BDD7E8] flex items-center gap-4 hover:shadow-md hover:border-[#5B9BD5] transition-all duration-300"
+                className="p-5 rounded-3xl bg-[#FAF9F6] border border-[#E7E3D9] flex items-center gap-4 hover:shadow-md hover:border-[#A8832F] transition-all duration-300"
               >
-                <div className="relative w-16 h-16 rounded-2xl overflow-hidden shrink-0 border border-white ring-1 ring-[#BDD7E8] bg-white">
+                <div className="relative w-16 h-16 rounded-2xl overflow-hidden shrink-0 border border-white ring-1 ring-[#E7E3D9] bg-white">
                   <Image src={tm.image || '/images/team/team_unknown.png'} alt={tm.name} fill className="object-cover" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <h4 className="font-serif font-bold text-[#070E5C] text-sm truncate">{tm.name}</h4>
-                  <p className="text-[11px] font-semibold text-[#D99A42] truncate">{tm.designation}</p>
-                  <p className="text-[10px] text-[#747B83] truncate">{tm.department || 'CUBE Applied Engineering'}</p>
+                  <h4 className="font-serif font-bold text-[#0B1324] text-sm truncate">{tm.name}</h4>
+                  <p className="text-[11px] font-semibold text-[#C29A3E] truncate">{tm.designation}</p>
+                  <p className="text-[10px] text-[#5B6474] truncate">{tm.department || 'CUBE Applied Engineering'}</p>
                 </div>
               </div>
             ))}
@@ -459,7 +459,7 @@ export default function CompleteAboutExperience() {
           <div className="mt-12 text-center">
             <button
               onClick={() => setShowAllTeam(!showAllTeam)}
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-[#070E5C] hover:bg-[#D99A42] shadow-[0_8px_24px_rgba(7,14,92,0.15)] hover:shadow-lg transition-all duration-300 active:scale-95 cursor-pointer"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-[#0B1324] hover:bg-[#C29A3E] shadow-[0_8px_24px_rgba(7,14,92,0.15)] hover:shadow-lg transition-all duration-300 active:scale-95 cursor-pointer"
             >
               <span>{showAllTeam ? 'Show Less (12 Members)' : `View All ${teamMembers.length} Members (+${Math.max(teamMembers.length - 12, 0)} More)`}</span>
               <ChevronRight className={`w-4 h-4 transition-transform duration-300 ${showAllTeam ? '-rotate-90' : 'rotate-90'}`} />
@@ -469,16 +469,16 @@ export default function CompleteAboutExperience() {
       </section>
 
       {/* 9. CLIENTS & PARTNERS */}
-      <section id="clients-partners" className="py-20 sm:py-24 bg-gradient-to-b from-[#F6FAFD] to-[#FFFFFF]">
+      <section id="clients-partners" className="py-20 sm:py-24 bg-gradient-to-b from-[#FAF9F6] to-[#FFFFFF]">
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#070E5C] bg-[#EAF2F8] px-3.5 py-1 rounded-full border border-[#BDD7E8]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3.5 py-1 rounded-full border border-[#E7E3D9]">
               Institutional Ecosystem
             </span>
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#070E5C] mt-3">
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#0B1324] mt-3">
               Over 50 State Agencies &amp; Industrial Partners
             </h2>
-            <p className="text-xs sm:text-sm text-[#747B83] mt-2">
+            <p className="text-xs sm:text-sm text-[#5B6474] mt-2">
               Trusted by government departments, urban local bodies, and leading developers across India.
             </p>
           </div>
@@ -487,7 +487,7 @@ export default function CompleteAboutExperience() {
             {clients.map((client, i) => (
               <div 
                 key={i} 
-                className="h-28 p-4 rounded-2xl bg-white/90 backdrop-blur-xl border border-[#BDD7E8]/80 shadow-[0_4px_16px_rgba(7,14,92,0.03),inset_0_1px_1px_rgba(255,255,255,0.95)] hover:border-[#5B9BD5] hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center text-center group"
+                className="h-28 p-4 rounded-2xl bg-white/90 backdrop-blur-xl border border-[#E7E3D9]/80 shadow-[0_4px_16px_rgba(7,14,92,0.03),inset_0_1px_1px_rgba(255,255,255,0.95)] hover:border-[#A8832F] hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center text-center group"
               >
                 <div className="relative h-14 w-full flex items-center justify-center">
                   <Image

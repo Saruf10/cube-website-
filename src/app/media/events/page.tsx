@@ -40,7 +40,7 @@ export default function EventsPage() {
                     className="object-cover"
                   />
                   <div className="absolute top-3 left-3">
-                    <span className="text-[10px] font-bold px-3 py-1 rounded-full bg-white/90 text-[#070E5C] text-[#070E5C] backdrop-blur-md border border-[#BDD7E8]">
+                    <span className="text-[10px] font-bold px-3 py-1 rounded-full bg-white/90 text-[#0B1324] text-[#0B1324] backdrop-blur-md border border-[#E7E3D9]">
                       {evt.category}
                     </span>
                   </div>
@@ -62,7 +62,7 @@ export default function EventsPage() {
                     )}
                   </div>
 
-                  <h3 className="text-xl sm:text-2xl font-bold font-display text-navy-950 leading-snug">
+                  <h3 className="text-xl sm:text-2xl font-bold font-display text-ink leading-snug">
                     {evt.title}
                   </h3>
 

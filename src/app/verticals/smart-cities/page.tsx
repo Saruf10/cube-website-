@@ -39,7 +39,7 @@ export default async function SmartCitiesPage() {
               <span className="text-xs font-bold uppercase tracking-wider text-cyan-700 bg-cyan-50 px-3 py-1 rounded-full border border-cyan-200">
                 Urban Technology &amp; Telemetry
               </span>
-              <h2 className="text-3xl font-display font-extrabold text-navy-950">
+              <h2 className="text-3xl font-display font-extrabold text-ink">
                 {vertical.tagline}
               </h2>
               <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
@@ -68,13 +68,13 @@ export default async function SmartCitiesPage() {
           </div>
 
           <div className="mt-12">
-            <h3 className="text-2xl font-bold font-display text-navy-950 mb-8 text-center">
+            <h3 className="text-2xl font-bold font-display text-ink mb-8 text-center">
               Smart Urban Technology Offerings
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {vertical.keyServices.map((srv, i) => (
                 <div key={i} className="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-cyan-300 transition-all">
-                  <h4 className="text-base font-bold text-navy-950 mb-2 flex items-center">
+                  <h4 className="text-base font-bold text-ink mb-2 flex items-center">
                     <Activity className="w-4 h-4 text-cyan-600 mr-2" />
                     {srv.title}
                   </h4>
@@ -95,7 +95,7 @@ export default async function SmartCitiesPage() {
             <span className="text-xs font-bold uppercase tracking-wider text-cyan-700 bg-cyan-50 px-3 py-1 rounded-full border border-cyan-200">
               Field Execution
             </span>
-            <h2 className="text-3xl font-display font-extrabold text-navy-950 mt-3">
+            <h2 className="text-3xl font-display font-extrabold text-ink mt-3">
               Smart Cities &amp; Urban Tech Projects ({verticalProjects.length})
             </h2>
             <p className="text-sm text-slate-600 mt-2">
@@ -112,18 +112,18 @@ export default async function SmartCitiesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gradient-to-b from-[#FFFFFF] via-[#F6FAFD] to-[#EAF2F8] border-t border-[#BDD7E8]/60 text-[#24272B] text-center">
+      <section className="py-16 bg-gradient-to-b from-[#FFFFFF] via-[#FAF9F6] to-[#F4F2EC] border-t border-[#E7E3D9]/60 text-[#1F2633] text-center">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl font-display font-bold">
             Accelerating Data-Driven Urban Infrastructure
           </h2>
-          <p className="mt-3 text-xs sm:text-sm text-[#747B83]">
+          <p className="mt-3 text-xs sm:text-sm text-[#5B6474]">
             Collaborate with CUBE for telemetry validation, smart command centers, and digital urban twin roadmaps.
           </p>
           <div className="mt-6">
             <Link
               href="/contact"
-              className="inline-flex items-center px-6 py-3 rounded-xl text-xs font-bold text-white bg-[#D99A42] hover:bg-[#C77B60] shadow-md transition"
+              className="inline-flex items-center px-6 py-3 rounded-xl text-xs font-bold text-white bg-[#C29A3E] hover:bg-[#C77B60] shadow-md transition"
             >
               <span>Connect with Smart Cities Team</span>
               <ArrowRight className="w-4 h-4 ml-2" />

@@ -43,7 +43,7 @@ export default function LifeAtCubePage() {
             <span className="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
               Our Collaborative Culture
             </span>
-            <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-navy-950 mt-3">
+            <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-ink mt-3">
               Where Engineering Innovation Meets Public Purpose
             </h2>
             <p className="text-sm text-slate-600 mt-4 leading-relaxed">
@@ -63,7 +63,7 @@ export default function LifeAtCubePage() {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-lg font-bold font-display text-navy-950 mb-2">
+                  <h3 className="text-lg font-bold font-display text-ink mb-2">
                     {h.title}
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
@@ -77,7 +77,7 @@ export default function LifeAtCubePage() {
       </section>
 
       {/* Join the Team CTA */}
-      <section className="py-16 bg-[#EAF2F8] text-[#070E5C] border border-[#BBD6EA] text-center">
+      <section className="py-16 bg-[#F4F2EC] text-[#0B1324] border border-[#E7E3D9] text-center">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl font-display font-bold">
             Interested in Joining the CUBE Team?
@@ -88,7 +88,7 @@ export default function LifeAtCubePage() {
           <div className="mt-6 flex justify-center gap-4">
             <Link
               href="/careers"
-              className="px-6 py-3 rounded-xl text-xs font-bold text-navy-950 bg-teal-400 hover:bg-teal-300 transition"
+              className="px-6 py-3 rounded-xl text-xs font-bold text-ink bg-teal-400 hover:bg-teal-300 transition"
             >
               <span>View Career Openings</span>
             </Link>

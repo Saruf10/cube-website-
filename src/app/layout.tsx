@@ -67,7 +67,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${manrope.variable} ${cormorant.variable} scroll-smooth`}>
-      <body className="min-h-screen flex flex-col bg-[#FFFFFF] text-[#24272B] antialiased">
+      <body className="min-h-screen flex flex-col bg-[#FFFFFF] text-[#1F2633] antialiased">
         <LegacyCacheCleanup />
         <PublicShellWrapper>{children}</PublicShellWrapper>
       </body>

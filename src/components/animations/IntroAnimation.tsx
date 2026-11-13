@@ -34,7 +34,7 @@ export default function IntroAnimation() {
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-navy-950 transition-opacity duration-500 ease-out ${
+      className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-ink transition-opacity duration-500 ease-out ${
         fading ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
     >

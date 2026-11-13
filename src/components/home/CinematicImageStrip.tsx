@@ -3,7 +3,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import SectionHeading from '@/components/home/SectionHeading';
 
 interface StripItem {
@@ -78,8 +78,6 @@ export default function CinematicImageStrip() {
 
   // Native horizontal scrolling state (reduced-motion fallback only).
   const [progress, setProgress] = useState(0);
-  const [atStart, setAtStart] = useState(true);
-  const [atEnd, setAtEnd] = useState(false);
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -140,8 +138,6 @@ export default function CinematicImageStrip() {
     if (!el) return;
     const max = el.scrollWidth - el.clientWidth;
     setProgress(max > 0 ? el.scrollLeft / max : 0);
-    setAtStart(el.scrollLeft <= 4);
-    setAtEnd(el.scrollLeft >= max - 4);
   }, []);
 
   useEffect(() => {
@@ -151,30 +147,6 @@ export default function CinematicImageStrip() {
     return () => window.removeEventListener('resize', update);
   }, [update, pinned]);
 
-  // Scroll the page to the segment for card `target`.
-  const goTo = (target: number) => {
-    const section = sectionRef.current;
-    if (!section) return;
-    const range = section.offsetHeight - window.innerHeight;
-    const top = section.getBoundingClientRect().top + window.scrollY;
-    const y = top + ((target + 0.5) / COUNT) * range;
-    if (window.__lenis) window.__lenis.scrollTo(y, { duration: 1.1 });
-    else window.scrollTo({ top: y, behavior: 'smooth' });
-  };
-
-  const scrollByCard = (dir: number) => {
-    if (pinned) {
-      goTo(Math.min(COUNT - 1, Math.max(0, index + dir)));
-      return;
-    }
-    const el = trackRef.current;
-    if (!el) return;
-    const card = el.querySelector<HTMLElement>('[data-card]');
-    el.scrollBy({ left: dir * ((card?.offsetWidth || 400) + 24), behavior: 'smooth' });
-  };
-
-  const isAtStart = pinned ? index === 0 : atStart;
-  const isAtEnd = pinned ? index === COUNT - 1 : atEnd;
   const barProgress = pinned ? index / (COUNT - 1) : progress;
 
   return (
@@ -196,34 +168,10 @@ export default function CinematicImageStrip() {
             eyebrow="Engineering Panorama"
             title={
               <>
-                Selected work across <span className="text-stone-400">public infrastructure.</span>
+                Selected work across <span className="text-brass-300">public infrastructure.</span>
               </>
             }
             description="Continuously advancing civil engineering research into enduring public infrastructure across Tamil Nadu and South India."
-            action={
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => scrollByCard(-1)}
-                  disabled={isAtStart}
-                  aria-label="Previous case study"
-                  className="flex h-12 w-12 items-center justify-center border border-ink/15 bg-white text-ink transition-all hover:border-ink hover:bg-ink hover:text-white disabled:pointer-events-none disabled:opacity-30"
-                >
-                  <ArrowLeft className="h-4 w-4" />
-                </button>
-                <button
-                  onClick={() => scrollByCard(1)}
-                  disabled={isAtEnd}
-                  aria-label="Next case study"
-                  className="flex h-12 w-12 items-center justify-center border border-ink/15 bg-white text-ink transition-all hover:border-ink hover:bg-ink hover:text-white disabled:pointer-events-none disabled:opacity-30"
-                >
-                  <ArrowRight className="h-4 w-4" />
-                </button>
-                <Link href="/projects" className="link-arrow ml-4">
-                  <span>All Projects</span>
-                  <ArrowUpRight className="h-4 w-4 text-brass-600" />
-                </Link>
-              </div>
-            }
           />
         </div>
 

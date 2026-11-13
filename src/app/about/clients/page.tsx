@@ -30,7 +30,7 @@ export default function ClientsPage() {
             <span className="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
               Government &amp; Public Sector
             </span>
-            <h2 className="text-3xl font-display font-extrabold text-navy-950 mt-3">
+            <h2 className="text-3xl font-display font-extrabold text-ink mt-3">
               Valued Clients
             </h2>
             <p className="text-sm text-slate-600 mt-2">
@@ -65,7 +65,7 @@ export default function ClientsPage() {
             <span className="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
               Strategic Ecosystem
             </span>
-            <h2 className="text-3xl font-display font-extrabold text-navy-950 mt-3">
+            <h2 className="text-3xl font-display font-extrabold text-ink mt-3">
               Institutional Partners
             </h2>
             <p className="text-sm text-slate-600 mt-2">

@@ -45,7 +45,7 @@ export default async function EnvironmentSustainabilityPage() {
                 <span>Water &amp; Ecological Engineering</span>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl font-display font-extrabold text-navy-950 leading-tight">
+              <h2 className="text-2xl sm:text-3xl font-display font-extrabold text-ink leading-tight">
                 {vertical.tagline}
               </h2>
 
@@ -73,8 +73,8 @@ export default async function EnvironmentSustainabilityPage() {
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#070E5C]/60 via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4 text-white text-xs font-medium bg-white/90 text-[#24272B] backdrop-blur-md p-3 rounded-xl border border-[#BDD7E8]">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0B1324]/60 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4 text-white text-xs font-medium bg-white/90 text-[#1F2633] backdrop-blur-md p-3 rounded-xl border border-[#E7E3D9]">
                 Ecological Restoration &amp; Urban Watershed Management
               </div>
             </div>
@@ -87,7 +87,7 @@ export default async function EnvironmentSustainabilityPage() {
               <span className="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
                 Specialized Mandates
               </span>
-              <h3 className="text-2xl sm:text-3xl font-bold font-display text-navy-950 mt-2">
+              <h3 className="text-2xl sm:text-3xl font-bold font-display text-ink mt-2">
                 Key Environmental Services &amp; Advisory
               </h3>
             </div>
@@ -95,7 +95,7 @@ export default async function EnvironmentSustainabilityPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {vertical.keyServices.map((srv, i) => (
                 <div key={i} className="p-6 rounded-2xl bg-slate-50 hover:bg-white border border-slate-200 hover:border-teal-400/60 hover:shadow-lg transition-all duration-300">
-                  <h4 className="text-base font-bold text-navy-950 mb-2 flex items-center">
+                  <h4 className="text-base font-bold text-ink mb-2 flex items-center">
                     <Waves className="w-4 h-4 text-teal-600 mr-2 flex-shrink-0" />
                     <span>{srv.title}</span>
                   </h4>
@@ -122,7 +122,7 @@ export default async function EnvironmentSustainabilityPage() {
             </div>
             <Link
               href="/cel"
-              className="px-6 py-3 rounded-xl bg-teal-400 hover:bg-teal-300 text-navy-950 font-bold text-xs sm:text-sm flex-shrink-0 transition-all shadow-cube-glow flex items-center"
+              className="px-6 py-3 rounded-xl bg-teal-400 hover:bg-teal-300 text-ink font-bold text-xs sm:text-sm flex-shrink-0 transition-all shadow-cube-glow flex items-center"
             >
               <span>Explore CEL Services</span>
               <ArrowRight className="w-4 h-4 ml-2" />
@@ -136,7 +136,7 @@ export default async function EnvironmentSustainabilityPage() {
                 <span className="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
                   Applied Track Record
                 </span>
-                <h3 className="text-2xl font-bold font-display text-navy-950 mt-2">
+                <h3 className="text-2xl font-bold font-display text-ink mt-2">
                   Featured Environmental Projects
                 </h3>
               </div>

@@ -51,7 +51,7 @@ export default async function AdvisoryPanelPage() {
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-                <h3 className="text-sm font-bold text-navy-950 font-display line-clamp-1">
+                <h3 className="text-sm font-bold text-ink font-display line-clamp-1">
                   {member.name}
                 </h3>
                 <p className="text-xs text-teal-700 font-medium mt-1 line-clamp-2">
