@@ -1,85 +1,41 @@
 'use client';
 
-
-
-
-
-
-
 import React, { useEffect, useState } from 'react';
-
-
 
 import Image from 'next/image';
 
-
-
 import Link from 'next/link';
-
-
 
 import { 
 
-
-
   Building2, Leaf, Cpu, Compass, ArrowUpRight, ShieldCheck, 
-
-
 
   FlaskConical, CheckCircle2, Award, Users, ChevronRight, 
 
-
-
   Sparkles, ExternalLink, FileText, Calendar, MapPin
-
-
 
 } from 'lucide-react';
 
-
-
 import ArchitecturalHero from '@/components/hero/ArchitecturalHero';
-
-
 
 import CinematicImageStrip from '@/components/home/CinematicImageStrip';
 
 
-
-import Interactive3DAbout from '@/components/home/Interactive3DAbout';
-
-
-
-import VerticalFlipCard from '@/components/cards/VerticalFlipCard';
-
-
-
-import ProjectCard from '@/components/cards/ProjectCard';
-
-
-
-import CELCard from '@/components/cards/CELCard';
-import Vertical3DTeamCarousel from '@/components/cards/Vertical3DTeamCarousel';
-import Interactive3DClients from '@/components/home/Interactive3DClients';
 import SustainabilityStorytelling from '@/components/home/SustainabilityStorytelling';
-import ResearchInnovation from '@/components/home/ResearchInnovation';
+import SectionHeading from '@/components/home/SectionHeading';
+import VerticalsShowcase from '@/components/home/VerticalsShowcase';
+import ProjectsShowcase from '@/components/home/ProjectsShowcase';
+import CELDatasheet from '@/components/home/CELDatasheet';
+import ClientsWall from '@/components/home/ClientsWall';
 
 import { verticals as fallbackVerticals } from '@/data/verticals';
 import { CMS_UPDATED_EVENT } from '@/lib/live';
 
-
-
 import { projects as fallbackProjects } from '@/data/projects';
-
-
 
 import { celOverview } from '@/data/cel';
 
-
-
 import { aboutContent } from '@/data/about';
-
-
 
 import { boardMembers as fallbackBoardMembers, executiveLeadership } from '@/data/leadership';
 
@@ -88,23 +44,11 @@ const fallbackLeadershipList: any[] = fallbackCeo
   ? [{ ...fallbackCeo, category: 'CEO' }, ...fallbackBoardMembers]
   : fallbackBoardMembers;
 
-
-
 import { newsItems as fallbackNewsItems } from '@/data/news';
-
-
 
 import { clients as fallbackClients } from '@/data/clients';
 
-
-
-
-
-
-
 export default function HomePage() {
-
-
 
   const [activeProjectTab, setActiveProjectTab] = useState<string>('All');
   const [projectList, setProjectList] = useState<any[]>(fallbackProjects);
@@ -202,1422 +146,364 @@ export default function HomePage() {
     };
   }, []);
 
-
-
-
-
-
-
   const filteredProjects = activeProjectTab === 'All'
-
-
-
     ? projectList.filter(p => p.featured).slice(0, 6)
-
-
-
     : projectList.filter(p => p.category === activeProjectTab).slice(0, 6);
 
+  const projectTabs = [
+    { key: 'All', label: 'Featured' },
+    { key: 'Building & Construction', label: 'Buildings' },
+    { key: 'Environment & Sustainability', label: 'Environment' },
+    { key: 'Smart Cities', label: 'Smart Cities' },
+    { key: 'Urban Planning & Transportation', label: 'Transport' },
+  ];
 
-
-
-
-
+  const lifeAtCube = [
+    {
+      image: '/images/life-at-cube/about_life.jpg',
+      alt: 'Life at CUBE - Collaborative Engineering',
+      title: 'Collaborative Engineering',
+      body: 'Interdisciplinary technical reviews and peer audits at IIT Madras Research Park.',
+    },
+    {
+      image: '/images/life-at-cube/about_life1.jpg',
+      alt: 'Life at CUBE - Faculty Mentorship',
+      title: 'Academic Faculty Guidance',
+      body: 'Continuous mentorship from renowned IIT Madras professors and technical panels.',
+    },
+    {
+      image: '/images/life-at-cube/about_life2.jpg',
+      alt: 'Life at CUBE - Hands-on Field Testing',
+      title: 'Hands-On Site Testing',
+      body: 'Precision field inspection and non-destructive testing on high-stakes infrastructure sites.',
+    },
+  ];
 
   return (
-
-
-
-    <div className="flex flex-col min-h-screen bg-[#FFFFFF] text-[#24272B]">
-
-
-
-      
-
-
-
-      {/* 1. ASYMMETRICAL EDITORIAL ARCHITECTURAL HERO */}
-
-
-
+    <div className="home-page flex flex-col min-h-screen text-ink">
+      {/* HERO */}
       <ArchitecturalHero />
 
-
-
-
-
-
-
-      {/* 2. CINEMATIC IMAGE SEQUENCE STRIP (Video 3 Inspiration) */}
-
-
-
+      {/* 01 · SELECTED WORK */}
       <CinematicImageStrip />
 
-
-
-
-
-
-
-      {/* 3. ABOUT CUBE – INTERACTIVE 3D ARCHITECTURAL SPREAD */}
-
-
-
-      <Interactive3DAbout />
-
-
-
-
-
-
-
-      {/* 4. FOUR VERTICALS – INTERACTIVE ARCHITECTURAL CARDS */}
-
-
-
-      <section className="py-24 bg-[#F7F7F4] border-b border-[#E5E7EB]">
-
-
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-
-
-          
-
-
-
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-
-
-
-            <div className="space-y-2">
-
-
-
-              <span className="text-xs uppercase tracking-widest text-[#D99A42] font-bold">
-
-
-
-                Specialized Disciplines
-
-
-
-              </span>
-
-
-
-              <h2 className="font-serif text-3xl sm:text-5xl font-light text-[#24272B] tracking-tight">
-
-
-
-                Four Core Engineering Verticals
-
-
-
-              </h2>
-
-
-
-            </div>
-
-
-
-            <p className="text-xs sm:text-sm text-[#747B83] max-w-md">
-
-
-
-              Tap each visual card to explore core capabilities, testing domains, and verified state projects guided by CUBE specialists.
-
-
-
-            </p>
-
-
-
+      {/* 03 · VERTICALS */}
+      {/* On desktop the section pins while scrolling opens each vertical in turn. */}
+      <section
+        className="relative bg-stone-100 py-24 sm:py-32 lg:h-[calc(100svh+var(--vcount)*75svh)] lg:py-0"
+        style={{ '--vcount': verticalList.length } as React.CSSProperties}
+      >
+        <div className="lg:sticky lg:top-0 lg:flex lg:h-[100svh] lg:flex-col lg:justify-center lg:py-[clamp(2rem,6vh,4.5rem)]">
+        <div className="mx-auto w-full max-w-none px-5 sm:px-8 lg:px-12">
+          <SectionHeading
+            index="03"
+            eyebrow="Specialized Disciplines"
+            title={
+              <>
+                Four core engineering{' '}
+                <span className="block text-[1.45em] leading-[0.95] text-stone-400">verticals.</span>
+              </>
+            }
+            description="Open each discipline to explore core capabilities, testing domains, and verified state projects guided by CUBE specialists."
+            action={
+              <Link href="/verticals" className="link-arrow">
+                <span>All Verticals &amp; Faculties</span>
+                <ArrowUpRight className="h-4 w-4 text-brass-600" />
+              </Link>
+            }
+          />
+
+          <div className="mt-16 lg:mt-[clamp(1.5rem,4.5vh,4rem)]" data-reveal data-reveal-delay="1">
+            <VerticalsShowcase verticals={verticalList} />
           </div>
-
-
-
-
-
-
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-
-
-            {verticalList.map((vertical) => (
-
-
-
-              <VerticalFlipCard key={vertical.id} vertical={vertical} />
-
-
-
-            ))}
-
-
-
-          </div>
-
-
-
-
-
-
-
-          <div className="mt-14 text-center">
-
-
-
-            <Link
-
-
-
-              href="/verticals/building-construction"
-
-
-
-              className="inline-flex items-center px-6 py-3 rounded-full text-xs font-semibold text-[#070E5C] bg-white hover:bg-[#EAF2F8] border border-[#E5E7EB] shadow-sm transition-all"
-
-
-
-            >
-
-
-
-              <span>Explore All Engineering Verticals &amp; Faculties</span>
-
-
-
-              <ArrowUpRight className="w-3.5 h-3.5 ml-2 text-[#D99A42]" />
-
-
-
-            </Link>
-
-
-
-          </div>
-
-
-
-
-
-
-
         </div>
-
-
-
+        </div>
       </section>
 
-
-
-
-
-
-
-      {/* 5. FEATURED PROJECTS – EDITORIAL PORTFOLIO */}
-
-
-
-      <section className="py-24 bg-[#FFFFFF] border-b border-[#E5E7EB]">
-
-
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-
-
-          
-
-
-
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
-
-
-
-            <div>
-
-
-
-              <span className="text-xs uppercase tracking-widest text-[#D99A42] font-bold">
-
-
-
-                Applied Execution
-
-
-
-              </span>
-
-
-
-              <h2 className="font-serif text-3xl sm:text-5xl font-light text-[#24272B] tracking-tight mt-1">
-
-
-
-                Featured Applied Projects
-
-
-
-              </h2>
-
-
-
-              <p className="text-xs sm:text-sm text-[#747B83] mt-2 max-w-xl">
-
-
-
-                Independent Third Party Quality Assurance (TPQA), PMC, and structural proof checking across 40+ premier public schemes.
-
-
-
-              </p>
-
-
-
-            </div>
-
-
-
-
-
-
-
-            {/* Filter Tabs in Architectural Pill Style */}
-
-
-
-            <div className="flex flex-wrap gap-2">
-
-
-
-              {['All', 'Building & Construction', 'Environment & Sustainability', 'Smart Cities', 'Urban Planning & Transportation'].map((cat) => (
-
-
-
+      {/* 04 · PROJECTS */}
+      <section className="bg-white py-24 sm:py-32 lg:flex lg:min-h-[100svh] lg:flex-col lg:justify-center lg:[&>*:not(.absolute)]:w-full">
+        <div className="mx-auto max-w-none px-5 sm:px-8 lg:px-12">
+          <SectionHeading
+            index="04"
+            eyebrow="Applied Execution"
+            title={
+              <>
+                Featured applied <span className="text-stone-400">projects.</span>
+              </>
+            }
+            description="Independent Third Party Quality Assurance (TPQA), PMC, and structural proof checking across 40+ premier public schemes."
+          />
+
+          {/* Segmented filter */}
+          <div data-reveal data-reveal-delay="1" className="mt-12 flex gap-1 overflow-x-auto no-scrollbar border-b border-stone-200" role="tablist" aria-label="Filter projects by vertical">
+            {projectTabs.map((tab) => {
+              const active = activeProjectTab === tab.key;
+              return (
                 <button
-
-
-
-                  key={cat}
-
-
-
-                  onClick={() => setActiveProjectTab(cat)}
-
-
-
-                  className={`px-4 py-2 rounded-full text-xs font-semibold transition-all ${
-
-
-
-                    activeProjectTab === cat
-
-
-
-                      ? 'bg-[#EAF2F8] text-[#070E5C] border border-[#BBD6EA] shadow-sm'
-
-
-
-                      : 'bg-[#F7F7F4] text-[#747B83] hover:text-[#24272B] hover:bg-[#EAF2F8]'
-
-
-
+                  key={tab.key}
+                  role="tab"
+                  aria-selected={active}
+                  onClick={() => setActiveProjectTab(tab.key)}
+                  className={`relative shrink-0 px-4 sm:px-5 pb-4 pt-2 text-[12px] font-semibold uppercase tracking-[0.14em] transition-colors ${
+                    active ? 'text-ink' : 'text-stone-400 hover:text-ink'
                   }`}
-
-
-
                 >
-
-
-
-                  {cat === 'Building & Construction' ? 'Buildings' : cat === 'Environment & Sustainability' ? 'Environment' : cat === 'Urban Planning & Transportation' ? 'Transport' : cat}
-
-
-
+                  {tab.label}
+                  <span
+                    aria-hidden
+                    className={`absolute inset-x-0 -bottom-px h-[2px] bg-brass-400 transition-transform duration-300 origin-left ${
+                      active ? 'scale-x-100' : 'scale-x-0'
+                    }`}
+                  />
                 </button>
-
-
-
-              ))}
-
-
-
-            </div>
-
-
-
+              );
+            })}
           </div>
 
-
-
-
-
-
-
-          {/* Project Grid */}
-
-
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-
-
-            {filteredProjects.map((project) => (
-
-
-
-              <ProjectCard key={project.slug} project={project} />
-
-
-
-            ))}
-
-
-
+          <div className="mt-12" data-reveal data-reveal-delay="2">
+            <ProjectsShowcase key={activeProjectTab} projects={filteredProjects} />
           </div>
 
-
-
-
-
-
-
-          <div className="mt-16 text-center">
-
-
-
-            <Link
-
-
-
-              href="/projects"
-
-
-
-              className="inline-flex items-center px-8 py-3.5 rounded-full text-xs font-semibold text-[#070E5C] bg-[#EAF2F8] border border-[#BBD6EA] hover:bg-[#D99A42] hover:text-[#24272B] shadow-sm transition-all"
-
-
-
-            >
-
-
-
-              <span>Explore All 40+ Projects with Full Case Studies</span>
-
-
-
-              <ArrowUpRight className="w-4 h-4 ml-2" />
-
-
-
+          <div className="mt-16 flex justify-center">
+            <Link href="/projects" className="btn-primary">
+              <span>All 40+ Projects &amp; Case Studies</span>
+              <ArrowUpRight className="h-4 w-4" />
             </Link>
-
-
-
           </div>
-
-
-
-
-
-
-
         </div>
-
-
-
       </section>
 
-
-
-
-
-
-
-      {/* 6. SUSTAINABILITY & IMPACT (Morphogenesis Reference 3) */}
+      {/* 05 · SUSTAINABILITY */}
       <SustainabilityStorytelling />
 
-      {/* 6. CUBE ENVIRONMENTAL LABORATORY (CEL) - LIGHT SOPHISTICATED EDITORIAL */}
-
-
-
-      <section className="py-24 bg-[#EAF2F8] border-b border-[#BBD6EA] text-[#24272B] relative overflow-hidden">
-
-
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
-
-
-          
-
-
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
-
-
-
-            <div className="lg:col-span-8 space-y-4">
-
-
-
-              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#070E5C]">
-
-
-
-                <FlaskConical className="w-4 h-4 text-[#D99A42]" />
-
-
-
-                <span>Analytical Testing Facility &bull; IIT Madras Research Park</span>
-
-
-
+      {/* 06 · CEL LABORATORY */}
+      <section className="relative overflow-hidden bg-stone-50 py-24 sm:py-32 lg:flex lg:min-h-[100svh] lg:flex-col lg:justify-center lg:[&>*:not(.absolute)]:w-full">
+        <div aria-hidden className="absolute inset-0 blueprint-grid opacity-60 [mask-image:linear-gradient(to_bottom,black,transparent_60%)]" />
+        <div className="relative z-10 mx-auto max-w-none px-5 sm:px-8 lg:px-12">
+          <SectionHeading
+            index="06"
+            eyebrow="Analytical Testing · IIT Madras Research Park"
+            title={
+              <>
+                CUBE Environmental <span className="text-stone-400">Laboratory.</span>
+              </>
+            }
+            description="CEL is a precision environmental and materials testing facility delivering physical, chemical, and microbiological analysis for water, wastewater, soil, heavy metals, and building materials in compliance with BIS, ISO, and CPCB protocols."
+            action={
+              <div className="flex flex-wrap gap-3">
+                <Link href="/cel" className="btn-primary">
+                  <FlaskConical className="h-4 w-4 !transform-none" />
+                  <span>Testing Capabilities</span>
+                </Link>
+                <Link href="/cel#enquiry" className="btn-outline">
+                  <span>Book a Sample</span>
+                </Link>
               </div>
+            }
+          />
 
+          <div className="mt-16" data-reveal data-reveal-delay="1">
+            <CELDatasheet services={celServiceList} />
+          </div>
+        </div>
+      </section>
 
+      {/* 08 · LIFE AT CUBE */}
+      <section className="bg-stone-100 py-24 sm:py-32 lg:flex lg:min-h-[100svh] lg:flex-col lg:justify-center lg:[&>*:not(.absolute)]:w-full">
+        <div className="mx-auto max-w-none px-5 sm:px-8 lg:px-12">
+          <SectionHeading
+            index="08"
+            eyebrow="Workplace & Culture"
+            title={
+              <>
+                Life at <span className="font-editorial italic font-medium tracking-[-0.02em] text-brass-600">CUBE.</span>
+              </>
+            }
+            description="A collaborative research ecosystem uniting IIT Madras faculty, senior engineering consultants, and young researchers."
+            action={
+              <Link href="/life-at-cube" className="link-arrow">
+                <span>Gallery &amp; Workplace Culture</span>
+                <ArrowUpRight className="h-4 w-4 text-brass-600" />
+              </Link>
+            }
+          />
 
-              <h2 className="font-serif text-3xl sm:text-5xl font-light text-[#070E5C] tracking-tight">
+          <div data-reveal data-reveal-delay="1" className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-12 md:grid-rows-2">
+            {lifeAtCube.map((item, i) => (
+              <Link
+                key={item.title}
+                href="/life-at-cube"
+                className={`group relative overflow-hidden rounded-xl bg-ink ${
+                  i === 0 ? 'aspect-[4/3] md:col-span-7 md:row-span-2 md:aspect-auto md:min-h-[560px]' : 'aspect-[16/10] md:col-span-5 md:aspect-auto md:min-h-[268px]'
+                }`}
+              >
+                <Image
+                  src={item.image}
+                  alt={item.alt}
+                  fill
+                  sizes={i === 0 ? '(max-width: 768px) 100vw, 58vw' : '(max-width: 768px) 100vw, 42vw'}
+                  className="object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/20 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
+                  <span className="text-[11px] font-bold tabular-nums text-brass-300">0{i + 1}</span>
+                  <h3 className={`mt-2 font-display font-semibold tracking-[-0.02em] text-white ${i === 0 ? 'text-2xl sm:text-3xl' : 'text-xl'}`}>
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 max-w-md text-[13px] leading-relaxed text-white/65">{item.body}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
 
+      {/* 09 · CLIENTS */}
+      <ClientsWall clients={clientList} />
 
+      {/* 10 · NEWS */}
+      <section className="bg-stone-50 py-24 sm:py-32 lg:flex lg:min-h-[100svh] lg:flex-col lg:justify-center lg:[&>*:not(.absolute)]:w-full border-t border-stone-200">
+        <div className="mx-auto max-w-none px-5 sm:px-8 lg:px-12">
+          <SectionHeading
+            index="10"
+            eyebrow="Media & Dispatches"
+            title={
+              <>
+                Latest news <span className="text-stone-400">&amp; updates.</span>
+              </>
+            }
+            action={
+              <Link href="/media/news" className="link-arrow">
+                <span>All Releases</span>
+                <ArrowUpRight className="h-4 w-4 text-brass-600" />
+              </Link>
+            }
+          />
 
-                CUBE Environmental Laboratory (CEL)
+          {newsList.length > 0 && (
+            <div data-reveal data-reveal-delay="1" className="mt-16 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
+              {/* Lead story */}
+              <Link href={`/media/news/${newsList[0].slug || newsList[0].id}`} className="group lg:col-span-7">
+                <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-stone-200">
+                  <Image
+                    src={newsList[0].image || '/images/media/news/images_news1.jpg'}
+                    alt={newsList[0].title}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 58vw"
+                    className="object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.04]"
+                  />
+                  <div className="absolute left-5 top-5 flex gap-2">
+                    <span className="chip-brass">Latest</span>
+                    {newsList[0].category && <span className="chip-light">{newsList[0].category}</span>}
+                  </div>
+                </div>
+                {newsList[0].date && (
+                  <div className="mt-7 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-500">
+                    <Calendar className="h-3.5 w-3.5 text-brass-500" />
+                    <span>{newsList[0].date}</span>
+                  </div>
+                )}
+                <h3 className="mt-7 max-w-2xl font-display text-2xl sm:text-[2rem] font-semibold leading-tight tracking-[-0.025em] text-ink transition-colors group-hover:text-brass-700">
+                  {newsList[0].title}
+                </h3>
+                <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-[#5B6474] line-clamp-3">{newsList[0].summary}</p>
+                <div className="mt-6 link-arrow">
+                  <span>Read Release</span>
+                  <ArrowUpRight className="h-4 w-4 text-brass-600" />
+                </div>
+              </Link>
 
+              {/* Dispatch list */}
+              <div className="lg:col-span-5">
+                <div className="flex items-center justify-between border-b border-ink pb-4 text-[10px] font-bold uppercase tracking-[0.22em] text-ink">
+                  <span>More Dispatches</span>
+                  <span className="tabular-nums text-stone-400">{String(Math.max(newsList.length - 1, 0)).padStart(2, '0')}</span>
+                </div>
+                <ul>
+                  {newsList.slice(1, 6).map((item, i) => (
+                    <li key={item.id} className="border-b border-stone-200">
+                      <Link href={`/media/news/${item.slug || item.id}`} className="group flex gap-5 py-6">
+                        <span className="pt-1 text-[11px] font-bold tabular-nums text-stone-400 transition-colors group-hover:text-brass-600">
+                          {String(i + 2).padStart(2, '0')}
+                        </span>
+                        <div className="min-w-0 flex-1">
+                          <div className="flex flex-wrap items-center gap-x-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-stone-400">
+                            <span>{item.date}</span>
+                            {item.category && (
+                              <>
+                                <span className="h-2.5 w-px bg-stone-300" />
+                                <span className="text-brass-600">{item.category}</span>
+                              </>
+                            )}
+                          </div>
+                          <h4 className="mt-2 font-display text-[16px] font-semibold leading-snug tracking-[-0.01em] text-ink/80 line-clamp-2 transition-colors group-hover:text-ink">
+                            {item.title}
+                          </h4>
+                        </div>
+                        <div className="relative h-20 w-24 shrink-0 overflow-hidden rounded-md bg-stone-200">
+                          <Image
+                            src={item.image || '/images/media/news/images_news1.jpg'}
+                            alt=""
+                            fill
+                            sizes="96px"
+                            className="object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
+                          />
+                        </div>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
 
+      {/* CALL TO ACTION */}
+      <section className="grain relative overflow-hidden bg-ink py-24 sm:py-32 lg:flex lg:min-h-[100svh] lg:flex-col lg:justify-center lg:[&>*:not(.absolute)]:w-full text-white">
+        <div aria-hidden className="absolute inset-0 blueprint-grid-dark" />
+        <div aria-hidden className="absolute left-1/2 top-1/2 h-[520px] w-[820px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brass-500/10 blur-[140px]" />
 
+        <div className="relative z-10 mx-auto max-w-none px-5 sm:px-8 lg:px-12">
+          <div data-reveal className="grid grid-cols-1 items-center gap-14 lg:grid-cols-12">
+            <div className="lg:col-span-8">
+              <span className="eyebrow eyebrow-light">Collaborate With CUBE</span>
+              <h2 className="display-xl mt-6 text-[2.5rem] sm:text-6xl lg:text-7xl text-white">
+                Engage CUBE for applied{' '}
+                <span className="font-editorial italic font-medium tracking-[-0.02em] text-brass-300">consultancy</span>{' '}
+                &amp; testing.
               </h2>
-
-
-
-              <p className="text-xs sm:text-sm text-[#747B83] leading-relaxed max-w-3xl">
-
-
-
-                CEL is a precision environmental and materials testing facility delivering physical, chemical, and microbiological analysis for water, wastewater, soil, heavy metals, and building materials in compliance with BIS, ISO, and CPCB protocols.
-
-
-
+              <p className="mt-8 max-w-2xl text-base leading-relaxed text-white/60">
+                Connect with our faculty advisors and multidisciplinary engineering teams at IIT Madras Research Park for
+                third-party quality assurance, precast engineering, water resources, or laboratory testing.
               </p>
-
-
-
-            </div>
-
-
-
-
-
-
-
-            <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3">
-
-
-
-              <Link
-
-
-
-                href="/cel"
-
-
-
-                className="px-6 py-3.5 rounded-full text-xs font-semibold text-[#070E5C] bg-[#EAF2F8] border border-[#BBD6EA] hover:bg-[#D99A42] hover:text-[#24272B] transition-all text-center shadow-sm flex items-center justify-center gap-2"
-
-
-
-              >
-
-
-
-                <span>Explore CEL Testing Capabilities</span>
-
-
-
-                <ArrowUpRight className="w-3.5 h-3.5" />
-
-
-
-              </Link>
-
-
-
-              <Link
-
-
-
-                href="/cel#enquiry"
-
-
-
-                className="px-6 py-3.5 rounded-full text-xs font-semibold text-[#070E5C] bg-white hover:bg-[#F7F7F4] border border-[#BBD6EA] transition-all text-center"
-
-
-
-              >
-
-
-
-                Book Environmental Testing Sample
-
-
-
-              </Link>
-
-
-
-            </div>
-
-
-
-          </div>
-
-
-
-
-
-
-
-          {/* CEL Service Cards */}
-
-
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-
-
-            {celServiceList.map((service) => (
-
-
-
-              <CELCard key={service.id} service={service} />
-
-
-
-            ))}
-
-
-
-          </div>
-
-
-
-
-
-
-
-        </div>
-
-
-
-      </section>
-
-
-
-
-
-
-
-      {/* 8. RESEARCH & INNOVATION (Aedas Reference 1 + ArchUnion Reference 2) */}
-      <ResearchInnovation />
-
-      {/* 7. LIFE AT CUBE & PROFESSIONAL ENVIRONMENT */}
-
-
-
-      <section className="py-24 bg-[#FFFFFF] border-b border-[#E5E7EB]">
-
-
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-
-
-          
-
-
-
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
-
-
-
-            <div className="space-y-2">
-
-
-
-              <span className="text-xs uppercase tracking-widest text-[#D99A42] font-bold">
-
-
-
-                Workplace &amp; Culture
-
-
-
-              </span>
-
-
-
-              <h2 className="font-serif text-3xl sm:text-5xl font-light text-[#24272B] tracking-tight">
-
-
-
-                Life at CUBE
-
-
-
-              </h2>
-
-
-
-            </div>
-
-
-
-            <p className="text-xs sm:text-sm text-[#747B83] max-w-md">
-
-
-
-              A collaborative research ecosystem uniting IIT Madras faculty, senior engineering consultants, and young researchers.
-
-
-
-            </p>
-
-
-
-          </div>
-
-
-
-
-
-
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-
-
-            <div className="rounded-3xl overflow-hidden bg-white border border-[#E5E7EB] shadow-sm hover:shadow-md transition-all group">
-
-
-
-              <div className="relative h-64 w-full overflow-hidden">
-
-
-
-                <Image
-
-
-
-                  src="/images/life-at-cube/about_life.jpg"
-
-
-
-                  alt="Life at CUBE - Collaborative Engineering"
-
-
-
-                  fill
-
-
-
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-
-
-
-                />
-
-
-
+              <div className="mt-10 flex flex-wrap gap-4">
+                <Link href="/contact" className="btn-brass">
+                  <span>Submit Project Enquiry</span>
+                  <ArrowUpRight className="h-4 w-4" />
+                </Link>
+                <Link href="/cel" className="btn-outline-light">
+                  <span>CEL Testing Schedule</span>
+                </Link>
               </div>
-
-
-
-              <div className="p-6">
-
-
-
-                <h4 className="font-serif text-lg font-medium text-[#24272B]">Collaborative Engineering</h4>
-
-
-
-                <p className="text-xs text-[#747B83] mt-1.5 leading-relaxed">
-
-
-
-                  Interdisciplinary technical reviews and peer audits at IIT Madras Research Park.
-
-
-
-                </p>
-
-
-
-              </div>
-
-
-
             </div>
 
-
-
-
-
-
-
-            <div className="rounded-3xl overflow-hidden bg-white border border-[#E5E7EB] shadow-sm hover:shadow-md transition-all group">
-
-
-
-              <div className="relative h-64 w-full overflow-hidden">
-
-
-
-                <Image
-
-
-
-                  src="/images/life-at-cube/about_life1.jpg"
-
-
-
-                  alt="Life at CUBE - Faculty Mentorship"
-
-
-
-                  fill
-
-
-
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-
-
-
-                />
-
-
-
-              </div>
-
-
-
-              <div className="p-6">
-
-
-
-                <h4 className="font-serif text-lg font-medium text-[#24272B]">Academic Faculty Guidance</h4>
-
-
-
-                <p className="text-xs text-[#747B83] mt-1.5 leading-relaxed">
-
-
-
-                  Continuous mentorship from renowned IIT Madras professors and technical panels.
-
-
-
-                </p>
-
-
-
-              </div>
-
-
-
-            </div>
-
-
-
-
-
-
-
-            <div className="rounded-3xl overflow-hidden bg-white border border-[#E5E7EB] shadow-sm hover:shadow-md transition-all group">
-
-
-
-              <div className="relative h-64 w-full overflow-hidden">
-
-
-
-                <Image
-
-
-
-                  src="/images/life-at-cube/about_life2.jpg"
-
-
-
-                  alt="Life at CUBE - Hands-on Field Testing"
-
-
-
-                  fill
-
-
-
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-
-
-
-                />
-
-
-
-              </div>
-
-
-
-              <div className="p-6">
-
-
-
-                <h4 className="font-serif text-lg font-medium text-[#24272B]">Hands-On Site Testing</h4>
-
-
-
-                <p className="text-xs text-[#747B83] mt-1.5 leading-relaxed">
-
-
-
-                  Precision field inspection and non-destructive testing on high-stakes infrastructure sites.
-
-
-
-                </p>
-
-
-
-              </div>
-
-
-
-            </div>
-
-
-
-          </div>
-
-
-
-
-
-
-
-          <div className="mt-10 text-center">
-
-
-
-            <Link
-
-
-
-              href="/life-at-cube"
-
-
-
-              className="inline-flex items-center text-xs font-semibold text-[#070E5C] hover:text-[#D99A42] transition-colors"
-
-
-
-            >
-
-
-
-              <span>Explore full Life at CUBE gallery and workplace culture &rarr;</span>
-
-
-
-            </Link>
-
-
-
-          </div>
-
-
-
-
-
-
-
-        </div>
-
-
-
-      </section>
-
-
-
-
-
-
-
-      {/* 8. LEADERSHIP & DISTINGUISHED GOVERNANCE (Vertical 3D Cylindrical Carousel) */}
-      <Vertical3DTeamCarousel 
-        members={boardList} 
-        title="Distinguished Institutional Governance"
-        subtitle="Guided by the leadership of IIT Madras and senior Secretaries of the Government of Tamil Nadu."
-        tagline="Governance & Leadership"
-        ctaText="View Complete Governing Board"
-        ctaHref="/about#governing-board"
-      />
-
-      {/* 9. CLIENTS & INSTITUTIONAL PARTNERS (Interactive 3D Depth) */}
-
-      <Interactive3DClients clients={clientList} />
-
-
-
-
-
-
-
-      {/* 10. LATEST NEWS & MEDIA DISPATCHES */}
-
-
-
-      <section className="py-24 bg-[#F7F7F4] border-b border-[#E5E7EB]">
-
-
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-
-
-          
-
-
-
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-14 gap-6">
-
-
-
-            <div>
-
-
-
-              <span className="text-xs uppercase tracking-widest text-[#D99A42] font-bold">
-
-
-
-                Media &amp; Dispatches
-
-
-
-              </span>
-
-
-
-              <h2 className="font-serif text-3xl sm:text-5xl font-light text-[#24272B] tracking-tight mt-1">
-
-
-
-                Latest News &amp; Updates
-
-
-
-              </h2>
-
-
-
-            </div>
-
-
-
-            <Link
-
-
-
-              href="/media/news"
-
-
-
-              className="text-xs font-semibold text-[#070E5C] hover:text-[#D99A42] flex items-center transition-colors"
-
-
-
-            >
-
-
-
-              <span>View All Releases &rarr;</span>
-
-
-
-            </Link>
-
-
-
-          </div>
-
-
-
-
-
-
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-
-
-            {newsList.map((item) => (
-
-
-
-              <div
-
-
-
-                key={item.id}
-
-
-
-                className="rounded-3xl bg-white border border-[#E5E7EB] shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-all group"
-
-
-
-              >
-
-
-
-                <div>
-
-
-
-                  <div className="relative h-44 w-full bg-slate-100 overflow-hidden">
-
-
-
-                    <Image
-
-
-
-                      src={item.image || '/images/media/news/images_news1.jpg'}
-
-
-
-                      alt={item.title}
-
-
-
-                      fill
-
-
-
-                      className="object-cover group-hover:scale-105 transition-transform duration-700"
-
-
-
-                    />
-
-
-
-                    <div className="absolute top-3 left-3">
-
-
-
-                      <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-white/95 text-[#070E5C] shadow-sm">
-
-
-
-                        {item.category}
-
-
-
-                      </span>
-
-
-
-                    </div>
-
-
-
-                  </div>
-
-
-
-
-
-
-
-                  <div className="p-5">
-
-
-
-                    <div className="flex items-center text-[11px] text-[#747B83] mb-2 font-mono">
-
-
-
-                      <Calendar className="w-3.5 h-3.5 mr-1 text-[#D99A42]" />
-
-
-
-                      <span>{item.date}</span>
-
-
-
-                    </div>
-
-
-
-                    <h3 className="font-serif text-base font-medium text-[#24272B] line-clamp-2 leading-snug group-hover:text-[#070E5C] transition-colors">
-
-
-
-                      {item.title}
-
-
-
-                    </h3>
-
-
-
-                    <p className="text-xs text-[#747B83] mt-2 line-clamp-2 leading-relaxed">
-
-
-
-                      {item.summary}
-
-
-
-                    </p>
-
-
-
-                  </div>
-
-
-
+            <div className="hidden lg:col-span-4 lg:flex lg:justify-end">
+              <div className="crop-marks relative flex h-72 w-72 items-center justify-center rounded-2xl bg-white shadow-[0_40px_80px_-30px_rgba(0,0,0,0.6)]">
+                <div className="relative h-52 w-52">
+                  <Image
+                    src="/images/branding/cube-primary-logo.png"
+                    alt="CUBE Primary Institutional Logo"
+                    fill
+                    sizes="208px"
+                    className="object-contain"
+                  />
                 </div>
-
-
-
-
-
-
-
-                <div className="p-5 pt-0">
-
-
-
-                  <Link
-
-
-
-                    href={`/media/news/${item.slug || item.id}`}
-
-
-
-                    className="text-xs font-semibold text-[#070E5C] hover:text-[#D99A42] flex items-center gap-1 transition-colors"
-
-
-
-                  >
-
-
-
-                    <span>Read Release</span>
-
-
-
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-
-
-
-                  </Link>
-
-
-
-                </div>
-
-
-
               </div>
-
-
-
-            ))}
-
-
-
+            </div>
           </div>
-
-
-
-
-
-
-
         </div>
-
-
-
       </section>
-
-
-
-
-
-
-
-      {/* 11. COLLABORATION & CONTACT CALL-TO-ACTION (Light Architectural Banner) */}
-
-
-
-      <section className="py-24 bg-gradient-to-br from-[#EAF2F8] via-[#F7F7F4] to-[#DCEAF4] text-[#24272B] border-b border-[#E5E7EB]">
-
-
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl mx-auto">
-
-
-
-          
-
-
-
-          <div className="relative h-28 w-28 sm:h-32 sm:w-32 mx-auto mb-6 flex items-center justify-center">
-            <Image
-              src="/images/branding/cube-primary-logo.png"
-              alt="CUBE Primary Institutional Logo"
-              fill
-              className="object-contain drop-shadow-md transition-transform duration-300 hover:scale-105"
-            />
-          </div>
-
-
-
-
-
-
-
-          <h2 className="font-serif text-3xl sm:text-5xl font-light text-[#070E5C] tracking-tight">
-
-
-
-            Engage CUBE for Applied Consultancy &amp; Testing
-
-
-
-          </h2>
-
-
-
-          
-
-
-
-          <p className="text-xs sm:text-sm text-[#747B83] mt-4 leading-relaxed max-w-2xl mx-auto">
-
-
-
-            Connect with our faculty advisors and multidisciplinary engineering teams at IIT Madras Research Park for third-party quality assurance, precast engineering, water resources, or laboratory testing.
-
-
-
-          </p>
-
-
-
-
-
-
-
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-
-
-
-            <Link
-
-
-
-              href="/contact"
-
-
-
-              className="px-8 py-3.5 rounded-full text-xs font-semibold text-[#070E5C] bg-[#EAF2F8] border border-[#BBD6EA] hover:bg-[#D99A42] hover:text-[#24272B] shadow-sm transition-all flex items-center gap-2"
-
-
-
-            >
-
-
-
-              <span>Submit Project Enquiry</span>
-
-
-
-              <ArrowUpRight className="w-4 h-4" />
-
-
-
-            </Link>
-
-
-
-
-
-
-
-            <Link
-
-
-
-              href="/cel"
-
-
-
-              className="px-8 py-3.5 rounded-full text-xs font-semibold text-[#070E5C] bg-white hover:bg-[#F7F7F4] border border-[#BBD6EA] shadow-sm transition-all"
-
-
-
-            >
-
-
-
-              CEL Testing Schedule
-
-
-
-            </Link>
-
-
-
-          </div>
-
-
-
-
-
-
-
-        </div>
-
-
-
-      </section>
-
-
-
-
-
-
-
     </div>
-
-
-
   );
-
-
-
 }
-
-
-

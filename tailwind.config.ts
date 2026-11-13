@@ -36,6 +36,32 @@ const config: Config = {
           400: "#C4CAD8",
           500: "#A9B1C3",
         },
+        // Contemporary premium engineering palette
+        ink: {
+          DEFAULT: "#0B1324",
+          950: "#060B16",
+          900: "#0B1324",
+          800: "#111C33",
+          700: "#1A2744",
+          600: "#2A3A5E",
+        },
+        brass: {
+          DEFAULT: "#C29A3E",
+          700: "#8F6F24",
+          600: "#A8832F",
+          500: "#C29A3E",
+          400: "#D4B062",
+          300: "#E3CA8E",
+          100: "#F6EEDB",
+        },
+        stone: {
+          50: "#FAF9F6",
+          100: "#F4F2EC",
+          200: "#E7E3D9",
+          300: "#D5CFC1",
+          400: "#A9A293",
+          500: "#7B7568",
+        },
         'light-grey': "#F4F5F8",
         slate: {
           50: "#F4F5F8",
@@ -52,13 +78,20 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-inter)", "sans-serif"],
-        display: ["var(--font-manrope)", "sans-serif"],
+        display: ["var(--font-manrope)", "var(--font-inter)", "sans-serif"],
+        manrope: ["var(--font-manrope)", "var(--font-inter)", "sans-serif"],
+        // Headings across the site use `font-serif`; render them in the
+        // corporate display face instead of the browser's default Georgia.
+        serif: ["var(--font-manrope)", "var(--font-inter)", "sans-serif"],
+        editorial: ["var(--font-cormorant)", "Georgia", "serif"],
       },
       boxShadow: {
         'cube': '0 10px 30px -10px rgba(7, 14, 92, 0.12), 0 4px 6px -4px rgba(7, 14, 92, 0.08)',
         'cube-hover': '0 20px 40px -15px rgba(7, 14, 92, 0.22), 0 8px 16px -6px rgba(215, 160, 15, 0.22)',
         'cube-glow': '0 0 25px rgba(215, 160, 15, 0.4)',
         'cube-navy-glow': '0 0 25px rgba(7, 14, 92, 0.45)',
+        'premium': '0 1px 2px rgba(11, 19, 36, 0.04), 0 8px 24px -12px rgba(11, 19, 36, 0.10)',
+        'premium-lg': '0 2px 4px rgba(11, 19, 36, 0.04), 0 28px 56px -24px rgba(11, 19, 36, 0.28)',
       },
       animation: {
         'fade-in': 'fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',

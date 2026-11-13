@@ -55,16 +55,16 @@ export default function FlipCard({
       aria-label={`${title} interactive flip card`}
     >
       <div 
-        className="relative w-full h-full rounded-3xl transition-all duration-700 ease-out shadow-[0_10px_35px_rgba(7,14,92,0.06)] hover:shadow-[0_25px_65px_rgba(7,14,92,0.14)]"
+        className="relative w-full h-full rounded-xl transition-all duration-700 ease-out shadow-premium hover:shadow-premium-lg"
         style={{
           transformStyle: 'preserve-3d',
-          transform: isFlipped ? 'rotateY(180deg) scale(1.02)' : 'rotateY(0deg)',
+          transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
         }}
       >
         
         {/* FRONT SIDE (Visible when NOT flipped, hidden when flipped) */}
         <div
-          className={`absolute inset-0 w-full h-full rounded-3xl overflow-hidden cube-gradient-card flex flex-col justify-between transition-opacity duration-300 ${
+          className={`absolute inset-0 w-full h-full rounded-xl overflow-hidden bg-white border border-stone-200 flex flex-col justify-between transition-opacity duration-300 ${
             isFlipped ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto'
           }`}
           style={{
@@ -74,63 +74,63 @@ export default function FlipCard({
           }}
         >
           {/* Top Image with Badges */}
-          <div className="relative h-56 w-full overflow-hidden bg-slate-100 shrink-0">
+          <div className="relative h-60 w-full overflow-hidden bg-ink shrink-0">
             <Image
               src={imageSrc}
               alt={title}
               fill
-              className="object-cover group-hover:scale-105 transition-transform duration-700"
+              className="object-cover group-hover:scale-105 transition-transform duration-[1.2s] ease-out"
             />
             {/* Soft atmospheric overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-ink-950/5 to-transparent" />
 
             {/* Badges */}
             <div className="absolute top-3.5 left-3.5 right-3.5 flex justify-between items-center z-10">
               {category && (
-                <span className="text-[10px] font-bold tracking-wider uppercase px-3 py-1 bg-white/95 text-[#070E5C] rounded-full shadow-sm backdrop-blur-sm border border-[#BBD6EA]">
+                <span className="chip-light">
                   {category}
                 </span>
               )}
               {badge && (
-                <span className="text-[10px] font-bold px-2.5 py-0.5 bg-[#D99A42] text-white rounded-full shadow-sm">
+                <span className="chip-brass">
                   {badge}
                 </span>
               )}
             </div>
 
             {/* Flip Hint */}
-            <div className="absolute bottom-3 right-3 z-10 flex items-center space-x-1.5 px-3 py-1 rounded-full bg-white/95 text-[#070E5C] text-[11px] shadow-sm backdrop-blur-sm border border-[#BBD6EA]">
-              <RotateCw className="w-3 h-3 text-[#D99A42]" />
-              <span className="text-[10px] font-semibold"><span className="hidden [@media(hover:hover)]:inline">Hover to Flip</span><span className="[@media(hover:hover)]:hidden">Tap to Flip</span></span>
+            <div className="absolute bottom-3.5 right-3.5 z-10 flex items-center space-x-1.5 px-2.5 py-1 rounded-[3px] bg-ink/70 text-white text-[11px] backdrop-blur-md">
+              <RotateCw className="w-3 h-3 text-brass-300" />
+              <span className="text-[10px] font-semibold uppercase tracking-[0.12em]"><span className="hidden [@media(hover:hover)]:inline">Hover to Flip</span><span className="[@media(hover:hover)]:hidden">Tap to Flip</span></span>
             </div>
           </div>
 
           {/* Front Content Area */}
-          <div className="p-6 flex-1 flex flex-col justify-between bg-transparent">
+          <div className="p-6 flex-1 flex flex-col justify-between bg-white">
             <div>
               {subtitle && (
-                <span className="text-[11px] font-semibold text-[#D99A42] uppercase tracking-wider block mb-1">
+                <span className="text-[10px] font-semibold text-brass-600 uppercase tracking-[0.2em] mb-2 line-clamp-2">
                   {subtitle}
                 </span>
               )}
-              <h3 className="font-serif text-lg font-medium text-[#24272B] leading-snug line-clamp-2">
+              <h3 className="font-display text-lg font-semibold tracking-[-0.015em] text-ink leading-snug line-clamp-2">
                 {title}
               </h3>
-              <p className="text-xs text-[#747B83] mt-2 line-clamp-3 leading-relaxed font-sans">
+              <p className="text-[13px] text-[#5B6474] mt-2 line-clamp-3 leading-relaxed font-sans">
                 {description}
               </p>
             </div>
 
-            <div className="pt-3 border-t border-[#E5E7EB] flex items-center justify-between text-xs font-semibold text-[#070E5C]">
-              <span>View capabilities &amp; mandate</span>
-              <ArrowUpRight className="w-4 h-4 text-[#D99A42] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            <div className="pt-4 border-t border-stone-200 flex items-center justify-between text-[11px] font-semibold uppercase tracking-[0.14em] text-ink">
+              <span>Capabilities &amp; mandate</span>
+              <ArrowUpRight className="w-4 h-4 text-brass-600 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </div>
           </div>
         </div>
 
         {/* BACK SIDE (Visible ONLY when flipped, zero bleed-through) */}
         <div
-          className={`absolute inset-0 w-full h-full rounded-3xl overflow-hidden cube-gradient-glass text-[#24272B] p-6 flex flex-col justify-between shadow-[0_20px_50px_rgba(7,14,92,0.12)] transition-opacity duration-300 ${
+          className={`absolute inset-0 w-full h-full rounded-xl overflow-hidden bg-ink text-white p-6 flex flex-col justify-between blueprint-grid-dark transition-opacity duration-300 ${
             isFlipped ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
           }`}
           style={{
@@ -140,40 +140,40 @@ export default function FlipCard({
           }}
         >
           <div>
-            <div className="flex items-center justify-between pb-3 border-b border-[#BBD6EA]/80">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-[#070E5C]">
+            <div className="flex items-center justify-between pb-3 border-b border-white/10">
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-brass-300">
                 Key Mandates &amp; Capabilities
               </span>
               <button
                 type="button"
-                className="p-1 text-[#747B83] hover:text-[#070E5C]"
+                className="p-1 text-white/50 hover:text-white"
                 onClick={(e) => {
                   e.stopPropagation();
                   setIsFlipped(false);
                 }}
                 title="Flip back"
               >
-                <RotateCw className="w-3.5 h-3.5 text-[#D99A42]" />
+                <RotateCw className="w-3.5 h-3.5 text-brass-300" />
               </button>
             </div>
 
-            <h4 className="font-serif text-lg font-semibold text-[#070E5C] mt-3">
+            <h4 className="font-display text-xl font-semibold tracking-[-0.015em] text-white mt-4">
               {backTitle || title}
             </h4>
 
-            <p className="text-xs text-[#747B83] mt-2 leading-relaxed line-clamp-3">
+            <p className="text-[13px] text-white/60 mt-2 leading-relaxed line-clamp-3">
               {backDescription || description}
             </p>
 
             {keyPoints && keyPoints.length > 0 && (
               <div className="mt-4 space-y-2">
-                <div className="text-[11px] font-bold text-[#24272B] uppercase tracking-wider">
-                  Highlights:
+                <div className="text-[10px] font-bold text-white/40 uppercase tracking-[0.2em]">
+                  Highlights
                 </div>
                 <div className="space-y-1.5">
                   {keyPoints.slice(0, 4).map((pt, idx) => (
-                    <div key={idx} className="flex items-start text-xs text-[#24272B]">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#070E5C] mr-2 shrink-0 mt-0.5" />
+                    <div key={idx} className="flex items-start text-[13px] text-white/85">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-brass-400 mr-2 shrink-0 mt-0.5" />
                       <span className="line-clamp-1 font-medium">{pt}</span>
                     </div>
                   ))}
@@ -182,10 +182,10 @@ export default function FlipCard({
             )}
           </div>
 
-          <div className="pt-4 border-t border-[#BBD6EA]/80" onClick={(e) => e.stopPropagation()}>
+          <div className="pt-4 border-t border-white/10" onClick={(e) => e.stopPropagation()}>
             <Link
               href={href}
-              className="w-full flex items-center justify-center py-2.5 px-4 rounded-full text-xs font-semibold text-[#070E5C] bg-[#EAF2F8] border border-[#BBD6EA] hover:bg-[#D99A42] hover:text-white transition-all shadow-md group/btn"
+              className="btn-brass w-full !py-3 group/btn"
             >
               <span>{ctaText}</span>
               <ArrowUpRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />

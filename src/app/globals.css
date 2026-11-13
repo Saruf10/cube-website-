@@ -35,10 +35,16 @@
 
   html {
     scroll-behavior: smooth;
+    /* No page scrollbar: its transparent track left a light strip down the right
+       edge of the full-bleed dark sections. The top progress bar shows position. */
+    scrollbar-width: none;
+  }
+  html::-webkit-scrollbar {
+    display: none;
   }
 
   body {
-    @apply bg-[#FFFFFF] text-[#24272B] antialiased font-sans selection:bg-[#EAF2F8] selection:text-[#070E5C];
+    @apply bg-[#FFFFFF] text-[#1F2633] antialiased font-sans selection:bg-brass-300 selection:text-ink;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -67,25 +73,15 @@
 }
 
 .apple-liquid-glass-card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.88) 0%, rgba(246, 250, 253, 0.78) 50%, rgba(234, 242, 248, 0.82) 100%);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid #BDD7E8;
-  box-shadow: 
-    0 16px 40px -10px rgba(7, 14, 92, 0.05),
-    0 1px 2px 0 rgba(0, 0, 0, 0.02),
-    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.95),
-    inset 0 -1px 1px 0 rgba(189, 215, 232, 0.35);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  background: #FFFFFF;
+  border: 1px solid #E7E3D9;
+  box-shadow: 0 1px 2px rgba(11, 19, 36, 0.04), 0 8px 24px -12px rgba(11, 19, 36, 0.10);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .apple-liquid-glass-card:hover {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(246, 250, 253, 0.9) 50%, rgba(234, 242, 248, 0.92) 100%);
-  border-color: #8EBCE0;
-  box-shadow: 
-    0 24px 56px -12px rgba(7, 14, 92, 0.1),
-    0 4px 12px 0 rgba(0, 0, 0, 0.03),
-    inset 0 2px 3px 0 rgba(255, 255, 255, 1);
+  border-color: #D5CFC1;
+  box-shadow: 0 2px 4px rgba(11, 19, 36, 0.04), 0 28px 56px -24px rgba(11, 19, 36, 0.28);
   transform: translateY(-4px);
 }
 
@@ -152,24 +148,16 @@ input, textarea, select, button {
 }
 
 .apple-glass-card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(246, 250, 253, 0.75) 50%, rgba(234, 242, 248, 0.8) 100%);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid #BDD7E8;
-  box-shadow: 
-    0 12px 36px rgba(7, 14, 92, 0.04),
-    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.95);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  background: #FFFFFF;
+  border: 1px solid #E7E3D9;
+  box-shadow: 0 1px 2px rgba(11, 19, 36, 0.04), 0 8px 24px -12px rgba(11, 19, 36, 0.10);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .apple-glass-card:hover {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(246, 250, 253, 0.88) 50%, rgba(234, 242, 248, 0.9) 100%);
-  border-color: #8EBCE0;
-  box-shadow: 
-    0 22px 50px rgba(7, 14, 92, 0.09),
-    0 3px 10px rgba(0, 0, 0, 0.03),
-    inset 0 2px 3px 0 rgba(255, 255, 255, 1);
-  transform: translateY(-5px);
+  border-color: #D5CFC1;
+  box-shadow: 0 2px 4px rgba(11, 19, 36, 0.04), 0 28px 56px -24px rgba(11, 19, 36, 0.28);
+  transform: translateY(-4px);
 }
 
 .apple-glass-pill {
@@ -197,37 +185,26 @@ input, textarea, select, button {
 
 /* Premium Information Cards - Subtle Sky-Blue Gradient with Specular Inset Reflection */
 .cube-gradient-card {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(243, 248, 252, 0.85) 50%, rgba(234, 242, 248, 0.92) 100%);
-  backdrop-filter: blur(24px) saturate(170%);
-  -webkit-backdrop-filter: blur(24px) saturate(170%);
-  border: 1px solid #BDD7E8;
-  box-shadow: 
-    0 12px 36px rgba(7, 14, 92, 0.04), 
-    0 1px 2px rgba(0, 0, 0, 0.02),
-    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.95);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  background: #FFFFFF;
+  border: 1px solid #E7E3D9;
+  box-shadow: 0 1px 2px rgba(11, 19, 36, 0.04), 0 8px 24px -12px rgba(11, 19, 36, 0.10);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cube-gradient-card:hover {
-  border-color: #8EBCE0;
-  box-shadow: 
-    0 24px 54px rgba(7, 14, 92, 0.09), 
-    0 3px 8px rgba(0, 0, 0, 0.03),
-    inset 0 2px 3px 0 rgba(255, 255, 255, 1);
-  transform: translateY(-5px);
+  border-color: #D5CFC1;
+  box-shadow: 0 2px 4px rgba(11, 19, 36, 0.04), 0 28px 56px -24px rgba(11, 19, 36, 0.28);
+  transform: translateY(-4px);
 }
 
 .cube-gradient-glass {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.92) 0%, rgba(243, 248, 252, 0.88) 50%, rgba(234, 242, 248, 0.92) 100%);
-  backdrop-filter: blur(24px) saturate(160%);
-  -webkit-backdrop-filter: blur(24px) saturate(160%);
-  border: 1px solid #BDD7E8;
-  box-shadow: 0 12px 36px rgba(7, 14, 92, 0.05);
+  background: #FFFFFF;
+  border: 1px solid #E7E3D9;
+  box-shadow: 0 2px 4px rgba(11, 19, 36, 0.04), 0 28px 56px -24px rgba(11, 19, 36, 0.22);
 }
 
 .cube-gradient-glass:hover {
-  border-color: #8EBCE0;
-  box-shadow: 0 22px 52px rgba(7, 14, 92, 0.1);
+  border-color: #D5CFC1;
 }
 
 .glass-panel {
@@ -272,6 +249,222 @@ input, textarea, select, button {
   border: 1px solid rgba(215, 160, 15, 0.25);
 }
 
+/* ==========================================================================
+   CONTEMPORARY PREMIUM ENGINEERING SYSTEM
+   Ink navy + brushed brass + warm stone. Hairline rules, blueprint grids,
+   numbered sections and restrained motion.
+   ========================================================================== */
+@layer components {
+  /* Eyebrow label: brass rule + tracked small caps */
+  .eyebrow {
+    @apply inline-flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-brass-600;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply block h-px w-8 bg-current opacity-70;
+  }
+  .eyebrow-light {
+    @apply text-brass-300;
+  }
+
+  /* Section numerals: 01 / 02 ... */
+  .section-index {
+    @apply font-display text-[11px] font-bold tabular-nums tracking-[0.2em] text-stone-400;
+  }
+
+  .display-xl {
+    @apply font-display font-semibold tracking-[-0.045em] leading-[0.98];
+  }
+  .display-h2 {
+    @apply font-display text-[2rem] sm:text-5xl lg:text-[3.4rem] font-semibold tracking-[-0.04em] leading-[1.04] text-ink;
+  }
+  .lead {
+    @apply text-[15px] sm:text-base leading-[1.75] text-[#5B6474];
+  }
+
+  /* Buttons: crisp 4px radius, arrow nudges on hover */
+  .btn {
+    @apply relative inline-flex items-center justify-center gap-2.5 overflow-hidden rounded-[4px] px-6 py-3.5 text-[12px] font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-out active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-brass-400 focus-visible:ring-offset-2;
+  }
+  .btn svg {
+    @apply transition-transform duration-300;
+  }
+  .btn:hover svg {
+    transform: translate(2px, -2px);
+  }
+  .btn-primary {
+    @apply btn bg-ink text-white shadow-[0_10px_30px_-12px_rgba(11,19,36,0.55)] hover:bg-ink-700;
+  }
+  .btn-brass {
+    @apply btn bg-brass-400 text-ink shadow-[0_10px_30px_-12px_rgba(194,154,62,0.7)] hover:bg-brass-300;
+  }
+  .btn-outline {
+    @apply btn border border-ink/15 bg-white text-ink hover:border-ink hover:bg-ink hover:text-white;
+  }
+  .btn-outline-light {
+    @apply btn border border-white/25 bg-white/5 text-white backdrop-blur-md hover:border-white hover:bg-white hover:text-ink;
+  }
+
+  /* Underlined text link */
+  .link-arrow {
+    @apply inline-flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:text-brass-600;
+  }
+  .link-arrow > span {
+    background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+    transition: background-size 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    padding-bottom: 2px;
+  }
+  .link-arrow:hover > span {
+    background-size: 100% 1px;
+  }
+
+  /* Premium surface card */
+  .card-premium {
+    @apply relative overflow-hidden rounded-xl border border-stone-200 bg-white shadow-premium transition-all duration-500 ease-out;
+  }
+  .card-premium::after {
+    content: '';
+    @apply pointer-events-none absolute left-0 top-0 h-[2px] w-0 bg-brass-400 transition-all duration-500 ease-out;
+  }
+  .card-premium:hover {
+    @apply -translate-y-1 border-stone-300 shadow-premium-lg;
+  }
+  .card-premium:hover::after {
+    @apply w-full;
+  }
+
+  /* Small label chip */
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-[3px] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em];
+  }
+  .chip-light {
+    @apply chip bg-white/95 text-ink shadow-sm backdrop-blur;
+  }
+  .chip-dark {
+    @apply chip bg-ink/80 text-white backdrop-blur;
+  }
+  .chip-brass {
+    @apply chip bg-brass-400 text-ink;
+  }
+}
+
+/* Blueprint grids */
+.blueprint-grid {
+  background-image: linear-gradient(rgba(11, 19, 36, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11, 19, 36, 0.045) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+.blueprint-grid-dark {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+.grain {
+  position: relative;
+  isolation: isolate;
+}
+.grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 3px 3px;
+}
+
+/* Blueprint crop marks on any positioned element */
+.crop-marks {
+  position: relative;
+}
+.crop-marks::before,
+.crop-marks::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+  border-color: #C29A3E;
+  z-index: 5;
+}
+.crop-marks::before {
+  top: -9px;
+  left: -9px;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+.crop-marks::after {
+  bottom: -9px;
+  right: -9px;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+}
+
+/* ---- Smooth scrolling (Lenis) ---- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* ---- Reveal on scroll ----
+   Only hidden once JS has added .reveal-ready, so content never stays
+   invisible if scripts fail. Stagger children with data-reveal-delay. */
+.reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 36px, 0);
+  transition:
+    opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal-ready [data-reveal='fade'] {
+  transform: none;
+}
+.reveal-ready [data-reveal='scale'] {
+  transform: scale(0.97);
+}
+.reveal-ready [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+.reveal-ready [data-reveal-delay='1'] { transition-delay: 0.08s; }
+.reveal-ready [data-reveal-delay='2'] { transition-delay: 0.16s; }
+.reveal-ready [data-reveal-delay='3'] { transition-delay: 0.24s; }
+
+/* Homepage canvas */
+.home-page {
+  background: #FAF9F6;
+}
+.home-page a,
+.home-page button {
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-page *,
+  .home-page *::before,
+  .home-page *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* Utilities: Hide Scrollbars cleanly across all browsers */
 .no-scrollbar::-webkit-scrollbar,
 .scrollbar-none::-webkit-scrollbar {
@@ -297,10 +490,10 @@ input, textarea, select, button {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(7, 14, 92, 0.2);
+  background: rgba(11, 19, 36, 0.22);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(7, 14, 92, 0.4);
+  background: rgba(11, 19, 36, 0.45);
 }

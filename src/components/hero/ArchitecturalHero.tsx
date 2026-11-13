@@ -2,13 +2,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  ArrowUpRight, ShieldCheck, Sparkles, Building2, 
-  Layers, ChevronRight, Play, Compass, Award, ExternalLink
-} from 'lucide-react';
-import { GlassPanel, GlassButton } from '@/components/common/AppleLiquidGlass';
+import { ArrowUpRight, MapPin } from 'lucide-react';
 
 interface HeroSlide {
   id: number;
@@ -74,6 +69,15 @@ const HERO_SLIDES: HeroSlide[] = [
   },
 ];
 
+const SLIDE_MS = 7000;
+
+const HERO_STATS = [
+  { value: '2017', label: 'Established as a Centre of Excellence' },
+  { value: '40+', label: 'Public schemes assured & engineered' },
+  { value: '04', label: 'Core engineering verticals' },
+  { value: '80+', label: 'Engineers, researchers & specialists' },
+];
+
 export default function ArchitecturalHero() {
   const [currentIdx, setCurrentIdx] = useState(0);
   const slide = HERO_SLIDES[currentIdx];
@@ -87,6 +91,7 @@ export default function ArchitecturalHero() {
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+
     const play = () => video.play().catch(() => {});
     const onEnded = () => {
       video.currentTime = 0;
@@ -104,6 +109,7 @@ export default function ArchitecturalHero() {
       window.removeEventListener('touchstart', retryOnInteraction);
       window.removeEventListener('scroll', retryOnInteraction);
     };
+
     video.addEventListener('ended', onEnded);
     video.addEventListener('playing', stopRetrying, { once: true });
     document.addEventListener('visibilitychange', onVisible);
@@ -111,6 +117,7 @@ export default function ArchitecturalHero() {
     window.addEventListener('touchstart', retryOnInteraction, { passive: true });
     window.addEventListener('scroll', retryOnInteraction, { passive: true });
     play();
+
     return () => {
       video.removeEventListener('ended', onEnded);
       video.removeEventListener('playing', stopRetrying);
@@ -119,19 +126,19 @@ export default function ArchitecturalHero() {
     };
   }, []);
 
+  // Restarts whenever the slide changes (auto or manual), so every slide gets
+  // the full interval and the progress bar stays in sync.
   useEffect(() => {
-    const timer = setInterval(() => {
+    const timer = setTimeout(() => {
       setCurrentIdx((prev) => (prev + 1) % HERO_SLIDES.length);
-    }, 7000);
-    return () => clearInterval(timer);
-  }, []);
+    }, SLIDE_MS);
+    return () => clearTimeout(timer);
+  }, [currentIdx]);
 
   return (
-    <section className="relative w-full min-h-[92vh] lg:min-h-[96vh] bg-[#FFFFFF] pt-28 sm:pt-32 pb-16 flex flex-col justify-between overflow-hidden select-none">
-      
-      {/* Background Architectural Canvas with Looping Background Video & Apple Cinematic Vignette */}
+    <section className="relative w-full min-h-[100svh] bg-ink-950 text-white pt-[5.5rem] sm:pt-28 lg:pt-[7rem] flex flex-col overflow-hidden select-none">
+      {/* Background: looping video under a directional ink wash */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        {/* Looping Ambient Video */}
         <video
           ref={videoRef}
           autoPlay
@@ -141,126 +148,199 @@ export default function ArchitecturalHero() {
           preload="metadata"
           disablePictureInPicture
           aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover object-center filter contrast-[1.08] brightness-[0.96]"
+          className="absolute inset-0 w-full h-full object-cover object-center contrast-[1.08] brightness-[0.8] saturate-[0.7]"
         >
           <source src="/videos/cube-hero.mp4" type="video/mp4" />
         </video>
-
-        {/* Apple VisionOS-style Frosted Glass Vignette: Darkens & tints smoothly so light blue & pure white fonts glow with 4K clarity */}
-        <div className="absolute inset-0 z-10 bg-gradient-to-r from-slate-950/80 via-slate-900/60 to-slate-950/40" />
-        
-        {/* Soft top blend */}
-        <div className="absolute top-0 left-0 right-0 h-32 z-20 bg-gradient-to-b from-slate-950/85 via-slate-900/40 to-transparent" />
-        
-        {/* Short, subtle blend into the next section (was a 192px white fade) */}
-        <div className="absolute bottom-0 left-0 right-0 h-14 z-20 bg-gradient-to-t from-[#F7F7F4] to-transparent" />
-
-        {/* Ambient Cyan/Ice-Blue Refractive Glow for Apple Cinematic Look */}
-        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] z-10 bg-[#38bdf8]/15 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] z-10 bg-[#60a5fa]/15 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink-950 via-ink-950/85 to-ink-950/65" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-transparent to-ink-950/70" />
+        <div
+          aria-hidden
+          className="absolute inset-0 blueprint-grid-dark opacity-70 [mask-image:radial-gradient(ellipse_at_30%_50%,black_20%,transparent_75%)]"
+        />
+        <div className="absolute -left-40 top-1/3 h-[520px] w-[520px] rounded-full bg-brass-500/10 blur-[140px]" />
       </div>
 
-      {/* Top Institutional Metadata Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10 mb-4">
-        <div className="flex flex-wrap items-center justify-between gap-4 text-xs tracking-wider uppercase font-semibold text-white/80 border-b border-white/20 pb-3">
-          <div className="flex items-center gap-2.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#38bdf8] shadow-[0_0_12px_#38bdf8] animate-pulse" />
-            <span className="text-white font-bold tracking-wider">Centre of Excellence</span>
-            <span>&bull;</span>
-            <span className="text-white/80">Govt of Tamil Nadu &amp; IIT Madras</span>
-          </div>
-
+      {/* Institutional metadata rail */}
+      <div className="relative z-10 mx-auto w-full max-w-none px-5 sm:px-8 lg:px-12">
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4 text-[10px] font-semibold uppercase tracking-[0.24em] text-white/55">
           <div className="flex items-center gap-3">
-            <Link
-              href="/projects"
-              className="px-4 py-1.5 rounded-full bg-white/15 hover:bg-white/25 text-white border border-white/30 text-[11px] font-semibold tracking-wider transition-all shadow-sm backdrop-blur-md flex items-center gap-1.5 active:scale-95"
-            >
-              <span>View All 40+ Schemes</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-[#38bdf8]" />
-            </Link>
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brass-400 opacity-60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-brass-400" />
+            </span>
+            <span className="text-white/90">Centre of Excellence</span>
+            <span className="hidden sm:inline text-white/25">/</span>
+            <span className="hidden sm:inline">Govt of Tamil Nadu &amp; IIT Madras</span>
+          </div>
+          <div className="hidden md:flex items-center gap-2">
+            <MapPin className="h-3.5 w-3.5 text-brass-400" />
+            <span>IIT Madras Research Park, Chennai</span>
           </div>
         </div>
       </div>
 
-      {/* Main Hero Spatial Stage: Clean Full-Width Editorial Layout */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 z-10 flex flex-col justify-center py-6 sm:py-10">
-        <div className="max-w-3xl space-y-6">
-          
-          {/* Category Pill & State Scheme Badge */}
-          <div className="flex flex-wrap items-center gap-3">
-            <motion.div
-              key={`cat-${slide.id}`}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 border border-white/40 text-white text-xs font-semibold shadow-sm backdrop-blur-xl"
-            >
-              <ShieldCheck className="w-3.5 h-3.5 text-[#38bdf8]" />
-              <span>{slide.category}</span>
-            </motion.div>
+      {/* Main stage */}
+      <div className="relative z-10 mx-auto w-full max-w-none flex-1 px-5 sm:px-8 lg:px-12 flex items-center py-[clamp(1.5rem,4vh,3rem)]">
+        <div className="grid w-full grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12 lg:items-end">
+          <div className="lg:col-span-8">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`cat-${slide.id}`}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.4 }}
+                className="eyebrow eyebrow-light"
+              >
+                {slide.category}
+              </motion.div>
+            </AnimatePresence>
 
-            <span className="text-[11px] font-medium text-white/90 px-3 py-1 rounded-full bg-white/10 border border-white/25 backdrop-blur-md">
-              {slide.location}
-            </span>
-          </div>
+            <AnimatePresence mode="wait">
+              <motion.h1
+                key={`headline-${slide.id}`}
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -16 }}
+                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                className="display-xl mt-[clamp(1rem,2.4vh,1.75rem)] text-[clamp(2.1rem,8.5vw,4rem)] lg:text-[clamp(2.75rem,min(4.9vw,8.5vh),4.8rem)] text-white"
+              >
+                <span className="block lg:whitespace-nowrap">{slide.title}</span>
+                <span className="block lg:whitespace-nowrap">
+                  <span className="font-editorial italic font-medium tracking-[-0.02em] text-brass-300">
+                    {slide.italicWord}
+                  </span>{' '}
+                  {slide.subtitle}
+                </span>
+              </motion.h1>
+            </AnimatePresence>
 
-          {/* Split-Text Animated Editorial Headline (Cormorant Garamond) */}
-          <motion.div
-            key={`headline-${slide.id}`}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <h1 className="font-serif text-4xl sm:text-6xl lg:text-[4.5rem] font-light tracking-tight text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.5)] leading-[1.08]">
-              {slide.title}{' '}
-              <span className="italic font-normal text-[#7dd3fc] drop-shadow-[0_0_24px_rgba(56,189,248,0.4)] border-b-2 border-[#38bdf8] pb-0.5">
-                {slide.italicWord}
-              </span>{' '}
-              {slide.subtitle}
-            </h1>
-          </motion.div>
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={`desc-${slide.id}`}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="mt-[clamp(1rem,2.6vh,1.75rem)] max-w-[40rem] text-[15px] sm:text-base lg:text-[clamp(0.95rem,2.1vh,1.125rem)] leading-relaxed text-white/70 lg:min-h-[4.9em]"
+              >
+                {slide.description}
+              </motion.p>
+            </AnimatePresence>
 
-          {/* Sub-line Editorial Copy */}
-          <p className="text-sm sm:text-base text-white/90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] max-w-2xl leading-relaxed font-sans font-normal">
-            {slide.description}
-          </p>
-
-          {/* Interactive CTA Buttons */}
-          <div className="flex flex-wrap items-center gap-4 pt-2">
-            <Link
-              href="/projects"
-              className="px-7 py-3 rounded-full bg-white text-[#070E5C] font-semibold text-xs tracking-wider transition-all shadow-[0_4px_20px_rgba(255,255,255,0.35)] hover:bg-[#e0f2fe] hover:scale-105 active:scale-95 flex items-center gap-2"
-            >
-              <span>Explore Our Projects</span>
-              <ArrowUpRight className="w-4 h-4 text-[#0284c7]" />
-            </Link>
-
-          </div>
-
-          {/* Slide Navigation Controls & Indicators */}
-          <div className="flex items-center gap-4 pt-4">
-            <div className="flex items-center space-x-2">
-              {HERO_SLIDES.map((item, idx) => (
-                <button
-                  key={item.id}
-                  onClick={() => setCurrentIdx(idx)}
-                  aria-label={`Go to slide ${idx + 1}`}
-                  className={`transition-all duration-500 rounded-full cursor-pointer ${
-                    currentIdx === idx 
-                      ? 'w-8 h-2 bg-[#38bdf8] shadow-[0_0_12px_#38bdf8]' 
-                      : 'w-2 h-2 bg-white/40 hover:bg-white/80'
-                  }`}
-                />
-              ))}
+            <div className="mt-[clamp(1.5rem,4vh,2.5rem)] flex flex-wrap items-center gap-4">
+              <Link href="/projects" className="btn-brass">
+                <span>Explore Our Projects</span>
+                <ArrowUpRight className="h-4 w-4" />
+              </Link>
+              <Link href="/about" className="btn-outline-light">
+                <span>About Us</span>
+                <ArrowUpRight className="h-4 w-4" />
+              </Link>
             </div>
-            <span className="text-xs font-semibold text-white/80 tracking-widest uppercase">
-              0{currentIdx + 1} / 0{HERO_SLIDES.length}
-            </span>
           </div>
 
+          {/* Featured project plate */}
+          <div className="hidden lg:col-span-4 lg:block">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`plate-${slide.id}`}
+                initial={{ opacity: 0, x: 24 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -12 }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <Link
+                  href={slide.projectHref}
+                  className="crop-marks group block rounded-lg border border-white/15 bg-ink-950/55 p-5 lg:p-6 backdrop-blur-xl transition-colors hover:bg-ink-950/70"
+                >
+                  <div className="flex items-center justify-between text-[10px] font-semibold uppercase tracking-[0.24em] text-white/50">
+                    <span>Featured Engagement</span>
+                    <span className="tabular-nums">
+                      {String(currentIdx + 1).padStart(2, '0')} / {String(HERO_SLIDES.length).padStart(2, '0')}
+                    </span>
+                  </div>
+                  <div className="mt-5 lg:mt-6 min-h-[2.75em] font-display text-xl lg:text-[clamp(1.25rem,2.8vh,1.5rem)] font-semibold leading-snug tracking-[-0.02em] text-white">
+                    {slide.projectName}
+                  </div>
+                  <div className="mt-3 flex items-center gap-2 text-sm text-white/60">
+                    <MapPin className="h-3.5 w-3.5 text-brass-400" />
+                    {slide.location}
+                  </div>
+                  <div className="mt-5 lg:mt-6 flex items-center justify-between border-t border-white/10 pt-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-brass-300">
+                    <span>View Engagement</span>
+                    <span className="flex h-9 w-9 items-center justify-center rounded-full border border-brass-400/40 transition-all group-hover:bg-brass-400 group-hover:text-ink">
+                      <ArrowUpRight className="h-4 w-4" />
+                    </span>
+                  </div>
+                </Link>
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
       </div>
 
+      {/* Slide navigator: timed progress segments */}
+      <div className="relative z-10 mx-auto w-full max-w-none px-5 sm:px-8 lg:px-12">
+        <div className="grid grid-cols-4 gap-3 sm:gap-6">
+          {HERO_SLIDES.map((item, idx) => {
+            const active = idx === currentIdx;
+            return (
+              <button
+                key={item.id}
+                onClick={() => setCurrentIdx(idx)}
+                aria-label={`Go to slide ${idx + 1}: ${item.category}`}
+                aria-current={active}
+                className="group text-left"
+              >
+                <div className="relative h-[2px] w-full overflow-hidden bg-white/15">
+                  {active && (
+                    <motion.div
+                      key={`bar-${currentIdx}`}
+                      initial={{ width: '0%' }}
+                      animate={{ width: '100%' }}
+                      transition={{ duration: SLIDE_MS / 1000, ease: 'linear' }}
+                      className="absolute inset-y-0 left-0 bg-brass-400"
+                    />
+                  )}
+                </div>
+                <div className="mt-3 flex items-baseline gap-3">
+                  <span className={`text-[11px] font-bold tabular-nums ${active ? 'text-brass-300' : 'text-white/35'}`}>
+                    0{idx + 1}
+                  </span>
+                  <span
+                    className={`hidden sm:block truncate text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors ${
+                      active ? 'text-white' : 'text-white/40 group-hover:text-white/70'
+                    }`}
+                  >
+                    {item.category}
+                  </span>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Credentials band */}
+      <div className="relative z-10 mt-[clamp(1.25rem,3vh,2rem)] border-t border-white/10 bg-ink-950/60 backdrop-blur-md">
+        <div className="mx-auto grid w-full max-w-none grid-cols-2 lg:grid-cols-4">
+          {HERO_STATS.map((stat, i) => (
+            <div
+              key={stat.label}
+              className={`px-5 py-[clamp(0.85rem,2.2vh,1.5rem)] sm:px-8 2xl:px-12 ${i % 2 === 1 ? 'border-l border-white/10' : ''} ${
+                i >= 2 ? 'border-t border-white/10 lg:border-t-0' : ''
+              } ${i === 2 ? 'lg:border-l' : ''}`}
+            >
+              <div className="font-display text-2xl sm:text-3xl lg:text-[clamp(1.5rem,3.8vh,2.25rem)] font-semibold tracking-[-0.03em] text-white">
+                {stat.value}
+              </div>
+              <div className="mt-1.5 text-[11px] sm:text-xs leading-snug text-white/50">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

@@ -119,7 +119,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-[#070E5C]/15 backdrop-blur-[2px] xl:hidden"
+            className="fixed inset-0 z-40 bg-ink/30 backdrop-blur-[3px] xl:hidden"
           />
         )}
       </AnimatePresence>
@@ -132,21 +132,14 @@ export default function Navbar() {
         {/* Frosted band behind the floating header once the page is scrolled:
             page text under the header blurs and fades out instead of showing
             sharply cut off beside / behind the pill. Moves with the header. */}
-        <div
-          aria-hidden
-          className={`pointer-events-none absolute inset-x-0 top-0 h-28 bg-white/45 backdrop-blur-md [mask-image:linear-gradient(to_bottom,black_55%,transparent)] [-webkit-mask-image:linear-gradient(to_bottom,black_55%,transparent)] transition-opacity duration-500 ${
-            scrolled ? 'opacity-100' : 'opacity-0'
-          }`}
-        />
-
-        {/* Floating Apple-Style Glass Navbar Container */}
-        <div className={`w-full max-w-[1720px] mx-auto transition-all duration-500 px-2 sm:px-4 md:px-6 lg:px-8 ${scrolled ? 'pt-3' : 'pt-2 sm:pt-4 md:pt-6 lg:pt-8'}`}>
+        {/* Full-width header bar, edge to edge */}
+        <div className="w-full">
           <div
             ref={pillRef}
-            className={`transition-all duration-500 rounded-full ${
+            className={`relative transition-all duration-500 px-5 sm:px-8 lg:px-12 ${
               scrolled
-                ? 'apple-glass border border-white/90 px-5 h-16'
-                : 'bg-white/40 backdrop-blur-3xl backdrop-saturate-150 border border-white/60 shadow-[0_16px_40px_rgba(7,14,92,0.10),inset_0_1px_1px_rgba(255,255,255,0.9),inset_0_-1px_1px_rgba(189,215,232,0.35)] px-6 h-20'
+                ? 'bg-white/95 backdrop-blur-2xl backdrop-saturate-150 border-b border-stone-200/80 shadow-[0_10px_30px_-20px_rgba(11,19,36,0.35)] h-16'
+                : 'bg-white/90 backdrop-blur-2xl backdrop-saturate-150 border-b border-white/40 h-[76px]'
             } flex items-center justify-between`}
           >
             {/* Left: CUBE Emblem */}
@@ -177,21 +170,25 @@ export default function Navbar() {
                   >
                     <Link
                       href={item.href}
-                      className={`relative flex items-center whitespace-nowrap px-2.5 2xl:px-4 py-2 text-[13px] 2xl:text-[15px] font-semibold tracking-wider transition-colors duration-300 rounded-full z-10 shrink-0 ${
-                        isActive
-                          ? 'text-[#070E5C] font-bold bg-white/30 backdrop-blur-xl backdrop-saturate-150 border border-white/55 shadow-[0_4px_14px_rgba(255,255,255,0.16),inset_0_1px_1px_rgba(255,255,255,0.65)]'
-                          : 'text-[#24272B] border border-transparent hover:text-[#070E5C] hover:bg-white/20'
+                      className={`group/nav relative flex items-center whitespace-nowrap px-2.5 2xl:px-3.5 py-2 text-[13px] 2xl:text-[14px] font-semibold tracking-[0.01em] transition-colors duration-300 z-10 shrink-0 ${
+                        isActive ? 'text-ink' : 'text-ink/65 hover:text-ink'
                       }`}
                     >
                       {item.title === 'Home' && <House aria-hidden className="w-3.5 h-3.5 mr-1.5" />}
                       <span>{item.title}</span>
+                      <span
+                        aria-hidden
+                        className={`absolute left-2.5 right-2.5 2xl:left-3.5 2xl:right-3.5 -bottom-0.5 h-[2px] rounded-full bg-brass-400 origin-left transition-transform duration-300 ${
+                          isActive ? 'scale-x-100' : 'scale-x-0 group-hover/nav:scale-x-100'
+                        }`}
+                      />
                       {item.badge && (
-                        <span className="ml-1 whitespace-nowrap text-[9px] font-bold px-1.5 py-0.5 bg-[#BBD6EA]/70 text-[#070E5C] rounded-full border border-white/80">
+                        <span className="ml-1.5 whitespace-nowrap text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 bg-brass-100 text-brass-700 rounded-[3px]">
                           {item.badge}
                         </span>
                       )}
                       {hasChildren && (
-                        <ChevronDown className="w-3.5 h-3.5 ml-1 text-[#747B83] transition-transform duration-300 group-hover:rotate-180" />
+                        <ChevronDown className={`w-3.5 h-3.5 ml-1 text-ink/40 transition-transform duration-300 ${activeDropdown === item.title ? 'rotate-180' : ''}`} />
                       )}
                     </Link>
 
@@ -205,7 +202,7 @@ export default function Navbar() {
                           transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
                           className="absolute top-full left-0 pt-3 w-80 z-50"
                         >
-                          <div className="rounded-3xl bg-white/95 backdrop-blur-2xl border border-white/90 shadow-[0_25px_60px_rgba(7,14,92,0.12),0_1px_3px_rgba(0,0,0,0.05)] p-2.5 max-h-[380px] overflow-y-auto overscroll-contain">
+                          <div className="relative rounded-xl bg-white border border-stone-200 shadow-[0_30px_60px_-24px_rgba(11,19,36,0.35)] p-2 max-h-[400px] overflow-y-auto overscroll-contain before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-brass-400 before:rounded-t-xl">
                             <div className="space-y-1 pr-1">
                               {item.children.map((sub, sIdx) => {
                                 const isSubActive = pathname === sub.href;
@@ -218,15 +215,15 @@ export default function Navbar() {
                                   >
                                     <Link
                                       href={sub.href}
-                                      className={`block px-3.5 py-2.5 rounded-2xl transition-all duration-200 ${
+                                      className={`block px-3.5 py-2.5 rounded-lg border-l-2 transition-all duration-200 ${
                                         isSubActive
-                                          ? 'bg-[#EAF2F8] text-[#070E5C] font-bold border border-[#BBD6EA]/60'
-                                          : 'text-[#24272B] hover:text-[#070E5C] hover:bg-[#EAF2F8] hover:translate-x-1'
+                                          ? 'bg-stone-100 text-ink border-brass-400'
+                                          : 'text-ink/80 border-transparent hover:text-ink hover:bg-stone-100 hover:border-brass-400'
                                       }`}
                                     >
                                       <div className="text-xs font-semibold leading-snug">{sub.title}</div>
                                       {sub.description && (
-                                        <div className="text-[11px] text-[#747B83] line-clamp-1 mt-0.5 font-normal">
+                                        <div className="text-[11px] text-stone-500 line-clamp-1 mt-0.5 font-normal">
                                           {sub.description}
                                         </div>
                                       )}
@@ -248,17 +245,17 @@ export default function Navbar() {
             <div className="hidden xl:flex items-center space-x-2 shrink-0">
               <button
                 onClick={() => setSearchOpen(true)}
-                className="p-2 xl:p-2.5 rounded-full bg-white/70 hover:bg-white text-[#24272B] transition-all flex items-center space-x-1.5 text-xs border border-white/80 shadow-[0_2px_10px_rgba(0,0,0,0.02)] active:scale-95 shrink-0"
+                className="h-10 px-3 rounded-lg bg-stone-100/80 hover:bg-stone-100 text-ink transition-all flex items-center space-x-2 text-xs border border-stone-200 active:scale-95 shrink-0"
                 title={`Search website (${isMac ? '⌘K' : 'Ctrl+K'})`}
               >
-                <Search className="w-3.5 h-3.5 text-[#747B83]" />
-                <span className={`text-[#747B83] hidden text-[11px] ${scrolled ? '' : '2xl:inline'}`}>Search</span>
-                <kbd className={`hidden ${scrolled ? '' : '2xl:inline'} text-[9px] px-1.5 py-0.5 rounded-md bg-slate-100 text-[#747B83] border border-slate-200`}>{isMac ? '⌘K' : 'Ctrl K'}</kbd>
+                <Search className="w-3.5 h-3.5 text-ink/60" />
+                <span className={`text-ink/55 hidden text-[11px] ${scrolled ? '' : '2xl:inline'}`}>Search</span>
+                <kbd className={`hidden ${scrolled ? '' : '2xl:inline'} text-[9px] px-1.5 py-0.5 rounded bg-white text-ink/55 border border-stone-200`}>{isMac ? '⌘K' : 'Ctrl K'}</kbd>
               </button>
 
               <Link
                 href="/contact"
-                className="px-4 py-2 rounded-full text-xs font-semibold text-[#070E5C] bg-[#EAF2F8] hover:bg-[#D99A42] hover:text-white border border-[#BBD6EA] transition-all duration-300 shadow-[0_4px_16px_rgba(7,14,92,0.06)] flex items-center space-x-1.5 active:scale-95 shrink-0"
+                className="btn-primary !px-5 !py-0 h-10 !text-[11px] shrink-0"
               >
                 <span>Contact</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -269,7 +266,7 @@ export default function Navbar() {
             <div className="flex items-center space-x-2 xl:hidden">
               <button
                 onClick={() => setSearchOpen(true)}
-                className="p-3 rounded-full bg-white/80 text-[#24272B] border border-white/80 shadow-xs"
+                className="p-2.5 rounded-lg bg-stone-100 text-ink border border-stone-200"
                 aria-label="Search"
               >
                 <Search className="w-4 h-4" />
@@ -277,7 +274,7 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-3 rounded-full bg-white/80 text-[#24272B] border border-white/80 shadow-xs"
+                className="p-2.5 rounded-lg bg-ink text-white border border-ink"
                 aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
                 aria-expanded={mobileMenuOpen}
                 aria-controls="mobile-navigation"
@@ -302,7 +299,7 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -15, scale: 0.98 }}
               transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-[94%] max-w-md mx-auto mt-2 rounded-3xl bg-white/95 backdrop-blur-2xl border border-white/80 shadow-[0_20px_50px_rgba(7,14,92,0.15)] p-4 sm:p-5 xl:hidden max-h-[calc(100dvh-100px)] overflow-y-auto overscroll-contain outline-none z-50"
+              className="relative w-[94%] max-w-md mx-auto mt-2 rounded-2xl bg-white border border-stone-200 shadow-[0_30px_60px_-20px_rgba(11,19,36,0.45)] p-3 sm:p-4 xl:hidden max-h-[calc(100dvh-100px)] overflow-y-auto overscroll-contain outline-none z-50"
             >
               <nav className="space-y-1" aria-label="Mobile">
                 {navigationItems.map((item, mIdx) => {
@@ -312,10 +309,10 @@ export default function Navbar() {
                     pathname === item.href ||
                     Boolean(item.children?.some((c) => c.href.split('#')[0] === pathname));
                   const panelId = `mobile-nav-${item.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
-                  const rowClass = `flex w-full items-center justify-between px-4 py-3 rounded-2xl text-sm font-semibold transition-colors ${
+                  const rowClass = `flex w-full items-center justify-between px-4 py-3 rounded-lg border-l-2 text-sm font-semibold transition-colors ${
                     isExpanded || isActive
-                      ? 'text-[#070E5C] bg-[#EAF2F8]'
-                      : 'text-[#24272B] active:bg-[#EAF2F8]'
+                      ? 'text-ink bg-stone-100 border-brass-400'
+                      : 'text-ink/80 border-transparent active:bg-stone-100'
                   }`;
 
                   return (
@@ -340,7 +337,7 @@ export default function Navbar() {
                           </span>
                           <ChevronDown
                             aria-hidden
-                            className={`w-5 h-5 text-[#747B83] transition-transform duration-300 ${isExpanded ? 'rotate-180 text-[#070E5C]' : ''}`}
+                            className={`w-5 h-5 text-ink/40 transition-transform duration-300 ${isExpanded ? 'rotate-180 text-ink' : ''}`}
                           />
                         </button>
                       ) : (
@@ -369,7 +366,7 @@ export default function Navbar() {
                                   key={sub.title}
                                   href={sub.href}
                                   onClick={closeMobileMenu}
-                                  className="block px-3 py-2.5 rounded-xl text-[13px] text-[#4A5568] active:text-[#070E5C] active:bg-[#EAF2F8] hover:text-[#070E5C] hover:bg-[#EAF2F8] transition-colors"
+                                  className="block px-3 py-2.5 rounded-lg text-[13px] text-ink/70 active:text-ink active:bg-stone-100 hover:text-ink hover:bg-stone-100 transition-colors"
                                 >
                                   {sub.title}
                                 </Link>
@@ -382,11 +379,11 @@ export default function Navbar() {
                   );
                 })}
 
-                <div className="pt-4 mt-2 border-t border-[#E5E7EB]">
+                <div className="pt-4 mt-2 border-t border-stone-200">
                   <Link
                     href="/contact"
                     onClick={closeMobileMenu}
-                    className="w-full py-3 rounded-full text-xs font-semibold text-center text-white bg-[#070E5C] hover:bg-[#D99A42] transition-colors block shadow-sm"
+                    className="btn-primary w-full"
                   >
                     Contact CUBE
                   </Link>

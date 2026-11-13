@@ -313,7 +313,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
 
       {/* Interactive Hub Navigation Tabs */}
       <section className="py-8 bg-gradient-to-b from-[#FFFFFF] to-[#F6FAFD] border-b border-[#E5E7EB]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-between gap-4">
 
             <div className="inline-flex flex-wrap p-1.5 rounded-full bg-white/80 backdrop-blur-xl border border-[#BDD7E8] shadow-xs">
@@ -360,7 +360,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
 
       {/* Main Section Content */}
       <section className="py-16 sm:py-20 bg-gradient-to-b from-[#F6FAFD] to-[#FFFFFF] border-b border-[#E5E7EB]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
 
           {activeTab === 'openings' ? (
             <div className="space-y-12">
@@ -676,7 +676,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
       {/* Career Benefits Showcase */}
       {c.benefits.items.length > 0 && (
         <section className="py-16 bg-[#FFFFFF]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto mb-12">
               <h3 className="text-2xl font-serif font-bold text-[#070E5C]">
                 {c.benefits.heading}

@@ -2,8 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Lightbulb, Cpu, FileCheck2, FlaskConical, ArrowUpRight, Sparkles, Building2, CheckCircle2 } from 'lucide-react';
-import { GlassPanel } from '@/components/common/AppleLiquidGlass';
+import { Cpu, FileCheck2, FlaskConical, ArrowUpRight, Building2, CheckCircle2 } from 'lucide-react';
+import SectionHeading from '@/components/home/SectionHeading';
 
 const INNOVATION_DOMAINS = [
   {
@@ -38,82 +38,59 @@ const INNOVATION_DOMAINS = [
 
 export default function ResearchInnovation() {
   return (
-    <section className="py-24 bg-[#FFFFFF] border-b border-[#E5E7EB] relative overflow-hidden">
-      
-      {/* Soft Ambient Depth */}
-      <div className="absolute top-1/2 right-10 w-96 h-96 bg-[#EAF2F8]/40 rounded-full blur-3xl pointer-events-none" />
+    <section className="relative overflow-hidden bg-white py-24 sm:py-32 lg:flex lg:min-h-[100svh] lg:flex-col lg:justify-center lg:[&>*:not(.absolute)]:w-full">
+      <div className="relative z-10 mx-auto max-w-none px-5 sm:px-8 lg:px-12">
+        <SectionHeading
+          index="08"
+          eyebrow="Applied Research Translation"
+          title={null}
+          description="Uniting world-renowned academic intellect with practical municipal engineering to solve high-stakes challenges across South India."
+          action={
+            <Link href="/about/advisory-panel" className="btn-primary">
+              <span>IIT Madras Advisory Panel</span>
+              <ArrowUpRight className="h-4 w-4" />
+            </Link>
+          }
+        />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs uppercase tracking-widest text-[#D99A42] font-bold inline-flex items-center gap-1.5">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Applied Research Translation &bull; IIT Madras Ecosystem</span>
-          </span>
-          <h2 className="font-serif text-3xl sm:text-5xl font-light text-[#24272B] tracking-tight mt-2">
-            Research, Innovation &amp; Consultancy
-          </h2>
-          <p className="text-xs sm:text-sm text-[#747B83] mt-2 leading-relaxed">
-            Uniting world-renowned academic intellect with practical municipal engineering to solve high-stakes challenges across South India.
-          </p>
-        </div>
-
-        {/* 4 Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div data-reveal data-reveal-delay="1" className="mt-16 grid grid-cols-1 overflow-hidden rounded-xl border border-stone-200 bg-stone-200 gap-px md:grid-cols-2 lg:grid-cols-4">
           {INNOVATION_DOMAINS.map((domain, idx) => {
             const Icon = domain.icon;
             return (
-              <GlassPanel
-                key={idx}
-                variant="card"
-                interactive
-                className="p-6 flex flex-col justify-between group"
+              <div
+                key={domain.title}
+                className="group relative flex flex-col justify-between bg-white p-7 sm:p-8 transition-colors duration-500 hover:bg-ink"
               >
                 <div>
-                  <div className="w-10 h-10 rounded-2xl bg-white border border-[#BDD7E8] flex items-center justify-center text-[#070E5C] mb-4 shadow-2xs group-hover:bg-[#EAF2F8] transition-colors">
-                    <Icon className="w-5 h-5 text-[#070E5C]" />
+                  <div className="flex items-start justify-between">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-stone-100 text-ink transition-colors duration-500 group-hover:bg-brass-400">
+                      <Icon className="h-5 w-5" />
+                    </span>
+                    <span className="font-display text-4xl font-semibold tabular-nums tracking-[-0.04em] text-stone-200 transition-colors duration-500 group-hover:text-white/10">
+                      0{idx + 1}
+                    </span>
                   </div>
-
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#070E5C] bg-[#EAF2F8] px-2.5 py-0.5 rounded-full border border-[#BDD7E8]">
+                  <div className="mt-8 text-[10px] font-bold uppercase tracking-[0.2em] text-brass-600 transition-colors duration-500 group-hover:text-brass-300">
                     {domain.tag}
-                  </span>
-
-                  <h3 className="font-serif text-xl font-medium text-[#24272B] mt-3 tracking-tight group-hover:text-[#070E5C] transition-colors">
+                  </div>
+                  <h3 className="mt-3 font-display text-xl font-semibold leading-snug tracking-[-0.015em] text-ink transition-colors duration-500 group-hover:text-white">
                     {domain.title}
                   </h3>
-
-                  <p className="text-xs text-[#747B83] mt-2 leading-relaxed">
+                  <p className="mt-3 text-[13px] leading-relaxed text-[#5B6474] transition-colors duration-500 group-hover:text-white/60">
                     {domain.description}
                   </p>
                 </div>
-
-                <div className="pt-4 mt-4 border-t border-[#E5E7EB]">
-                  <div className="flex items-start gap-1.5">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#D99A42] flex-shrink-0 mt-0.5" />
-                    <p className="text-[11px] font-medium text-[#24272B]/90 leading-tight">
-                      {domain.deliverable}
-                    </p>
-                  </div>
+                <div className="mt-8 flex items-start gap-2 border-t border-stone-200 pt-5 transition-colors duration-500 group-hover:border-white/10">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brass-500" />
+                  <p className="text-[12px] font-semibold leading-snug text-ink transition-colors duration-500 group-hover:text-white/90">
+                    {domain.deliverable}
+                  </p>
                 </div>
-              </GlassPanel>
+              </div>
             );
           })}
         </div>
-
-        {/* Action Link */}
-        <div className="mt-12 text-center">
-          <Link
-            href="/about/advisory-panel"
-            className="inline-flex items-center px-6 py-3 rounded-full text-xs font-semibold text-[#070E5C] bg-[#EAF2F8] hover:bg-[#D99A42] hover:text-white border border-[#BDD7E8] shadow-2xs transition-all gap-2"
-          >
-            <span>Consult with IIT Madras Advisory Panel (25 Professors)</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </Link>
-        </div>
-
       </div>
     </section>
   );
 }
-

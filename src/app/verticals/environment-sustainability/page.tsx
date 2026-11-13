@@ -34,7 +34,7 @@ export default async function EnvironmentSustainabilityPage() {
 
       {/* Main Section */}
       <section className="py-12 sm:py-16 md:py-20 bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Overview Grid - Stacked on Mobile, 2-Col on Desktop */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-16">

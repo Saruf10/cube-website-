@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
+import SectionHeading from '@/components/home/SectionHeading';
 
 interface StripItem {
   id: string;
@@ -66,104 +66,233 @@ const STRIP_ITEMS: StripItem[] = [
   },
 ];
 
-export default function CinematicImageStrip() {
-  const [isPaused, setIsPaused] = useState(false);
+const COUNT = STRIP_ITEMS.length;
 
-  // Duplicate items for continuous smooth CSS marquee loop
-  const duplicatedItems = [...STRIP_ITEMS, ...STRIP_ITEMS];
+export default function CinematicImageStrip() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  // Pinned (scroll-driven, one card per scroll step) unless the visitor prefers reduced motion.
+  const [pinned, setPinned] = useState(true);
+  const [index, setIndex] = useState(0);
+
+  // Native horizontal scrolling state (reduced-motion fallback only).
+  const [progress, setProgress] = useState(0);
+  const [atStart, setAtStart] = useState(true);
+  const [atEnd, setAtEnd] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const sync = () => setPinned(!mq.matches);
+    sync();
+    mq.addEventListener('change', sync);
+    return () => mq.removeEventListener('change', sync);
+  }, []);
+
+  // Horizontal offset that puts card `i` in place. The last card stops flush with the content edge.
+  const measure = useCallback((i: number) => {
+    const el = trackRef.current;
+    if (!el) return 0;
+    const cards = el.querySelectorAll<HTMLElement>('[data-card]');
+    const first = cards[0];
+    const last = cards[cards.length - 1];
+    if (!first || !last || !cards[i]) return 0;
+    const padRight = parseFloat(getComputedStyle(el).paddingRight) || 0;
+    const maxX = Math.max(0, last.offsetLeft + last.offsetWidth - el.clientWidth + padRight);
+    return Math.min(cards[i].offsetLeft - first.offsetLeft, maxX);
+  }, []);
+
+  // Map vertical scroll to the active card: each card gets one viewport-height of scroll.
+  useEffect(() => {
+    if (!pinned) return;
+    const onScroll = () => {
+      const section = sectionRef.current;
+      if (!section) return;
+      const range = section.offsetHeight - window.innerHeight;
+      if (range <= 0) return;
+      const scrolled = -section.getBoundingClientRect().top;
+      const p = Math.min(1, Math.max(0, scrolled / range));
+      setIndex(Math.min(COUNT - 1, Math.floor(p * COUNT)));
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, [pinned]);
+
+  // Slide the track to the active card.
+  useEffect(() => {
+    const apply = () => {
+      const el = trackRef.current;
+      if (!el) return;
+      el.style.transform = pinned ? `translate3d(${-measure(index)}px,0,0)` : '';
+    };
+    apply();
+    window.addEventListener('resize', apply);
+    return () => window.removeEventListener('resize', apply);
+  }, [index, pinned, measure]);
+
+  const update = useCallback(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    const max = el.scrollWidth - el.clientWidth;
+    setProgress(max > 0 ? el.scrollLeft / max : 0);
+    setAtStart(el.scrollLeft <= 4);
+    setAtEnd(el.scrollLeft >= max - 4);
+  }, []);
+
+  useEffect(() => {
+    if (pinned) return;
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, [update, pinned]);
+
+  // Scroll the page to the segment for card `target`.
+  const goTo = (target: number) => {
+    const section = sectionRef.current;
+    if (!section) return;
+    const range = section.offsetHeight - window.innerHeight;
+    const top = section.getBoundingClientRect().top + window.scrollY;
+    const y = top + ((target + 0.5) / COUNT) * range;
+    if (window.__lenis) window.__lenis.scrollTo(y, { duration: 1.1 });
+    else window.scrollTo({ top: y, behavior: 'smooth' });
+  };
+
+  const scrollByCard = (dir: number) => {
+    if (pinned) {
+      goTo(Math.min(COUNT - 1, Math.max(0, index + dir)));
+      return;
+    }
+    const el = trackRef.current;
+    if (!el) return;
+    const card = el.querySelector<HTMLElement>('[data-card]');
+    el.scrollBy({ left: dir * ((card?.offsetWidth || 400) + 24), behavior: 'smooth' });
+  };
+
+  const isAtStart = pinned ? index === 0 : atStart;
+  const isAtEnd = pinned ? index === COUNT - 1 : atEnd;
+  const barProgress = pinned ? index / (COUNT - 1) : progress;
 
   return (
-    <section className="py-20 bg-[#F7F7F4] border-y border-[#E5E7EB] overflow-hidden select-none">
-      {/* Section Header */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div className="space-y-2">
-            <span className="text-xs uppercase tracking-widest text-[#D99A42] font-bold">
-              Engineering Panorama
-            </span>
-            <h2 className="font-serif text-3xl sm:text-5xl font-light text-[#24272B] tracking-tight">
-              Cinematic Portfolio Sequence
-            </h2>
-          </div>
-          <p className="text-xs sm:text-sm text-[#747B83] max-w-md">
-            Continuously advancing civil engineering research into enduring public infrastructure across Tamil Nadu and South India. Hover or tap any case study to inspect.
-          </p>
-        </div>
-      </div>
-
-      {/* CONTINUOUS SMOOTH AUTOPLAY MOVING CAROUSEL TRACK */}
-      <div 
-        className="relative w-full overflow-hidden py-4"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
+    <section
+      ref={sectionRef}
+      className="relative overflow-x-clip bg-stone-50"
+      style={pinned ? { height: `${(COUNT + 1) * 100}vh` } : undefined}
+    >
+      <div
+        className={
+          pinned
+            ? 'sticky top-0 flex h-[100svh] flex-col justify-center overflow-hidden py-[clamp(1rem,4vh,3rem)]'
+            : 'py-24 sm:py-32'
+        }
       >
-        <motion.div
-          animate={isPaused ? {} : { x: ['0%', '-50%'] }}
-          transition={{
-            x: {
-              repeat: Infinity,
-              repeatType: 'loop',
-              duration: 28,
-              ease: 'linear',
-            },
-          }}
-          className="flex space-x-6 w-max"
-        >
-          {duplicatedItems.map((item, idx) => (
-            <motion.div
-              key={`${item.id}-${idx}`}
-              whileHover={{ y: -8, scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-              className="w-[300px] sm:w-[380px] lg:w-[420px] shrink-0 group rounded-3xl overflow-hidden bg-white border border-[#E5E7EB] shadow-md hover:shadow-2xl transition-all"
-            >
-              {/* The whole card opens the project (previously only the small arrow did). */}
-              <Link
-                href={item.link}
-                aria-label={`${item.title}: ${item.subtitle}`}
-                tabIndex={idx >= STRIP_ITEMS.length ? -1 : undefined}
-                aria-hidden={idx >= STRIP_ITEMS.length ? true : undefined}
-                className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-[#070E5C] rounded-3xl"
-              >
-              {/* Image Box */}
-              <div className="relative h-[230px] sm:h-[260px] w-full overflow-hidden">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="object-cover object-center transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
-                
-                {/* Category Pill */}
-                <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/95 text-[#24272B] shadow-sm backdrop-blur-sm">
-                    {item.category}
-                  </span>
-                </div>
-              </div>
-
-              {/* Content Bottom */}
-              <div className="p-6 flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="font-serif text-lg font-medium text-[#24272B] group-hover:text-[#070E5C] transition-colors line-clamp-1">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs text-[#747B83] mt-1 line-clamp-1">
-                    {item.subtitle}
-                  </p>
-                </div>
-
-                <span
-                  aria-hidden
-                  className="p-2.5 rounded-full bg-[#EAF2F8] text-[#070E5C] group-hover:bg-[#070E5C] group-hover:text-[#D99A42] transition-all shrink-0 mt-0.5 shadow-sm"
+        <div className="mx-auto w-full max-w-none px-5 sm:px-8 lg:px-12">
+          <SectionHeading
+            index="01"
+            eyebrow="Engineering Panorama"
+            title={
+              <>
+                Selected work across <span className="text-stone-400">public infrastructure.</span>
+              </>
+            }
+            description="Continuously advancing civil engineering research into enduring public infrastructure across Tamil Nadu and South India."
+            action={
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => scrollByCard(-1)}
+                  disabled={isAtStart}
+                  aria-label="Previous case study"
+                  className="flex h-12 w-12 items-center justify-center border border-ink/15 bg-white text-ink transition-all hover:border-ink hover:bg-ink hover:text-white disabled:pointer-events-none disabled:opacity-30"
                 >
-                  <ArrowUpRight className="w-4 h-4" />
-                </span>
+                  <ArrowLeft className="h-4 w-4" />
+                </button>
+                <button
+                  onClick={() => scrollByCard(1)}
+                  disabled={isAtEnd}
+                  aria-label="Next case study"
+                  className="flex h-12 w-12 items-center justify-center border border-ink/15 bg-white text-ink transition-all hover:border-ink hover:bg-ink hover:text-white disabled:pointer-events-none disabled:opacity-30"
+                >
+                  <ArrowRight className="h-4 w-4" />
+                </button>
+                <Link href="/projects" className="link-arrow ml-4">
+                  <span>All Projects</span>
+                  <ArrowUpRight className="h-4 w-4 text-brass-600" />
+                </Link>
               </div>
-              </Link>
-            </motion.div>
-          ))}
-        </motion.div>
+            }
+          />
+        </div>
+
+        <div data-reveal data-reveal-delay="1">
+          <div
+            ref={trackRef}
+            onScroll={pinned ? undefined : update}
+            className={
+              pinned
+                ? 'relative mx-auto mt-[clamp(1.25rem,4vh,3.5rem)] flex max-w-none gap-6 px-5 transition-transform duration-[900ms] ease-out will-change-transform sm:px-8 lg:px-12'
+                : 'mx-auto mt-14 flex max-w-none snap-x snap-mandatory gap-6 overflow-x-auto no-scrollbar scroll-smooth px-5 scroll-px-5 sm:px-8 sm:scroll-px-8 lg:px-12 lg:scroll-px-12'
+            }
+          >
+            {STRIP_ITEMS.map((item, idx) => {
+              const featured = idx === 0;
+              return (
+                <Link
+                  key={item.id}
+                  href={item.link}
+                  data-card
+                  className={`group shrink-0 snap-start focus:outline-none ${
+                    'w-[86vw] sm:w-[620px] lg:w-[720px]'
+                  }`}
+                >
+                  <div
+                    className={`relative overflow-hidden bg-ink ${
+                      pinned
+                        ? 'h-[clamp(160px,calc(100svh-34rem),520px)] lg:h-[clamp(200px,calc(100svh-24rem),520px)]'
+                        : 'aspect-[4/3] sm:aspect-auto sm:h-[460px]'
+                    }`}
+                  >
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      sizes="720px"
+                      className="object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.05]"
+                    />
+                    <div className="absolute inset-0 bg-ink-950/0 transition-colors duration-500 group-hover:bg-ink-950/25" />
+                    <span className="absolute left-5 top-5 chip-light">{item.category}</span>
+                    <span className="absolute bottom-5 right-5 flex h-12 w-12 translate-y-2 items-center justify-center bg-brass-400 text-ink opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                      <ArrowUpRight className="h-5 w-5" />
+                    </span>
+                  </div>
+                  <div className="mt-5 flex gap-5 border-t border-stone-200 pt-5">
+                    <span className="text-[11px] font-bold tabular-nums text-brass-600">{String(idx + 1).padStart(2, '0')}</span>
+                    <div className="min-w-0">
+                      <h3 className={`font-display font-semibold leading-snug tracking-[-0.02em] text-ink ${featured ? 'text-2xl' : 'text-lg'}`}>
+                        {item.title}
+                      </h3>
+                      <p className="mt-1 text-[13px] text-stone-500 line-clamp-1">{item.subtitle}</p>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+            {!pinned && <div aria-hidden className="w-1 shrink-0" />}
+          </div>
+        </div>
+
+        {/* Progress rule */}
+        <div className="mx-auto mt-[clamp(1rem,3vh,2.5rem)] w-full max-w-none px-5 sm:px-8 lg:px-12">
+          <div className="relative h-px w-full bg-stone-200">
+            <div
+              className="absolute -top-px left-0 h-[3px] bg-ink transition-[width] duration-200"
+              style={{ width: `${Math.max(8, barProgress * 100)}%` }}
+            />
+          </div>
+        </div>
       </div>
     </section>
   );

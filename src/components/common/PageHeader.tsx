@@ -51,7 +51,7 @@ export default function PageHeader({ badge, title, description, breadcrumbs, bac
       {/* Soft Light Atmosphere Accent (Zero Dark Gradient) */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-[#EAF2F8] to-transparent rounded-full blur-3xl pointer-events-none opacity-70" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+      <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         
         {/* Navigation Strip: Back Button + Breadcrumbs */}
         <div className="flex flex-wrap items-center justify-between gap-4 mb-6 pb-4 border-b border-[#E5E7EB]">

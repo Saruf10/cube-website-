@@ -58,7 +58,7 @@ export default function ContactPage() {
       />
 
       <section className="py-16 sm:py-20 bg-gradient-to-b from-[#FFFFFF] via-[#F6FAFD] to-[#EAF2F8] border-b border-[#E5E7EB]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             
             {/* Left 5 Cols: Contact Coordinates & Google Map in Apple Liquid Glass */}

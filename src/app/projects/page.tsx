@@ -46,7 +46,7 @@ export default function ProjectsPage() {
       />
 
       <section className="py-20 bg-gradient-to-b from-[#FFFFFF] via-[#F6FAFD] to-[#EAF2F8] border-b border-[#E5E7EB]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Apple Liquid Glass Filter and Search Bar */}
           <div className="p-4 sm:p-5 rounded-3xl bg-white/80 backdrop-blur-2xl border border-[#BDD7E8] shadow-[0_8px_24px_rgba(7,14,92,0.04)] flex flex-col md:flex-row md:items-center justify-between gap-5 mb-10">

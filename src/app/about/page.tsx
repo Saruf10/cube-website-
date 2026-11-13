@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { aboutContent } from '@/data/about';
 import { boardMembers as fallbackBoard, advisoryPanel as fallbackAdvisory } from '@/data/leadership';
+import LeadershipGallery from '@/components/home/LeadershipGallery';
 import { teamMembers as fallbackTeam } from '@/data/team';
 import { clients as fallbackClients } from '@/data/clients';
 import { useLiveList } from '@/lib/live';
@@ -36,6 +37,13 @@ export default function CompleteAboutExperience() {
     teamMembers: people.filter((m) => !LEADER_CATEGORIES.has(m.category)),
   }), [people]);
   const [showAllTeam, setShowAllTeam] = useState(false);
+
+  // Governing members for the gallery: CEO first, then the board.
+  const governingMembers = useMemo(() => {
+    const isCEO = (m: any) => `${m.role || ''} ${m.designation || ''}`.toUpperCase().includes('CEO');
+    const ceo = people.filter((m) => m.category === 'leadership' && isCEO(m)).map((m) => ({ ...m, category: 'CEO' }));
+    return [...ceo, ...boardMembers];
+  }, [people, boardMembers]);
 
   const navAnchors = [
     { id: 'overview', label: 'Institutional Overview' },
@@ -72,7 +80,7 @@ export default function CompleteAboutExperience() {
 
       {/* Sticky Apple Glass Anchor Navigation Bar */}
       <section className="sticky top-[var(--nav-offset,84px)] transition-[top] duration-500 z-40 bg-white/85 backdrop-blur-2xl border-y border-[#BDD7E8]/70 py-3.5 px-4 sm:px-6 shadow-xs">
-        <div ref={anchorBarRef} className="relative max-w-7xl mx-auto flex items-center justify-start gap-2 overflow-x-auto scrollbar-none no-scrollbar py-1">
+        <div ref={anchorBarRef} className="relative max-w-none mx-auto flex items-center justify-start gap-2 overflow-x-auto scrollbar-none no-scrollbar py-1">
           <div className="flex items-center space-x-1.5 sm:space-x-2 shrink-0">
             {navAnchors.map((item) => (
               <button
@@ -96,7 +104,7 @@ export default function CompleteAboutExperience() {
 
       {/* 1. INSTITUTIONAL OVERVIEW */}
       <section id="overview" className="py-20 sm:py-24 bg-gradient-to-b from-[#FFFFFF] via-[#F6FAFD] to-[#EAF2F8] border-b border-[#E5E7EB]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             <div className="lg:col-span-7 space-y-6">
@@ -169,7 +177,7 @@ export default function CompleteAboutExperience() {
 
       {/* 2. VISION & MISSION */}
       <section id="vision-mission" className="py-20 sm:py-24 bg-white border-b border-[#E5E7EB]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-xs font-bold uppercase tracking-wider text-[#070E5C] bg-[#EAF2F8] px-3.5 py-1 rounded-full border border-[#BDD7E8]">
               Strategic Blueprint
@@ -204,7 +212,7 @@ export default function CompleteAboutExperience() {
 
       {/* 3. OBJECTIVES & VALUES */}
       <section id="objectives-values" className="py-20 sm:py-24 bg-gradient-to-b from-[#F6FAFD] to-[#FFFFFF] border-b border-[#E5E7EB]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-xs font-bold uppercase tracking-wider text-[#070E5C] bg-[#EAF2F8] px-3.5 py-1 rounded-full border border-[#BDD7E8]">
@@ -373,41 +381,20 @@ export default function CompleteAboutExperience() {
         </div>
       </section>
 
-      {/* 6. GOVERNING BOARD */}
-      <section id="governing-board" className="py-20 sm:py-24 bg-white border-b border-[#E5E7EB]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#070E5C] bg-[#EAF2F8] px-3.5 py-1 rounded-full border border-[#BDD7E8]">
-              Governance Leadership
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#070E5C] mt-3">
-              Distinguished Governing Board
-            </h2>
-            <p className="text-xs sm:text-sm text-[#747B83] mt-2">
-              Comprising senior Secretaries of the Government of Tamil Nadu and eminent faculty leadership from IIT Madras.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {boardMembers.map((member, i) => (
-              <div key={i} className="p-6 rounded-3xl bg-[#F6FAFD] border border-[#BDD7E8] flex items-center gap-4 shadow-2xs hover:shadow-xs transition">
-                <div className="relative w-20 h-20 rounded-2xl overflow-hidden shrink-0 border border-white ring-1 ring-[#BDD7E8]">
-                  <Image src={member.image || '/images/leadership/about_leader.jpg'} alt={member.name} fill className="object-cover" />
-                </div>
-                <div>
-                  <h4 className="font-serif font-bold text-[#070E5C] text-base leading-snug">{member.name}</h4>
-                  <p className="text-xs font-semibold text-[#D99A42] mt-0.5">{member.role}</p>
-                  <p className="text-[11px] text-[#747B83] mt-0.5 line-clamp-1">{member.organization}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* 6. GOVERNANCE & LEADERSHIP */}
+      <LeadershipGallery
+        id="governing-board"
+        members={governingMembers}
+        title="Distinguished Institutional Governance"
+        subtitle="Guided by the leadership of IIT Madras and senior Secretaries of the Government of Tamil Nadu."
+        tagline="Governance & Leadership"
+        ctaText="Meet the IIT Advisory Panel"
+        ctaHref="/about#advisory-panel"
+      />
 
       {/* 7. IIT ADVISORY PANEL */}
       <section id="advisory-panel" className="py-20 sm:py-24 bg-gradient-to-b from-[#F6FAFD] to-[#FFFFFF] border-b border-[#E5E7EB]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-xs font-bold uppercase tracking-wider text-[#070E5C] bg-[#EAF2F8] px-3.5 py-1 rounded-full border border-[#BDD7E8]">
               Academic Intellect
@@ -437,7 +424,7 @@ export default function CompleteAboutExperience() {
 
       {/* 8. OUR ENGINEERING TEAM (80+) */}
       <section id="our-team" className="py-20 sm:py-24 bg-white border-b border-[#E5E7EB]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-xs font-bold uppercase tracking-wider text-[#070E5C] bg-[#EAF2F8] px-3.5 py-1 rounded-full border border-[#BDD7E8]">
               Multidisciplinary Specialists
@@ -483,7 +470,7 @@ export default function CompleteAboutExperience() {
 
       {/* 9. CLIENTS & PARTNERS */}
       <section id="clients-partners" className="py-20 sm:py-24 bg-gradient-to-b from-[#F6FAFD] to-[#FFFFFF]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-xs font-bold uppercase tracking-wider text-[#070E5C] bg-[#EAF2F8] px-3.5 py-1 rounded-full border border-[#BDD7E8]">
               Institutional Ecosystem

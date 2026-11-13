@@ -73,7 +73,7 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
 
       {/* Overview Section */}
       <section className="py-20 bg-white border-b border-[#C4CAD8]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7 space-y-6">
               <span className="text-xs font-bold uppercase tracking-wider text-[#070E5C] bg-[#D7A00F] px-3 py-1 rounded-full shadow-sm">
@@ -116,7 +116,7 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
 
       {/* Testing Services Cards */}
       <section className="py-20 bg-[#F4F5F8] border-b border-[#C4CAD8]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="text-xs font-bold uppercase tracking-wider text-[#070E5C] bg-[#D7A00F] px-3 py-1 rounded-full shadow-sm">
               Testing Parameters

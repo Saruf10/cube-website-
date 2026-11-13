@@ -50,7 +50,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       />
 
       <section className="py-20 bg-gradient-to-b from-[#FFFFFF] via-[#F6FAFD] to-[#EAF2F8] border-b border-[#E5E7EB]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             
             {/* Left 8 Cols: Main Project Content */}
@@ -218,7 +218,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       {/* Related Projects */}
       {relatedProjects.length > 0 && (
         <section className="py-20 bg-[#FFFFFF] border-b border-[#E5E7EB]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="font-serif text-3xl font-light text-[#24272B] mb-8">
               Related Projects in {project.category}
             </h2>

@@ -1,10 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Leaf, Droplets, Recycle, Wind, Award, ArrowUpRight, ShieldCheck, Sparkles } from 'lucide-react';
-import { GlassPanel } from '@/components/common/AppleLiquidGlass';
+import { Leaf, Droplets, Recycle, Wind, ArrowUpRight } from 'lucide-react';
+import SectionHeading from '@/components/home/SectionHeading';
 
 const SUSTAINABILITY_PILLARS = [
   {
@@ -54,102 +54,104 @@ const SUSTAINABILITY_PILLARS = [
 ];
 
 export default function SustainabilityStorytelling() {
-  return (
-    <section className="py-24 bg-gradient-to-b from-[#FFFFFF] via-[#F6FAFD] to-[#EAF2F8] border-b border-[#E5E7EB] relative overflow-hidden">
-      
-      {/* Background Refractive Glows */}
-      <div className="absolute top-1/3 left-10 w-96 h-96 bg-[#BBD6EA]/25 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-96 h-96 bg-white/70 rounded-full blur-3xl pointer-events-none" />
+  const [active, setActive] = useState(0);
+  const current = SUSTAINABILITY_PILLARS[active];
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Section Header (Morphogenesis Reference 3) */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-          <div className="space-y-2 max-w-2xl">
-            <span className="text-xs uppercase tracking-widest text-[#D99A42] font-bold inline-flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Environmental Stewardship &bull; Morphogenesis Impact Model</span>
-            </span>
-            <h2 className="font-serif text-3xl sm:text-5xl font-light text-[#24272B] tracking-tight">
-              Sustainability &amp; Ecological Engineering
-            </h2>
-            <p className="text-xs sm:text-sm text-[#747B83] leading-relaxed pt-1">
-              Translating advanced civil and environmental research from IIT Madras into verified low-carbon infrastructure, zero-effluent water reuse, and climate-resilient urbanization.
-            </p>
+  return (
+    <section className="grain relative overflow-hidden bg-ink py-24 sm:py-32 lg:flex lg:min-h-[100svh] lg:flex-col lg:justify-center lg:[&>*:not(.absolute)]:w-full text-white">
+      <div aria-hidden className="absolute inset-0 blueprint-grid-dark opacity-60" />
+      <div aria-hidden className="absolute -right-40 top-0 h-[600px] w-[600px] rounded-full bg-brass-500/10 blur-[150px]" />
+
+      <div className="relative z-10 mx-auto max-w-none px-5 sm:px-8 lg:px-12">
+        <SectionHeading
+          index="06"
+          tone="dark"
+          eyebrow="Environmental Stewardship"
+          title={
+            <>
+              Sustainability &amp;{' '}
+              <span className="font-editorial italic font-medium tracking-[-0.02em] text-brass-300">ecological</span>{' '}
+              engineering.
+            </>
+          }
+          description="Translating advanced civil and environmental research from IIT Madras into verified low-carbon infrastructure, zero-effluent water reuse, and climate-resilient urbanization."
+          action={
+            <Link href="/verticals/environment-sustainability" className="btn-outline-light">
+              <span>Environmental Vertical</span>
+              <ArrowUpRight className="h-4 w-4" />
+            </Link>
+          }
+        />
+
+        <div data-reveal data-reveal-delay="1" className="mt-16 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
+          {/* Pillar index */}
+          <div className="lg:col-span-5">
+            <ul className="border-t border-white/10">
+              {SUSTAINABILITY_PILLARS.map((pillar, i) => {
+                const Icon = pillar.icon;
+                const isActive = i === active;
+                return (
+                  <li key={pillar.id} className="border-b border-white/10">
+                    <button
+                      type="button"
+                      onClick={() => setActive(i)}
+                      onPointerEnter={(e) => e.pointerType === 'mouse' && setActive(i)}
+                      aria-pressed={isActive}
+                      className="group relative flex w-full items-center gap-5 py-6 text-left"
+                    >
+                      <span
+                        aria-hidden
+                        className={`absolute left-0 top-0 h-px bg-brass-400 transition-all duration-500 ${isActive ? 'w-full' : 'w-0'}`}
+                      />
+                      <span className={`text-[11px] font-bold tabular-nums ${isActive ? 'text-brass-300' : 'text-white/30'}`}>
+                        0{i + 1}
+                      </span>
+                      <span
+                        className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border transition-colors ${
+                          isActive ? 'border-brass-400 bg-brass-400 text-ink' : 'border-white/15 text-white/60 group-hover:text-white'
+                        }`}
+                      >
+                        <Icon className="h-[18px] w-[18px]" />
+                      </span>
+                      <span className="flex-1">
+                        <span className={`block font-display text-lg sm:text-xl font-semibold tracking-[-0.015em] transition-colors ${isActive ? 'text-white' : 'text-white/55 group-hover:text-white/85'}`}>
+                          {pillar.title}
+                        </span>
+                        <span className="mt-1 block text-[11px] font-semibold uppercase tracking-[0.18em] text-white/35">
+                          {pillar.category}
+                        </span>
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
 
-          <Link
-            href="/verticals/environment-sustainability"
-            className="px-6 py-3 rounded-full text-xs font-semibold text-[#070E5C] bg-white border border-[#BDD7E8] hover:bg-[#EAF2F8] hover:scale-105 active:scale-95 shadow-xs transition-all self-start md:self-end flex items-center gap-2"
-          >
-            <span>Explore Environmental Vertical</span>
-            <ArrowUpRight className="w-3.5 h-3.5 text-[#D99A42]" />
-          </Link>
-        </div>
-
-        {/* 4 Pillars Grid with Apple Liquid Glass and Photography */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {SUSTAINABILITY_PILLARS.map((pillar) => {
-            const Icon = pillar.icon;
-            return (
-              <GlassPanel
-                key={pillar.id}
-                variant="card"
-                interactive
-                className="p-6 sm:p-8 flex flex-col justify-between group"
-              >
-                <div>
-                  {/* Top Bar with Icon & Category */}
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-10 h-10 rounded-2xl bg-white/90 border border-[#BDD7E8] flex items-center justify-center text-[#070E5C] shadow-2xs group-hover:bg-[#EAF2F8] transition-colors">
-                      <Icon className="w-5 h-5 text-[#070E5C]" />
-                    </div>
-
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-white/80 border border-[#E5E7EB] text-[#747B83]">
-                      {pillar.category}
-                    </span>
+          {/* Active pillar feature */}
+          <div className="lg:col-span-7">
+            <div key={current.id} className="animate-fade-in overflow-hidden rounded-xl border border-white/10 bg-white/[0.03]">
+              <div className="relative aspect-[16/9] w-full overflow-hidden">
+                <Image src={current.image} alt={current.title} fill sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-6">
+                  <div>
+                    <div className="font-display text-4xl sm:text-5xl font-semibold tracking-[-0.03em] text-white">{current.metric}</div>
+                    <div className="mt-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-brass-300">{current.metricLabel}</div>
                   </div>
-
-                  {/* Title & Verified Metric */}
-                  <h3 className="font-serif text-2xl font-medium text-[#24272B] tracking-tight group-hover:text-[#070E5C] transition-colors">
-                    {pillar.title}
-                  </h3>
-
-                  <div className="mt-3 flex items-baseline gap-2">
-                    <span className="font-serif text-2xl font-semibold text-[#070E5C]">
-                      {pillar.metric}
-                    </span>
-                    <span className="text-xs text-[#747B83] font-medium">
-                      &bull; {pillar.metricLabel}
-                    </span>
-                  </div>
-
-                  <p className="text-xs text-[#747B83] mt-3 leading-relaxed">
-                    {pillar.description}
-                  </p>
                 </div>
-
-                {/* Bottom Action */}
-                <div className="pt-6 mt-6 border-t border-[#E5E7EB] flex items-center justify-between">
-                  <Link
-                    href={pillar.href}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#070E5C] group-hover:text-[#D99A42] transition-colors"
-                  >
-                    <span>Read Verification Methodology</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </Link>
-
-                  <span className="text-[10px] font-bold text-[#747B83] uppercase tracking-wider">
-                    IIT Madras Research
-                  </span>
-                </div>
-              </GlassPanel>
-            );
-          })}
+              </div>
+              <div className="flex flex-col gap-6 p-6 sm:p-8 sm:flex-row sm:items-end sm:justify-between">
+                <p className="max-w-lg text-[15px] leading-relaxed text-white/70">{current.description}</p>
+                <Link href={current.href} className="link-arrow !text-brass-300 hover:!text-white shrink-0">
+                  <span>Verification Methodology</span>
+                  <ArrowUpRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
-
       </div>
     </section>
   );
 }
-
