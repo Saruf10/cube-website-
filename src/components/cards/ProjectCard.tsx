@@ -15,59 +15,59 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Link
       href={projectHref}
-      className="group card-premium flex flex-col justify-between cursor-pointer"
+      className="group rounded-3xl cube-gradient-card hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between overflow-hidden relative cursor-pointer"
     >
       <div>
         {/* Project Thumbnail Image with Apple-style Fluid Zoom */}
-        <div className="relative aspect-[16/11] w-full overflow-hidden bg-ink">
+        <div className="relative h-60 w-full overflow-hidden bg-slate-100">
           <Image
             src={project.heroImage || '/images/about/about_about.jpg'}
             alt={project.title}
             fill
-            className="object-cover group-hover:scale-[1.06] transition-transform duration-[1.2s] ease-out"
+            className="object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink-950/60 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
 
           {/* Frosted Glass Category Pill */}
           <div className="absolute top-3.5 left-3.5 z-10">
-            <span className="chip-light">
+            <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-white/80 bg-white/80 text-[#0B1324] backdrop-blur-xl shadow-xs">
               {project.category}
             </span>
           </div>
 
           {project.featured && (
             <div className="absolute top-3.5 right-3.5 z-10">
-              <span className="chip-brass">
+              <span className="text-[10px] font-extrabold px-3 py-1 rounded-full bg-[#C29A3E] text-white shadow-xs">
                 Key Project
               </span>
             </div>
           )}
 
           {/* Subtle Hover Action Badge */}
-          <div className="absolute bottom-3.5 right-3.5 z-10 opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 flex items-center space-x-1 px-3 py-1.5 rounded-[3px] bg-white text-ink text-[10px] font-bold uppercase tracking-[0.14em] shadow-premium">
-            <span>View Scheme</span>
-            <ArrowUpRight className="w-3.5 h-3.5 text-brass-600" />
+          <div className="absolute bottom-3.5 right-3.5 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center space-x-1 px-3 py-1 rounded-full bg-white/90 text-[#0B1324] text-xs font-semibold backdrop-blur-md shadow-xs border border-white/80">
+            <span>View Project</span>
+            <ArrowUpRight className="w-3.5 h-3.5 text-[#C29A3E]" />
           </div>
         </div>
 
         {/* Content Body with Architectural Light Refinement */}
         <div className="p-6">
-          <h3 className="font-display text-lg font-semibold tracking-[-0.015em] text-ink transition-colors line-clamp-2 leading-snug">
+          <h3 className="text-base sm:text-lg font-bold font-serif text-[#1F2633] group-hover:text-[#0B1324] transition-colors line-clamp-2 leading-snug">
             {project.title}
           </h3>
 
-          <p className="text-[13px] text-[#5B6474] mt-2.5 line-clamp-2 leading-relaxed font-sans">
-            {project.description}
+          <p className="text-xs text-[#5B6474] mt-2.5 line-clamp-2 leading-relaxed font-sans">
+            {project.description || (project.client ? `Client: ${project.client}` : '')}
           </p>
 
           {project.scopeOfWork && project.scopeOfWork.length > 0 && (
-            <div className="mt-5 pt-4 border-t border-stone-200 space-y-1.5">
-              <div className="text-[10px] font-bold text-brass-600 uppercase tracking-[0.2em] mb-2">
-                Key Scope
+            <div className="mt-4 pt-3 border-t border-[#E7E3D9]/70 space-y-1.5">
+              <div className="text-[10px] font-bold text-[#C29A3E] uppercase tracking-wider">
+                Scope:
               </div>
               {project.scopeOfWork.slice(0, 2).map((item, i) => (
-                <div key={i} className="flex items-start text-[13px] text-ink/75">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-brass-500 mr-2 shrink-0 mt-0.5" />
+                <div key={i} className="flex items-start text-xs text-[#4A5568]">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#C29A3E] mr-1.5 shrink-0 mt-0.5" />
                   <span className="line-clamp-1">{item}</span>
                 </div>
               ))}
@@ -77,11 +77,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       {/* Footer Pill Action */}
-      <div className="mx-6 mb-6 pt-4 flex items-center justify-between text-xs border-t border-stone-200">
-        <span className="text-[11px] font-medium text-stone-500 line-clamp-1 pr-3">
-          {project.location || 'Tamil Nadu, India'}
+      <div className="p-6 pt-0 flex items-center justify-between text-xs text-[#5B6474] border-t border-transparent group-hover:border-[#E7E3D9]/50 transition-colors">
+        <span className="text-[11px] font-medium text-[#5B6474]">
+          {project.location || project.client || ''}
         </span>
-        <div className="flex items-center space-x-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink group-hover:text-brass-600 transition-colors shrink-0">
+        <div className="flex items-center space-x-1 font-semibold text-[#0B1324] group-hover:text-[#C29A3E] transition-colors">
           <span>Overview</span>
           <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
         </div>

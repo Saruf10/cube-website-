@@ -5,10 +5,7 @@ import { useScrollSpy } from '@/lib/useScrollSpy';
 import Image from 'next/image';
 import Link from 'next/link';
 import PageHeader from '@/components/common/PageHeader';
-import { 
-  Building2, ShieldCheck, CheckCircle2, ArrowRight, 
-  FlaskConical, Cpu, Compass, Waves, Trees, MapPin
-} from 'lucide-react';
+import { CheckCircle2, ArrowRight } from 'lucide-react';
 import { verticals } from '@/data/verticals';
 import { projects as fallbackProjects } from '@/data/projects';
 import { useLiveList } from '@/lib/live';
@@ -19,7 +16,7 @@ export default function CompleteVerticalsExperience() {
   const navAnchors = [
     { id: 'building-construction', label: 'Building & Construction' },
     { id: 'environment-sustainability', label: 'Environment & Sustainability' },
-    { id: 'smart-cities', label: 'Smart Cities & Urban Tech' },
+    { id: 'smart-cities', label: 'Smart Cities' },
     { id: 'urban-planning-transportation', label: 'Urban Planning & Transportation' },
   ];
 
@@ -38,9 +35,9 @@ export default function CompleteVerticalsExperience() {
   return (
     <div className="bg-[#FFFFFF] text-[#1F2633] min-h-screen">
       <PageHeader
-        badge="Core Engineering Disciplines"
-        title="Four Core Applied Verticals"
-        description="Comprehensive technical capabilities spanning structural proof checking, environmental diagnostics (CEL), IoT urban telemetry, and multimodal transport planning."
+        badge="Verticals"
+        title="Our Verticals"
+        description="Building & Construction · Environment & Sustainability · Smart Cities · Urban Planning & Transportation"
         breadcrumbs={[{ label: 'Verticals' }]}
       />
 
@@ -71,7 +68,8 @@ export default function CompleteVerticalsExperience() {
       {/* 4 CONTINUOUS SCROLLABLE VERTICAL DIVISIONS */}
       <div className="space-y-0">
         {verticals.map((vert, vIdx) => {
-          const vertProjects = projects.filter((p) => 
+          // The original site lists no projects under Smart Cities.
+          const vertProjects = vert.id === 'smart-cities' ? [] : projects.filter((p) => 
             p.category.toLowerCase().includes(vert.title.toLowerCase().split(' ')[0]) ||
             p.category.toLowerCase().includes(vert.id.split('-')[0])
           ).slice(0, 3);
@@ -102,33 +100,39 @@ export default function CompleteVerticalsExperience() {
                       {vert.title}
                     </h2>
 
-                    <p className="text-base sm:text-lg font-medium text-[#C29A3E]">
-                      {vert.tagline}
-                    </p>
+                    {vert.tagline && (
+                      <p className="text-base sm:text-lg font-medium text-[#C29A3E]">
+                        {vert.tagline}
+                      </p>
+                    )}
 
-                    <p className="text-sm sm:text-base text-[#1F2633]/85 leading-relaxed font-sans">
-                      {vert.longDescription}
-                    </p>
+                    {vert.longDescription.split('\n\n').map((para, pIdx) => (
+                      <p key={pIdx} className="text-sm sm:text-base text-[#1F2633]/85 leading-relaxed font-sans">
+                        {para}
+                      </p>
+                    ))}
 
-                    {/* Capabilities Checklist */}
+                    {/* Services Checklist */}
+                    {vert.capabilities.length > 0 && (
                     <div className="pt-2">
                       <h4 className="text-xs font-bold uppercase tracking-wider text-[#0B1324] mb-3">
-                        Key Capabilities &amp; Institutional Scope
+                        Services
                       </h4>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {vert.capabilities.map((cap, cIdx) => (
-                          <div key={cIdx} className="flex items-start gap-2.5 p-3 rounded-2xl bg-white border border-[#E7E3D9]/70 shadow-2xs">
+                          <div key={cIdx} className="flex items-start gap-2.5 p-3 rounded-2xl bg-white cube-glass border border-[#E7E3D9]/70 shadow-2xs">
                             <CheckCircle2 className="w-4 h-4 text-[#C29A3E] shrink-0 mt-0.5" />
                             <span className="text-xs text-[#1F2633] font-semibold">{cap}</span>
                           </div>
                         ))}
                       </div>
                     </div>
+                    )}
                   </div>
 
                   {/* Right Image Feature Card */}
                   <div className="lg:col-span-5">
-                    <div className="rounded-3xl bg-white/90 backdrop-blur-2xl border border-[#E7E3D9] p-6 shadow-[0_20px_50px_rgba(7,14,92,0.08)] relative overflow-hidden">
+                    <div className="rounded-3xl bg-white/90 cube-glass backdrop-blur-2xl border border-[#E7E3D9] p-6 shadow-[0_20px_50px_rgba(7,14,92,0.08)] relative overflow-hidden">
                       <div className="relative h-72 sm:h-80 w-full rounded-2xl overflow-hidden mb-6 border border-white ring-1 ring-[#E7E3D9]">
                         <Image
                           src={vert.heroImage || '/images/hero/slides_07-cat.jpg'}
@@ -139,7 +143,7 @@ export default function CompleteVerticalsExperience() {
                       </div>
 
                       <div className="flex items-center justify-between text-xs text-[#5B6474] border-t border-[#E7E3D9] pt-4">
-                        <span className="font-semibold text-[#0B1324]">{vert.projectCount ? `${vert.projectCount}+ Projects Assured` : '20+ Projects Completed'}</span>
+                        <span className="font-semibold text-[#0B1324]">{vert.title}</span>
                         <Link
                           href="/projects"
                           className="font-bold text-[#0B1324] hover:text-[#C29A3E] flex items-center gap-1 transition"
@@ -158,7 +162,7 @@ export default function CompleteVerticalsExperience() {
                   <div className="pt-8 border-t border-[#E7E3D9]">
                     <div className="flex items-center justify-between mb-6">
                       <h3 className="text-lg font-serif font-bold text-[#0B1324]">
-                        Featured Schemes in {vert.title}
+                        Projects in {vert.title}
                       </h3>
                       <Link href="/projects" className="text-xs font-semibold text-[#C29A3E] hover:underline flex items-center gap-1">
                         <span>View All Projects</span>
@@ -168,7 +172,7 @@ export default function CompleteVerticalsExperience() {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       {vertProjects.map((proj, pIdx) => (
-                        <div key={proj.slug || pIdx} className="p-5 rounded-3xl bg-white border border-[#E7E3D9] shadow-2xs hover:shadow-xs transition">
+                        <div key={proj.slug || pIdx} className="p-5 rounded-3xl bg-white cube-glass border border-[#E7E3D9] shadow-2xs hover:shadow-xs transition">
                           <span className="text-[10px] font-bold text-[#0B1324] uppercase tracking-wider">{proj.client}</span>
                           <h4 className="font-serif font-bold text-base text-[#1F2633] mt-1 leading-snug">{proj.title}</h4>
                           <p className="text-xs text-[#5B6474] mt-2 line-clamp-2">{proj.description}</p>

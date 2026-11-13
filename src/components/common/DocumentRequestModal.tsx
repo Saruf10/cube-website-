@@ -129,7 +129,7 @@ export default function DocumentRequestModal({
               </div>
             </div>
 
-            <div className="bg-[#FAF9F6] p-3.5 rounded-2xl border border-[#E7E3D9]/70 mb-5 text-xs">
+            <div className="bg-[#FAF9F6] cube-glass p-3.5 rounded-2xl border border-[#E7E3D9]/70 mb-5 text-xs">
               <p className="font-semibold text-[#0B1324] line-clamp-2">{documentTitle}</p>
               {documentAuthor && (
                 <p className="text-[11px] text-slate-500 mt-1">{documentAuthor}</p>

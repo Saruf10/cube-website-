@@ -5,12 +5,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import PageHeader from '@/components/common/PageHeader';
 import CELCard from '@/components/cards/CELCard';
-import { 
-  FlaskConical, CheckCircle2, Waves, ArrowRight, 
-  Send, Phone, Mail, MapPin, Microscope, Sparkles, Loader2
-} from 'lucide-react';
+import { CheckCircle2, Send, Loader2 } from 'lucide-react';
 import { celOverview } from '@/data/cel';
-import { contactInfo } from '@/data/contact';
 import { submitEnquiryAction } from '@/app/actions/enquiries';
 import { useLiveList } from '@/lib/live';
 
@@ -65,9 +61,9 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
   return (
     <div className="bg-[#F4F2EC] min-h-screen">
       <PageHeader
-        badge="State-of-the-Art Analytical Facility"
+        badge="CUBE Environment Lab"
         title="CUBE Environmental Laboratory (CEL)"
-        description="Comprehensive physical, chemical, microbiological, and trace elemental characterization across water, wastewater, solid waste, and soil matrices under ISO-standard testing protocols."
+        description={celOverview.description}
         breadcrumbs={[{ label: 'CEL Laboratory' }]}
       />
 
@@ -80,18 +76,20 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
                 IIT Madras Research Park Facility
               </span>
               <h2 className="text-3xl font-display font-extrabold text-[#0B1324]">
-                Precision Analytical Diagnostics for Environmental Engineering
+                {celOverview.subtitle}
               </h2>
-              <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
-                {celOverview.description}
-              </p>
+              {celOverview.aboutParagraphs.map((para, i) => (
+                <p key={i} className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
+                  {para}
+                </p>
+              ))}
 
               <div className="space-y-3 pt-2">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-[#C29A3E]">
-                  Laboratory Capabilities &amp; Clean Room Facilities:
+                  Our Services:
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  {celOverview.facilities.map((fac, i) => (
+                  {celOverview.serviceCategories.map((fac, i) => (
                     <div key={i} className="flex items-center text-xs font-semibold text-slate-800 bg-[#F4F2EC] p-2.5 rounded-xl border border-[#D5CFC1]">
                       <CheckCircle2 className="w-4 h-4 text-[#C29A3E] mr-2 flex-shrink-0" />
                       <span>{fac}</span>
@@ -104,7 +102,7 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
             <div className="lg:col-span-5 relative h-96 rounded-3xl overflow-hidden shadow-cube border border-[#D5CFC1]">
               <Image
                 src="/images/cel/about_cel.jpg"
-                alt="CUBE Environmental Laboratory Interior"
+                alt="CUBE Environmental Laboratory"
                 fill
                 className="object-cover"
                 priority
@@ -119,17 +117,17 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#C29A3E] px-3 py-1 rounded-full shadow-sm">
-              Testing Parameters
+              Our Services
             </span>
             <h2 className="text-3xl font-display font-extrabold text-[#0B1324] mt-3">
-              CEL Testing Services &amp; Matrices
+              CEL Services
             </h2>
             <p className="text-sm text-slate-600 mt-2">
-              Hover or tap each 3D card to view testing parameters, analytical equipment, and compliance scopes.
+              {celOverview.servicesSummary}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {testingServices.map((service) => (
               <CELCard key={service.id} service={service} />
             ))}
@@ -143,13 +141,13 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
           <div className="p-8 sm:p-12 rounded-3xl bg-[#F4F2EC] border border-[#D5CFC1] shadow-cube">
             <div className="text-center max-w-xl mx-auto mb-10">
               <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#C29A3E] px-3 py-1 rounded-full shadow-sm">
-                Real-Time Sample Submission
+                Book A Test
               </span>
               <h2 className="text-2xl sm:text-3xl font-display font-extrabold text-[#0B1324] mt-2">
                 Laboratory Test Enquiry &amp; Booking
               </h2>
               <p className="text-xs sm:text-sm text-slate-600 mt-2">
-                Submit sample details for commercial testing, baseline environmental audits, or university research support. Directly synced with the CUBE administrative registry.
+                Submit your sample details and the CEL team will get in touch. You can also reach CEL at {celOverview.phone} or {celOverview.email}.
               </p>
             </div>
 
@@ -157,10 +155,10 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
               <div className="p-8 rounded-2xl bg-white border border-[#C29A3E] text-center space-y-3 shadow-md">
                 <CheckCircle2 className="w-12 h-12 text-[#C29A3E] mx-auto" />
                 <h3 className="text-lg font-bold text-[#0B1324] font-display">
-                  CEL Testing Enquiry Received in Real-Time
+                  CEL Testing Enquiry Received
                 </h3>
                 <p className="text-xs text-slate-700 max-w-md mx-auto leading-relaxed">
-                  Thank you, <strong>{formData.name}</strong>. A laboratory coordinator from CUBE Environmental Laboratory will review your testing scope for <strong>{formData.matrix}</strong> and contact you at <strong>{formData.email}</strong> within one working day.
+                  Thank you, <strong>{formData.name}</strong>. A laboratory coordinator from CUBE Environmental Laboratory will review your testing scope for <strong>{formData.matrix}</strong> and contact you at <strong>{formData.email}</strong>.
                 </p>
                 <button
                   onClick={() => {
@@ -237,7 +235,7 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
                     </label>
                     <input
                       type="text"
-                      placeholder="e.g. TNPCB / Industry / IITM"
+                      placeholder="Organization name"
                       value={formData.organization}
                       onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
                       className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#D5CFC1] text-xs focus:outline-none focus:border-[#C29A3E] transition shadow-sm"
@@ -255,7 +253,7 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
                       required
                       value={formData.matrix}
                       onChange={(e) => setFormData({ ...formData, matrix: e.target.value })}
-                      placeholder="Type sample category manually (e.g. Water Quality, Wastewater, Soil, Concrete...)"
+                      placeholder="e.g. Water, Waste Water, Soil, Solid Waste..."
                       className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#D5CFC1] text-xs focus:outline-none focus:border-[#C29A3E] transition shadow-sm"
                     />
                   </div>
@@ -281,7 +279,7 @@ Parameters / Notes: ${formData.parametersNeeded || 'Standard Matrix Parameters'}
                   </label>
                   <textarea
                     rows={4}
-                    placeholder="List specific testing parameters (BOD, COD, Heavy metals, Pathogens, etc.) and project location..."
+                    placeholder="List the parameters you need tested and the project location..."
                     value={formData.parametersNeeded}
                     onChange={(e) => setFormData({ ...formData, parametersNeeded: e.target.value })}
                     className="w-full px-4 py-2.5 rounded-xl bg-white border border-[#D5CFC1] text-xs focus:outline-none focus:border-[#C29A3E] transition shadow-sm"

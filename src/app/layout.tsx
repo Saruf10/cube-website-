@@ -66,7 +66,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${manrope.variable} ${cormorant.variable} scroll-smooth`}>
+    <html lang="en" className={`${inter.variable} ${manrope.variable} ${cormorant.variable} scroll-smooth`} suppressHydrationWarning>
       <body className="min-h-screen flex flex-col bg-[#FFFFFF] text-[#1F2633] antialiased">
         <LegacyCacheCleanup />
         <PublicShellWrapper>{children}</PublicShellWrapper>

@@ -52,7 +52,8 @@ function dropBlankUrlFields(data: Record<string, any>): Record<string, any> {
     const blank =
       value === '' || value === null || value === undefined ||
       (Array.isArray(value) && value.length === 0);
-    if (URL_FIELD.test(key) && blank) continue;
+    // The project photo gallery is a list the admin edits directly: an empty list is intentional.
+    if (URL_FIELD.test(key) && blank && key !== 'galleryImages') continue;
     out[key] = value;
   }
   return out;
@@ -525,6 +526,21 @@ export async function archiveCareerAction(id: string, archiveRemark?: string) {
   revalidatePath('/careers');
   revalidatePath('/admin/careers');
   revalidatePath('/admin/archive');
+  return { success: true };
+}
+
+/** Mark a job application as reviewed (clears its "New" flag and sidebar count). */
+export async function markApplicationReviewedAction(id: string) {
+  const session = await assertPermission(['super_admin', 'admin', 'editor']);
+  const store = await getCMSStore();
+  const app = (store.jobApplications || []).find((a: any) => a.id === id);
+  if (!app) return { success: false, error: 'Application not found' };
+  if (app.status === 'new') {
+    app.status = 'reviewed';
+    app.reviewedAt = new Date().toISOString();
+    app.reviewedBy = session.email;
+    await saveCMSStore(store);
+  }
   return { success: true };
 }
 

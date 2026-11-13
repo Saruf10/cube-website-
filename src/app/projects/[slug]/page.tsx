@@ -31,6 +31,18 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
     notFound();
   }
 
+  const p = project as typeof project & {
+    projectStatus?: string;
+    keyHighlights?: string[];
+    services?: string[];
+    facts?: { label: string; value: string }[];
+  };
+  const paragraphs: string[] = String(project.description || '')
+    .split(/\n\s*\n/)
+    .map((s: string) => s.trim())
+    .filter(Boolean);
+  const facts: { label: string; value: string }[] = ((p.facts || []) as { label: string; value: string }[]).filter((f) => f && f.label && f.value);
+
   const allProjects = await getPublishedProjects();
   const relatedProjects = allProjects
     .filter((p) => p.category === project.category && p.slug !== project.slug)
@@ -41,7 +53,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       <PageHeader
         badge={project.category}
         title={project.title}
-        description={project.description}
+        description={p.client ? `Client: ${p.client}` : ''}
         backHref="/projects"
         breadcrumbs={[
           { label: 'Projects', href: '/projects' },
@@ -68,68 +80,96 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
                 
                 {/* Floating Inset Badge */}
-                <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between text-white z-10">
-                  <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-[#C29A3E]" />
-                    <span className="text-xs sm:text-sm font-semibold drop-shadow-sm">
-                      {project.location || 'Tamil Nadu, India'}
-                    </span>
+                {(project.location || p.projectStatus) && (
+                  <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between text-white z-10">
+                    <div className="flex items-center gap-2">
+                      {project.location && (
+                        <>
+                          <MapPin className="w-4 h-4 text-[#C29A3E]" />
+                          <span className="text-xs sm:text-sm font-semibold drop-shadow-sm">{project.location}</span>
+                        </>
+                      )}
+                    </div>
+                    {p.projectStatus && (
+                      <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-white/90 text-[#0B1324] backdrop-blur-md">
+                        {p.projectStatus}
+                      </span>
+                    )}
                   </div>
-                  <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-white/90 text-[#0B1324] backdrop-blur-md">
-                    Verified State Scheme
-                  </span>
-                </div>
+                )}
               </div>
 
-              {/* Project Overview */}
-              <GlassPanel variant="card" className="p-8 space-y-4">
-                <div className="flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-[#C29A3E]" />
-                  <span className="text-xs font-bold uppercase tracking-widest text-[#0B1324]">
-                    Comprehensive Case Study
-                  </span>
-                </div>
-                <h2 className="font-serif text-2xl sm:text-3xl font-light text-[#1F2633] tracking-tight">
-                  Project Overview &amp; Mandate
-                </h2>
-                <p className="text-xs sm:text-sm text-[#5B6474] leading-relaxed">
-                  {project.description}
-                </p>
-              </GlassPanel>
+              {/* Project Description (original wording) */}
+              {paragraphs.length > 0 && (
+                <GlassPanel variant="card" className="p-8 space-y-4">
+                  <div className="flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-[#C29A3E]" />
+                    <span className="text-xs font-bold uppercase tracking-widest text-[#0B1324]">
+                      {project.category}
+                    </span>
+                  </div>
+                  <h2 className="font-serif text-2xl sm:text-3xl font-light text-[#1F2633] tracking-tight">
+                    Project Description
+                  </h2>
+                  {paragraphs.map((para, i) => (
+                    <p key={i} className="text-xs sm:text-sm text-[#5B6474] leading-relaxed">
+                      {para}
+                    </p>
+                  ))}
+                </GlassPanel>
+              )}
 
-              {/* Objectives */}
-              {project.objectives && project.objectives.length > 0 && (
+              {/* Key Highlights */}
+              {p.keyHighlights && p.keyHighlights.length > 0 && (
                 <GlassPanel variant="card" className="p-8 space-y-5">
                   <div className="flex items-center space-x-2 text-[#0B1324] font-bold text-sm tracking-wide uppercase">
                     <Target className="w-4 h-4 text-[#C29A3E]" />
-                    <span>Project Objectives &amp; Technical Mandate</span>
+                    <span>Key Highlights</span>
                   </div>
                   <ul className="space-y-3 pt-2">
-                    {project.objectives.map((obj: string, i: number) => (
+                    {p.keyHighlights.map((item: string, i: number) => (
                       <li key={i} className="flex items-start text-xs sm:text-sm text-[#1F2633]">
                         <CheckCircle2 className="w-4 h-4 text-[#C29A3E] mr-2.5 flex-shrink-0 mt-0.5" />
-                        <span className="leading-relaxed">{obj}</span>
+                        <span className="leading-relaxed">{item}</span>
                       </li>
                     ))}
                   </ul>
                 </GlassPanel>
               )}
 
-              {/* Scope of Work */}
+              {/* Services */}
+              {p.services && p.services.length > 0 && (
+                <GlassPanel variant="card" className="p-8 space-y-5">
+                  <div className="flex items-center space-x-2 text-[#0B1324] font-bold text-sm tracking-wide uppercase">
+                    <Wrench className="w-4 h-4 text-[#C29A3E]" />
+                    <span>Services</span>
+                  </div>
+                  <ul className="space-y-3 pt-2">
+                    {p.services.map((item: string, i: number) => (
+                      <li key={i} className="flex items-start text-xs sm:text-sm text-[#1F2633]">
+                        <CheckCircle2 className="w-4 h-4 text-[#C29A3E] mr-2.5 flex-shrink-0 mt-0.5" />
+                        <span className="leading-relaxed">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </GlassPanel>
+              )}
+
+              {/* Scope of the project */}
               {project.scopeOfWork && project.scopeOfWork.length > 0 && (
                 <div className="space-y-4">
                   <h3 className="font-serif text-2xl font-light text-[#1F2633] flex items-center">
                     <Wrench className="w-5 h-5 text-[#0B1324] mr-2" />
-                    <span>Scope of Engineering Work</span>
+                    <span>The Scope of the Project Includes</span>
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {project.scopeOfWork.map((scope: string, i: number) => (
                       <div 
                         key={i} 
-                        className="p-5 rounded-2xl bg-white border border-[#E7E3D9] shadow-2xs hover:shadow-sm transition-all"
+                        className="p-5 rounded-2xl bg-white cube-glass border border-[#E7E3D9] shadow-2xs hover:shadow-sm transition-all"
                       >
                         <span className="text-[10px] font-bold text-[#C29A3E] uppercase tracking-wider block mb-1.5">
-                          0{i + 1}. Mandate Scope
+                          {String(i + 1).padStart(2, '0')}
                         </span>
                         <p className="text-xs text-[#1F2633] leading-relaxed">
                           {scope}
@@ -144,7 +184,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               {project.galleryImages && project.galleryImages.length > 0 && (
                 <div className="space-y-4 pt-4">
                   <h3 className="font-serif text-2xl font-light text-[#1F2633]">
-                    Site &amp; Execution Photographs
+                    Image Gallery
                   </h3>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                     {project.galleryImages.map((img: string, i: number) => (
@@ -169,35 +209,37 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             <div className="lg:col-span-4 space-y-6">
               <div className="p-7 rounded-3xl apple-glass-card border border-[#E7E3D9] shadow-sm space-y-5 sticky top-[calc(var(--nav-offset,84px)+1rem)] transition-[top] duration-500">
                 <h3 className="font-serif text-lg font-medium text-[#1F2633] pb-3 border-b border-[#E7E3D9]">
-                  Project Specifications
+                  Facts and Figures
                 </h3>
 
                 <div>
                   <span className="text-[10px] font-bold text-[#5B6474] uppercase tracking-wider block">
-                    Institutional Vertical
+                    Vertical
                   </span>
                   <span className="text-xs font-semibold text-[#0B1324] mt-1 block">
                     {project.category}
                   </span>
                 </div>
 
-                <div>
-                  <span className="text-[10px] font-bold text-[#5B6474] uppercase tracking-wider block">
-                    Execution Body
-                  </span>
-                  <span className="text-xs font-semibold text-[#1F2633] mt-1 block">
-                    CUBE IIT Madras
-                  </span>
-                </div>
+                {p.projectStatus && (
+                  <div>
+                    <span className="text-[10px] font-bold text-[#5B6474] uppercase tracking-wider block">
+                      Status
+                    </span>
+                    <span className="text-xs font-semibold text-[#1F2633] mt-1 block">{p.projectStatus}</span>
+                  </div>
+                )}
 
-                <div>
-                  <span className="text-[10px] font-bold text-[#5B6474] uppercase tracking-wider block">
-                    Quality Mandate
-                  </span>
-                  <span className="text-xs text-[#5B6474] mt-1 block leading-relaxed">
-                    Independent Third-Party Quality Assurance (TPQA) &amp; Structural Proof Checking
-                  </span>
-                </div>
+                {facts.map((f, i) => (
+                  <div key={i}>
+                    <span className="text-[10px] font-bold text-[#5B6474] uppercase tracking-wider block">
+                      {f.label}
+                    </span>
+                    <span className="text-xs font-semibold text-[#1F2633] mt-1 block leading-relaxed">
+                      {f.value}
+                    </span>
+                  </div>
+                ))}
 
                 <div className="pt-4 border-t border-[#E7E3D9]">
                   <Link

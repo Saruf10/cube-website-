@@ -9,6 +9,7 @@ import UniversalAnnouncementPopup from '@/components/common/UniversalAnnouncemen
 import ScrollProgressBar from '@/components/common/ScrollProgressBar';
 import LiveSync from '@/components/common/LiveSync';
 import SmoothScroll from '@/components/common/SmoothScroll';
+import Preloader from '@/components/common/Preloader';
 
 export default function PublicShellWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -26,6 +27,7 @@ export default function PublicShellWrapper({ children }: { children: React.React
 
   return (
     <div className="relative min-h-screen bg-white flex flex-col">
+      <Preloader />
       <LiveSync />
       <SmoothScroll />
       <ScrollProgressBar />

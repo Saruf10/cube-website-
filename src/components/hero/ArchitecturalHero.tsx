@@ -18,54 +18,140 @@ interface HeroSlide {
   location: string;
 }
 
+// Slides from the original CUBE homepage project slider (https://cubeiitm.org/):
+// vertical, tagline and project title as published there.
 const HERO_SLIDES: HeroSlide[] = [
   {
     id: 1,
-    image: '/images/hero/slides_iit-tirupathi.jpg',
-    category: 'Institutional Campus PMC',
-    title: 'Engineering Ideas.',
-    italicWord: 'Shaping',
-    subtitle: 'Tomorrow.',
-    description: 'Translating advanced structural modeling, soil mechanics, and sustainable hydrology from IIT Madras into high-performance public infrastructure.',
-    projectHref: '/projects/iit-tirupathi',
-    projectName: 'IIT Tirupati Permanent Campus',
-    location: 'Andhra Pradesh & IIT Madras',
+    image: '/images/hero/slides_cpcl-arc.jpg',
+    category: "Building & Construction",
+    title: "Empowering Urban Housing, Enhancing Quality of",
+    italicWord: "Life",
+    subtitle: '',
+    description: "Project Management Consultancy for Construction of Affordable Rental (Urban) Housing Complex (ARHC), Manali, Chennai, Tamil Nadu.",
+    projectHref: '/projects',
+    projectName: "Project Management Consultancy for Construction of Affordable Rental (Urban) Housing Complex (ARHC), Manali, Chennai, Tamil Nadu.",
+    location: "Manali, Chennai, Tamil Nadu",
   },
   {
     id: 2,
-    image: '/images/hero/slides_cpcl-arc.jpg',
-    category: 'Third Party Quality Assurance',
-    title: 'Precision Quality.',
-    italicWord: 'Resilient',
-    subtitle: 'Housing.',
-    description: 'Independent Third Party Quality Assurance (TPQA), precast structural design verification, and concrete durability testing ensuring multi-generational safety.',
-    projectHref: '/projects/cpcl-arhc',
-    projectName: 'CPCL Industrial & ARHC Precast Housing',
-    location: 'Tamil Nadu & Chennai',
+    image: '/images/hero/slides_iit-tirupathi.jpg',
+    category: "Building & Construction",
+    title: "Empowering Excellence Through Third Party Quality",
+    italicWord: "Assurance",
+    subtitle: '',
+    description: "Third Party Quality Assurance (TPQA) Service for Construction of Permanent Campus for Indian Institute of Technology Tirupati, Andhra Pradesh.",
+    projectHref: '/projects',
+    projectName: "Third Party Quality Assurance (TPQA) Service for Construction of Permanent Campus for Indian Institute of Technology Tirupati, Andhra Pradesh.",
+    location: "Tirupati, Andhra Pradesh",
   },
   {
     id: 3,
-    image: '/images/hero/slides_ashiana.jpg',
-    category: 'Housing Proof Checking',
-    title: 'Structural Assurance.',
-    italicWord: 'Community',
-    subtitle: 'Impact.',
-    description: 'Providing comprehensive structural design, foundation analysis, and third-party engineering consultancy for affordable housing schemes across Tamil Nadu.',
+    image: '/images/hero/slides_design-engineering-consultancy.jpg',
+    category: "Building & Construction",
+    title: "Housing for All, Building a Brighter",
+    italicWord: "Future",
+    subtitle: '',
+    description: "Design, Engineering & Consultancy Services for Reconstruction of more than forty Housing for All schemes across Tamil Nadu under Pradhan Mantri Awas Yojana.",
     projectHref: '/projects',
-    projectName: 'Pradhan Mantri Awas Yojana (PMAY TN)',
-    location: 'Statewide Tamil Nadu',
+    projectName: "Design, Engineering & Consultancy Services for Reconstruction of more than forty Housing for All schemes across Tamil Nadu under Pradhan Mantri Awas Yojana.",
+    location: "Tamil Nadu",
   },
   {
     id: 4,
-    image: '/images/hero/slides_design-engineering-consultancy.jpg',
-    category: 'Applied Research Translation',
-    title: 'Academic Intellect.',
-    italicWord: 'Public',
-    subtitle: 'Governance.',
-    description: 'Bridging world-renowned civil engineering faculty with municipal field execution across smart cities, water resources, and transport networks.',
-    projectHref: '/about',
-    projectName: 'Government of Tamil Nadu & IIT Madras',
-    location: 'IIT Madras Research Park',
+    image: '/images/hero/slides_revaluation.jpg',
+    category: "Building & Construction",
+    title: "Mapping Stability, Charting Vulnerability, Unlocking",
+    italicWord: "Potential.",
+    subtitle: '',
+    description: "Re-evaluation of Structural Vulnerability, Destress Mapping & Residual Life Assessment of thirty-three dilapidated tenements across Chennai.",
+    projectHref: '/projects',
+    projectName: "Re-evaluation of Structural Vulnerability, Destress Mapping & Residual Life Assessment of thirty-three dilapidated tenements across Chennai.",
+    location: "Chennai",
+  },
+  {
+    id: 5,
+    image: '/images/hero/slides_building-training-team.jpg',
+    category: "Building & Construction",
+    title: "Advancing Construction Solutions and Engineering",
+    italicWord: "Excellence",
+    subtitle: '',
+    description: "Capacity Building Training Program in Best Construction Practices for High Rise Buildings for Engineers.",
+    projectHref: '/projects',
+    projectName: "Capacity Building Training Program in Best Construction Practices for High Rise Buildings for Engineers.",
+    location: "",
+  },
+  {
+    id: 6,
+    image: '/images/hero/slides_ashiana.jpg',
+    category: "Environment & Sustainability",
+    title: "Unlocking the Potential of Surface Water Management with Technological",
+    italicWord: "Ingenuity",
+    subtitle: '',
+    description: "Surface Water Management and Flood Inundation Study for the Ashiana Subham - Senior Living",
+    projectHref: '/projects',
+    projectName: "Surface Water Management and Flood Inundation Study for the Ashiana Subham - Senior Living",
+    location: "",
+  },
+  {
+    id: 7,
+    image: '/images/hero/slides_07-cat.jpg',
+    category: "Environment & Sustainability",
+    title: "Transforming Water Landscapes: Reshaping Hydrological",
+    italicWord: "Balance",
+    subtitle: '',
+    description: "Feasibility Study on Identification of Alternate Location for Parayan Kuttai Water Body & Surface Water Optimization Plan for Caterpillar India Private Limited, Thiruvallur",
+    projectHref: '/projects',
+    projectName: "Feasibility Study on Identification of Alternate Location for Parayan Kuttai Water Body & Surface Water Optimization Plan for Caterpillar India Private Limited, Thiruvallur",
+    location: "Thiruvallur",
+  },
+  {
+    id: 8,
+    image: '/images/hero/slides_mahindra.jpg',
+    category: "Environment & Sustainability",
+    title: "Nature's Engineering at Work: Conserving Water, Nurturing",
+    italicWord: "Life",
+    subtitle: '',
+    description: "Feasibility Study on the Relocation of Two Waterbodies within the Origins - Mahindra World City, Ponneri, Tamil Nadu",
+    projectHref: '/projects',
+    projectName: "Feasibility Study on the Relocation of Two Waterbodies within the Origins - Mahindra World City, Ponneri, Tamil Nadu",
+    location: "Ponneri, Tamil Nadu",
+  },
+  {
+    id: 9,
+    image: '/images/hero/slides_slide2.jpg',
+    category: "Environment & Sustainability",
+    title: "Charting a Sustainable Course: Integrating Inundation Studies into Ecological Campus",
+    italicWord: "Development",
+    subtitle: '',
+    description: "Surface Water Management Plan for IIT Jammu Campus",
+    projectHref: '/projects',
+    projectName: "Surface Water Management Plan for IIT Jammu Campus",
+    location: "IIT Jammu",
+  },
+  {
+    id: 10,
+    image: '/images/hero/slides_niche.jpg',
+    category: "Urban Planning & Transportation",
+    title: "Designing with Nature, Building for",
+    italicWord: "Sustainability",
+    subtitle: '',
+    description: "NICHE Industrial Park, SIPCOT Irungattukottai",
+    projectHref: '/projects',
+    projectName: "NICHE Industrial Park, SIPCOT Irungattukottai",
+    location: "SIPCOT Irungattukottai",
+  },
+  {
+    id: 11,
+    image: '/images/hero/slides_slide3.jpg',
+    category: "Urban Planning & Transportation",
+    title: "Honoring Legacy, Sustaining Cultural",
+    italicWord: "Treasures",
+    subtitle: '',
+    description: "Engineering, Structural Assessment and Mitigation Strategies for Protection and Development of Naida Caves, Diu",
+    projectHref: '/projects',
+    projectName: "Engineering, Structural Assessment and Mitigation Strategies for Protection and Development of Naida Caves, Diu",
+    location: "Diu",
   },
 ];
 
@@ -169,9 +255,9 @@ export default function ArchitecturalHero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brass-400 opacity-60" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-brass-400" />
             </span>
-            <span className="text-white/90">Centre of Excellence</span>
+            <span className="text-white/90">Centre for Urbanization, Buildings &amp; Environment</span>
             <span className="hidden sm:inline text-white/25">/</span>
-            <span className="hidden sm:inline">Govt of Tamil Nadu &amp; IIT Madras</span>
+            <span className="hidden sm:inline">IIT Madras &amp; Govt of Tamil Nadu</span>
           </div>
           <div className="hidden md:flex items-center gap-2">
             <MapPin className="h-3.5 w-3.5 text-brass-400" />
@@ -204,15 +290,13 @@ export default function ArchitecturalHero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -16 }}
                 transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className="display-xl mt-[clamp(1rem,2.4vh,1.75rem)] text-[clamp(2.1rem,8.5vw,4rem)] lg:text-[clamp(2.75rem,min(4.9vw,8.5vh),4.8rem)] text-white"
+                className="display-xl mt-[clamp(1rem,2.4vh,1.75rem)] text-[clamp(1.9rem,7vw,3.25rem)] lg:text-[clamp(2.25rem,min(3.6vw,6.5vh),3.75rem)] lg:min-h-[2.2em] text-white"
               >
-                <span className="block lg:whitespace-nowrap">{slide.title}</span>
-                <span className="block lg:whitespace-nowrap">
-                  <span className="font-editorial italic font-medium tracking-[-0.02em] text-brass-300">
-                    {slide.italicWord}
-                  </span>{' '}
-                  {slide.subtitle}
+                {slide.title}{' '}
+                <span className="font-editorial italic font-medium tracking-[-0.02em] text-brass-300">
+                  {slide.italicWord}
                 </span>
+                {slide.subtitle ? <>{' '}{slide.subtitle}</> : null}
               </motion.h1>
             </AnimatePresence>
 
@@ -261,13 +345,15 @@ export default function ArchitecturalHero() {
                       {String(currentIdx + 1).padStart(2, '0')} / {String(HERO_SLIDES.length).padStart(2, '0')}
                     </span>
                   </div>
-                  <div className="mt-5 lg:mt-6 min-h-[2.75em] font-display text-xl lg:text-[clamp(1.25rem,2.8vh,1.5rem)] font-semibold leading-snug tracking-[-0.02em] text-white">
+                  <div className="mt-5 lg:mt-6 line-clamp-3 min-h-[4.1em] font-display text-lg lg:text-[clamp(1.05rem,2.4vh,1.25rem)] font-semibold leading-snug tracking-[-0.02em] text-white">
                     {slide.projectName}
                   </div>
-                  <div className="mt-3 flex items-center gap-2 text-sm text-white/60">
-                    <MapPin className="h-3.5 w-3.5 text-brass-400" />
-                    {slide.location}
-                  </div>
+                  {slide.location && (
+                    <div className="mt-3 flex items-center gap-2 text-sm text-white/60">
+                      <MapPin className="h-3.5 w-3.5 text-brass-400" />
+                      {slide.location}
+                    </div>
+                  )}
                   <div className="mt-5 lg:mt-6 flex items-center justify-between border-t border-white/10 pt-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-brass-300">
                     <span>View Engagement</span>
                     <span className="flex h-9 w-9 items-center justify-center rounded-full border border-brass-400/40 transition-all group-hover:bg-brass-400 group-hover:text-ink">
@@ -283,7 +369,7 @@ export default function ArchitecturalHero() {
 
       {/* Slide navigator: timed progress segments */}
       <div className="relative z-10 mx-auto w-full max-w-none px-5 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-4 gap-3 sm:gap-6">
+        <div className="flex gap-2 sm:gap-4">
           {HERO_SLIDES.map((item, idx) => {
             const active = idx === currentIdx;
             return (
@@ -292,7 +378,7 @@ export default function ArchitecturalHero() {
                 onClick={() => setCurrentIdx(idx)}
                 aria-label={`Go to slide ${idx + 1}: ${item.category}`}
                 aria-current={active}
-                className="group text-left"
+                className="group min-w-0 flex-1 text-left"
               >
                 <div className="relative h-[2px] w-full overflow-hidden bg-white/15">
                   {active && (
@@ -305,16 +391,9 @@ export default function ArchitecturalHero() {
                     />
                   )}
                 </div>
-                <div className="mt-3 flex items-baseline gap-3">
+                <div className="mt-3 hidden sm:flex items-baseline gap-3">
                   <span className={`text-[11px] font-bold tabular-nums ${active ? 'text-brass-300' : 'text-white/35'}`}>
-                    0{idx + 1}
-                  </span>
-                  <span
-                    className={`hidden sm:block truncate text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors ${
-                      active ? 'text-white' : 'text-white/40 group-hover:text-white/70'
-                    }`}
-                  >
-                    {item.category}
+                    {String(idx + 1).padStart(2, '0')}
                   </span>
                 </div>
               </button>

@@ -24,6 +24,10 @@ const FALLBACK_PEOPLE: any[] = [
   ...fallbackAdvisory.map((m) => ({ ...m, category: 'advisory' })),
   ...fallbackTeam.map((m) => ({ ...m, category: m.department })),
 ];
+// Department headings from the original IIT Advisory Panel page, by member name.
+const ADVISORY_DEPARTMENTS: Record<string, string> = Object.fromEntries(
+  fallbackAdvisory.map((m) => [m.name, m.department || '']),
+);
 const withRole = (list: any[]) =>
   list.map((m) => ({ ...m, role: m.role || m.designation || '' }));
 
@@ -36,7 +40,6 @@ export default function CompleteAboutExperience() {
     advisoryPanel: people.filter((m) => m.category === 'advisory'),
     teamMembers: people.filter((m) => !LEADER_CATEGORIES.has(m.category)),
   }), [people]);
-  const [showAllTeam, setShowAllTeam] = useState(false);
 
   // Governing members for the gallery: CEO first, then the board.
   const governingMembers = useMemo(() => {
@@ -44,17 +47,18 @@ export default function CompleteAboutExperience() {
     const ceo = people.filter((m) => m.category === 'leadership' && isCEO(m)).map((m) => ({ ...m, category: 'CEO' }));
     return [...ceo, ...boardMembers];
   }, [people, boardMembers]);
+  const [showAllTeam, setShowAllTeam] = useState(false);
 
   const navAnchors = [
-    { id: 'overview', label: 'Institutional Overview' },
+    { id: 'overview', label: 'About CUBE' },
     { id: 'vision-mission', label: 'Vision & Mission' },
     { id: 'objectives-values', label: 'Objectives & Core Values' },
     { id: 'chairman-message', label: 'Chairman Message' },
     { id: 'ceo-message', label: 'CEO Message' },
-    { id: 'governing-board', label: 'Governing Board' },
+    { id: 'governing-board', label: 'Board Members' },
     { id: 'advisory-panel', label: 'IIT Advisory Panel' },
-    { id: 'our-team', label: 'Our Engineering Team' },
-    { id: 'clients-partners', label: 'Clients & State Partners' },
+    { id: 'our-team', label: 'Our Team' },
+    { id: 'clients-partners', label: 'Our Clients' },
   ];
 
   // Highlight follows scrolling; tapping a pill still jumps to its section.
@@ -74,7 +78,7 @@ export default function CompleteAboutExperience() {
       <PageHeader
         badge="Centre of Excellence"
         title="About CUBE IIT Madras"
-        description="Comprehensive institutional overview, strategic vision, governance leadership, faculty advisory network, and state infrastructure partnerships."
+        description="Centre for Urbanization, Buildings & Environment (CUBE)"
         breadcrumbs={[{ label: 'About CUBE' }]}
       />
 
@@ -109,10 +113,10 @@ export default function CompleteAboutExperience() {
             
             <div className="lg:col-span-7 space-y-6">
               <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-white px-3.5 py-1 rounded-full border border-[#E7E3D9] shadow-xs">
-                Foundational Mandate
+                About Cube
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#0B1324] tracking-tight leading-tight">
-                Bridging Premier Academic Intellect with Public Infrastructure Delivery
+                About Centre for Urbanization, Buildings &amp; Environment (CUBE)
               </h2>
 
               <div className="space-y-4 text-sm sm:text-base text-[#1F2633]/85 leading-relaxed font-sans">
@@ -121,27 +125,6 @@ export default function CompleteAboutExperience() {
                 ))}
               </div>
 
-              <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="p-5 rounded-3xl bg-white/95 backdrop-blur-xl border border-[#E7E3D9] shadow-xs">
-                  <div className="font-bold text-[#0B1324] text-sm flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4 text-[#C29A3E]" />
-                    <span>Government of Tamil Nadu</span>
-                  </div>
-                  <p className="text-xs text-[#5B6474] mt-2 leading-relaxed">
-                    Apex state sponsorship, regulatory alignment, and mandates across housing, transit terminals, and hydrology.
-                  </p>
-                </div>
-
-                <div className="p-5 rounded-3xl bg-white/95 backdrop-blur-xl border border-[#E7E3D9] shadow-xs">
-                  <div className="font-bold text-[#0B1324] text-sm flex items-center gap-2">
-                    <Award className="w-4 h-4 text-[#C29A3E]" />
-                    <span>IIT Madras Research Excellence</span>
-                  </div>
-                  <p className="text-xs text-[#5B6474] mt-2 leading-relaxed">
-                    Faculty mentorship, world-class civil testing laboratories, and independent structural proof checking rigor.
-                  </p>
-                </div>
-              </div>
             </div>
 
             {/* Right: Institutional Glass Plaque */}
@@ -166,7 +149,7 @@ export default function CompleteAboutExperience() {
                 </p>
 
                 <div className="mt-5 pt-5 border-t border-[#E7E3D9] text-xs text-[#5B6474] leading-relaxed">
-                  First Floor, IIT Madras Research Park, Kanagam Road, Taramani, Chennai 600113
+                  Module No.6C, 6th Floor, Phase II Building, IIT Madras Research Park, Kanagam Road, Taramani, Chennai 600 113.
                 </div>
               </div>
             </div>
@@ -180,20 +163,17 @@ export default function CompleteAboutExperience() {
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3.5 py-1 rounded-full border border-[#E7E3D9]">
-              Strategic Blueprint
+              Vision &amp; Mission
             </span>
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#0B1324] mt-3">
-              Vision &amp; Mission Mandates
+              Vision &amp; Mission
             </h2>
-            <p className="text-xs sm:text-sm text-[#5B6474] mt-2">
-              Transforming built environments through scientific rigor and public accountability.
-            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#FAF9F6] to-white border border-[#E7E3D9] shadow-sm relative overflow-hidden">
               <Compass className="w-10 h-10 text-[#C29A3E] mb-4" />
-              <h3 className="font-serif text-2xl font-bold text-[#0B1324] mb-3">Institutional Vision</h3>
+              <h3 className="font-serif text-2xl font-bold text-[#0B1324] mb-3">Our Vision</h3>
               <p className="text-sm text-[#1F2633]/85 leading-relaxed font-sans">
                 {aboutContent.vision}
               </p>
@@ -201,10 +181,12 @@ export default function CompleteAboutExperience() {
 
             <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#F4F2EC] to-white border border-[#E7E3D9] shadow-sm relative overflow-hidden">
               <Target className="w-10 h-10 text-[#C29A3E] mb-4" />
-              <h3 className="font-serif text-2xl font-bold text-[#0B1324] mb-3">Institutional Mission</h3>
-              <p className="text-sm text-[#1F2633]/85 leading-relaxed font-sans">
-                {aboutContent.mission}
-              </p>
+              <h3 className="font-serif text-2xl font-bold text-[#0B1324] mb-3">Our Mission</h3>
+              <ul className="space-y-2 text-sm text-[#1F2633]/85 leading-relaxed font-sans list-disc pl-5">
+                {aboutContent.mission.map((point, i) => (
+                  <li key={i}>{point}</li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
@@ -216,10 +198,10 @@ export default function CompleteAboutExperience() {
           
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3.5 py-1 rounded-full border border-[#E7E3D9]">
-              Operational Pillars
+              Objectives &amp; Core Values
             </span>
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#0B1324] mt-3">
-              10 Institutional Objectives &amp; Core Values
+              Objectives &amp; Core Values
             </h2>
           </div>
 
@@ -227,11 +209,11 @@ export default function CompleteAboutExperience() {
             {/* Objectives List */}
             <div className="space-y-4">
               <h3 className="font-serif text-xl font-bold text-[#0B1324] pb-2 border-b border-[#E7E3D9]">
-                Institutional Objectives
+                Objectives
               </h3>
               <div className="space-y-3">
                 {aboutContent.objectives.map((obj, i) => (
-                  <div key={i} className="flex items-start gap-3 p-3.5 rounded-2xl bg-white border border-[#E7E3D9]/70 shadow-2xs">
+                  <div key={i} className="flex items-start gap-3 p-3.5 rounded-2xl bg-white cube-glass border border-[#E7E3D9]/70 shadow-2xs">
                     <CheckCircle2 className="w-4 h-4 text-[#C29A3E] shrink-0 mt-0.5" />
                     <span className="text-xs sm:text-sm text-[#1F2633]/90 font-medium leading-relaxed">{obj}</span>
                   </div>
@@ -242,11 +224,11 @@ export default function CompleteAboutExperience() {
             {/* Core Values List */}
             <div className="space-y-4">
               <h3 className="font-serif text-xl font-bold text-[#0B1324] pb-2 border-b border-[#E7E3D9]">
-                Foundational Values
+                Core Values
               </h3>
               <div className="space-y-3">
                 {aboutContent.coreValues.map((val, i) => (
-                  <div key={i} className="p-4 rounded-2xl bg-white border border-[#E7E3D9]/70 shadow-2xs">
+                  <div key={i} className="p-4 rounded-2xl bg-white cube-glass border border-[#E7E3D9]/70 shadow-2xs">
                     <h4 className="text-sm font-bold text-[#0B1324] flex items-center gap-2">
                       <HeartHandshake className="w-4 h-4 text-[#C29A3E]" />
                       <span>{val.title}</span>
@@ -292,7 +274,7 @@ export default function CompleteAboutExperience() {
                   Prof. V. Kamakoti
                 </h3>
                 <p className="text-xs text-[#C29A3E] font-bold uppercase tracking-wider mt-1">
-                  Chairman, CUBE
+                  Chairman
                 </p>
                 <p className="text-xs text-[#5B6474] mt-0.5 font-medium">
                   Director, IIT Madras
@@ -304,12 +286,8 @@ export default function CompleteAboutExperience() {
             <div className="md:col-span-8 space-y-4">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F2EC] border border-[#E7E3D9] text-xs font-bold uppercase tracking-wider text-[#0B1324]">
                 <Quote className="w-3.5 h-3.5 text-[#C29A3E]" />
-                <span>Executive Address from the Chairman</span>
+                <span>Chairman Message</span>
               </div>
-
-              <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#0B1324] leading-tight">
-                Managing Sustainable Urbanization in an Era of High Growth
-              </h3>
 
               <div className="space-y-3.5 text-xs sm:text-sm text-[#1F2633]/85 leading-relaxed font-sans">
                 {aboutContent.chairmanMessage.map((p, idx) => (
@@ -348,13 +326,10 @@ export default function CompleteAboutExperience() {
 
               <div className="mt-5">
                 <h3 className="text-xl font-bold text-[#0B1324] font-serif tracking-tight">
-                  L. Padmanaban
+                  L. PADMANABAN
                 </h3>
                 <p className="text-xs text-[#C29A3E] font-bold uppercase tracking-wider mt-1">
-                  CEO, CUBE (Major General, Retired)
-                </p>
-                <p className="text-xs text-[#5B6474] mt-0.5 font-medium">
-                  IIT Madras Research Park
+                  (Major General [Retired]) CEO
                 </p>
               </div>
             </div>
@@ -363,12 +338,8 @@ export default function CompleteAboutExperience() {
             <div className="md:col-span-8 space-y-4">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F2EC] border border-[#E7E3D9] text-xs font-bold uppercase tracking-wider text-[#0B1324]">
                 <Quote className="w-3.5 h-3.5 text-[#C29A3E]" />
-                <span>Operational Leadership Address</span>
+                <span>CEO Message</span>
               </div>
-
-              <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#0B1324] leading-tight">
-                Multidisciplinary Engineering as a Force Multiplier for Public Good
-              </h3>
 
               <div className="space-y-3.5 text-xs sm:text-sm text-[#1F2633]/85 leading-relaxed font-sans">
                 {aboutContent.ceoMessage.map((p, idx) => (
@@ -381,14 +352,14 @@ export default function CompleteAboutExperience() {
         </div>
       </section>
 
-      {/* 6. GOVERNANCE & LEADERSHIP */}
+      {/* 6. BOARD MEMBERS */}
       <LeadershipGallery
         id="governing-board"
         members={governingMembers}
-        title="Distinguished Institutional Governance"
-        subtitle="Guided by the leadership of IIT Madras and senior Secretaries of the Government of Tamil Nadu."
-        tagline="Governance & Leadership"
-        ctaText="Meet the IIT Advisory Panel"
+        title="Board Members"
+        subtitle="Board Members of CUBE"
+        tagline="Leadership"
+        ctaText="IIT Advisory Panel"
         ctaHref="/about#advisory-panel"
       />
 
@@ -397,51 +368,45 @@ export default function CompleteAboutExperience() {
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3.5 py-1 rounded-full border border-[#E7E3D9]">
-              Academic Intellect
+              IIT Advisory Panel
             </span>
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#0B1324] mt-3">
-              IIT Madras Advisory Faculty Panel
+              IIT Advisory Panel
             </h2>
-            <p className="text-xs sm:text-sm text-[#5B6474] mt-2">
-              Over 25 distinguished professors across Civil Engineering, Environmental Science, Hydrology, and Transportation.
-            </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {advisoryPanel.map((advisor, i) => (
-              <div key={i} className="p-5 rounded-3xl bg-white border border-[#E7E3D9] text-center shadow-2xs hover:shadow-xs transition">
+              <div key={i} className="p-5 rounded-3xl bg-white cube-glass border border-[#E7E3D9] text-center shadow-2xs hover:shadow-xs transition">
                 <div className="relative w-24 h-24 mx-auto rounded-2xl overflow-hidden mb-3 border border-white ring-1 ring-[#E7E3D9]">
                   <Image src={advisor.image || '/images/leadership/about_leader.jpg'} alt={advisor.name} fill className="object-cover" />
                 </div>
                 <h4 className="font-serif font-bold text-[#0B1324] text-sm leading-snug">{advisor.name}</h4>
                 <p className="text-[11px] font-semibold text-[#C29A3E] mt-0.5">{advisor.role}</p>
-                <p className="text-[10px] text-[#5B6474] mt-0.5">{advisor.organization || 'IIT Madras'}</p>
+                <p className="text-[10px] text-[#5B6474] mt-0.5">{advisor.department || ADVISORY_DEPARTMENTS[advisor.name] || 'IIT Madras'}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 8. OUR ENGINEERING TEAM (80+) */}
+      {/* 8. OUR TEAM */}
       <section id="our-team" className="py-20 sm:py-24 bg-white border-b border-[#E7E3D9]">
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3.5 py-1 rounded-full border border-[#E7E3D9]">
-              Multidisciplinary Specialists
+              Our Team
             </span>
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#0B1324] mt-3">
-              Our Applied Engineering Team (80+)
+              Our Team
             </h2>
-            <p className="text-xs sm:text-sm text-[#5B6474] mt-2">
-              Professional structural engineers, hydrodynamic modelers, laboratory chemists, and project managers.
-            </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {(showAllTeam ? teamMembers : teamMembers.slice(0, 12)).map((tm, i) => (
               <div 
                 key={i} 
-                className="p-5 rounded-3xl bg-[#FAF9F6] border border-[#E7E3D9] flex items-center gap-4 hover:shadow-md hover:border-[#A8832F] transition-all duration-300"
+                className="p-5 rounded-3xl bg-[#FAF9F6] cube-glass border border-[#E7E3D9] flex items-center gap-4 hover:shadow-md hover:border-[#A8832F] transition-all duration-300"
               >
                 <div className="relative w-16 h-16 rounded-2xl overflow-hidden shrink-0 border border-white ring-1 ring-[#E7E3D9] bg-white">
                   <Image src={tm.image || '/images/team/team_unknown.png'} alt={tm.name} fill className="object-cover" />
@@ -449,7 +414,7 @@ export default function CompleteAboutExperience() {
                 <div className="min-w-0 flex-1">
                   <h4 className="font-serif font-bold text-[#0B1324] text-sm truncate">{tm.name}</h4>
                   <p className="text-[11px] font-semibold text-[#C29A3E] truncate">{tm.designation}</p>
-                  <p className="text-[10px] text-[#5B6474] truncate">{tm.department || 'CUBE Applied Engineering'}</p>
+                  <p className="text-[10px] text-[#5B6474] truncate">{tm.department}</p>
                 </div>
               </div>
             ))}
@@ -473,21 +438,18 @@ export default function CompleteAboutExperience() {
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3.5 py-1 rounded-full border border-[#E7E3D9]">
-              Institutional Ecosystem
+              Our Clients
             </span>
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#0B1324] mt-3">
-              Over 50 State Agencies &amp; Industrial Partners
+              Our Clients
             </h2>
-            <p className="text-xs sm:text-sm text-[#5B6474] mt-2">
-              Trusted by government departments, urban local bodies, and leading developers across India.
-            </p>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
             {clients.map((client, i) => (
               <div 
                 key={i} 
-                className="h-28 p-4 rounded-2xl bg-white/90 backdrop-blur-xl border border-[#E7E3D9]/80 shadow-[0_4px_16px_rgba(7,14,92,0.03),inset_0_1px_1px_rgba(255,255,255,0.95)] hover:border-[#A8832F] hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center text-center group"
+                className="h-28 p-4 rounded-2xl bg-white/90 cube-glass backdrop-blur-xl border border-[#E7E3D9]/80 shadow-[0_4px_16px_rgba(7,14,92,0.03),inset_0_1px_1px_rgba(255,255,255,0.95)] hover:border-[#A8832F] hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center text-center group"
               >
                 <div className="relative h-14 w-full flex items-center justify-center">
                   <Image

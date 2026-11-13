@@ -15,54 +15,47 @@ interface StripItem {
   link: string;
 }
 
+// Projects shown on the original CUBE homepage (https://cubeiitm.org/), with their original titles.
 const STRIP_ITEMS: StripItem[] = [
   {
     id: 's1',
-    title: 'IIT Tirupati Academic Complex',
-    subtitle: 'Institutional Masterplanning & PMC',
+    title: "Third Party Quality Assurance (TPQA) Service for Construction of Permanent Campus for Indian Institute of Technology Tirupati, Andhra Pradesh.",
+    subtitle: '',
     image: '/images/hero/slides_iit-tirupathi.jpg',
-    category: 'Institutional',
+    category: "Building and Construction",
     link: '/projects/iit-tirupathi',
   },
   {
     id: 's2',
-    title: 'CPCL Industrial Housing',
-    subtitle: 'Precast Durability & TPQA',
-    image: '/images/hero/slides_cpcl-arc.jpg',
-    category: 'Buildings',
-    link: '/projects/cpcl-arhc',
+    title: "Re-evaluation of Structural Vulnerability, Destress Mapping & Residual Life Assessment of thirty-three dilapidated tenements across Chennai.",
+    subtitle: '',
+    image: '/images/hero/slides_revaluation.jpg',
+    category: "Building and Construction",
+    link: '/projects',
   },
   {
     id: 's3',
-    title: 'PMAY Affordable Housing Assurance',
-    subtitle: 'Structural Proof Checking across 40+ Schemes',
-    image: '/images/hero/slides_design-engineering-consultancy.jpg',
-    category: 'Urban Living',
+    title: "Feasibility Study on Identification of Alternate Location for Parayan Kuttai Water Body & Surface Water Optimization Plan for Caterpillar India Private Limited, Thiruvallur",
+    subtitle: '',
+    image: '/images/hero/slides_07-cat.jpg',
+    category: "Environment & Sustainability",
     link: '/projects',
   },
   {
     id: 's4',
-    title: 'CUBE Environmental Testing Facility',
-    subtitle: 'Water, Wastewater & Material Durability',
-    image: '/images/cel/about_cel.jpg',
-    category: 'CEL Lab',
-    link: '/cel',
-  },
-  {
-    id: 's5',
-    title: 'NICHE Industrial Park',
-    subtitle: 'Stormwater & Environmental Engineering',
+    title: "NICHE Industrial Park, SIPCOT Irungattukottai",
+    subtitle: '',
     image: '/images/hero/slides_niche.jpg',
-    category: 'Infrastructure',
+    category: "Urban Planning & Transportation",
     link: '/projects/upt2',
   },
   {
-    id: 's6',
-    title: 'Engineers Capacity Building Center',
-    subtitle: 'IIT Madras Applied Research & Knowledge Sharing',
-    image: '/images/hero/slides_building-training-team.jpg',
-    category: 'Academia',
-    link: '/about',
+    id: 's5',
+    title: "Feasibility Study on the Relocation of Two Waterbodies within the Origins - Mahindra World City, Ponneri, Tamil Nadu",
+    subtitle: '',
+    image: '/images/hero/slides_mahindra.jpg',
+    category: "Environment & Sustainability",
+    link: '/projects',
   },
 ];
 
@@ -165,13 +158,12 @@ export default function CinematicImageStrip() {
         <div className="mx-auto w-full max-w-none px-5 sm:px-8 lg:px-12">
           <SectionHeading
             index="01"
-            eyebrow="Engineering Panorama"
+            eyebrow="Our Projects"
             title={
               <>
-                Selected work across <span className="text-brass-300">public infrastructure.</span>
+                Featured <span className="text-brass-300">projects.</span>
               </>
             }
-            description="Continuously advancing civil engineering research into enduring public infrastructure across Tamil Nadu and South India."
           />
         </div>
 
@@ -219,10 +211,12 @@ export default function CinematicImageStrip() {
                   <div className="mt-5 flex gap-5 border-t border-stone-200 pt-5">
                     <span className="text-[11px] font-bold tabular-nums text-brass-600">{String(idx + 1).padStart(2, '0')}</span>
                     <div className="min-w-0">
-                      <h3 className={`font-display font-semibold leading-snug tracking-[-0.02em] text-ink ${featured ? 'text-2xl' : 'text-lg'}`}>
+                      <h3 className={`font-display font-semibold leading-snug tracking-[-0.02em] text-ink line-clamp-2 ${featured ? 'text-xl' : 'text-lg'}`}>
                         {item.title}
                       </h3>
-                      <p className="mt-1 text-[13px] text-stone-500 line-clamp-1">{item.subtitle}</p>
+                      {item.subtitle && (
+                        <p className="mt-1 text-[13px] text-stone-500 line-clamp-1">{item.subtitle}</p>
+                      )}
                     </div>
                   </div>
                 </Link>

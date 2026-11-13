@@ -15,7 +15,7 @@ export default function VisionMissionPage() {
       <PageHeader
         badge="Strategic Direction"
         title="Vision & Mission"
-        description="Our institutional roadmap for pioneering sustainable urbanization, resilient public infrastructure, and environmental stewardship."
+        description="Centre for Urbanization, Buildings & Environment (CUBE)"
         breadcrumbs={[
           { label: 'About CUBE', href: '/about' },
           { label: 'Vision & Mission' },
@@ -26,42 +26,35 @@ export default function VisionMissionPage() {
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {/* Vision Card (Architectural Light Palette) */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-white text-[#1F2633] shadow-sm hover:shadow-xl border border-[#E7E3D9] transition-all flex flex-col justify-between">
+            <div className="p-8 sm:p-10 rounded-3xl bg-white cube-glass text-[#1F2633] shadow-sm hover:shadow-xl border border-[#E7E3D9] transition-all flex flex-col justify-between">
               <div>
                 <div className="p-3 bg-[#F4F2EC] text-[#0B1324] rounded-2xl w-fit mb-6 border border-[#E7E3D9]">
                   <Compass className="w-8 h-8 text-[#C29A3E]" />
                 </div>
                 <span className="text-xs font-bold uppercase tracking-widest text-[#C29A3E]">
-                  Our Institutional Vision
+                  Our Vision
                 </span>
-                <h2 className="text-2xl sm:text-3xl font-serif font-light text-[#1F2633] mt-2">
-                  World-Class Applied Urban Excellence
-                </h2>
                 <p className="mt-6 text-sm sm:text-base text-[#5B6474] leading-relaxed font-sans font-normal">
                   &ldquo;{aboutContent.vision}&rdquo;
                 </p>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-[#E7E3D9] text-xs text-[#5B6474]">
-                Endorsed by the Governing Board &bull; IIT Madras &bull; Government of Tamil Nadu
-              </div>
             </div>
 
             {/* Mission Card (Architectural Light Sky Palette) */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-white text-[#1F2633] border border-[#E7E3D9] shadow-sm hover:shadow-xl transition-all flex flex-col justify-between">
+            <div className="p-8 sm:p-10 rounded-3xl bg-white cube-glass text-[#1F2633] border border-[#E7E3D9] shadow-sm hover:shadow-xl transition-all flex flex-col justify-between">
               <div>
                 <div className="p-3 bg-[#F4F2EC] text-[#0B1324] rounded-2xl w-fit mb-6 border border-[#E7E3D9]">
                   <Target className="w-8 h-8 text-[#C29A3E]" />
                 </div>
                 <span className="text-xs font-bold uppercase tracking-widest text-[#C29A3E]">
-                  Our Execution Mission
+                  Our Mission
                 </span>
-                <h2 className="text-2xl sm:text-3xl font-serif font-light text-[#1F2633] mt-2">
-                  Applied Engineering for Public Good
-                </h2>
-                <p className="mt-6 text-sm sm:text-base text-[#5B6474] leading-relaxed font-sans font-normal">
-                  &ldquo;{aboutContent.mission}&rdquo;
-                </p>
+                <ul className="mt-6 space-y-2 text-sm sm:text-base text-[#5B6474] leading-relaxed font-sans font-normal list-disc pl-5">
+                  {aboutContent.mission.map((point, i) => (
+                    <li key={i}>{point}</li>
+                  ))}
+                </ul>
               </div>
 
               <div className="mt-8 pt-6 border-t border-[#E7E3D9]">
@@ -69,7 +62,7 @@ export default function VisionMissionPage() {
                   href="/about/objectives"
                   className="inline-flex items-center text-xs font-semibold text-[#0B1324] hover:text-[#C29A3E] transition-colors"
                 >
-                  <span>Explore 10 Institutional Objectives</span>
+                  <span>Objectives</span>
                   <ArrowUpRight className="w-3.5 h-3.5 ml-1" />
                 </Link>
               </div>

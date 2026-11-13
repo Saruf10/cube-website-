@@ -196,12 +196,16 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
               </button>
 
               <div className="flex flex-wrap items-center gap-2 pr-10">
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white text-[#0B1324] border border-[#E7E3D9]">
-                  {detailJob.department || 'Engineering Vertical'}
-                </span>
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
-                  {detailJob.employmentType || 'Full-Time'}
-                </span>
+                {detailJob.department && (
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white text-[#0B1324] border border-[#E7E3D9]">
+                    {detailJob.department}
+                  </span>
+                )}
+                {detailJob.employmentType && (
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
+                    {detailJob.employmentType}
+                  </span>
+                )}
               </div>
 
               <h2 id="job-detail-title" className="mt-3 text-xl sm:text-2xl font-bold font-serif text-[#0B1324] leading-tight">
@@ -211,7 +215,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
               <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-xs text-[#5B6474] font-medium">
                 <span className="flex items-center gap-1.5">
                   <MapPin className="w-3.5 h-3.5 text-[#C29A3E]" />
-                  {detailJob.location || 'IIT Madras Research Park, Chennai'}
+                  {detailJob.location || 'Chennai'}
                 </span>
                 {detailJob.experience && (
                   <span className="flex items-center gap-1.5">
@@ -219,10 +223,12 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                     {detailJob.experience}
                   </span>
                 )}
-                <span className="flex items-center gap-1.5">
-                  <CalendarDays className="w-3.5 h-3.5 text-[#C29A3E]" />
-                  {detailJob.closingDate ? `Apply by ${formatDate(detailJob.closingDate)}` : 'Open until filled'}
-                </span>
+                {detailJob.closingDate && (
+                  <span className="flex items-center gap-1.5">
+                    <CalendarDays className="w-3.5 h-3.5 text-[#C29A3E]" />
+                    {`Apply by ${formatDate(detailJob.closingDate)}`}
+                  </span>
+                )}
               </div>
             </div>
 
@@ -231,7 +237,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
               <div>
                 <h3 className="text-xs font-bold uppercase tracking-wider text-[#0B1324] mb-2 flex items-center gap-2">
                   <FileText className="w-4 h-4 text-[#C29A3E]" />
-                  Role Overview
+                  Details
                 </h3>
                 <p className="text-sm text-[#1F2633]/85 leading-relaxed whitespace-pre-line">
                   {detailJob.description}
@@ -242,7 +248,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                 <div>
                   <h3 className="text-xs font-bold uppercase tracking-wider text-[#0B1324] mb-3 flex items-center gap-2">
                     <Award className="w-4 h-4 text-[#C29A3E]" />
-                    Qualifications &amp; Requirements
+                    Desirable Skills
                   </h3>
                   <ul className="space-y-2">
                     {detailQualifications.map((q, i) => (
@@ -256,7 +262,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
               )}
 
               {c.jobDetail.howToApplySteps.length > 0 && (
-                <div className="rounded-2xl bg-[#FAF9F6] border border-[#E7E3D9] p-5">
+                <div className="rounded-2xl bg-[#FAF9F6] cube-glass border border-[#E7E3D9] p-5">
                   <h3 className="text-xs font-bold uppercase tracking-wider text-[#0B1324] mb-3 flex items-center gap-2">
                     <Sparkles className="w-4 h-4 text-[#C29A3E]" />
                     {c.jobDetail.howToApplyTitle}
@@ -293,7 +299,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                 className="px-7 py-3 rounded-full bg-[#0B1324] hover:bg-[#C29A3E] text-white text-xs font-bold tracking-wider uppercase transition shadow-md flex items-center justify-center gap-2 active:scale-95"
               >
                 <Send className="w-3.5 h-3.5" />
-                Apply &amp; Upload CV
+                Apply
               </button>
             </div>
           </motion.div>
@@ -371,13 +377,15 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                   <div className="h-16 w-16 mx-auto rounded-2xl bg-[#F4F2EC] border border-[#E7E3D9] text-[#0B1324] flex items-center justify-center mb-6">
                     <Briefcase className="w-8 h-8 text-[#C29A3E]" />
                   </div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#5B6474]">Status Notice</span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#5B6474]">Careers</span>
                   <h3 className="text-2xl font-bold font-serif text-[#0B1324] mt-2">
                     {c.emptyState.title}
                   </h3>
-                  <p className="mt-3 text-xs sm:text-sm text-[#5B6474] max-w-lg mx-auto leading-relaxed">
-                    {c.emptyState.description}
-                  </p>
+                  {c.emptyState.description && (
+                    <p className="mt-3 text-xs sm:text-sm text-[#5B6474] max-w-lg mx-auto leading-relaxed">
+                      {c.emptyState.description}
+                    </p>
+                  )}
                   <button
                     onClick={openPortal}
                     className="mt-6 px-6 py-3 rounded-full bg-[#F4F2EC] hover:bg-[#C29A3E] text-[#0B1324] hover:text-white border border-[#E7E3D9] text-xs font-bold transition shadow-xs"
@@ -404,14 +412,20 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                       className="group cursor-pointer rounded-3xl bg-white/95 backdrop-blur-2xl border border-[#E7E3D9] p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-[#E7E3D9] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0B1324] transition-all flex flex-col justify-between"
                     >
                       <div>
-                        <div className="flex items-center justify-between gap-2 mb-3">
-                          <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[#F4F2EC] text-[#0B1324] border border-[#E7E3D9]">
-                            {job.department || 'Engineering Vertical'}
-                          </span>
-                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
-                            {job.employmentType || 'Full-Time'}
-                          </span>
-                        </div>
+                        {(job.department || job.employmentType) && (
+                          <div className="flex items-center justify-between gap-2 mb-3">
+                            {job.department && (
+                              <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[#F4F2EC] text-[#0B1324] border border-[#E7E3D9]">
+                                {job.department}
+                              </span>
+                            )}
+                            {job.employmentType && (
+                              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
+                                {job.employmentType}
+                              </span>
+                            )}
+                          </div>
+                        )}
 
                         <h3 className="text-lg font-bold font-serif text-[#0B1324] leading-snug">
                           {job.title}
@@ -419,7 +433,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
 
                         <p className="text-xs text-[#5B6474] mt-2 flex items-center gap-1.5 font-medium">
                           <MapPin className="w-3.5 h-3.5 text-[#C29A3E]" />
-                          <span>{job.location || 'IIT Madras Research Park, Chennai'}</span>
+                          <span>{job.location || 'Chennai'}</span>
                         </p>
 
                         <p className="text-xs text-[#1F2633]/80 mt-3 line-clamp-3 leading-relaxed">
@@ -433,13 +447,13 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                       </div>
 
                       <div className="pt-5 mt-5 border-t border-[#E7E3D9] flex items-center justify-between gap-3">
-                        <span className="text-[11px] text-[#5B6474]">Exp: {job.experience || '3+ Yrs'}</span>
+                        <span className="text-[11px] text-[#5B6474] line-clamp-1">{job.experience ? `Exp: ${job.experience}` : ''}</span>
                         <button
                           onClick={(e) => { e.stopPropagation(); handleApplyClick(job); }}
                           className="shrink-0 px-4 py-2 rounded-full bg-[#F4F2EC] hover:bg-[#C29A3E] text-[#0B1324] hover:text-white border border-[#E7E3D9] text-xs font-bold transition-all shadow-xs flex items-center gap-1.5"
                         >
                           <Send className="w-3 h-3 text-[#C29A3E]" />
-                          <span>Apply &amp; Upload CV</span>
+                          <span>Apply</span>
                         </button>
                       </div>
                     </div>
@@ -448,6 +462,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
               )}
 
               {/* Resume Upload Callout */}
+              {c.talentCallout.heading && (
               <div className="rounded-3xl bg-gradient-to-r from-[#F4F2EC] via-white to-[#FAF9F6] border border-[#E7E3D9] p-8 sm:p-10 shadow-sm flex flex-col lg:flex-row items-center justify-between gap-8">
                 <div className="max-w-2xl space-y-2">
                   <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-white px-3 py-1 rounded-full border border-[#E7E3D9]">
@@ -468,6 +483,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                   {c.talentCallout.buttonLabel} &rarr;
                 </button>
               </div>
+              )}
 
             </div>
           ) : (
@@ -475,7 +491,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
             /* CAREER PORTAL FORM */
             <div className="max-w-4xl mx-auto">
 
-              <div className="rounded-3xl bg-white/95 backdrop-blur-2xl border border-[#E7E3D9] p-8 sm:p-12 shadow-[0_20px_50px_rgba(7,14,92,0.06)] relative overflow-hidden">
+              <div className="rounded-3xl bg-white/95 cube-glass backdrop-blur-2xl border border-[#E7E3D9] p-8 sm:p-12 shadow-[0_20px_50px_rgba(7,14,92,0.06)] relative overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#E7E3D9] to-transparent opacity-90" />
 
                 <div className="text-center max-w-2xl mx-auto mb-10">
@@ -503,7 +519,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                       onClick={() => { setSubmitSuccess(false); setActiveTab('openings'); }}
                       className="mt-4 px-6 py-2.5 rounded-full bg-[#0B1324] text-white text-xs font-bold hover:bg-[#C29A3E] transition"
                     >
-                      Return to Careers Overview
+                      Back to Careers
                     </button>
                   </div>
                 ) : (
@@ -518,49 +534,49 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
 
                       <div>
                         <label className="block text-xs font-bold uppercase tracking-wider text-[#1F2633] mb-2">
-                          Full Name *
+                          Name *
                         </label>
                         <input
                           type="text"
                           required
                           value={fullName}
                           onChange={(e) => setFullName(e.target.value)}
-                          placeholder="e.g. Dr. K. Ramesh"
+                          placeholder="Name"
                           className="w-full px-4 py-3 rounded-2xl bg-white border border-[#E7E3D9] text-xs text-[#1F2633] focus:outline-none focus:ring-2 focus:ring-[#0B1324]"
                         />
                       </div>
 
                       <div>
                         <label className="block text-xs font-bold uppercase tracking-wider text-[#1F2633] mb-2">
-                          Email Address *
+                          Email *
                         </label>
                         <input
                           type="email"
                           required
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          placeholder="ramesh@example.com"
+                          placeholder="Email"
                           className="w-full px-4 py-3 rounded-2xl bg-white border border-[#E7E3D9] text-xs text-[#1F2633] focus:outline-none focus:ring-2 focus:ring-[#0B1324]"
                         />
                       </div>
 
                       <div>
                         <label className="block text-xs font-bold uppercase tracking-wider text-[#1F2633] mb-2">
-                          Phone Number *
+                          Phone *
                         </label>
                         <input
                           type="tel"
                           required
                           value={phone}
                           onChange={(e) => setPhone(e.target.value)}
-                          placeholder="+91 98765 43210"
+                          placeholder="Phone"
                           className="w-full px-4 py-3 rounded-2xl bg-white border border-[#E7E3D9] text-xs text-[#1F2633] focus:outline-none focus:ring-2 focus:ring-[#0B1324]"
                         />
                       </div>
 
                       <div>
                         <label className="block text-xs font-bold uppercase tracking-wider text-[#1F2633] mb-2">
-                          Total Relevant Experience
+                          Experience
                         </label>
                         <select
                           value={experience}
@@ -575,7 +591,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
 
                       <div>
                         <label className="block text-xs font-bold uppercase tracking-wider text-[#1F2633] mb-2">
-                          Primary Engineering Domain
+                          Area
                         </label>
                         <select
                           value={domain}
@@ -590,7 +606,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
 
                       <div>
                         <label className="block text-xs font-bold uppercase tracking-wider text-[#1F2633] mb-2">
-                          Target Position / Opening
+                          Position
                         </label>
                         {/* All live openings (plus the general pool); candidates can also type their own. */}
                         <ComboSelect
@@ -607,7 +623,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                     {/* Resume Upload Box */}
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-[#1F2633] mb-2">
-                        Upload Resume / Curriculum Vitae (PDF or DOCX - Max 10MB) *
+                        Resume (PDF or DOCX - Max 10MB) *
                       </label>
                       <div className="rounded-2xl border-2 border-dashed border-[#E7E3D9] p-6 text-center hover:bg-[#FAF9F6] transition cursor-pointer relative">
                         <input
@@ -631,7 +647,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
 
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-[#1F2633] mb-2">
-                        Brief Cover Note / Career Summary
+                        Cover Note
                       </label>
                       <textarea
                         rows={4}
@@ -690,7 +706,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
               {c.benefits.items.map((item, i) => {
                 const Icon = BENEFIT_ICONS[item.icon] || Award;
                 return (
-                  <div key={i} className="p-6 rounded-3xl bg-[#FAF9F6] border border-[#E7E3D9] text-center">
+                  <div key={i} className="p-6 rounded-3xl bg-[#FAF9F6] cube-glass border border-[#E7E3D9] text-center">
                     <Icon className="w-8 h-8 text-[#C29A3E] mx-auto mb-3" />
                     <h4 className="font-serif font-bold text-[#0B1324] text-base">{item.title}</h4>
                     <p className="text-xs text-[#5B6474] mt-2 leading-relaxed">{item.description}</p>

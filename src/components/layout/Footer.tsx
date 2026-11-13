@@ -3,43 +3,44 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { MapPin, Mail, Phone, Clock, ArrowUpRight, Linkedin, Twitter, Facebook } from 'lucide-react';
+import { MapPin, Mail, Phone, ArrowUpRight, Linkedin, Twitter, Facebook } from 'lucide-react';
+import { contactInfo } from '@/data/contact';
 
 const VERTICAL_LINKS = [
   { label: 'Building & Construction', href: '/verticals/building-construction' },
   { label: 'Environment & Sustainability', href: '/verticals/environment-sustainability' },
-  { label: 'Smart Cities & IoT', href: '/verticals/smart-cities' },
+  { label: 'Smart Cities', href: '/verticals/smart-cities' },
   { label: 'Urban Planning & Transportation', href: '/verticals/urban-planning-transportation' },
-  { label: 'CEL Laboratory Testing', href: '/cel' },
+  { label: 'CEL', href: '/cel' },
 ];
 
 const GOVERNANCE_LINKS = [
-  { label: 'About Overview', href: '/about' },
+  { label: 'About CUBE', href: '/about' },
   { label: 'Vision & Mission', href: '/about/vision-mission' },
   { label: 'Chairman Message', href: '/about/chairman-message' },
-  { label: 'Governing Board', href: '/about#governing-board' },
+  { label: 'Board Members', href: '/about#governing-board' },
   { label: 'IIT Advisory Panel', href: '/about/advisory-panel' },
-  { label: 'Our Team (80+)', href: '/about/team' },
+  { label: 'Our Team', href: '/about/team' },
 ];
 
 const SOCIAL = [
-  { label: 'LinkedIn', href: 'https://linkedin.com', icon: Linkedin },
-  { label: 'Twitter', href: 'https://twitter.com', icon: Twitter },
-  { label: 'Facebook', href: 'https://facebook.com', icon: Facebook },
+  { label: 'LinkedIn', href: contactInfo.socialLinks.linkedin, icon: Linkedin },
+  { label: 'Twitter', href: contactInfo.socialLinks.twitter, icon: Twitter },
+  { label: 'Facebook', href: contactInfo.socialLinks.facebook, icon: Facebook },
 ];
 
 const CREDENTIALS = [
   {
     title: 'Centre of Excellence',
-    body: 'Established jointly by the Government of Tamil Nadu & Indian Institute of Technology Madras.',
+    body: 'Raised by IIT Madras and the Government of Tamil Nadu.',
   },
   {
-    title: 'Engineering Consultancy',
-    body: 'Independent Third Party Quality Assurance (TPQA) & structural proof checking for 40+ schemes.',
+    title: 'Applied Technology & Consultancy',
+    body: 'An Applied Technology, Consultancy, Advisory and Research Centre.',
   },
   {
-    title: 'CUBE Environmental Lab (CEL)',
-    body: 'Advanced water, wastewater, soil, and building materials testing facility at IITM Research Park.',
+    title: 'CUBE Environmental Laboratory (CEL)',
+    body: 'Analytical, testing and consultancy services across water, wastewater and solid waste domains.',
   },
 ];
 
@@ -92,8 +93,8 @@ export default function Footer() {
               </div>
             </Link>
             <p className="mt-7 max-w-sm text-[14px] leading-relaxed text-white/55">
-              An autonomous Centre of Excellence translating cutting-edge academic research from IIT Madras into resilient
-              public infrastructure, sustainable water systems, and smart urban environments.
+              Centre for Urbanization, Buildings &amp; Environment (CUBE) has been raised by IIT Madras and the Government of
+              Tamil Nadu as an Applied Technology, Consultancy, Advisory and Research Centre.
             </p>
             <div className="mt-8 flex items-center gap-2">
               {SOCIAL.map(({ label, href, icon: Icon }) => (
@@ -112,7 +113,7 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-3">
-            <FooterHeading>Core Verticals</FooterHeading>
+            <FooterHeading>Verticals</FooterHeading>
             <ul className="space-y-3.5">
               {VERTICAL_LINKS.map((link) => (
                 <li key={link.href}>
@@ -126,7 +127,7 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-2">
-            <FooterHeading>Governance</FooterHeading>
+            <FooterHeading>About</FooterHeading>
             <ul className="space-y-3.5">
               {GOVERNANCE_LINKS.map((link) => (
                 <li key={link.href}>
@@ -140,33 +141,29 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-3">
-            <FooterHeading>Institutional Office</FooterHeading>
+            <FooterHeading>Contact Us</FooterHeading>
             <div className="space-y-4 text-[14px] text-white/65">
               <div className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brass-400" />
                 <span className="leading-relaxed">
-                  First Floor, IIT Madras Research Park, Kanagam Road, Taramani, Chennai, Tamil Nadu 600113, India
+                  {contactInfo.address}
                 </span>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="h-4 w-4 shrink-0 text-brass-400" />
-                <a href="mailto:contact@cubeiitm.org" className="font-medium text-white transition-colors hover:text-brass-300">
-                  contact@cubeiitm.org
+                <a href={`mailto:${contactInfo.email}`} className="font-medium text-white transition-colors hover:text-brass-300">
+                  {contactInfo.email}
                 </a>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="h-4 w-4 shrink-0 text-brass-400" />
-                <a href="tel:+914466469800" className="font-medium text-white transition-colors hover:text-brass-300">
-                  +91 44 6646 9800
+                <a href={contactInfo.phoneHref} className="font-medium text-white transition-colors hover:text-brass-300">
+                  {contactInfo.phone}
                 </a>
-              </div>
-              <div className="flex items-center gap-3">
-                <Clock className="h-4 w-4 shrink-0 text-brass-400" />
-                <span>Monday &ndash; Friday: 9:00 AM &ndash; 5:30 PM (IST)</span>
               </div>
             </div>
             <Link href="/contact" className="btn-brass mt-8">
-              <span>Submit Technical Query</span>
+              <span>Get in Touch</span>
               <ArrowUpRight className="h-4 w-4" />
             </Link>
           </div>
@@ -179,14 +176,14 @@ export default function Footer() {
           <div>
             &copy; {currentYear} Centre for Urbanization, Buildings &amp; Environment (CUBE). All rights reserved.
             <span className="block text-white/30 sm:ml-2 sm:inline">
-              Autonomous Centre of Excellence &middot; Govt of Tamil Nadu &amp; IIT Madras.
+              IIT Madras &amp; Government of Tamil Nadu.
             </span>
           </div>
           <nav className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[11px] font-semibold uppercase tracking-[0.16em]">
             {[
               ['Tenders', '/tenders'],
               ['Careers', '/careers'],
-              ['Media Center', '/media'],
+              ['Media', '/media'],
               ['Contact', '/contact'],
             ].map(([label, href]) => (
               <Link key={href} href={href} className="transition-colors hover:text-brass-300">

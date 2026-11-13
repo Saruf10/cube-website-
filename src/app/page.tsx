@@ -21,7 +21,6 @@ import ArchitecturalHero from '@/components/hero/ArchitecturalHero';
 import CinematicImageStrip from '@/components/home/CinematicImageStrip';
 
 
-import SustainabilityStorytelling from '@/components/home/SustainabilityStorytelling';
 import SectionHeading from '@/components/home/SectionHeading';
 import VerticalsShowcase from '@/components/home/VerticalsShowcase';
 import ProjectsShowcase from '@/components/home/ProjectsShowcase';
@@ -35,7 +34,6 @@ import { projects as fallbackProjects } from '@/data/projects';
 
 import { celOverview } from '@/data/cel';
 
-import { aboutContent } from '@/data/about';
 
 import { boardMembers as fallbackBoardMembers, executiveLeadership } from '@/data/leadership';
 
@@ -147,36 +145,20 @@ export default function HomePage() {
   }, []);
 
   const filteredProjects = activeProjectTab === 'All'
-    ? projectList.filter(p => p.featured).slice(0, 6)
-    : projectList.filter(p => p.category === activeProjectTab).slice(0, 6);
+    ? projectList.filter(p => p.featured && p.status !== 'archived').slice(0, 6)
+    : projectList.filter(p => p.category === activeProjectTab && p.status !== 'archived').slice(0, 6);
 
   const projectTabs = [
     { key: 'All', label: 'Featured' },
     { key: 'Building & Construction', label: 'Buildings' },
     { key: 'Environment & Sustainability', label: 'Environment' },
-    { key: 'Smart Cities', label: 'Smart Cities' },
     { key: 'Urban Planning & Transportation', label: 'Transport' },
   ];
 
   const lifeAtCube = [
-    {
-      image: '/images/life-at-cube/about_life.jpg',
-      alt: 'Life at CUBE - Collaborative Engineering',
-      title: 'Collaborative Engineering',
-      body: 'Interdisciplinary technical reviews and peer audits at IIT Madras Research Park.',
-    },
-    {
-      image: '/images/life-at-cube/about_life1.jpg',
-      alt: 'Life at CUBE - Faculty Mentorship',
-      title: 'Academic Faculty Guidance',
-      body: 'Continuous mentorship from renowned IIT Madras professors and technical panels.',
-    },
-    {
-      image: '/images/life-at-cube/about_life2.jpg',
-      alt: 'Life at CUBE - Hands-on Field Testing',
-      title: 'Hands-On Site Testing',
-      body: 'Precision field inspection and non-destructive testing on high-stakes infrastructure sites.',
-    },
+    { image: '/images/life-at-cube/about_life.jpg', alt: 'Life at CUBE' },
+    { image: '/images/life-at-cube/about_life1.jpg', alt: 'Life at CUBE' },
+    { image: '/images/life-at-cube/about_life2.jpg', alt: 'Life at CUBE' },
   ];
 
   return (
@@ -187,7 +169,7 @@ export default function HomePage() {
       {/* 01 · SELECTED WORK */}
       <CinematicImageStrip />
 
-      {/* 03 · VERTICALS */}
+      {/* 02 · VERTICALS */}
       {/* On desktop the section pins while scrolling opens each vertical in turn. */}
       <section
         className="relative bg-stone-100 py-24 sm:py-32 lg:h-[calc(100svh+var(--vcount)*75svh)] lg:py-0"
@@ -196,18 +178,17 @@ export default function HomePage() {
         <div className="lg:sticky lg:top-0 lg:flex lg:h-[100svh] lg:flex-col lg:justify-center lg:py-[clamp(2rem,6vh,4.5rem)]">
         <div className="mx-auto w-full max-w-none px-5 sm:px-8 lg:px-12">
           <SectionHeading
-            index="03"
-            eyebrow="Specialized Disciplines"
+            index="02"
+            eyebrow="What We Do"
             title={
               <>
-                Four core engineering{' '}
-                <span className="block text-[1.45em] leading-[0.95] text-brass-300">verticals.</span>
+                <span className="text-brass-300">Verticals.</span>
               </>
             }
-            description="Open each discipline to explore core capabilities, testing domains, and verified state projects guided by CUBE specialists."
+            description="CUBE extends its services under four verticals, namely, Building & Construction, Environment & Sustainability, Smart Cities and Urban Planning & Transportation."
             action={
               <Link href="/verticals" className="link-arrow">
-                <span>All Verticals &amp; Faculties</span>
+                <span>Explore All Verticals</span>
                 <ArrowUpRight className="h-4 w-4 text-brass-600" />
               </Link>
             }
@@ -220,18 +201,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 04 · PROJECTS */}
+      {/* 03 · PROJECTS */}
       <section className="bg-white py-24 sm:py-32 lg:flex lg:min-h-[100svh] lg:flex-col lg:justify-center lg:[&>*:not(.absolute)]:w-full">
         <div className="mx-auto max-w-none px-5 sm:px-8 lg:px-12">
           <SectionHeading
-            index="04"
-            eyebrow="Applied Execution"
+            index="03"
+            eyebrow="Projects"
             title={
               <>
-                Featured applied <span className="text-brass-300">projects.</span>
+                Featured <span className="text-brass-300">projects.</span>
               </>
             }
-            description="Independent Third Party Quality Assurance (TPQA), PMC, and structural proof checking across 40+ premier public schemes."
           />
 
           {/* Segmented filter */}
@@ -266,37 +246,34 @@ export default function HomePage() {
 
           <div className="mt-16 flex justify-center">
             <Link href="/projects" className="btn-primary">
-              <span>All 40+ Projects &amp; Case Studies</span>
+              <span>View More Projects</span>
               <ArrowUpRight className="h-4 w-4" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* 05 · SUSTAINABILITY */}
-      <SustainabilityStorytelling />
-
-      {/* 06 · CEL LABORATORY */}
+      {/* 04 · CEL LABORATORY */}
       <section className="relative overflow-hidden bg-stone-50 py-24 sm:py-32 lg:flex lg:min-h-[100svh] lg:flex-col lg:justify-center lg:[&>*:not(.absolute)]:w-full">
         <div aria-hidden className="absolute inset-0 blueprint-grid opacity-60 [mask-image:linear-gradient(to_bottom,black,transparent_60%)]" />
         <div className="relative z-10 mx-auto max-w-none px-5 sm:px-8 lg:px-12">
           <SectionHeading
-            index="06"
-            eyebrow="Analytical Testing · IIT Madras Research Park"
+            index="04"
+            eyebrow="About CEL"
             title={
               <>
                 CUBE Environmental <span className="text-brass-300">Laboratory.</span>
               </>
             }
-            description="CEL is a precision environmental and materials testing facility delivering physical, chemical, and microbiological analysis for water, wastewater, soil, heavy metals, and building materials in compliance with BIS, ISO, and CPCB protocols."
+            description="CEL is an environmental testing laboratory equipped with state-of-the-art equipment, offering a wide range of analytical, testing and consultancy services across water, wastewater and solid waste domains."
             action={
               <div className="flex flex-wrap gap-3">
                 <Link href="/cel" className="btn-primary">
                   <FlaskConical className="h-4 w-4 !transform-none" />
-                  <span>Testing Capabilities</span>
+                  <span>Explore CEL</span>
                 </Link>
                 <Link href="/cel#enquiry" className="btn-outline">
-                  <span>Book a Sample</span>
+                  <span>CEL Enquiry</span>
                 </Link>
               </div>
             }
@@ -308,21 +285,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 08 · LIFE AT CUBE */}
+      {/* 05 · LIFE AT CUBE */}
       <section className="bg-stone-100 py-24 sm:py-32 lg:flex lg:min-h-[100svh] lg:flex-col lg:justify-center lg:[&>*:not(.absolute)]:w-full">
         <div className="mx-auto max-w-none px-5 sm:px-8 lg:px-12">
           <SectionHeading
-            index="08"
+            index="05"
             eyebrow="Workplace & Culture"
             title={
               <>
                 Life at <span className="font-editorial italic font-medium tracking-[-0.02em] text-brass-600">CUBE.</span>
               </>
             }
-            description="A collaborative research ecosystem uniting IIT Madras faculty, senior engineering consultants, and young researchers."
             action={
               <Link href="/life-at-cube" className="link-arrow">
-                <span>Gallery &amp; Workplace Culture</span>
+                <span>View Life at CUBE</span>
                 <ArrowUpRight className="h-4 w-4 text-brass-600" />
               </Link>
             }
@@ -331,7 +307,7 @@ export default function HomePage() {
           <div data-reveal data-reveal-delay="1" className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-12 md:grid-rows-2">
             {lifeAtCube.map((item, i) => (
               <Link
-                key={item.title}
+                key={item.image}
                 href="/life-at-cube"
                 className={`group relative overflow-hidden rounded-xl bg-ink ${
                   i === 0 ? 'aspect-[4/3] md:col-span-7 md:row-span-2 md:aspect-auto md:min-h-[560px]' : 'aspect-[16/10] md:col-span-5 md:aspect-auto md:min-h-[268px]'
@@ -344,37 +320,30 @@ export default function HomePage() {
                   sizes={i === 0 ? '(max-width: 768px) 100vw, 58vw' : '(max-width: 768px) 100vw, 42vw'}
                   className="object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/20 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
-                  <span className="text-[11px] font-bold tabular-nums text-brass-300">0{i + 1}</span>
-                  <h3 className={`mt-2 font-display font-semibold tracking-[-0.02em] text-white ${i === 0 ? 'text-2xl sm:text-3xl' : 'text-xl'}`}>
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 max-w-md text-[13px] leading-relaxed text-white/65">{item.body}</p>
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-ink-950/60 via-transparent to-transparent" />
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 09 · CLIENTS */}
+      {/* 06 · CLIENTS */}
       <ClientsWall clients={clientList} />
 
-      {/* 10 · NEWS */}
+      {/* 07 · NEWS */}
       <section className="bg-stone-50 py-24 sm:py-32 lg:flex lg:min-h-[100svh] lg:flex-col lg:justify-center lg:[&>*:not(.absolute)]:w-full border-t border-stone-200">
         <div className="mx-auto max-w-none px-5 sm:px-8 lg:px-12">
           <SectionHeading
-            index="10"
-            eyebrow="Media & Dispatches"
+            index="07"
+            eyebrow="Media"
             title={
               <>
-                Latest news <span className="text-brass-300">&amp; updates.</span>
+                Latest <span className="text-brass-300">news.</span>
               </>
             }
             action={
               <Link href="/media/news" className="link-arrow">
-                <span>All Releases</span>
+                <span>View All News</span>
                 <ArrowUpRight className="h-4 w-4 text-brass-600" />
               </Link>
             }
@@ -408,7 +377,7 @@ export default function HomePage() {
                 </h3>
                 <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-[#5B6474] line-clamp-3">{newsList[0].summary}</p>
                 <div className="mt-6 link-arrow">
-                  <span>Read Release</span>
+                  <span>Read More</span>
                   <ArrowUpRight className="h-4 w-4 text-brass-600" />
                 </div>
               </Link>
@@ -416,7 +385,7 @@ export default function HomePage() {
               {/* Dispatch list */}
               <div className="lg:col-span-5">
                 <div className="flex items-center justify-between border-b border-ink pb-4 text-[10px] font-bold uppercase tracking-[0.22em] text-ink">
-                  <span>More Dispatches</span>
+                  <span>More News</span>
                   <span className="tabular-nums text-stone-400">{String(Math.max(newsList.length - 1, 0)).padStart(2, '0')}</span>
                 </div>
                 <ul>
@@ -467,23 +436,18 @@ export default function HomePage() {
         <div className="relative z-10 mx-auto max-w-none px-5 sm:px-8 lg:px-12">
           <div data-reveal className="grid grid-cols-1 items-center gap-14 lg:grid-cols-12">
             <div className="lg:col-span-8">
-              <span className="eyebrow eyebrow-light">Collaborate With CUBE</span>
+              <span className="eyebrow eyebrow-light">Contact Us</span>
               <h2 className="display-xl mt-6 text-[2.5rem] sm:text-6xl lg:text-7xl text-white">
-                Engage CUBE for applied{' '}
-                <span className="font-editorial italic font-medium tracking-[-0.02em] text-brass-300">consultancy</span>{' '}
-                &amp; testing.
+                Let&apos;s get in{' '}
+                <span className="font-editorial italic font-medium tracking-[-0.02em] text-brass-300">touch.</span>
               </h2>
-              <p className="mt-8 max-w-2xl text-base leading-relaxed text-white/60">
-                Connect with our faculty advisors and multidisciplinary engineering teams at IIT Madras Research Park for
-                third-party quality assurance, precast engineering, water resources, or laboratory testing.
-              </p>
               <div className="mt-10 flex flex-wrap gap-4">
                 <Link href="/contact" className="btn-brass">
-                  <span>Submit Project Enquiry</span>
+                  <span>Contact Us</span>
                   <ArrowUpRight className="h-4 w-4" />
                 </Link>
                 <Link href="/cel" className="btn-outline-light">
-                  <span>CEL Testing Schedule</span>
+                  <span>CEL</span>
                 </Link>
               </div>
             </div>
@@ -493,7 +457,7 @@ export default function HomePage() {
                 <div className="relative h-52 w-52">
                   <Image
                     src="/images/branding/cube-primary-logo.png"
-                    alt="CUBE Primary Institutional Logo"
+                    alt="CUBE logo"
                     fill
                     sizes="208px"
                     className="object-contain"

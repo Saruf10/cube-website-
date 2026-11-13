@@ -54,7 +54,7 @@ export default function ClientsWall({ clients }: { clients: ClientPartner[] }) {
     <section className="relative overflow-hidden bg-white py-24 sm:py-32 lg:flex lg:min-h-[100svh] lg:flex-col lg:justify-center lg:[&>*:not(.absolute)]:w-full select-none">
       <div className="mx-auto max-w-none px-5 sm:px-8 lg:px-12">
         <SectionHeading
-          index="10"
+          index="06"
           eyebrow="Trusted Institutional Ecosystem"
           title={
             <>
