@@ -19,43 +19,43 @@ interface StripItem {
 const STRIP_ITEMS: StripItem[] = [
   {
     id: 's1',
-    title: "Third Party Quality Assurance (TPQA) Service for Construction of Permanent Campus for Indian Institute of Technology Tirupati, Andhra Pradesh.",
-    subtitle: '',
+    title: 'IIT Tirupati Permanent Campus',
+    subtitle: 'Third Party Quality Assurance (TPQA)',
     image: '/images/hero/slides_iit-tirupathi.jpg',
     category: "Building and Construction",
     link: '/projects/iit-tirupathi',
   },
   {
     id: 's2',
-    title: "Re-evaluation of Structural Vulnerability, Destress Mapping & Residual Life Assessment of thirty-three dilapidated tenements across Chennai.",
-    subtitle: '',
+    title: 'Chennai Tenement Re-evaluation',
+    subtitle: 'Structural Vulnerability & Residual Life Assessment',
     image: '/images/hero/slides_revaluation.jpg',
     category: "Building and Construction",
-    link: '/projects',
+    link: '/projects/reevaluation-scheme',
   },
   {
     id: 's3',
-    title: "Feasibility Study on Identification of Alternate Location for Parayan Kuttai Water Body & Surface Water Optimization Plan for Caterpillar India Private Limited, Thiruvallur",
-    subtitle: '',
+    title: 'Parayan Kuttai Water Body',
+    subtitle: 'Surface Water Optimisation for Caterpillar India',
     image: '/images/hero/slides_07-cat.jpg',
     category: "Environment & Sustainability",
-    link: '/projects',
+    link: '/projects/caterpillar',
   },
   {
     id: 's4',
-    title: "NICHE Industrial Park, SIPCOT Irungattukottai",
-    subtitle: '',
+    title: 'NICHE Industrial Park',
+    subtitle: 'Smart Model Park, SIPCOT Irungattukottai',
     image: '/images/hero/slides_niche.jpg',
     category: "Urban Planning & Transportation",
-    link: '/projects/upt2',
+    link: '/projects/upt6',
   },
   {
     id: 's5',
-    title: "Feasibility Study on the Relocation of Two Waterbodies within the Origins - Mahindra World City, Ponneri, Tamil Nadu",
-    subtitle: '',
+    title: 'Origins by Mahindra, Ponneri',
+    subtitle: 'Relocation of Two Waterbodies',
     image: '/images/hero/slides_mahindra.jpg',
     category: "Environment & Sustainability",
-    link: '/projects',
+    link: '/projects/mahindara',
   },
 ];
 
@@ -161,7 +161,7 @@ export default function CinematicImageStrip() {
             eyebrow="Our Projects"
             title={
               <>
-                Featured <span className="text-brass-300">projects.</span>
+                Selected work across <span className="text-brass-300">public infrastructure.</span>
               </>
             }
           />
@@ -211,7 +211,7 @@ export default function CinematicImageStrip() {
                   <div className="mt-5 flex gap-5 border-t border-stone-200 pt-5">
                     <span className="text-[11px] font-bold tabular-nums text-brass-600">{String(idx + 1).padStart(2, '0')}</span>
                     <div className="min-w-0">
-                      <h3 className={`font-display font-semibold leading-snug tracking-[-0.02em] text-ink line-clamp-2 ${featured ? 'text-xl' : 'text-lg'}`}>
+                      <h3 className={`font-display font-semibold leading-snug tracking-[-0.02em] text-ink ${featured ? 'text-2xl' : 'text-lg'}`}>
                         {item.title}
                       </h3>
                       {item.subtitle && (

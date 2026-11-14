@@ -26,6 +26,8 @@ import VerticalsShowcase from '@/components/home/VerticalsShowcase';
 import ProjectsShowcase from '@/components/home/ProjectsShowcase';
 import CELDatasheet from '@/components/home/CELDatasheet';
 import ClientsWall from '@/components/home/ClientsWall';
+import ImpactNumbers from '@/components/home/ImpactNumbers';
+import SustainabilityStorytelling from '@/components/home/SustainabilityStorytelling';
 
 import { verticals as fallbackVerticals } from '@/data/verticals';
 import { CMS_UPDATED_EVENT } from '@/lib/live';
@@ -182,7 +184,8 @@ export default function HomePage() {
             eyebrow="What We Do"
             title={
               <>
-                <span className="text-brass-300">Verticals.</span>
+                Four core engineering{' '}
+                <span className="block text-[1.45em] leading-[0.95] text-brass-300">verticals.</span>
               </>
             }
             description="CUBE extends its services under four verticals, namely, Building & Construction, Environment & Sustainability, Smart Cities and Urban Planning & Transportation."
@@ -209,7 +212,7 @@ export default function HomePage() {
             eyebrow="Projects"
             title={
               <>
-                Featured <span className="text-brass-300">projects.</span>
+                Featured applied <span className="text-brass-300">projects.</span>
               </>
             }
           />
@@ -252,6 +255,12 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* 05 · SUSTAINABILITY */}
+      <SustainabilityStorytelling />
+
+      {/* IMPACT IN NUMBERS */}
+      <ImpactNumbers />
 
       {/* 04 · CEL LABORATORY */}
       <section className="relative overflow-hidden bg-stone-50 py-24 sm:py-32 lg:flex lg:min-h-[100svh] lg:flex-col lg:justify-center lg:[&>*:not(.absolute)]:w-full">
@@ -338,7 +347,7 @@ export default function HomePage() {
             eyebrow="Media"
             title={
               <>
-                Latest <span className="text-brass-300">news.</span>
+                Latest news <span className="text-brass-300">&amp; updates.</span>
               </>
             }
             action={
