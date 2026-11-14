@@ -55,7 +55,7 @@ export default function FlipCard({
       aria-label={`${title} interactive flip card`}
     >
       <div 
-        className="relative w-full h-full rounded-xl transition-all duration-700 ease-out shadow-premium hover:shadow-premium-lg"
+        className="relative w-full h-full rounded-none transition-all duration-700 ease-out shadow-premium hover:shadow-premium-lg"
         style={{
           transformStyle: 'preserve-3d',
           transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
@@ -64,9 +64,9 @@ export default function FlipCard({
         
         {/* FRONT SIDE (Visible when NOT flipped, hidden when flipped) */}
         <div
-          className={`absolute inset-0 w-full h-full rounded-xl overflow-hidden bg-white border border-stone-200 flex flex-col justify-between transition-opacity duration-300 ${
-            isFlipped ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto'
-          }`}
+          className={`absolute inset-0 w-full h-full rounded-none overflow-hidden bg-white border border-stone-200 flex flex-col justify-between transition-opacity duration-300 ${
+ isFlipped ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto'
+ }`}
           style={{
             backfaceVisibility: 'hidden',
             WebkitBackfaceVisibility: 'hidden',
@@ -99,7 +99,7 @@ export default function FlipCard({
             </div>
 
             {/* Flip Hint */}
-            <div className="absolute bottom-3.5 right-3.5 z-10 flex items-center space-x-1.5 px-2.5 py-1 rounded-[3px] bg-ink/70 text-white text-[11px] backdrop-blur-md">
+            <div className="absolute bottom-3.5 right-3.5 z-10 flex items-center space-x-1.5 px-2.5 py-1 rounded-none bg-ink/70 text-white text-[11px] backdrop-blur-md">
               <RotateCw className="w-3 h-3 text-brass-300" />
               <span className="text-[10px] font-semibold uppercase tracking-[0.12em]"><span className="hidden [@media(hover:hover)]:inline">Hover to Flip</span><span className="[@media(hover:hover)]:hidden">Tap to Flip</span></span>
             </div>
@@ -130,9 +130,9 @@ export default function FlipCard({
 
         {/* BACK SIDE (Visible ONLY when flipped, zero bleed-through) */}
         <div
-          className={`absolute inset-0 w-full h-full rounded-xl overflow-hidden bg-ink text-white p-6 flex flex-col justify-between blueprint-grid-dark transition-opacity duration-300 ${
-            isFlipped ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-          }`}
+          className={`absolute inset-0 w-full h-full rounded-none overflow-hidden bg-ink text-white p-6 flex flex-col justify-between blueprint-grid-dark transition-opacity duration-300 ${
+ isFlipped ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+ }`}
           style={{
             backfaceVisibility: 'hidden',
             WebkitBackfaceVisibility: 'hidden',

@@ -2,6 +2,13 @@
 
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { PRELOADER_EXIT_EVENT } from '@/components/common/CountUp';
+
+/** Lets on-page animations (e.g. hero counters) start as the preloader lifts. */
+function announceExit() {
+  (window as any).__cubePreloaderDone = true;
+  window.dispatchEvent(new Event(PRELOADER_EXIT_EVENT));
+}
 
 const SEEN_KEY = 'cube-preloaded';
 const MIN_MS = 2300; // let the logo sequence play through once
@@ -52,6 +59,7 @@ export default function Preloader() {
           } catch {}
           root.style.overflow = '';
           setPhase('exit');
+          announceExit();
           timers.push(setTimeout(() => setPhase('done'), EXIT_MS));
         }, wait),
       );

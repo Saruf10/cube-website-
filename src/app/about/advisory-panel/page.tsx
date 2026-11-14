@@ -47,7 +47,7 @@ export default async function AdvisoryPanelPage() {
             {advisoryPanel.map((member, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-3xl bg-slate-50 border border-slate-200/90 shadow-sm hover:shadow-cube hover:border-teal-300 transition-all flex flex-col items-center text-center group"
+                className="p-6 rounded-none bg-slate-50 border border-slate-200/90 shadow-sm hover:shadow-cube hover:border-teal-300 transition-all flex flex-col items-center text-center group"
               >
                 <div className="relative h-28 w-28 rounded-full overflow-hidden mb-4 border-2 border-slate-200 group-hover:border-teal-500 shadow-sm transition-all">
                   <Image

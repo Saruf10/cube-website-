@@ -15,7 +15,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Link
       href={projectHref}
-      className="group rounded-3xl cube-gradient-card hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between overflow-hidden relative cursor-pointer"
+      className="group rounded-none cube-gradient-card hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between overflow-hidden relative cursor-pointer"
     >
       <div>
         {/* Project Thumbnail Image with Apple-style Fluid Zoom */}
@@ -37,7 +37,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
           {project.featured && (
             <div className="absolute top-3.5 right-3.5 z-10">
-              <span className="text-[10px] font-extrabold px-3 py-1 rounded-full bg-[#C29A3E] text-white shadow-xs">
+              <span className="text-[10px] font-extrabold px-3 py-1 rounded-none bg-[#C29A3E] text-white shadow-xs">
                 Key Project
               </span>
             </div>

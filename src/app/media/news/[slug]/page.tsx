@@ -65,12 +65,12 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
               <User className="w-3.5 h-3.5 mr-1" />
               {item.author || 'CUBE'}
             </span>
-            <span className="px-2.5 py-0.5 rounded-full bg-[#F4F2EC] text-[#0B1324] font-semibold">
+            <span className="px-2.5 py-0.5 rounded-none bg-[#F4F2EC] text-[#0B1324] font-semibold">
               {item.category}
             </span>
           </div>
 
-          <div className="relative h-64 sm:h-80 w-full rounded-2xl overflow-hidden bg-[#F7F7F4] mb-8">
+          <div className="relative h-64 sm:h-80 w-full rounded-none overflow-hidden bg-[#F7F7F4] mb-8">
             <Image
               src={item.image || '/images/hero/slides_building-training-team.jpg'}
               alt={item.title}

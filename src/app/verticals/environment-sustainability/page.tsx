@@ -40,7 +40,7 @@ export default async function EnvironmentSustainabilityPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-16">
             
             <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-50 px-3 py-1.5 rounded-full border border-teal-200">
+              <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-50 px-3 py-1.5 rounded-none border border-teal-200">
                 <Leaf className="w-3.5 h-3.5 text-teal-600" />
                 <span>Environment &amp; Sustainability</span>
               </div>
@@ -58,7 +58,7 @@ export default async function EnvironmentSustainabilityPage() {
               {/* Services Checklist */}
               <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {vertical.capabilities.map((cap, i) => (
-                  <div key={i} className="flex items-start text-xs sm:text-sm font-semibold text-slate-800 bg-slate-50 p-2.5 rounded-xl border border-slate-200/80">
+                  <div key={i} className="flex items-start text-xs sm:text-sm font-semibold text-slate-800 bg-slate-50 p-2.5 rounded-none border border-slate-200/80">
                     <CheckCircle2 className="w-4 h-4 text-teal-600 mr-2 flex-shrink-0 mt-0.5" />
                     <span>{cap}</span>
                   </div>
@@ -67,7 +67,7 @@ export default async function EnvironmentSustainabilityPage() {
             </div>
 
             {/* Vertical Visual Feature */}
-            <div className="lg:col-span-5 relative h-72 sm:h-96 w-full rounded-3xl overflow-hidden shadow-cube border border-slate-200 group">
+            <div className="lg:col-span-5 relative h-72 sm:h-96 w-full rounded-none overflow-hidden shadow-cube border border-slate-200 group">
               <Image
                 src={vertical.heroImage}
                 alt="Environment & Sustainability CUBE"
@@ -76,7 +76,7 @@ export default async function EnvironmentSustainabilityPage() {
                 priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0B1324]/60 via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4 text-white text-xs font-medium bg-white/90 text-[#1F2633] backdrop-blur-md p-3 rounded-xl border border-[#E7E3D9]">
+              <div className="absolute bottom-4 left-4 right-4 text-white text-xs font-medium bg-white/90 text-[#1F2633] backdrop-blur-md p-3 rounded-none border border-[#E7E3D9]">
                 {vertical.title}
               </div>
             </div>
@@ -84,9 +84,9 @@ export default async function EnvironmentSustainabilityPage() {
           </div>
 
           {/* Connected CEL Environmental Laboratory Banner */}
-          <div className="mt-16 p-8 rounded-3xl bg-gradient-to-r from-[#060F1E] to-[#0A1A33] text-white border border-teal-500/30 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+          <div className="mt-16 p-8 rounded-none bg-gradient-to-r from-[#060F1E] to-[#0A1A33] text-white border border-teal-500/30 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
             <div className="space-y-2 text-center md:text-left">
-              <span className="text-[11px] uppercase tracking-wider font-bold text-teal-300 bg-teal-900/60 px-3 py-1 rounded-full border border-teal-400/30">
+              <span className="text-[11px] uppercase tracking-wider font-bold text-teal-300 bg-teal-900/60 px-3 py-1 rounded-none border border-teal-400/30">
                 CEL
               </span>
               <h4 className="text-xl sm:text-2xl font-bold font-display">
@@ -98,7 +98,7 @@ export default async function EnvironmentSustainabilityPage() {
             </div>
             <Link
               href="/cel"
-              className="px-6 py-3 rounded-xl bg-teal-400 hover:bg-teal-300 text-ink font-bold text-xs sm:text-sm flex-shrink-0 transition-all shadow-cube-glow flex items-center"
+              className="px-6 py-3 rounded-none bg-teal-400 hover:bg-teal-300 text-ink font-bold text-xs sm:text-sm flex-shrink-0 transition-all shadow-cube-glow flex items-center"
             >
               <span>Explore CEL Services</span>
               <ArrowRight className="w-4 h-4 ml-2" />
@@ -110,7 +110,7 @@ export default async function EnvironmentSustainabilityPage() {
           <div className="mt-16 pt-12 border-t border-slate-200">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
+                <span className="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-50 px-3 py-1 rounded-none border border-teal-200">
                   Our Projects
                 </span>
                 <h3 className="text-2xl font-bold font-display text-ink mt-2">

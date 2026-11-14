@@ -49,7 +49,7 @@ export default function SideMenu() {
         aria-label={open ? 'Close menu' : 'Open menu'}
         aria-expanded={open}
         aria-controls="side-menu"
-        className="fixed right-0 top-1/2 z-[60] flex h-16 w-12 -translate-y-1/2 flex-col items-center justify-center gap-[6px] rounded-l-xl bg-ink text-white shadow-[0_18px_40px_-14px_rgba(11,19,36,0.6)] transition-colors duration-300 hover:bg-ink-700"
+        className="fixed right-0 top-1/2 z-[60] flex h-16 w-12 -translate-y-1/2 flex-col items-center justify-center gap-[6px] rounded-none bg-ink text-white shadow-[0_18px_40px_-14px_rgba(11,19,36,0.6)] transition-colors duration-300 hover:bg-ink-700"
       >
         <span
           className={`block h-[2px] w-5 bg-white transition-transform duration-300 ${
@@ -111,7 +111,7 @@ export default function SideMenu() {
                     const hasChildren = Boolean(item.children && item.children.length > 0);
                     const isOpen = expanded === item.title;
                     const rowClass =
-                      'group flex w-full items-center justify-between gap-4 rounded-lg px-3 py-3.5 text-left text-[15px] font-semibold text-ink transition-colors hover:bg-stone-100';
+                      'group flex w-full items-center justify-between gap-4 rounded-none px-3 py-3.5 text-left text-[15px] font-semibold text-ink transition-colors hover:bg-stone-100';
                     return (
                       <li key={item.title} className="border-b border-stone-100 last:border-0">
                         {hasChildren ? (
@@ -160,7 +160,7 @@ export default function SideMenu() {
                               </span>
                               {item.title}
                               {item.badge && (
-                                <span className="rounded-[3px] bg-brass-100 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-brass-700">
+                                <span className="rounded-none bg-brass-100 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-brass-700">
                                   {item.badge}
                                 </span>
                               )}

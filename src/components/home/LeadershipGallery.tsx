@@ -79,7 +79,7 @@ export default function LeadershipGallery({ id, sectionNumber, members, title, s
           {/* Portrait */}
           <div className="lg:col-span-5">
             <div className="crop-marks relative mx-auto max-w-md lg:max-w-none">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-stone-200 shadow-premium-lg">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-none bg-stone-200 shadow-premium-lg">
                 <AnimatePresence mode="popLayout" initial={false}>
                   <motion.div
                     key={`${m.name}-${index}`}
@@ -184,9 +184,9 @@ export default function LeadershipGallery({ id, sectionNumber, members, title, s
                 className="group w-28 sm:w-32 shrink-0 text-left"
               >
                 <div
-                  className={`relative aspect-[4/5] overflow-hidden rounded-lg bg-stone-200 ring-offset-2 ring-offset-stone-100 transition-all duration-300 ${
-                    on ? 'ring-2 ring-brass-400' : 'ring-0'
-                  }`}
+                  className={`relative aspect-[4/5] overflow-hidden rounded-none bg-stone-200 ring-offset-2 ring-offset-stone-100 transition-all duration-300 ${
+ on ? 'ring-2 ring-brass-400' : 'ring-0'
+ }`}
                 >
                   <Image
                     src={p.image || '/images/leadership/about_leader.jpg'}

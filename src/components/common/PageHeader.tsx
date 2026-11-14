@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
+import { displayTitle } from '@/lib/displayTitle';
 
 interface PageHeaderProps {
   badge: string;
@@ -36,8 +37,20 @@ function splitTitle(title: string) {
  * blueprint grid, a metadata rail (back + breadcrumbs), gold eyebrow, large display
  * headline with a gold italic accent word, and a supporting paragraph.
  */
-export default function PageHeader({ badge, title, description, breadcrumbs, backHref }: PageHeaderProps) {
+/**
+ * Headline size by title length: short page names stay poster-sized, long
+ * project titles (often 100-300 characters) step down so they read as a heading.
+ */
+function headlineSize(length: number): string {
+  if (length <= 40) return 'text-[clamp(2.4rem,6vw,5.4rem)]';
+  if (length <= 80) return 'text-[clamp(2.1rem,4.6vw,4.25rem)]';
+  if (length <= 140) return 'text-[clamp(1.85rem,3.4vw,3.25rem)] leading-[1.08]';
+  return 'text-[clamp(1.6rem,2.6vw,2.5rem)] leading-[1.15]';
+}
+
+export default function PageHeader({ badge, title: rawTitle, description, breadcrumbs, backHref }: PageHeaderProps) {
   const router = useRouter();
+  const title = displayTitle(rawTitle);
   const { before, accent, after } = splitTitle(title);
 
   const handleBack = () => {
@@ -101,7 +114,7 @@ export default function PageHeader({ badge, title, description, breadcrumbs, bac
                     {b.label}
                   </Link>
                 ) : (
-                  <span className="truncate text-white/90">{b.label}</span>
+                  <span className="max-w-[40ch] truncate text-white/90">{displayTitle(b.label)}</span>
                 )}
               </React.Fragment>
             ))}
@@ -125,7 +138,7 @@ export default function PageHeader({ badge, title, description, breadcrumbs, bac
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="display-xl mt-6 text-[clamp(2.4rem,6vw,5.4rem)] text-white"
+            className={`display-xl mt-6 text-white ${headlineSize(title.length)}`}
           >
             {before && <>{before} </>}
             {accent && (

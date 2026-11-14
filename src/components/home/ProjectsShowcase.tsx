@@ -19,7 +19,7 @@ export default function ProjectsShowcase({ projects }: { projects: Project[] }) 
 
   if (!projects.length) {
     return (
-      <div className="rounded-xl border border-dashed border-stone-300 p-16 text-center text-sm text-stone-500">
+      <div className="rounded-none border border-dashed border-stone-300 p-16 text-center text-sm text-stone-500">
         No projects published in this vertical yet.
       </div>
     );
@@ -34,7 +34,7 @@ export default function ProjectsShowcase({ projects }: { projects: Project[] }) 
       <div className="lg:col-span-7">
         <Link href={hrefFor(current)} className="group block">
           <div className="crop-marks relative">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-ink">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-none bg-ink">
               <AnimatePresence mode="popLayout" initial={false}>
                 <motion.div
                   key={current.slug}
@@ -134,7 +134,7 @@ export default function ProjectsShowcase({ projects }: { projects: Project[] }) 
                   <span className={`w-7 pl-3 text-[11px] font-bold tabular-nums transition-colors ${isActive ? 'text-brass-600' : 'text-stone-400'}`}>
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <div className="relative h-14 w-20 shrink-0 overflow-hidden rounded-md bg-stone-200">
+                  <div className="relative h-14 w-20 shrink-0 overflow-hidden rounded-none bg-stone-200">
                     <Image
                       src={p.heroImage || '/images/about/about_about.jpg'}
                       alt=""

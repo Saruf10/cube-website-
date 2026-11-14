@@ -92,9 +92,9 @@ export default function VerticalsShowcase({ verticals }: { verticals: Vertical[]
               if (Date.now() - lastScrollRef.current < 250) return;
               setActive(i);
             }}
-            className={`group relative overflow-hidden rounded-xl bg-ink transition-[flex-grow,height] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-              isOpen ? 'h-[560px] lg:h-auto lg:flex-[4.2]' : 'h-[92px] lg:h-auto lg:flex-[1]'
-            }`}
+            className={`group relative overflow-hidden rounded-none bg-ink transition-[flex-grow,height] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+ isOpen ? 'h-[560px] lg:h-auto lg:flex-[4.2]' : 'h-[92px] lg:h-auto lg:flex-[1]'
+ }`}
           >
             <Image
               src={v.heroImage}

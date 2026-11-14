@@ -88,7 +88,7 @@ export default function DocumentRequestModal({
       <div 
         role="dialog"
         aria-modal="true"
-        className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-slate-200 p-6 sm:p-8 overflow-hidden max-h-[90vh] overflow-y-auto"
+        className="relative w-full max-w-lg bg-white rounded-none shadow-2xl border border-slate-200 p-6 sm:p-8 overflow-hidden max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -101,7 +101,7 @@ export default function DocumentRequestModal({
 
         {submitted ? (
           <div className="text-center py-6">
-            <div className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-200">
+            <div className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-none flex items-center justify-center mx-auto mb-4 border border-emerald-200">
               <CheckCircle2 className="w-8 h-8" />
             </div>
             <h3 className="text-xl font-bold font-serif text-[#0B1324] mb-2">
@@ -112,7 +112,7 @@ export default function DocumentRequestModal({
             </p>
             <button
               onClick={resetAndClose}
-              className="px-6 py-2.5 rounded-full bg-[#0B1324] text-white text-xs font-semibold hover:bg-[#0B1324]/90 transition cursor-pointer"
+              className="px-6 py-2.5 rounded-none bg-[#0B1324] text-white text-xs font-semibold hover:bg-[#0B1324]/90 transition cursor-pointer"
             >
               Done
             </button>
@@ -120,7 +120,7 @@ export default function DocumentRequestModal({
         ) : (
           <div>
             <div className="flex items-center gap-3 mb-4 pr-8">
-              <div className="w-10 h-10 rounded-2xl bg-[#F4F2EC] border border-[#E7E3D9] text-[#0B1324] flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 rounded-none bg-[#F4F2EC] border border-[#E7E3D9] text-[#0B1324] flex items-center justify-center shrink-0">
                 <FileText className="w-5 h-5 text-[#C29A3E]" />
               </div>
               <div>
@@ -129,7 +129,7 @@ export default function DocumentRequestModal({
               </div>
             </div>
 
-            <div className="bg-[#FAF9F6] cube-glass p-3.5 rounded-2xl border border-[#E7E3D9]/70 mb-5 text-xs">
+            <div className="bg-[#FAF9F6] cube-glass p-3.5 rounded-none border border-[#E7E3D9]/70 mb-5 text-xs">
               <p className="font-semibold text-[#0B1324] line-clamp-2">{documentTitle}</p>
               {documentAuthor && (
                 <p className="text-[11px] text-slate-500 mt-1">{documentAuthor}</p>
@@ -137,7 +137,7 @@ export default function DocumentRequestModal({
             </div>
 
             {errorMsg && (
-              <div className="p-3 mb-4 text-xs rounded-xl bg-red-50 text-red-700 border border-red-200">
+              <div className="p-3 mb-4 text-xs rounded-none bg-red-50 text-red-700 border border-red-200">
                 {errorMsg}
               </div>
             )}
@@ -154,7 +154,7 @@ export default function DocumentRequestModal({
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="e.g. Dr. Rajesh Kumar"
-                    className="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-[#0B1324] focus:ring-1 focus:ring-[#0B1324]"
+                    className="w-full px-3.5 py-2 text-xs rounded-none border border-slate-300 focus:outline-none focus:border-[#0B1324] focus:ring-1 focus:ring-[#0B1324]"
                   />
                 </div>
                 <div>
@@ -167,7 +167,7 @@ export default function DocumentRequestModal({
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="name@dept.gov.in"
-                    className="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-[#0B1324] focus:ring-1 focus:ring-[#0B1324]"
+                    className="w-full px-3.5 py-2 text-xs rounded-none border border-slate-300 focus:outline-none focus:border-[#0B1324] focus:ring-1 focus:ring-[#0B1324]"
                   />
                 </div>
               </div>
@@ -183,7 +183,7 @@ export default function DocumentRequestModal({
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     placeholder="+91 98765 43210"
-                    className="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-[#0B1324] focus:ring-1 focus:ring-[#0B1324]"
+                    className="w-full px-3.5 py-2 text-xs rounded-none border border-slate-300 focus:outline-none focus:border-[#0B1324] focus:ring-1 focus:ring-[#0B1324]"
                   />
                 </div>
                 <div>
@@ -196,7 +196,7 @@ export default function DocumentRequestModal({
                     value={formData.organization}
                     onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
                     placeholder="CMDA / GCC / Dept / Firm"
-                    className="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-[#0B1324] focus:ring-1 focus:ring-[#0B1324]"
+                    className="w-full px-3.5 py-2 text-xs rounded-none border border-slate-300 focus:outline-none focus:border-[#0B1324] focus:ring-1 focus:ring-[#0B1324]"
                   />
                 </div>
               </div>
@@ -210,7 +210,7 @@ export default function DocumentRequestModal({
                   value={formData.purpose}
                   onChange={(e) => setFormData({ ...formData, purpose: e.target.value })}
                   placeholder="e.g., Reference for urban drainage DPR, academic research, quality audit study..."
-                  className="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-[#0B1324] focus:ring-1 focus:ring-[#0B1324] resize-none"
+                  className="w-full px-3.5 py-2 text-xs rounded-none border border-slate-300 focus:outline-none focus:border-[#0B1324] focus:ring-1 focus:ring-[#0B1324] resize-none"
                 />
               </div>
 
@@ -225,7 +225,7 @@ export default function DocumentRequestModal({
                 <button
                   type="submit"
                   disabled={loading}
-                  className="px-5 py-2 rounded-xl bg-[#0B1324] text-white text-xs font-semibold hover:bg-[#0B1324]/90 transition flex items-center gap-1.5 shadow-sm disabled:opacity-50 cursor-pointer"
+                  className="px-5 py-2 rounded-none bg-[#0B1324] text-white text-xs font-semibold hover:bg-[#0B1324]/90 transition flex items-center gap-1.5 shadow-sm disabled:opacity-50 cursor-pointer"
                 >
                   {loading ? (
                     <>

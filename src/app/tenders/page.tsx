@@ -43,15 +43,15 @@ export default async function TendersPage() {
                 {activeTenders.map((tender: any) => (
                   <div
                     key={tender.id}
-                    className="p-6 rounded-2xl bg-[#F7F7F4] cube-glass border border-[#E7E3D9] hover:shadow-md transition space-y-4"
+                    className="p-6 rounded-none bg-[#F7F7F4] cube-glass border border-[#E7E3D9] hover:shadow-md transition space-y-4"
                   >
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                       <div className="flex items-center gap-2">
-                        <span className="font-mono text-xs font-bold px-2.5 py-1 rounded-lg bg-[#F4F2EC] text-[#0B1324] border border-[#E7E3D9]">
+                        <span className="font-mono text-xs font-bold px-2.5 py-1 rounded-none bg-[#F4F2EC] text-[#0B1324] border border-[#E7E3D9]">
                           Tender ID: {tender.referenceNumber}
                         </span>
                         {tender.status && (
-                          <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-semibold">
+                          <span className="text-xs px-2.5 py-0.5 rounded-none bg-emerald-100 text-emerald-800 font-semibold">
                             {tender.status}
                           </span>
                         )}
@@ -84,7 +84,7 @@ export default async function TendersPage() {
                           href={tender.documentUrl}
                           target="_blank"
                           rel="noreferrer"
-                          className="px-4 py-1.5 rounded-full bg-[#F4F2EC] hover:bg-[#C29A3E] text-[#0B1324] hover:text-white border border-[#E7E3D9] text-xs font-semibold flex items-center gap-1.5 transition"
+                          className="px-4 py-1.5 rounded-none bg-[#F4F2EC] hover:bg-[#C29A3E] text-[#0B1324] hover:text-white border border-[#E7E3D9] text-xs font-semibold flex items-center gap-1.5 transition"
                         >
                           <Download className="w-3.5 h-3.5" />
                           <span>Download</span>
@@ -92,7 +92,7 @@ export default async function TendersPage() {
                       ) : (
                         <a
                           href={`mailto:${contactInfo.email}`}
-                          className="px-4 py-1.5 rounded-full bg-[#F4F2EC] hover:bg-[#C29A3E] text-[#0B1324] hover:text-white border border-[#E7E3D9] text-xs font-semibold flex items-center gap-1.5 transition"
+                          className="px-4 py-1.5 rounded-none bg-[#F4F2EC] hover:bg-[#C29A3E] text-[#0B1324] hover:text-white border border-[#E7E3D9] text-xs font-semibold flex items-center gap-1.5 transition"
                         >
                           <Mail className="w-3.5 h-3.5" />
                           <span>Request Document via Email</span>
@@ -105,8 +105,8 @@ export default async function TendersPage() {
             </div>
           ) : (
             /* Verified Empty State Per Institutional Requirement */
-            <div className="p-10 sm:p-14 rounded-3xl bg-slate-50 border border-slate-200 text-center shadow-sm">
-              <div className="h-16 w-16 mx-auto rounded-2xl bg-teal-50 border border-teal-200 text-teal-700 flex items-center justify-center mb-6">
+            <div className="p-10 sm:p-14 rounded-none bg-slate-50 border border-slate-200 text-center shadow-sm">
+              <div className="h-16 w-16 mx-auto rounded-none bg-teal-50 border border-teal-200 text-teal-700 flex items-center justify-center mb-6">
                 <FileText className="w-8 h-8" />
               </div>
 

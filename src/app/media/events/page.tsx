@@ -30,9 +30,9 @@ export default function EventsPage() {
             {events.map((evt, idx) => (
               <div
                 key={idx}
-                className="p-8 rounded-3xl bg-slate-50 border border-slate-200 shadow-sm hover:shadow-cube transition-all grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+                className="p-8 rounded-none bg-slate-50 border border-slate-200 shadow-sm hover:shadow-cube transition-all grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
               >
-                <div className="lg:col-span-5 relative h-64 sm:h-72 rounded-2xl overflow-hidden bg-slate-900">
+                <div className="lg:col-span-5 relative h-64 sm:h-72 rounded-none overflow-hidden bg-slate-900">
                   <Image
                     src={evt.image}
                     alt={evt.title}
@@ -77,7 +77,7 @@ export default function EventsPage() {
                     </div>
                     <div className="flex flex-wrap gap-2">
                       {evt.highlights.map((h, i) => (
-                        <span key={i} className="text-xs px-3 py-1 rounded-full bg-white border border-slate-200 text-slate-700 font-medium">
+                        <span key={i} className="text-xs px-3 py-1 rounded-none bg-white border border-slate-200 text-slate-700 font-medium">
                           &bull; {h}
                         </span>
                       ))}

@@ -64,7 +64,7 @@ export default function ContactPage() {
             {/* Left 5 Cols: Contact Coordinates & Google Map in Apple Liquid Glass */}
             <div className="lg:col-span-5 space-y-8">
               <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] border border-[#E7E3D9] px-3 py-1 rounded-full shadow-2xs">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] border border-[#E7E3D9] px-3 py-1 rounded-none shadow-2xs">
                   Contact Us
                 </span>
                 <h2 className="font-serif text-3xl font-light text-[#1F2633] tracking-tight mt-3">
@@ -117,7 +117,7 @@ export default function ContactPage() {
               </GlassPanel>
 
               {/* Google Maps Embed with Frosted Frame */}
-              <div className="rounded-3xl overflow-hidden border border-[#E7E3D9] shadow-sm h-72 relative">
+              <div className="rounded-none overflow-hidden border border-[#E7E3D9] shadow-sm h-72 relative">
                 <iframe
                   title="CUBE IIT Madras Research Park Location"
                   src={contactInfo.googleMapsEmbedUrl}
@@ -143,7 +143,7 @@ export default function ContactPage() {
             {/* Right 7 Cols: Real-Time Technical Enquiry Form in Apple Liquid Glass */}
             <div className="lg:col-span-7">
               <GlassPanel variant="panel" className="p-8 sm:p-10 border border-[#E7E3D9]">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] border border-[#E7E3D9] px-3 py-1 rounded-full shadow-2xs">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] border border-[#E7E3D9] px-3 py-1 rounded-none shadow-2xs">
                   Contact Form
                 </span>
                 <h2 className="font-serif text-3xl font-light text-[#1F2633] tracking-tight mt-3 mb-2">
@@ -152,7 +152,7 @@ export default function ContactPage() {
                 <div className="mb-8" />
 
                 {submitted ? (
-                  <div className="p-8 rounded-3xl bg-white cube-glass border border-[#E7E3D9] text-center space-y-3">
+                  <div className="p-8 rounded-none bg-white cube-glass border border-[#E7E3D9] text-center space-y-3">
                     <CheckCircle2 className="w-12 h-12 text-teal-600 mx-auto" />
                     <h3 className="text-xl font-bold font-serif text-[#1F2633]">
                       Message Sent
@@ -162,7 +162,7 @@ export default function ContactPage() {
                     </p>
                     <button
                       onClick={() => setSubmitted(false)}
-                      className="mt-4 px-6 py-2.5 rounded-full text-xs font-semibold bg-[#F4F2EC] text-[#0B1324] border border-[#E7E3D9]"
+                      className="mt-4 px-6 py-2.5 rounded-none text-xs font-semibold bg-[#F4F2EC] text-[#0B1324] border border-[#E7E3D9]"
                     >
                       Send Another Message
                     </button>
@@ -170,7 +170,7 @@ export default function ContactPage() {
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-5">
                     {errorMsg && (
-                      <div className="p-4 rounded-2xl bg-red-50 text-red-700 text-xs border border-red-200">
+                      <div className="p-4 rounded-none bg-red-50 text-red-700 text-xs border border-red-200">
                         {errorMsg}
                       </div>
                     )}
@@ -185,7 +185,7 @@ export default function ContactPage() {
                           required
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          className="w-full px-4 py-2.5 rounded-2xl bg-white border border-[#E7E3D9] text-xs text-[#1F2633] focus:outline-none focus:border-[#0B1324] shadow-2xs"
+                          className="w-full px-4 py-2.5 rounded-none bg-white border border-[#E7E3D9] text-xs text-[#1F2633] focus:outline-none focus:border-[#0B1324] shadow-2xs"
                           placeholder="Name"
                         />
                       </div>
@@ -199,7 +199,7 @@ export default function ContactPage() {
                           required
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className="w-full px-4 py-2.5 rounded-2xl bg-white border border-[#E7E3D9] text-xs text-[#1F2633] focus:outline-none focus:border-[#0B1324] shadow-2xs"
+                          className="w-full px-4 py-2.5 rounded-none bg-white border border-[#E7E3D9] text-xs text-[#1F2633] focus:outline-none focus:border-[#0B1324] shadow-2xs"
                           placeholder="Email"
                         />
                       </div>
@@ -215,7 +215,7 @@ export default function ContactPage() {
                           required
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          className="w-full px-4 py-2.5 rounded-2xl bg-white border border-[#E7E3D9] text-xs text-[#1F2633] focus:outline-none focus:border-[#0B1324] shadow-2xs"
+                          className="w-full px-4 py-2.5 rounded-none bg-white border border-[#E7E3D9] text-xs text-[#1F2633] focus:outline-none focus:border-[#0B1324] shadow-2xs"
                           placeholder="Phone"
                         />
                       </div>
@@ -228,7 +228,7 @@ export default function ContactPage() {
                           type="text"
                           value={formData.organization}
                           onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
-                          className="w-full px-4 py-2.5 rounded-2xl bg-white border border-[#E7E3D9] text-xs text-[#1F2633] focus:outline-none focus:border-[#0B1324] shadow-2xs"
+                          className="w-full px-4 py-2.5 rounded-none bg-white border border-[#E7E3D9] text-xs text-[#1F2633] focus:outline-none focus:border-[#0B1324] shadow-2xs"
                           placeholder="Organization"
                         />
                       </div>
@@ -243,7 +243,7 @@ export default function ContactPage() {
                         required
                         value={formData.enquiryCategory}
                         onChange={(e) => setFormData({ ...formData, enquiryCategory: e.target.value })}
-                        className="w-full px-4 py-2.5 rounded-2xl bg-white border border-[#E7E3D9] text-xs text-[#1F2633] focus:outline-none focus:border-[#0B1324] shadow-2xs"
+                        className="w-full px-4 py-2.5 rounded-none bg-white border border-[#E7E3D9] text-xs text-[#1F2633] focus:outline-none focus:border-[#0B1324] shadow-2xs"
                         placeholder="Subject"
                       />
                     </div>
@@ -257,7 +257,7 @@ export default function ContactPage() {
                         rows={4}
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        className="w-full px-4 py-2.5 rounded-2xl bg-white border border-[#E7E3D9] text-xs text-[#1F2633] focus:outline-none focus:border-[#0B1324] shadow-2xs"
+                        className="w-full px-4 py-2.5 rounded-none bg-white border border-[#E7E3D9] text-xs text-[#1F2633] focus:outline-none focus:border-[#0B1324] shadow-2xs"
                         placeholder="Enter Your Message"
                       />
                     </div>
@@ -265,7 +265,7 @@ export default function ContactPage() {
                     <button
                       type="submit"
                       disabled={loading}
-                      className="w-full py-3.5 px-6 rounded-full text-xs font-semibold text-white bg-[#0B1324] hover:bg-[#C29A3E] transition-colors flex items-center justify-center gap-2 shadow-sm disabled:opacity-50"
+                      className="w-full py-3.5 px-6 rounded-none text-xs font-semibold text-white bg-[#0B1324] hover:bg-[#C29A3E] transition-colors flex items-center justify-center gap-2 shadow-sm disabled:opacity-50"
                     >
                       {loading ? (
                         <>

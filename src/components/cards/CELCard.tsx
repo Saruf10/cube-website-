@@ -96,7 +96,7 @@ export default function CELCard({ service }: CELCardProps) {
           backfaceVisibility: 'hidden',
           WebkitBackfaceVisibility: 'hidden',
         }}
-        className="relative w-full h-full rounded-3xl overflow-hidden bg-white cube-glass border border-[#E7E3D9] shadow-[0_12px_36px_rgba(7,14,92,0.06)] hover:border-[#A8832F] transition-colors duration-300 flex flex-col justify-between"
+        className="relative w-full h-full rounded-none overflow-hidden bg-white cube-glass border border-[#E7E3D9] shadow-[0_12px_36px_rgba(7,14,92,0.06)] hover:border-[#A8832F] transition-colors duration-300 flex flex-col justify-between"
       >
         {/* TOP CINEMATIC IMAGE WITH 3D ZOOM DEPTH */}
         <div className="relative h-60 w-full overflow-hidden bg-slate-100 shrink-0">
@@ -167,7 +167,7 @@ export default function CELCard({ service }: CELCardProps) {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: '100%', opacity: 0 }}
               transition={{ type: 'spring', stiffness: 320, damping: 28 }}
-              className="absolute inset-x-0 bottom-0 top-16 bg-gradient-to-b from-white/95 via-white/98 to-[#F7F7F4] backdrop-blur-md p-6 flex flex-col justify-between z-20 border-t border-[#E7E3D9] shadow-2xl rounded-b-3xl"
+              className="absolute inset-x-0 bottom-0 top-16 bg-gradient-to-b from-white/95 via-white/98 to-[#F7F7F4] backdrop-blur-md p-6 flex flex-col justify-between z-20 border-t border-[#E7E3D9] shadow-2xl rounded-none"
               onClick={(e) => e.stopPropagation()}
             >
               <div>
@@ -178,7 +178,7 @@ export default function CELCard({ service }: CELCardProps) {
                       CEL Services
                     </span>
                   </div>
-                  <span className="h-2 w-2 rounded-full bg-[#C29A3E] animate-pulse" />
+                  <span className="h-2 w-2 rounded-none bg-[#C29A3E] animate-pulse" />
                 </div>
 
                 <h4 className="font-serif text-base font-semibold text-[#0B1324] mt-2.5 line-clamp-1">
@@ -238,7 +238,7 @@ export default function CELCard({ service }: CELCardProps) {
               <div className="pt-3 border-t border-[#E7E3D9]">
                 <Link
                   href="/cel#enquiry"
-                  className="w-full flex items-center justify-center py-2.5 px-4 rounded-full text-xs font-semibold text-[#0B1324] bg-[#F4F2EC] border border-[#E7E3D9] hover:bg-[#C29A3E] hover:text-white transition-all shadow-sm group/btn"
+                  className="w-full flex items-center justify-center py-2.5 px-4 rounded-none text-xs font-semibold text-[#0B1324] bg-[#F4F2EC] border border-[#E7E3D9] hover:bg-[#C29A3E] hover:text-white transition-all shadow-sm group/btn"
                 >
                   <span>Book A Test Now</span>
                   <ArrowUpRight className="w-4 h-4 ml-1.5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />

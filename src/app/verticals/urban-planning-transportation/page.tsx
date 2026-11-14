@@ -36,7 +36,7 @@ export default async function UrbanPlanningTransportationPage() {
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7 space-y-6">
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
+              <span className="text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-3 py-1 rounded-none border border-amber-200">
                 Urban Planning &amp; Transportation
               </span>
               <h2 className="text-3xl font-display font-extrabold text-ink">
@@ -60,7 +60,7 @@ export default async function UrbanPlanningTransportationPage() {
               )}
             </div>
 
-            <div className="lg:col-span-5 relative h-80 sm:h-96 rounded-3xl overflow-hidden shadow-cube border border-slate-200">
+            <div className="lg:col-span-5 relative h-80 sm:h-96 rounded-none overflow-hidden shadow-cube border border-slate-200">
               <Image
                 src={vertical.heroImage}
                 alt="Urban Planning & Transportation CUBE"
@@ -78,7 +78,7 @@ export default async function UrbanPlanningTransportationPage() {
       <section className="py-20 bg-slate-50 border-b border-slate-200">
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-3 py-1 rounded-none border border-amber-200">
               Our Projects
             </span>
             <h2 className="text-3xl font-display font-extrabold text-ink mt-3">
@@ -96,7 +96,7 @@ export default async function UrbanPlanningTransportationPage() {
             <div className="mt-12 text-center">
               <Link
                 href="/projects?category=Urban%20Planning%20%26%20Transportation"
-                className="inline-flex items-center px-8 py-3.5 rounded-full text-xs font-semibold text-[#0B1324] bg-white border border-[#E7E3D9] hover:bg-[#C29A3E] hover:text-[#1F2633] shadow-sm transition-all"
+                className="inline-flex items-center px-8 py-3.5 rounded-none text-xs font-semibold text-[#0B1324] bg-white border border-[#E7E3D9] hover:bg-[#C29A3E] hover:text-[#1F2633] shadow-sm transition-all"
               >
                 <span>View More Projects</span>
                 <ArrowRight className="w-4 h-4 ml-2" />
@@ -116,7 +116,7 @@ export default async function UrbanPlanningTransportationPage() {
           <div className="mt-6">
             <Link
               href="/contact"
-              className="inline-flex items-center px-6 py-3 rounded-xl text-xs font-bold text-white bg-[#C29A3E] hover:bg-[#C77B60] shadow-md transition"
+              className="inline-flex items-center px-6 py-3 rounded-none text-xs font-bold text-white bg-[#C29A3E] hover:bg-[#C77B60] shadow-md transition"
             >
               <span>Connect with Urban Planning Team</span>
               <ArrowRight className="w-4 h-4 ml-2" />

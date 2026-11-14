@@ -26,8 +26,8 @@ export default function ChairmanMessagePage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
             {/* Chairman Profile Card */}
-            <div className="md:col-span-4 p-6 rounded-3xl bg-slate-50 border border-slate-200 shadow-cube text-center">
-              <div className="relative h-44 w-44 mx-auto rounded-2xl overflow-hidden mb-4 border-2 border-teal-500 shadow-md">
+            <div className="md:col-span-4 p-6 rounded-none bg-slate-50 border border-slate-200 shadow-cube text-center">
+              <div className="relative h-44 w-44 mx-auto rounded-none overflow-hidden mb-4 border-2 border-teal-500 shadow-md">
                 <Image
                   src="/images/leadership/board_member_kamakoti.jpg"
                   alt="Prof. V. Kamakoti, Chairman CUBE & Director IIT Madras"
@@ -51,7 +51,7 @@ export default function ChairmanMessagePage() {
 
             {/* Message Body */}
             <div className="md:col-span-8 space-y-6">
-              <div className="p-3 bg-teal-50 text-teal-700 rounded-2xl w-fit">
+              <div className="p-3 bg-teal-50 text-teal-700 rounded-none w-fit">
                 <Quote className="w-8 h-8" />
               </div>
 

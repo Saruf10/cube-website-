@@ -37,7 +37,7 @@ export default async function BuildingConstructionPage() {
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
             <div className="lg:col-span-7 space-y-6">
-              <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+              <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-3 py-1 rounded-none border border-blue-200">
                 Building &amp; Construction
               </span>
               <h2 className="text-3xl font-display font-extrabold text-ink">
@@ -60,7 +60,7 @@ export default async function BuildingConstructionPage() {
               </div>
             </div>
 
-            <div className="lg:col-span-5 relative h-80 sm:h-96 rounded-3xl overflow-hidden shadow-cube border border-slate-200">
+            <div className="lg:col-span-5 relative h-80 sm:h-96 rounded-none overflow-hidden shadow-cube border border-slate-200">
               <Image
                 src={vertical.heroImage}
                 alt="Building & Construction CUBE"
@@ -78,7 +78,7 @@ export default async function BuildingConstructionPage() {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {vertical.keyServices.map((srv, i) => (
-                <div key={i} className="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-blue-300 transition-all">
+                <div key={i} className="p-6 rounded-none bg-slate-50 border border-slate-200 hover:border-blue-300 transition-all">
                   <h4 className="text-base font-bold text-ink mb-2 flex items-center">
                     <Wrench className="w-4 h-4 text-blue-600 mr-2" />
                     {srv.title}
@@ -112,7 +112,7 @@ export default async function BuildingConstructionPage() {
       <section className="py-20 bg-slate-50 border-b border-slate-200">
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+            <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-3 py-1 rounded-none border border-blue-200">
               Our Projects
             </span>
             <h2 className="text-3xl font-display font-extrabold text-ink mt-3">
@@ -130,7 +130,7 @@ export default async function BuildingConstructionPage() {
             <div className="mt-12 text-center">
               <Link
                 href="/projects?category=Building%20%26%20Construction"
-                className="inline-flex items-center px-8 py-3.5 rounded-full text-xs font-semibold text-[#0B1324] bg-white border border-[#E7E3D9] hover:bg-[#C29A3E] hover:text-[#1F2633] shadow-sm transition-all"
+                className="inline-flex items-center px-8 py-3.5 rounded-none text-xs font-semibold text-[#0B1324] bg-white border border-[#E7E3D9] hover:bg-[#C29A3E] hover:text-[#1F2633] shadow-sm transition-all"
               >
                 <span>View More Projects</span>
                 <ArrowRight className="w-4 h-4 ml-2" />
@@ -149,7 +149,7 @@ export default async function BuildingConstructionPage() {
           <div className="mt-6">
             <Link
               href="/contact"
-              className="inline-flex items-center px-6 py-3 rounded-xl text-xs font-bold text-white bg-[#C29A3E] hover:bg-[#C77B60] shadow-md transition"
+              className="inline-flex items-center px-6 py-3 rounded-none text-xs font-bold text-white bg-[#C29A3E] hover:bg-[#C77B60] shadow-md transition"
             >
               <span>Connect with Building Division</span>
               <ArrowRight className="w-4 h-4 ml-2" />

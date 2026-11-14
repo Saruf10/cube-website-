@@ -284,7 +284,7 @@ input, textarea, select, button {
 
   /* Buttons: crisp 4px radius, arrow nudges on hover */
   .btn {
-    @apply relative inline-flex items-center justify-center gap-2.5 overflow-hidden rounded-[4px] px-6 py-3.5 text-[12px] font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-out active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-brass-400 focus-visible:ring-offset-2;
+    @apply relative inline-flex items-center justify-center gap-2.5 overflow-hidden rounded-none px-6 py-3.5 text-[12px] font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-out active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-brass-400 focus-visible:ring-offset-2;
   }
   .btn svg {
     @apply transition-transform duration-300;
@@ -320,7 +320,7 @@ input, textarea, select, button {
 
   /* Premium surface card */
   .card-premium {
-    @apply relative overflow-hidden rounded-xl border border-stone-200 bg-white shadow-premium transition-all duration-500 ease-out;
+    @apply relative overflow-hidden rounded-none border border-stone-200 bg-white shadow-premium transition-all duration-500 ease-out;
   }
   .card-premium::after {
     content: '';
@@ -335,7 +335,7 @@ input, textarea, select, button {
 
   /* Small label chip */
   .chip {
-    @apply inline-flex items-center gap-1.5 rounded-[3px] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em];
+    @apply inline-flex items-center gap-1.5 rounded-none px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em];
   }
   .chip-light {
     @apply chip bg-white/95 text-ink shadow-sm backdrop-blur;
@@ -491,7 +491,7 @@ html.lenis body {
 
 ::-webkit-scrollbar-thumb {
   background: rgba(11, 19, 36, 0.22);
-  border-radius: 9999px;
+  border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -683,4 +683,23 @@ html[data-preloaded] #cube-preloader {
   .cube-preloader__emblem, .cube-preloader__word, .cube-preloader__rule, .cube-preloader__sub {
     animation: none; opacity: 1; transform: none;
   }
+}
+
+/* ---------- Search sheet ---------- */
+.search-sheet {
+  animation: search-sheet-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.search-backdrop {
+  animation: search-backdrop-in 0.3s ease both;
+}
+@keyframes search-sheet-in {
+  from { transform: translateY(-100%); }
+  to { transform: none; }
+}
+@keyframes search-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .search-sheet, .search-backdrop { animation: none; }
 }

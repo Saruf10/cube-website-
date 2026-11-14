@@ -3,6 +3,31 @@ import { Inter, Manrope, Cormorant_Garamond } from 'next/font/google';
 import './globals.css';
 import PublicShellWrapper from '@/components/layout/PublicShellWrapper';
 import LegacyCacheCleanup from '@/components/common/LegacyCacheCleanup';
+import { contactInfo } from '@/data/contact';
+
+// Structured data so search engines show CUBE's name, logo, address and contacts.
+const ORGANIZATION_JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'ResearchOrganization',
+  name: contactInfo.organization,
+  alternateName: 'CUBE',
+  url: 'https://cubeiitm.org',
+  logo: 'https://cubeiitm.org/images/branding/cube-live-logo.png',
+  foundingDate: '2017-05',
+  description:
+    'Applied Technology, Consultancy, Advisory and Research Centre raised by IIT Madras and the Government of Tamil Nadu.',
+  email: contactInfo.email,
+  telephone: '+91-44-6121-0901',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Module No.6C, 6th Floor, Phase II Building, IIT Madras Research Park, Kanagam Road, Taramani',
+    addressLocality: 'Chennai',
+    postalCode: '600113',
+    addressRegion: 'Tamil Nadu',
+    addressCountry: 'IN',
+  },
+  sameAs: Object.values(contactInfo.socialLinks),
+};
 
 const inter = Inter({
   subsets: ['latin'],
@@ -45,6 +70,12 @@ export const metadata: Metadata = {
     siteName: 'CUBE Digital Experience 2.0',
     images: [
       {
+        url: '/images/hero/slides_iit-tirupathi.jpg',
+        width: 1920,
+        height: 990,
+        alt: 'CUBE project: IIT Tirupati permanent campus',
+      },
+      {
         url: '/images/branding/cube-live-logo.png',
         width: 300,
         height: 60,
@@ -53,6 +84,11 @@ export const metadata: Metadata = {
     ],
     locale: 'en_IN',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@CUBEatIITM',
+    images: ['/images/hero/slides_iit-tirupathi.jpg'],
   },
   icons: {
     icon: '/images/branding/cube-live-logo.png',
@@ -68,6 +104,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${manrope.variable} ${cormorant.variable} scroll-smooth`} suppressHydrationWarning>
       <body className="min-h-screen flex flex-col bg-[#FFFFFF] text-[#1F2633] antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_JSON_LD) }}
+        />
         <LegacyCacheCleanup />
         <PublicShellWrapper>{children}</PublicShellWrapper>
       </body>

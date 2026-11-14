@@ -31,7 +31,7 @@ export default function Interactive3DClients({ clients }: Interactive3DClientsPr
 
       {/* Section Header */}
       <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8 mb-12 relative z-10 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-[#E7E3D9] text-[#0B1324] text-xs font-bold uppercase tracking-widest shadow-xs mb-3">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-none bg-white/90 border border-[#E7E3D9] text-[#0B1324] text-xs font-bold uppercase tracking-widest shadow-xs mb-3">
           <Sparkles className="w-3.5 h-3.5 text-[#C29A3E]" />
           <span>Clients</span>
         </div>
@@ -53,7 +53,7 @@ export default function Interactive3DClients({ clients }: Interactive3DClientsPr
           {row1.map((client, idx) => (
             <div
               key={`row1-${client.name}-${idx}`}
-              className="w-52 sm:w-60 h-28 rounded-2xl bg-white/90 backdrop-blur-2xl border border-white/90 shadow-[0_8px_24px_rgba(7,14,92,0.06),inset_0_1.5px_2px_rgba(255,255,255,0.95)] p-4 flex flex-col items-center justify-center transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:border-[#A8832F] hover:shadow-[0_16px_36px_rgba(7,14,92,0.12)] group"
+              className="w-52 sm:w-60 h-28 rounded-none bg-white/90 backdrop-blur-2xl border border-white/90 shadow-[0_8px_24px_rgba(7,14,92,0.06),inset_0_1.5px_2px_rgba(255,255,255,0.95)] p-4 flex flex-col items-center justify-center transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:border-[#A8832F] hover:shadow-[0_16px_36px_rgba(7,14,92,0.12)] group"
             >
               <div className="relative h-14 w-full flex items-center justify-center">
                 <Image
@@ -86,7 +86,7 @@ export default function Interactive3DClients({ clients }: Interactive3DClientsPr
           {row2.map((client, idx) => (
             <div
               key={`row2-${client.name}-${idx}`}
-              className="w-52 sm:w-60 h-28 rounded-2xl bg-white/90 backdrop-blur-2xl border border-white/90 shadow-[0_8px_24px_rgba(7,14,92,0.06),inset_0_1.5px_2px_rgba(255,255,255,0.95)] p-4 flex flex-col items-center justify-center transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:border-[#A8832F] hover:shadow-[0_16px_36px_rgba(7,14,92,0.12)] group"
+              className="w-52 sm:w-60 h-28 rounded-none bg-white/90 backdrop-blur-2xl border border-white/90 shadow-[0_8px_24px_rgba(7,14,92,0.06),inset_0_1.5px_2px_rgba(255,255,255,0.95)] p-4 flex flex-col items-center justify-center transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:border-[#A8832F] hover:shadow-[0_16px_36px_rgba(7,14,92,0.12)] group"
             >
               <div className="relative h-14 w-full flex items-center justify-center">
                 <Image
@@ -110,7 +110,7 @@ export default function Interactive3DClients({ clients }: Interactive3DClientsPr
       <div className="mt-10 text-center relative z-10">
         <Link
           href="/about#clients-partners"
-          className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-white border border-[#E7E3D9] hover:bg-[#F4F2EC] shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300 active:scale-95"
+          className="inline-flex items-center gap-2 px-7 py-3 rounded-none text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-white border border-[#E7E3D9] hover:bg-[#F4F2EC] shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300 active:scale-95"
         >
           <span>View All Clients</span>
           <ArrowUpRight className="w-4 h-4 text-[#C29A3E]" />

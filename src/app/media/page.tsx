@@ -61,11 +61,11 @@ export default function CompleteMediaExperience() {
                 data-anchor={item.id}
                 aria-current={activeMediaTab === item.id ? 'true' : undefined}
                 onClick={() => scrollTo(item.id)}
-                className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wider transition-all duration-300 whitespace-nowrap ${
-                  activeMediaTab === item.id
-                    ? 'bg-[#0B1324] text-white shadow-xs'
-                    : 'bg-white/60 text-[#1F2633] hover:bg-[#F4F2EC] hover:text-[#0B1324] border border-[#E7E3D9]/60'
-                }`}
+                className={`px-4 py-2 rounded-none text-xs font-semibold tracking-wider transition-all duration-300 whitespace-nowrap ${
+ activeMediaTab === item.id
+ ? 'bg-[#0B1324] text-white shadow-xs'
+ : 'bg-white/60 text-[#1F2633] hover:bg-[#F4F2EC] hover:text-[#0B1324] border border-[#E7E3D9]/60'
+ }`}
               >
                 {item.label}
               </button>
@@ -79,7 +79,7 @@ export default function CompleteMediaExperience() {
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-white px-3.5 py-1 rounded-full border border-[#E7E3D9]">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-white px-3.5 py-1 rounded-none border border-[#E7E3D9]">
                 News
               </span>
               <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#0B1324] mt-2">
@@ -92,11 +92,11 @@ export default function CompleteMediaExperience() {
             {newsItems.slice(0, 6).map((item) => (
               <div
                 key={item.id}
-                className="rounded-3xl bg-white cube-glass border border-[#E7E3D9] p-6 shadow-2xs hover:shadow-md hover:border-[#E7E3D9] transition-all flex flex-col justify-between"
+                className="rounded-none bg-white cube-glass border border-[#E7E3D9] p-6 shadow-2xs hover:shadow-md hover:border-[#E7E3D9] transition-all flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between text-[11px] font-semibold text-[#5B6474] mb-3">
-                    <span className="px-2.5 py-0.5 rounded-full bg-[#F4F2EC] text-[#0B1324] border border-[#E7E3D9]">
+                    <span className="px-2.5 py-0.5 rounded-none bg-[#F4F2EC] text-[#0B1324] border border-[#E7E3D9]">
                       {item.category || 'News'}
                     </span>
                     <span>{item.date}</span>
@@ -128,7 +128,7 @@ export default function CompleteMediaExperience() {
       <section id="events" className="py-20 sm:py-24 bg-white border-b border-[#E7E3D9]">
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3.5 py-1 rounded-full border border-[#E7E3D9]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3.5 py-1 rounded-none border border-[#E7E3D9]">
               Events
             </span>
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#0B1324] mt-2">
@@ -138,9 +138,9 @@ export default function CompleteMediaExperience() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {sampleEvents.map((evt, idx) => (
-              <div key={idx} className="rounded-3xl bg-[#FAF9F6] cube-glass border border-[#E7E3D9] p-6 shadow-2xs flex flex-col justify-between">
+              <div key={idx} className="rounded-none bg-[#FAF9F6] cube-glass border border-[#E7E3D9] p-6 shadow-2xs flex flex-col justify-between">
                 <div>
-                  <div className="relative h-48 w-full rounded-2xl overflow-hidden mb-4 border border-white ring-1 ring-[#E7E3D9]">
+                  <div className="relative h-48 w-full rounded-none overflow-hidden mb-4 border border-white ring-1 ring-[#E7E3D9]">
                     <Image src={evt.image} alt={evt.title} fill className="object-cover" />
                   </div>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-[#C29A3E]">{evt.category}{evt.date ? <> &bull; {evt.date}</> : null}</span>
@@ -163,7 +163,7 @@ export default function CompleteMediaExperience() {
       <section id="gallery" className="py-20 sm:py-24 bg-gradient-to-b from-[#FFFFFF] to-[#FAF9F6] border-b border-[#E7E3D9]">
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3.5 py-1 rounded-full border border-[#E7E3D9]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3.5 py-1 rounded-none border border-[#E7E3D9]">
               Gallery
             </span>
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#0B1324] mt-2">
@@ -176,7 +176,7 @@ export default function CompleteMediaExperience() {
           <div className="mt-12 text-center">
             <Link
               href="/media/gallery"
-              className="inline-flex items-center px-8 py-3.5 rounded-full text-xs font-semibold text-[#0B1324] bg-white border border-[#E7E3D9] hover:bg-[#C29A3E] hover:text-[#1F2633] shadow-sm transition-all"
+              className="inline-flex items-center px-8 py-3.5 rounded-none text-xs font-semibold text-[#0B1324] bg-white border border-[#E7E3D9] hover:bg-[#C29A3E] hover:text-[#1F2633] shadow-sm transition-all"
             >
               <span>View Full Gallery</span>
               <ArrowUpRight className="w-4 h-4 ml-2" />
@@ -189,7 +189,7 @@ export default function CompleteMediaExperience() {
       <section id="life-at-cube" className="py-20 sm:py-24 bg-white border-b border-[#E7E3D9]">
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3.5 py-1 rounded-full border border-[#E7E3D9]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3.5 py-1 rounded-none border border-[#E7E3D9]">
               Workplace Culture
             </span>
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#0B1324] mt-2">
@@ -199,7 +199,7 @@ export default function CompleteMediaExperience() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {lifeAtCubeImages.map((src) => (
-              <div key={src} className="group rounded-3xl overflow-hidden border border-[#E7E3D9] bg-white cube-glass shadow-2xs hover:shadow-md transition-all">
+              <div key={src} className="group rounded-none overflow-hidden border border-[#E7E3D9] bg-white cube-glass shadow-2xs hover:shadow-md transition-all">
                 <div className="relative h-60 w-full overflow-hidden">
                   <Image
                     src={src}

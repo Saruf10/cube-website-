@@ -95,21 +95,21 @@ export default function UniversalAnnouncementPopup() {
                 dismiss(ann.id, ann.frequency);
               }
             }}
-            className="pointer-events-auto rounded-3xl bg-white cube-glass backdrop-blur-2xl border border-[#E7E3D9] shadow-[0_20px_50px_rgba(7,14,92,0.18),0_4px_16px_rgba(36,39,43,0.08)] p-4 sm:p-5 relative select-none max-h-[70vh] overflow-y-auto"
+            className="pointer-events-auto rounded-none bg-white cube-glass backdrop-blur-2xl border border-[#E7E3D9] shadow-[0_20px_50px_rgba(7,14,92,0.18),0_4px_16px_rgba(36,39,43,0.08)] p-4 sm:p-5 relative select-none max-h-[70vh] overflow-y-auto"
           >
             {/* Specular highlight line */}
             <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#E7E3D9] to-transparent opacity-90" />
 
             {ann.imageUrl && (
-              <div className="relative hidden sm:block h-36 w-full rounded-2xl overflow-hidden mb-3.5 border border-[#E7E3D9]/80 shadow-xs">
+              <div className="relative hidden sm:block h-36 w-full rounded-none overflow-hidden mb-3.5 border border-[#E7E3D9]/80 shadow-xs">
                 <Image
                   src={ann.imageUrl}
                   alt={ann.title}
                   fill
                   className="object-cover"
                 />
-                <div className="absolute top-2.5 left-2.5 px-3 py-1 rounded-full bg-[#C29A3E] text-white text-[10px] font-bold tracking-wider shadow-sm flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                <div className="absolute top-2.5 left-2.5 px-3 py-1 rounded-none bg-[#C29A3E] text-white text-[10px] font-bold tracking-wider shadow-sm flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-none bg-white animate-pulse" />
                   <span>{ann.badge || 'WE ARE HIRING'}</span>
                 </div>
               </div>
@@ -117,15 +117,15 @@ export default function UniversalAnnouncementPopup() {
 
             <div className="flex items-start justify-between gap-3">
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#C29A3E] animate-pulse" />
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3 py-1 rounded-full border border-[#E7E3D9]">
+                <span className="w-2 h-2 rounded-none bg-[#C29A3E] animate-pulse" />
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3 py-1 rounded-none border border-[#E7E3D9]">
                   {ann.badge || ann.type || 'Announcement'}
                 </span>
               </div>
 
               <button
                 onClick={() => dismiss(ann.id, ann.frequency)}
-                className="text-[#5B6474] hover:text-[#0B1324] p-2.5 -m-1 rounded-full hover:bg-[#F4F2EC] transition-colors cursor-pointer"
+                className="text-[#5B6474] hover:text-[#0B1324] p-2.5 -m-1 rounded-none hover:bg-[#F4F2EC] transition-colors cursor-pointer"
                 aria-label="Dismiss announcement"
               >
                 <X className="w-4 h-4" />
@@ -146,7 +146,7 @@ export default function UniversalAnnouncementPopup() {
                 <Link
                   href={ann.ctaUrl}
                   onClick={() => dismiss(ann.id, ann.frequency)}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 sm:py-1.5 rounded-full bg-[#F4F2EC] hover:bg-[#0B1324] text-[#0B1324] hover:text-white font-bold text-xs border border-[#E7E3D9] transition-all shadow-2xs hover:shadow-xs active:scale-95"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 sm:py-1.5 rounded-none bg-[#F4F2EC] hover:bg-[#0B1324] text-[#0B1324] hover:text-white font-bold text-xs border border-[#E7E3D9] transition-all shadow-2xs hover:shadow-xs active:scale-95"
                 >
                   <span>{ann.ctaText || 'Learn More'}</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-[#C29A3E]" />

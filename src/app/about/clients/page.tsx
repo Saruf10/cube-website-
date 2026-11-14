@@ -27,7 +27,7 @@ export default function ClientsPage() {
       <section className="py-20 bg-white border-b border-slate-200">
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
+            <span className="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-50 px-3 py-1 rounded-none border border-teal-200">
               Our Clients
             </span>
             <h2 className="text-3xl font-display font-extrabold text-ink mt-3">
@@ -39,7 +39,7 @@ export default function ClientsPage() {
             {clients.map((client, idx) => (
               <div
                 key={idx}
-                className="h-28 p-4 bg-slate-50 hover:bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-cube hover:border-teal-300 transition-all flex flex-col items-center justify-center text-center group"
+                className="h-28 p-4 bg-slate-50 hover:bg-white rounded-none border border-slate-200 shadow-sm hover:shadow-cube hover:border-teal-300 transition-all flex flex-col items-center justify-center text-center group"
               >
                 <div className="relative h-14 w-full">
                   <Image
@@ -59,7 +59,7 @@ export default function ClientsPage() {
       <section className="py-20 bg-slate-50">
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
+            <span className="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-50 px-3 py-1 rounded-none border border-teal-200">
               Partners
             </span>
             <h2 className="text-3xl font-display font-extrabold text-ink mt-3">
@@ -71,7 +71,7 @@ export default function ClientsPage() {
             {partners.map((partner, idx) => (
               <div
                 key={idx}
-                className="h-28 p-4 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-cube hover:border-teal-300 transition-all flex flex-col items-center justify-center text-center group"
+                className="h-28 p-4 bg-white rounded-none border border-slate-200 shadow-sm hover:shadow-cube hover:border-teal-300 transition-all flex flex-col items-center justify-center text-center group"
               >
                 <div className="relative h-14 w-full">
                   <Image

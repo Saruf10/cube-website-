@@ -192,11 +192,11 @@ export default function GalleryGrid({
               key={c}
               type="button"
               onClick={() => setCategory(c)}
-              className={`px-4 py-2 rounded-full text-xs font-semibold transition-all ${
-                category === c
-                  ? 'bg-[#F4F2EC] text-[#0B1324] border border-[#E7E3D9] shadow-sm'
-                  : 'bg-[#F7F7F4] text-[#5B6474] hover:text-[#1F2633] hover:bg-[#F4F2EC]'
-              }`}
+              className={`px-4 py-2 rounded-none text-xs font-semibold transition-all ${
+ category === c
+ ? 'bg-[#F4F2EC] text-[#0B1324] border border-[#E7E3D9] shadow-sm'
+ : 'bg-[#F7F7F4] text-[#5B6474] hover:text-[#1F2633] hover:bg-[#F4F2EC]'
+ }`}
             >
               {c}
             </button>
@@ -211,7 +211,7 @@ export default function GalleryGrid({
             type="button"
             onClick={() => setOpenIndex(idx)}
             aria-label={`Open: ${item.title}`}
-            className="group text-left rounded-3xl overflow-hidden border border-[#E7E3D9] bg-white cube-glass shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C29A3E]"
+            className="group text-left rounded-none overflow-hidden border border-[#E7E3D9] bg-white cube-glass shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C29A3E]"
           >
             <div className="relative h-60 w-full overflow-hidden bg-[#F4F2EC]">
               <Image
@@ -225,7 +225,7 @@ export default function GalleryGrid({
               <span className="absolute top-3.5 left-3.5 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-white/90 text-[#0B1324] border border-white/80 backdrop-blur-md">
                 {item.category}
               </span>
-              <span className="absolute top-3.5 right-3.5 p-1.5 rounded-full bg-white/90 text-[#0B1324] opacity-0 group-hover:opacity-100 transition-opacity">
+              <span className="absolute top-3.5 right-3.5 p-1.5 rounded-none bg-white/90 text-[#0B1324] opacity-0 group-hover:opacity-100 transition-opacity">
                 <Maximize2 className="w-3.5 h-3.5" />
               </span>
               <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
@@ -260,12 +260,12 @@ export default function GalleryGrid({
               touchX.current = null;
             }}
           >
-            <div className="relative w-full max-w-6xl max-h-[92vh] bg-white rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row">
+            <div className="relative w-full max-w-6xl max-h-[92vh] bg-white rounded-none overflow-hidden shadow-2xl flex flex-col lg:flex-row">
               <button
                 type="button"
                 onClick={close}
                 aria-label="Close"
-                className="absolute top-3 right-3 z-20 p-2.5 rounded-full bg-white/90 text-[#0B1324] hover:bg-white shadow-md"
+                className="absolute top-3 right-3 z-20 p-2.5 rounded-none bg-white/90 text-[#0B1324] hover:bg-white shadow-md"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -279,7 +279,7 @@ export default function GalleryGrid({
                       type="button"
                       onClick={prev}
                       aria-label="Previous"
-                      className="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-white/85 text-[#0B1324] hover:bg-white shadow-md"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 rounded-none bg-white/85 text-[#0B1324] hover:bg-white shadow-md"
                     >
                       <ChevronLeft className="w-5 h-5" />
                     </button>
@@ -287,7 +287,7 @@ export default function GalleryGrid({
                       type="button"
                       onClick={next}
                       aria-label="Next"
-                      className="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-white/85 text-[#0B1324] hover:bg-white shadow-md"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 rounded-none bg-white/85 text-[#0B1324] hover:bg-white shadow-md"
                     >
                       <ChevronRight className="w-5 h-5" />
                     </button>
@@ -297,7 +297,7 @@ export default function GalleryGrid({
 
               {/* Content */}
               <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain p-6 sm:p-8 flex flex-col">
-                <span className="self-start text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-[#F4F2EC] text-[#0B1324] border border-[#E7E3D9]">
+                <span className="self-start text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-none bg-[#F4F2EC] text-[#0B1324] border border-[#E7E3D9]">
                   {active.category}
                 </span>
                 {active.date && (
@@ -319,7 +319,7 @@ export default function GalleryGrid({
                     <Link
                       href={active.link.href}
                       onClick={close}
-                      className="inline-flex items-center px-5 py-2.5 rounded-full text-xs font-semibold text-[#0B1324] bg-[#F4F2EC] border border-[#E7E3D9] hover:bg-[#C29A3E] hover:text-white transition-all"
+                      className="inline-flex items-center px-5 py-2.5 rounded-none text-xs font-semibold text-[#0B1324] bg-[#F4F2EC] border border-[#E7E3D9] hover:bg-[#C29A3E] hover:text-white transition-all"
                     >
                       <span>{active.link.label}</span>
                       <ArrowUpRight className="w-4 h-4 ml-1.5" />

@@ -107,7 +107,7 @@ export default function Vertical3DTeamCarousel({
           {/* LEFT: 3D Cylindrical Vertical Carousel Track */}
           <div className="w-full lg:w-1/2 flex flex-col justify-center items-center">
             <div 
-              className="relative w-[340px] sm:w-[440px] h-[440px] flex items-center justify-center outline-none focus-visible:ring-2 focus-visible:ring-brass-400 rounded-xl"
+              className="relative w-[340px] sm:w-[440px] h-[440px] flex items-center justify-center outline-none focus-visible:ring-2 focus-visible:ring-brass-400 rounded-none"
               style={{ perspective: '1100px' }}
               tabIndex={0}
               role="region"
@@ -139,11 +139,11 @@ export default function Vertical3DTeamCarousel({
                   <div
                     key={`${member.name}-${i}`}
                     onClick={() => updateCarousel(i)}
-                    className={`absolute w-[320px] sm:w-[410px] h-[220px] sm:h-[240px] rounded-xl transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] cursor-pointer select-none overflow-hidden ${
-                      isCenter 
-                        ? 'z-30 shadow-premium-lg border border-stone-200 before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-brass-400 before:z-10'
-                        : 'shadow-premium border border-stone-200/70 hover:opacity-90'
-                    }`}
+                    className={`absolute w-[320px] sm:w-[410px] h-[220px] sm:h-[240px] rounded-none transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] cursor-pointer select-none overflow-hidden ${
+ isCenter 
+ ? 'z-30 shadow-premium-lg border border-stone-200 before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-brass-400 before:z-10'
+ : 'shadow-premium border border-stone-200/70 hover:opacity-90'
+ }`}
                     style={{
                       transformStyle: 'preserve-3d',
                       ...(offsetClass === 'center-card' && {
@@ -181,7 +181,7 @@ export default function Vertical3DTeamCarousel({
                     <div className="relative w-full h-full p-5 flex items-center gap-4 sm:gap-5">
                       
                       {/* Portrait Avatar Container - Always perfectly framed without clipping forehead or chin */}
-                      <div className="relative flex-shrink-0 w-28 h-28 sm:w-32 sm:h-32 rounded-lg overflow-hidden bg-stone-200">
+                      <div className="relative flex-shrink-0 w-28 h-28 sm:w-32 sm:h-32 rounded-none overflow-hidden bg-stone-200">
                         <Image
                           src={member.image || '/images/leadership/about_leader.jpg'}
                           alt={member.name}
@@ -237,14 +237,14 @@ export default function Vertical3DTeamCarousel({
               <button
                 onClick={handlePrev}
                 aria-label="Previous member"
-                className="w-12 h-12 rounded-full border border-ink/15 bg-white text-ink flex items-center justify-center hover:bg-ink hover:text-white hover:border-ink active:scale-95 transition-all group"
+                className="w-12 h-12 rounded-none border border-ink/15 bg-white text-ink flex items-center justify-center hover:bg-ink hover:text-white hover:border-ink active:scale-95 transition-all group"
               >
                 <ChevronUp className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />
               </button>
               <button
                 onClick={handleNext}
                 aria-label="Next member"
-                className="w-12 h-12 rounded-full border border-ink/15 bg-white text-ink flex items-center justify-center hover:bg-ink hover:text-white hover:border-ink active:scale-95 transition-all group"
+                className="w-12 h-12 rounded-none border border-ink/15 bg-white text-ink flex items-center justify-center hover:bg-ink hover:text-white hover:border-ink active:scale-95 transition-all group"
               >
                 <ChevronDown className="w-5 h-5 group-hover:translate-y-0.5 transition-transform" />
               </button>
@@ -254,7 +254,7 @@ export default function Vertical3DTeamCarousel({
             </div>
 
             {/* Member Info Card with Apple Frosted Glass */}
-            <div className="crop-marks w-full max-w-md p-7 sm:p-8 rounded-xl bg-white border border-stone-200 text-left transition-all duration-500 shadow-premium-lg">
+            <div className="crop-marks w-full max-w-md p-7 sm:p-8 rounded-none bg-white border border-stone-200 text-left transition-all duration-500 shadow-premium-lg">
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <span className="chip bg-ink text-white">
@@ -308,11 +308,11 @@ export default function Vertical3DTeamCarousel({
                   key={i}
                   onClick={() => updateCarousel(i)}
                   aria-label={`Go to slide ${i + 1}`}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    i === currentIndex 
-                      ? 'w-8 bg-brass-500' 
-                      : 'w-2 bg-ink/15 hover:bg-ink/40'
-                  }`}
+                  className={`h-2 rounded-none transition-all duration-300 ${
+ i === currentIndex 
+ ? 'w-8 bg-brass-500' 
+ : 'w-2 bg-ink/15 hover:bg-ink/40'
+ }`}
                 />
               ))}
             </div>

@@ -93,11 +93,11 @@ export default function CompleteAboutExperience() {
                 data-anchor={item.id}
                 aria-current={activeSection === item.id ? 'true' : undefined}
                 onClick={() => scrollTo(item.id)}
-                className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wider transition-all duration-300 whitespace-nowrap cursor-pointer active:scale-95 ${
-                  activeSection === item.id
-                    ? 'bg-[#0B1324] text-white shadow-sm'
-                    : 'bg-white/80 text-[#1F2633] hover:bg-[#F4F2EC] hover:text-[#0B1324] border border-[#E7E3D9]'
-                }`}
+                className={`px-4 py-2 rounded-none text-xs font-semibold tracking-wider transition-all duration-300 whitespace-nowrap cursor-pointer active:scale-95 ${
+ activeSection === item.id
+ ? 'bg-[#0B1324] text-white shadow-sm'
+ : 'bg-white/80 text-[#1F2633] hover:bg-[#F4F2EC] hover:text-[#0B1324] border border-[#E7E3D9]'
+ }`}
               >
                 {item.label}
               </button>
@@ -112,7 +112,7 @@ export default function CompleteAboutExperience() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             <div className="lg:col-span-7 space-y-6">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-white px-3.5 py-1 rounded-full border border-[#E7E3D9] shadow-xs">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-white px-3.5 py-1 rounded-none border border-[#E7E3D9] shadow-xs">
                 About Cube
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#0B1324] tracking-tight leading-tight">
@@ -129,7 +129,7 @@ export default function CompleteAboutExperience() {
 
             {/* Right: Institutional Glass Plaque */}
             <div className="lg:col-span-5 flex flex-col items-center">
-              <div className="rounded-3xl bg-white/90 backdrop-blur-2xl border border-[#E7E3D9] shadow-[0_20px_50px_rgba(7,14,92,0.08)] p-8 text-center w-full max-w-md relative overflow-hidden">
+              <div className="rounded-none bg-white/90 backdrop-blur-2xl border border-[#E7E3D9] shadow-[0_20px_50px_rgba(7,14,92,0.08)] p-8 text-center w-full max-w-md relative overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C29A3E] to-transparent opacity-90" />
 
                 <div className="relative h-44 w-44 mx-auto mb-6 flex items-center justify-center">
@@ -162,7 +162,7 @@ export default function CompleteAboutExperience() {
       <section id="vision-mission" className="py-20 sm:py-24 bg-white border-b border-[#E7E3D9]">
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3.5 py-1 rounded-full border border-[#E7E3D9]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3.5 py-1 rounded-none border border-[#E7E3D9]">
               Vision &amp; Mission
             </span>
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#0B1324] mt-3">
@@ -171,7 +171,7 @@ export default function CompleteAboutExperience() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#FAF9F6] to-white border border-[#E7E3D9] shadow-sm relative overflow-hidden">
+            <div className="p-8 sm:p-10 rounded-none bg-gradient-to-br from-[#FAF9F6] to-white border border-[#E7E3D9] shadow-sm relative overflow-hidden">
               <Compass className="w-10 h-10 text-[#C29A3E] mb-4" />
               <h3 className="font-serif text-2xl font-bold text-[#0B1324] mb-3">Our Vision</h3>
               <p className="text-sm text-[#1F2633]/85 leading-relaxed font-sans">
@@ -179,7 +179,7 @@ export default function CompleteAboutExperience() {
               </p>
             </div>
 
-            <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#F4F2EC] to-white border border-[#E7E3D9] shadow-sm relative overflow-hidden">
+            <div className="p-8 sm:p-10 rounded-none bg-gradient-to-br from-[#F4F2EC] to-white border border-[#E7E3D9] shadow-sm relative overflow-hidden">
               <Target className="w-10 h-10 text-[#C29A3E] mb-4" />
               <h3 className="font-serif text-2xl font-bold text-[#0B1324] mb-3">Our Mission</h3>
               <ul className="space-y-2 text-sm text-[#1F2633]/85 leading-relaxed font-sans list-disc pl-5">
@@ -197,7 +197,7 @@ export default function CompleteAboutExperience() {
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3.5 py-1 rounded-full border border-[#E7E3D9]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3.5 py-1 rounded-none border border-[#E7E3D9]">
               Objectives &amp; Core Values
             </span>
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#0B1324] mt-3">
@@ -213,7 +213,7 @@ export default function CompleteAboutExperience() {
               </h3>
               <div className="space-y-3">
                 {aboutContent.objectives.map((obj, i) => (
-                  <div key={i} className="flex items-start gap-3 p-3.5 rounded-2xl bg-white cube-glass border border-[#E7E3D9]/70 shadow-2xs">
+                  <div key={i} className="flex items-start gap-3 p-3.5 rounded-none bg-white cube-glass border border-[#E7E3D9]/70 shadow-2xs">
                     <CheckCircle2 className="w-4 h-4 text-[#C29A3E] shrink-0 mt-0.5" />
                     <span className="text-xs sm:text-sm text-[#1F2633]/90 font-medium leading-relaxed">{obj}</span>
                   </div>
@@ -228,7 +228,7 @@ export default function CompleteAboutExperience() {
               </h3>
               <div className="space-y-3">
                 {aboutContent.coreValues.map((val, i) => (
-                  <div key={i} className="p-4 rounded-2xl bg-white cube-glass border border-[#E7E3D9]/70 shadow-2xs">
+                  <div key={i} className="p-4 rounded-none bg-white cube-glass border border-[#E7E3D9]/70 shadow-2xs">
                     <h4 className="text-sm font-bold text-[#0B1324] flex items-center gap-2">
                       <HeartHandshake className="w-4 h-4 text-[#C29A3E]" />
                       <span>{val.title}</span>
@@ -284,7 +284,7 @@ export default function CompleteAboutExperience() {
 
             {/* Seamless Content Flow Without Box */}
             <div className="md:col-span-8 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F2EC] border border-[#E7E3D9] text-xs font-bold uppercase tracking-wider text-[#0B1324]">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-none bg-[#F4F2EC] border border-[#E7E3D9] text-xs font-bold uppercase tracking-wider text-[#0B1324]">
                 <Quote className="w-3.5 h-3.5 text-[#C29A3E]" />
                 <span>Chairman Message</span>
               </div>
@@ -336,7 +336,7 @@ export default function CompleteAboutExperience() {
 
             {/* Seamless Content Flow Without Box */}
             <div className="md:col-span-8 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F2EC] border border-[#E7E3D9] text-xs font-bold uppercase tracking-wider text-[#0B1324]">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-none bg-[#F4F2EC] border border-[#E7E3D9] text-xs font-bold uppercase tracking-wider text-[#0B1324]">
                 <Quote className="w-3.5 h-3.5 text-[#C29A3E]" />
                 <span>CEO Message</span>
               </div>
@@ -367,7 +367,7 @@ export default function CompleteAboutExperience() {
       <section id="advisory-panel" className="py-20 sm:py-24 bg-gradient-to-b from-[#FAF9F6] to-[#FFFFFF] border-b border-[#E7E3D9]">
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3.5 py-1 rounded-full border border-[#E7E3D9]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3.5 py-1 rounded-none border border-[#E7E3D9]">
               IIT Advisory Panel
             </span>
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#0B1324] mt-3">
@@ -377,8 +377,8 @@ export default function CompleteAboutExperience() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {advisoryPanel.map((advisor, i) => (
-              <div key={i} className="p-5 rounded-3xl bg-white cube-glass border border-[#E7E3D9] text-center shadow-2xs hover:shadow-xs transition">
-                <div className="relative w-24 h-24 mx-auto rounded-2xl overflow-hidden mb-3 border border-white ring-1 ring-[#E7E3D9]">
+              <div key={i} className="p-5 rounded-none bg-white cube-glass border border-[#E7E3D9] text-center shadow-2xs hover:shadow-xs transition">
+                <div className="relative w-24 h-24 mx-auto rounded-none overflow-hidden mb-3 border border-white ring-1 ring-[#E7E3D9]">
                   <Image src={advisor.image || '/images/leadership/about_leader.jpg'} alt={advisor.name} fill className="object-cover" />
                 </div>
                 <h4 className="font-serif font-bold text-[#0B1324] text-sm leading-snug">{advisor.name}</h4>
@@ -394,7 +394,7 @@ export default function CompleteAboutExperience() {
       <section id="our-team" className="py-20 sm:py-24 bg-white border-b border-[#E7E3D9]">
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3.5 py-1 rounded-full border border-[#E7E3D9]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3.5 py-1 rounded-none border border-[#E7E3D9]">
               Our Team
             </span>
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#0B1324] mt-3">
@@ -406,9 +406,9 @@ export default function CompleteAboutExperience() {
             {(showAllTeam ? teamMembers : teamMembers.slice(0, 12)).map((tm, i) => (
               <div 
                 key={i} 
-                className="p-5 rounded-3xl bg-[#FAF9F6] cube-glass border border-[#E7E3D9] flex items-center gap-4 hover:shadow-md hover:border-[#A8832F] transition-all duration-300"
+                className="p-5 rounded-none bg-[#FAF9F6] cube-glass border border-[#E7E3D9] flex items-center gap-4 hover:shadow-md hover:border-[#A8832F] transition-all duration-300"
               >
-                <div className="relative w-16 h-16 rounded-2xl overflow-hidden shrink-0 border border-white ring-1 ring-[#E7E3D9] bg-white">
+                <div className="relative w-16 h-16 rounded-none overflow-hidden shrink-0 border border-white ring-1 ring-[#E7E3D9] bg-white">
                   <Image src={tm.image || '/images/team/team_unknown.png'} alt={tm.name} fill className="object-cover" />
                 </div>
                 <div className="min-w-0 flex-1">
@@ -424,7 +424,7 @@ export default function CompleteAboutExperience() {
           <div className="mt-12 text-center">
             <button
               onClick={() => setShowAllTeam(!showAllTeam)}
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-[#0B1324] hover:bg-[#C29A3E] shadow-[0_8px_24px_rgba(7,14,92,0.15)] hover:shadow-lg transition-all duration-300 active:scale-95 cursor-pointer"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-none text-xs font-bold uppercase tracking-wider text-white bg-[#0B1324] hover:bg-[#C29A3E] shadow-[0_8px_24px_rgba(7,14,92,0.15)] hover:shadow-lg transition-all duration-300 active:scale-95 cursor-pointer"
             >
               <span>{showAllTeam ? 'Show Less (12 Members)' : `View All ${teamMembers.length} Members (+${Math.max(teamMembers.length - 12, 0)} More)`}</span>
               <ChevronRight className={`w-4 h-4 transition-transform duration-300 ${showAllTeam ? '-rotate-90' : 'rotate-90'}`} />
@@ -437,7 +437,7 @@ export default function CompleteAboutExperience() {
       <section id="clients-partners" className="py-20 sm:py-24 bg-gradient-to-b from-[#FAF9F6] to-[#FFFFFF]">
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3.5 py-1 rounded-full border border-[#E7E3D9]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3.5 py-1 rounded-none border border-[#E7E3D9]">
               Our Clients
             </span>
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#0B1324] mt-3">
@@ -449,7 +449,7 @@ export default function CompleteAboutExperience() {
             {clients.map((client, i) => (
               <div 
                 key={i} 
-                className="h-28 p-4 rounded-2xl bg-white/90 cube-glass backdrop-blur-xl border border-[#E7E3D9]/80 shadow-[0_4px_16px_rgba(7,14,92,0.03),inset_0_1px_1px_rgba(255,255,255,0.95)] hover:border-[#A8832F] hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center text-center group"
+                className="h-28 p-4 rounded-none bg-white/90 cube-glass backdrop-blur-xl border border-[#E7E3D9]/80 shadow-[0_4px_16px_rgba(7,14,92,0.03),inset_0_1px_1px_rgba(255,255,255,0.95)] hover:border-[#A8832F] hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center text-center group"
               >
                 <div className="relative h-14 w-full flex items-center justify-center">
                   <Image

@@ -309,9 +309,9 @@ export default function HomePage() {
               <Link
                 key={item.image}
                 href="/life-at-cube"
-                className={`group relative overflow-hidden rounded-xl bg-ink ${
-                  i === 0 ? 'aspect-[4/3] md:col-span-7 md:row-span-2 md:aspect-auto md:min-h-[560px]' : 'aspect-[16/10] md:col-span-5 md:aspect-auto md:min-h-[268px]'
-                }`}
+                className={`group relative overflow-hidden rounded-none bg-ink ${
+ i === 0 ? 'aspect-[4/3] md:col-span-7 md:row-span-2 md:aspect-auto md:min-h-[560px]' : 'aspect-[16/10] md:col-span-5 md:aspect-auto md:min-h-[268px]'
+ }`}
               >
                 <Image
                   src={item.image}
@@ -353,7 +353,7 @@ export default function HomePage() {
             <div data-reveal data-reveal-delay="1" className="mt-16 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
               {/* Lead story */}
               <Link href={`/media/news/${newsList[0].slug || newsList[0].id}`} className="group lg:col-span-7">
-                <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-stone-200">
+                <div className="relative aspect-[16/10] overflow-hidden rounded-none bg-stone-200">
                   <Image
                     src={newsList[0].image || '/images/media/news/images_news1.jpg'}
                     alt={newsList[0].title}
@@ -409,7 +409,7 @@ export default function HomePage() {
                             {item.title}
                           </h4>
                         </div>
-                        <div className="relative h-20 w-24 shrink-0 overflow-hidden rounded-md bg-stone-200">
+                        <div className="relative h-20 w-24 shrink-0 overflow-hidden rounded-none bg-stone-200">
                           <Image
                             src={item.image || '/images/media/news/images_news1.jpg'}
                             alt=""
@@ -453,7 +453,7 @@ export default function HomePage() {
             </div>
 
             <div className="hidden lg:col-span-4 lg:flex lg:justify-end">
-              <div className="crop-marks relative flex h-72 w-72 items-center justify-center rounded-2xl bg-white shadow-[0_40px_80px_-30px_rgba(0,0,0,0.6)]">
+              <div className="crop-marks relative flex h-72 w-72 items-center justify-center rounded-none bg-white shadow-[0_40px_80px_-30px_rgba(0,0,0,0.6)]">
                 <div className="relative h-52 w-52">
                   <Image
                     src="/images/branding/cube-primary-logo.png"

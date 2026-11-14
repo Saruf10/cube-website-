@@ -178,7 +178,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
             role="dialog"
             aria-modal="true"
             aria-labelledby="job-detail-title"
-            className="relative w-full sm:max-w-2xl max-h-[92vh] sm:max-h-[88vh] flex flex-col rounded-t-3xl sm:rounded-3xl bg-white border border-[#E7E3D9] shadow-[0_30px_80px_rgba(7,14,92,0.25)] overflow-hidden"
+            className="relative w-full sm:max-w-2xl max-h-[92vh] sm:max-h-[88vh] flex flex-col rounded-none bg-white border border-[#E7E3D9] shadow-[0_30px_80px_rgba(7,14,92,0.25)] overflow-hidden"
             initial={{ opacity: 0, y: 40, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 40, scale: 0.97 }}
@@ -197,12 +197,12 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
 
               <div className="flex flex-wrap items-center gap-2 pr-10">
                 {detailJob.department && (
-                  <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white text-[#0B1324] border border-[#E7E3D9]">
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-none bg-white text-[#0B1324] border border-[#E7E3D9]">
                     {detailJob.department}
                   </span>
                 )}
                 {detailJob.employmentType && (
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-none bg-emerald-50 text-emerald-800 border border-emerald-200">
                     {detailJob.employmentType}
                   </span>
                 )}
@@ -262,7 +262,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
               )}
 
               {c.jobDetail.howToApplySteps.length > 0 && (
-                <div className="rounded-2xl bg-[#FAF9F6] cube-glass border border-[#E7E3D9] p-5">
+                <div className="rounded-none bg-[#FAF9F6] cube-glass border border-[#E7E3D9] p-5">
                   <h3 className="text-xs font-bold uppercase tracking-wider text-[#0B1324] mb-3 flex items-center gap-2">
                     <Sparkles className="w-4 h-4 text-[#C29A3E]" />
                     {c.jobDetail.howToApplyTitle}
@@ -289,14 +289,14 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
             <div className="shrink-0 px-6 sm:px-8 py-4 border-t border-[#E7E3D9] bg-white flex flex-col-reverse sm:flex-row sm:items-center sm:justify-end gap-3">
               <a
                 href={`mailto:${detailEmail}?subject=${encodeURIComponent(`Application: ${detailJob.title}`)}`}
-                className="px-5 py-3 rounded-full bg-white border border-[#E7E3D9] text-[#0B1324] hover:bg-[#F4F2EC] text-xs font-bold transition flex items-center justify-center gap-2"
+                className="px-5 py-3 rounded-none bg-white border border-[#E7E3D9] text-[#0B1324] hover:bg-[#F4F2EC] text-xs font-bold transition flex items-center justify-center gap-2"
               >
                 <Mail className="w-3.5 h-3.5 text-[#C29A3E]" />
                 Email Application
               </a>
               <button
                 onClick={() => handleApplyClick(detailJob)}
-                className="px-7 py-3 rounded-full bg-[#0B1324] hover:bg-[#C29A3E] text-white text-xs font-bold tracking-wider uppercase transition shadow-md flex items-center justify-center gap-2 active:scale-95"
+                className="px-7 py-3 rounded-none bg-[#0B1324] hover:bg-[#C29A3E] text-white text-xs font-bold tracking-wider uppercase transition shadow-md flex items-center justify-center gap-2 active:scale-95"
               >
                 <Send className="w-3.5 h-3.5" />
                 Apply
@@ -325,11 +325,11 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
             <div className="inline-flex flex-wrap p-1.5 rounded-full bg-white/80 backdrop-blur-xl border border-[#E7E3D9] shadow-xs">
               <button
                 onClick={() => setActiveTab('openings')}
-                className={`px-6 py-2.5 rounded-full text-xs font-semibold tracking-wider transition-all duration-300 flex items-center gap-2 ${
-                  activeTab === 'openings'
-                    ? 'bg-[#0B1324] text-white shadow-md'
-                    : 'text-[#1F2633] hover:text-[#0B1324]'
-                }`}
+                className={`px-6 py-2.5 rounded-none text-xs font-semibold tracking-wider transition-all duration-300 flex items-center gap-2 ${
+ activeTab === 'openings'
+ ? 'bg-[#0B1324] text-white shadow-md'
+ : 'text-[#1F2633] hover:text-[#0B1324]'
+ }`}
               >
                 <Briefcase className="w-4 h-4 text-[#C29A3E]" />
                 <span>{c.tabs.openingsLabel} ({initialCareers.length})</span>
@@ -337,11 +337,11 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
 
               <button
                 onClick={openPortal}
-                className={`px-6 py-2.5 rounded-full text-xs font-semibold tracking-wider transition-all duration-300 flex items-center gap-2 ${
-                  activeTab === 'portal'
-                    ? 'bg-[#0B1324] text-white shadow-md'
-                    : 'text-[#1F2633] hover:text-[#0B1324]'
-                }`}
+                className={`px-6 py-2.5 rounded-none text-xs font-semibold tracking-wider transition-all duration-300 flex items-center gap-2 ${
+ activeTab === 'portal'
+ ? 'bg-[#0B1324] text-white shadow-md'
+ : 'text-[#1F2633] hover:text-[#0B1324]'
+ }`}
               >
                 <Upload className="w-4 h-4 text-[#C29A3E]" />
                 <span>{c.tabs.portalLabel}</span>
@@ -350,7 +350,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
 
             {c.contactEmail && (
               <div className="flex items-center gap-2 text-xs font-medium text-[#5B6474]">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="w-2 h-2 rounded-none bg-emerald-500 animate-pulse" />
                 <span>
                   {c.contactLabel}:{' '}
                   <a href={`mailto:${c.contactEmail}`} className="font-bold text-[#0B1324] hover:text-[#C29A3E]">
@@ -373,8 +373,8 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
 
               {/* Job Listings Grid */}
               {initialCareers.length === 0 ? (
-                <div className="p-12 sm:p-16 rounded-3xl bg-white/90 backdrop-blur-2xl border border-[#E7E3D9] text-center shadow-sm max-w-3xl mx-auto">
-                  <div className="h-16 w-16 mx-auto rounded-2xl bg-[#F4F2EC] border border-[#E7E3D9] text-[#0B1324] flex items-center justify-center mb-6">
+                <div className="p-12 sm:p-16 rounded-none bg-white/90 backdrop-blur-2xl border border-[#E7E3D9] text-center shadow-sm max-w-3xl mx-auto">
+                  <div className="h-16 w-16 mx-auto rounded-none bg-[#F4F2EC] border border-[#E7E3D9] text-[#0B1324] flex items-center justify-center mb-6">
                     <Briefcase className="w-8 h-8 text-[#C29A3E]" />
                   </div>
                   <span className="text-xs font-bold uppercase tracking-wider text-[#5B6474]">Careers</span>
@@ -388,7 +388,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                   )}
                   <button
                     onClick={openPortal}
-                    className="mt-6 px-6 py-3 rounded-full bg-[#F4F2EC] hover:bg-[#C29A3E] text-[#0B1324] hover:text-white border border-[#E7E3D9] text-xs font-bold transition shadow-xs"
+                    className="mt-6 px-6 py-3 rounded-none bg-[#F4F2EC] hover:bg-[#C29A3E] text-[#0B1324] hover:text-white border border-[#E7E3D9] text-xs font-bold transition shadow-xs"
                   >
                     {c.emptyState.buttonLabel} &rarr;
                   </button>
@@ -409,18 +409,18 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                           setDetailJob(job);
                         }
                       }}
-                      className="group cursor-pointer rounded-3xl bg-white/95 backdrop-blur-2xl border border-[#E7E3D9] p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-[#E7E3D9] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0B1324] transition-all flex flex-col justify-between"
+                      className="group cursor-pointer rounded-none bg-white/95 backdrop-blur-2xl border border-[#E7E3D9] p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-[#E7E3D9] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0B1324] transition-all flex flex-col justify-between"
                     >
                       <div>
                         {(job.department || job.employmentType) && (
                           <div className="flex items-center justify-between gap-2 mb-3">
                             {job.department && (
-                              <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[#F4F2EC] text-[#0B1324] border border-[#E7E3D9]">
+                              <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-none bg-[#F4F2EC] text-[#0B1324] border border-[#E7E3D9]">
                                 {job.department}
                               </span>
                             )}
                             {job.employmentType && (
-                              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
+                              <span className="text-[10px] font-bold px-2 py-0.5 rounded-none bg-emerald-50 text-emerald-800 border border-emerald-200">
                                 {job.employmentType}
                               </span>
                             )}
@@ -450,7 +450,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                         <span className="text-[11px] text-[#5B6474] line-clamp-1">{job.experience ? `Exp: ${job.experience}` : ''}</span>
                         <button
                           onClick={(e) => { e.stopPropagation(); handleApplyClick(job); }}
-                          className="shrink-0 px-4 py-2 rounded-full bg-[#F4F2EC] hover:bg-[#C29A3E] text-[#0B1324] hover:text-white border border-[#E7E3D9] text-xs font-bold transition-all shadow-xs flex items-center gap-1.5"
+                          className="shrink-0 px-4 py-2 rounded-none bg-[#F4F2EC] hover:bg-[#C29A3E] text-[#0B1324] hover:text-white border border-[#E7E3D9] text-xs font-bold transition-all shadow-xs flex items-center gap-1.5"
                         >
                           <Send className="w-3 h-3 text-[#C29A3E]" />
                           <span>Apply</span>
@@ -463,9 +463,9 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
 
               {/* Resume Upload Callout */}
               {c.talentCallout.heading && (
-              <div className="rounded-3xl bg-gradient-to-r from-[#F4F2EC] via-white to-[#FAF9F6] border border-[#E7E3D9] p-8 sm:p-10 shadow-sm flex flex-col lg:flex-row items-center justify-between gap-8">
+              <div className="rounded-none bg-gradient-to-r from-[#F4F2EC] via-white to-[#FAF9F6] border border-[#E7E3D9] p-8 sm:p-10 shadow-sm flex flex-col lg:flex-row items-center justify-between gap-8">
                 <div className="max-w-2xl space-y-2">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-white px-3 py-1 rounded-full border border-[#E7E3D9]">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-white px-3 py-1 rounded-none border border-[#E7E3D9]">
                     {c.talentCallout.badge}
                   </span>
                   <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#0B1324]">
@@ -478,7 +478,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
 
                 <button
                   onClick={openPortal}
-                  className="px-8 py-3.5 rounded-full bg-[#0B1324] hover:bg-[#C29A3E] text-white font-bold text-xs tracking-wider uppercase transition shadow-md whitespace-nowrap active:scale-95"
+                  className="px-8 py-3.5 rounded-none bg-[#0B1324] hover:bg-[#C29A3E] text-white font-bold text-xs tracking-wider uppercase transition shadow-md whitespace-nowrap active:scale-95"
                 >
                   {c.talentCallout.buttonLabel} &rarr;
                 </button>
@@ -491,11 +491,11 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
             /* CAREER PORTAL FORM */
             <div className="max-w-4xl mx-auto">
 
-              <div className="rounded-3xl bg-white/95 cube-glass backdrop-blur-2xl border border-[#E7E3D9] p-8 sm:p-12 shadow-[0_20px_50px_rgba(7,14,92,0.06)] relative overflow-hidden">
+              <div className="rounded-none bg-white/95 cube-glass backdrop-blur-2xl border border-[#E7E3D9] p-8 sm:p-12 shadow-[0_20px_50px_rgba(7,14,92,0.06)] relative overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#E7E3D9] to-transparent opacity-90" />
 
                 <div className="text-center max-w-2xl mx-auto mb-10">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3.5 py-1 rounded-full border border-[#E7E3D9]">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3.5 py-1 rounded-none border border-[#E7E3D9]">
                     {form.badge}
                   </span>
                   <h2 className="text-3xl font-serif font-bold text-[#0B1324] mt-3">
@@ -507,8 +507,8 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                 </div>
 
                 {submitSuccess ? (
-                  <div className="p-8 sm:p-12 rounded-2xl bg-[#F4F2EC] border border-[#E7E3D9] text-center space-y-4">
-                    <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-700 mx-auto flex items-center justify-center">
+                  <div className="p-8 sm:p-12 rounded-none bg-[#F4F2EC] border border-[#E7E3D9] text-center space-y-4">
+                    <div className="w-16 h-16 rounded-none bg-emerald-100 text-emerald-700 mx-auto flex items-center justify-center">
                       <Check className="w-8 h-8" />
                     </div>
                     <h3 className="text-2xl font-serif font-bold text-[#0B1324]">{form.successTitle}</h3>
@@ -517,7 +517,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                     </p>
                     <button
                       onClick={() => { setSubmitSuccess(false); setActiveTab('openings'); }}
-                      className="mt-4 px-6 py-2.5 rounded-full bg-[#0B1324] text-white text-xs font-bold hover:bg-[#C29A3E] transition"
+                      className="mt-4 px-6 py-2.5 rounded-none bg-[#0B1324] text-white text-xs font-bold hover:bg-[#C29A3E] transition"
                     >
                       Back to Careers
                     </button>
@@ -525,7 +525,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                 ) : (
                   <form onSubmit={handleSubmitApplication} className="space-y-6">
                     {submitError && (
-                      <div className="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 text-xs font-medium">
+                      <div className="p-4 rounded-none bg-rose-50 border border-rose-200 text-rose-800 text-xs font-medium">
                         {submitError}
                       </div>
                     )}
@@ -542,7 +542,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                           value={fullName}
                           onChange={(e) => setFullName(e.target.value)}
                           placeholder="Name"
-                          className="w-full px-4 py-3 rounded-2xl bg-white border border-[#E7E3D9] text-xs text-[#1F2633] focus:outline-none focus:ring-2 focus:ring-[#0B1324]"
+                          className="w-full px-4 py-3 rounded-none bg-white border border-[#E7E3D9] text-xs text-[#1F2633] focus:outline-none focus:ring-2 focus:ring-[#0B1324]"
                         />
                       </div>
 
@@ -556,7 +556,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                           placeholder="Email"
-                          className="w-full px-4 py-3 rounded-2xl bg-white border border-[#E7E3D9] text-xs text-[#1F2633] focus:outline-none focus:ring-2 focus:ring-[#0B1324]"
+                          className="w-full px-4 py-3 rounded-none bg-white border border-[#E7E3D9] text-xs text-[#1F2633] focus:outline-none focus:ring-2 focus:ring-[#0B1324]"
                         />
                       </div>
 
@@ -570,7 +570,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                           value={phone}
                           onChange={(e) => setPhone(e.target.value)}
                           placeholder="Phone"
-                          className="w-full px-4 py-3 rounded-2xl bg-white border border-[#E7E3D9] text-xs text-[#1F2633] focus:outline-none focus:ring-2 focus:ring-[#0B1324]"
+                          className="w-full px-4 py-3 rounded-none bg-white border border-[#E7E3D9] text-xs text-[#1F2633] focus:outline-none focus:ring-2 focus:ring-[#0B1324]"
                         />
                       </div>
 
@@ -581,7 +581,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                         <select
                           value={experience}
                           onChange={(e) => setExperience(e.target.value)}
-                          className="w-full px-4 py-3 rounded-2xl bg-white border border-[#E7E3D9] text-xs text-[#1F2633] focus:outline-none focus:ring-2 focus:ring-[#0B1324]"
+                          className="w-full px-4 py-3 rounded-none bg-white border border-[#E7E3D9] text-xs text-[#1F2633] focus:outline-none focus:ring-2 focus:ring-[#0B1324]"
                         >
                           {form.experienceOptions.map((opt) => (
                             <option key={opt} value={opt}>{opt}</option>
@@ -596,7 +596,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                         <select
                           value={domain}
                           onChange={(e) => setDomain(e.target.value)}
-                          className="w-full px-4 py-3 rounded-2xl bg-white border border-[#E7E3D9] text-xs text-[#1F2633] focus:outline-none focus:ring-2 focus:ring-[#0B1324]"
+                          className="w-full px-4 py-3 rounded-none bg-white border border-[#E7E3D9] text-xs text-[#1F2633] focus:outline-none focus:ring-2 focus:ring-[#0B1324]"
                         >
                           {form.domainOptions.map((opt) => (
                             <option key={opt} value={opt}>{opt}</option>
@@ -614,7 +614,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                           onChange={setJobTitle}
                           options={positionOptions}
                           placeholder="Select or type the position"
-                          inputClassName="w-full px-4 py-3 pr-10 rounded-2xl bg-white border border-[#E7E3D9] text-xs text-[#1F2633] focus:outline-none focus:ring-2 focus:ring-[#0B1324] cursor-pointer"
+                          inputClassName="w-full px-4 py-3 pr-10 rounded-none bg-white border border-[#E7E3D9] text-xs text-[#1F2633] focus:outline-none focus:ring-2 focus:ring-[#0B1324] cursor-pointer"
                         />
                       </div>
 
@@ -625,7 +625,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                       <label className="block text-xs font-bold uppercase tracking-wider text-[#1F2633] mb-2">
                         Resume (PDF or DOCX - Max 10MB) *
                       </label>
-                      <div className="rounded-2xl border-2 border-dashed border-[#E7E3D9] p-6 text-center hover:bg-[#FAF9F6] transition cursor-pointer relative">
+                      <div className="rounded-none border-2 border-dashed border-[#E7E3D9] p-6 text-center hover:bg-[#FAF9F6] transition cursor-pointer relative">
                         <input
                           type="file"
                           accept=".pdf,.doc,.docx"
@@ -654,7 +654,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                         value={coverLetter}
                         onChange={(e) => setCoverLetter(e.target.value)}
                         placeholder={form.coverNotePlaceholder}
-                        className="w-full px-4 py-3 rounded-2xl bg-white border border-[#E7E3D9] text-xs text-[#1F2633] focus:outline-none focus:ring-2 focus:ring-[#0B1324]"
+                        className="w-full px-4 py-3 rounded-none bg-white border border-[#E7E3D9] text-xs text-[#1F2633] focus:outline-none focus:ring-2 focus:ring-[#0B1324]"
                       />
                     </div>
 
@@ -670,7 +670,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
                       <button
                         type="submit"
                         disabled={submitting}
-                        className="px-8 py-3.5 rounded-full bg-[#0B1324] hover:bg-[#C29A3E] text-white text-xs font-bold tracking-wider uppercase transition shadow-md flex items-center gap-2 disabled:opacity-50"
+                        className="px-8 py-3.5 rounded-none bg-[#0B1324] hover:bg-[#C29A3E] text-white text-xs font-bold tracking-wider uppercase transition shadow-md flex items-center gap-2 disabled:opacity-50"
                       >
                         {submitting ? 'Submitting Application...' : form.submitLabel}
                         <Send className="w-3.5 h-3.5" />
@@ -706,7 +706,7 @@ export default function CareersHub({ initialCareers, content = DEFAULT_CAREERS_P
               {c.benefits.items.map((item, i) => {
                 const Icon = BENEFIT_ICONS[item.icon] || Award;
                 return (
-                  <div key={i} className="p-6 rounded-3xl bg-[#FAF9F6] cube-glass border border-[#E7E3D9] text-center">
+                  <div key={i} className="p-6 rounded-none bg-[#FAF9F6] cube-glass border border-[#E7E3D9] text-center">
                     <Icon className="w-8 h-8 text-[#C29A3E] mx-auto mb-3" />
                     <h4 className="font-serif font-bold text-[#0B1324] text-base">{item.title}</h4>
                     <p className="text-xs text-[#5B6474] mt-2 leading-relaxed">{item.description}</p>

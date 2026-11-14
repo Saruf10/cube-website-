@@ -26,9 +26,9 @@ export default function VisionMissionPage() {
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {/* Vision Card (Architectural Light Palette) */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-white cube-glass text-[#1F2633] shadow-sm hover:shadow-xl border border-[#E7E3D9] transition-all flex flex-col justify-between">
+            <div className="p-8 sm:p-10 rounded-none bg-white cube-glass text-[#1F2633] shadow-sm hover:shadow-xl border border-[#E7E3D9] transition-all flex flex-col justify-between">
               <div>
-                <div className="p-3 bg-[#F4F2EC] text-[#0B1324] rounded-2xl w-fit mb-6 border border-[#E7E3D9]">
+                <div className="p-3 bg-[#F4F2EC] text-[#0B1324] rounded-none w-fit mb-6 border border-[#E7E3D9]">
                   <Compass className="w-8 h-8 text-[#C29A3E]" />
                 </div>
                 <span className="text-xs font-bold uppercase tracking-widest text-[#C29A3E]">
@@ -42,9 +42,9 @@ export default function VisionMissionPage() {
             </div>
 
             {/* Mission Card (Architectural Light Sky Palette) */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-white cube-glass text-[#1F2633] border border-[#E7E3D9] shadow-sm hover:shadow-xl transition-all flex flex-col justify-between">
+            <div className="p-8 sm:p-10 rounded-none bg-white cube-glass text-[#1F2633] border border-[#E7E3D9] shadow-sm hover:shadow-xl transition-all flex flex-col justify-between">
               <div>
-                <div className="p-3 bg-[#F4F2EC] text-[#0B1324] rounded-2xl w-fit mb-6 border border-[#E7E3D9]">
+                <div className="p-3 bg-[#F4F2EC] text-[#0B1324] rounded-none w-fit mb-6 border border-[#E7E3D9]">
                   <Target className="w-8 h-8 text-[#C29A3E]" />
                 </div>
                 <span className="text-xs font-bold uppercase tracking-widest text-[#C29A3E]">

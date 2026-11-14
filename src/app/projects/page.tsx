@@ -55,18 +55,18 @@ export default function ProjectsPage() {
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Apple Liquid Glass Filter and Search Bar */}
-          <div className="p-4 sm:p-5 rounded-3xl bg-white/80 cube-glass backdrop-blur-2xl border border-[#E7E3D9] shadow-[0_8px_24px_rgba(7,14,92,0.04)] flex flex-col md:flex-row md:items-center justify-between gap-5 mb-10">
+          <div className="p-4 sm:p-5 rounded-none bg-white/80 cube-glass backdrop-blur-2xl border border-[#E7E3D9] shadow-[0_8px_24px_rgba(7,14,92,0.04)] flex flex-col md:flex-row md:items-center justify-between gap-5 mb-10">
             {/* Glass Category Filter Chips */}
             <div className="flex flex-wrap gap-2">
               {categories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all ${
-                    selectedCategory === cat
-                      ? 'bg-[#F4F2EC] text-[#0B1324] border border-[#E7E3D9] font-bold shadow-xs scale-105'
-                      : 'bg-white/60 text-[#5B6474] hover:text-[#1F2633] hover:bg-white border border-transparent'
-                  }`}
+                  className={`px-4 py-2 rounded-none text-xs font-semibold tracking-wide transition-all ${
+ selectedCategory === cat
+ ? 'bg-[#F4F2EC] text-[#0B1324] border border-[#E7E3D9] font-bold shadow-xs scale-105'
+ : 'bg-white/60 text-[#5B6474] hover:text-[#1F2633] hover:bg-white border border-transparent'
+ }`}
                 >
                   {cat === 'Building & Construction' ? 'Buildings' : cat === 'Environment & Sustainability' ? 'Environment' : cat === 'Urban Planning & Transportation' ? 'Transport' : cat}
                 </button>
@@ -81,7 +81,7 @@ export default function ProjectsPage() {
                 placeholder="Search projects, client, domain..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-11 pr-4 py-2.5 text-xs rounded-full bg-white border border-[#E7E3D9] text-[#1F2633] placeholder-[#5B6474] focus:outline-none focus:border-[#0B1324] shadow-2xs transition-colors"
+                className="w-full pl-11 pr-4 py-2.5 text-xs rounded-none bg-white border border-[#E7E3D9] text-[#1F2633] placeholder-[#5B6474] focus:outline-none focus:border-[#0B1324] shadow-2xs transition-colors"
               />
             </div>
           </div>
@@ -107,12 +107,12 @@ export default function ProjectsPage() {
 
           {/* Empty State */}
           {filteredProjects.length === 0 && (
-            <div className="text-center py-20 rounded-3xl bg-white cube-glass border border-[#E7E3D9] p-8">
+            <div className="text-center py-20 rounded-none bg-white cube-glass border border-[#E7E3D9] p-8">
               <p className="text-sm font-semibold text-[#1F2633]">No projects match your search criteria.</p>
               <p className="text-xs text-[#5B6474] mt-1">Try resetting the category filter or searching with a different keyword.</p>
               <button
                 onClick={() => { setSelectedCategory('All'); setSearchQuery(''); }}
-                className="mt-4 px-5 py-2 rounded-full text-xs font-semibold bg-[#F4F2EC] text-[#0B1324] border border-[#E7E3D9]"
+                className="mt-4 px-5 py-2 rounded-none text-xs font-semibold bg-[#F4F2EC] text-[#0B1324] border border-[#E7E3D9]"
               >
                 Reset Filters
               </button>

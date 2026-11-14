@@ -178,12 +178,12 @@ export default function Navbar() {
                       <span>{item.title}</span>
                       <span
                         aria-hidden
-                        className={`absolute left-2.5 right-2.5 2xl:left-3.5 2xl:right-3.5 -bottom-0.5 h-[2px] rounded-full bg-brass-400 origin-left transition-transform duration-300 ${
-                          isActive ? 'scale-x-100' : 'scale-x-0 group-hover/nav:scale-x-100'
-                        }`}
+                        className={`absolute left-2.5 right-2.5 2xl:left-3.5 2xl:right-3.5 -bottom-0.5 h-[2px] rounded-none bg-brass-400 origin-left transition-transform duration-300 ${
+ isActive ? 'scale-x-100' : 'scale-x-0 group-hover/nav:scale-x-100'
+ }`}
                       />
                       {item.badge && (
-                        <span className="ml-1.5 whitespace-nowrap text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 bg-brass-100 text-brass-700 rounded-[3px]">
+                        <span className="ml-1.5 whitespace-nowrap text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 bg-brass-100 text-brass-700 rounded-none">
                           {item.badge}
                         </span>
                       )}
@@ -202,7 +202,7 @@ export default function Navbar() {
                           transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
                           className="absolute top-full left-0 pt-3 w-80 z-50"
                         >
-                          <div className="relative rounded-xl bg-white border border-stone-200 shadow-[0_30px_60px_-24px_rgba(11,19,36,0.35)] p-2 max-h-[400px] overflow-y-auto overscroll-contain before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-brass-400 before:rounded-t-xl">
+                          <div className="relative rounded-none bg-white border border-stone-200 shadow-[0_30px_60px_-24px_rgba(11,19,36,0.35)] p-2 max-h-[400px] overflow-y-auto overscroll-contain before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-brass-400 ">
                             <div className="space-y-1 pr-1">
                               {item.children.map((sub, sIdx) => {
                                 const isSubActive = pathname === sub.href;
@@ -215,11 +215,11 @@ export default function Navbar() {
                                   >
                                     <Link
                                       href={sub.href}
-                                      className={`block px-3.5 py-2.5 rounded-lg border-l-2 transition-all duration-200 ${
-                                        isSubActive
-                                          ? 'bg-stone-100 text-ink border-brass-400'
-                                          : 'text-ink/80 border-transparent hover:text-ink hover:bg-stone-100 hover:border-brass-400'
-                                      }`}
+                                      className={`block px-3.5 py-2.5 rounded-none border-l-2 transition-all duration-200 ${
+ isSubActive
+ ? 'bg-stone-100 text-ink border-brass-400'
+ : 'text-ink/80 border-transparent hover:text-ink hover:bg-stone-100 hover:border-brass-400'
+ }`}
                                     >
                                       <div className="text-xs font-semibold leading-snug">{sub.title}</div>
                                       {sub.description && (
@@ -245,12 +245,12 @@ export default function Navbar() {
             <div className="hidden xl:flex items-center space-x-2 shrink-0">
               <button
                 onClick={() => setSearchOpen(true)}
-                className="h-10 px-3 rounded-lg bg-stone-100/80 hover:bg-stone-100 text-ink transition-all flex items-center space-x-2 text-xs border border-stone-200 active:scale-95 shrink-0"
+                className="h-10 px-3 rounded-none bg-stone-100/80 hover:bg-stone-100 text-ink transition-all flex items-center space-x-2 text-xs border border-stone-200 active:scale-95 shrink-0"
                 title={`Search website (${isMac ? '⌘K' : 'Ctrl+K'})`}
               >
                 <Search className="w-3.5 h-3.5 text-ink/60" />
                 <span className={`text-ink/55 hidden text-[11px] ${scrolled ? '' : '2xl:inline'}`}>Search</span>
-                <kbd className={`hidden ${scrolled ? '' : '2xl:inline'} text-[9px] px-1.5 py-0.5 rounded bg-white text-ink/55 border border-stone-200`}>{isMac ? '⌘K' : 'Ctrl K'}</kbd>
+                <kbd className={`hidden ${scrolled ? '' : '2xl:inline'} text-[9px] px-1.5 py-0.5 rounded-none bg-white text-ink/55 border border-stone-200`}>{isMac ? '⌘K' : 'Ctrl K'}</kbd>
               </button>
 
               <Link
@@ -266,7 +266,7 @@ export default function Navbar() {
             <div className="flex items-center space-x-2 xl:hidden">
               <button
                 onClick={() => setSearchOpen(true)}
-                className="p-2.5 rounded-lg bg-stone-100 text-ink border border-stone-200"
+                className="p-2.5 rounded-none bg-stone-100 text-ink border border-stone-200"
                 aria-label="Search"
               >
                 <Search className="w-4 h-4" />
@@ -274,7 +274,7 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2.5 rounded-lg bg-ink text-white border border-ink"
+                className="p-2.5 rounded-none bg-ink text-white border border-ink"
                 aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
                 aria-expanded={mobileMenuOpen}
                 aria-controls="mobile-navigation"
@@ -299,7 +299,7 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -15, scale: 0.98 }}
               transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-[94%] max-w-md mx-auto mt-2 rounded-2xl bg-white border border-stone-200 shadow-[0_30px_60px_-20px_rgba(11,19,36,0.45)] p-3 sm:p-4 xl:hidden max-h-[calc(100dvh-100px)] overflow-y-auto overscroll-contain outline-none z-50"
+              className="relative w-[94%] max-w-md mx-auto mt-2 rounded-none bg-white border border-stone-200 shadow-[0_30px_60px_-20px_rgba(11,19,36,0.45)] p-3 sm:p-4 xl:hidden max-h-[calc(100dvh-100px)] overflow-y-auto overscroll-contain outline-none z-50"
             >
               <nav className="space-y-1" aria-label="Mobile">
                 {navigationItems.map((item, mIdx) => {
@@ -309,11 +309,11 @@ export default function Navbar() {
                     pathname === item.href ||
                     Boolean(item.children?.some((c) => c.href.split('#')[0] === pathname));
                   const panelId = `mobile-nav-${item.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
-                  const rowClass = `flex w-full items-center justify-between px-4 py-3 rounded-lg border-l-2 text-sm font-semibold transition-colors ${
-                    isExpanded || isActive
-                      ? 'text-ink bg-stone-100 border-brass-400'
-                      : 'text-ink/80 border-transparent active:bg-stone-100'
-                  }`;
+                  const rowClass = `flex w-full items-center justify-between px-4 py-3 rounded-none border-l-2 text-sm font-semibold transition-colors ${
+ isExpanded || isActive
+ ? 'text-ink bg-stone-100 border-brass-400'
+ : 'text-ink/80 border-transparent active:bg-stone-100'
+ }`;
 
                   return (
                     <motion.div
@@ -366,7 +366,7 @@ export default function Navbar() {
                                   key={sub.title}
                                   href={sub.href}
                                   onClick={closeMobileMenu}
-                                  className="block px-3 py-2.5 rounded-lg text-[13px] text-ink/70 active:text-ink active:bg-stone-100 hover:text-ink hover:bg-stone-100 transition-colors"
+                                  className="block px-3 py-2.5 rounded-none text-[13px] text-ink/70 active:text-ink active:bg-stone-100 hover:text-ink hover:bg-stone-100 transition-colors"
                                 >
                                   {sub.title}
                                 </Link>

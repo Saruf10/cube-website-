@@ -27,9 +27,9 @@ export default function ObjectivesPage() {
             {aboutContent.objectives.map((obj, i) => (
               <div
                 key={i}
-                className="p-6 rounded-2xl bg-slate-50 border border-slate-200/90 shadow-sm hover:shadow-cube hover:border-teal-300 transition-all flex items-start space-x-4"
+                className="p-6 rounded-none bg-slate-50 border border-slate-200/90 shadow-sm hover:shadow-cube hover:border-teal-300 transition-all flex items-start space-x-4"
               >
-                <div className="h-8 w-8 rounded-full bg-teal-600 text-white font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">
+                <div className="h-8 w-8 rounded-none bg-teal-600 text-white font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">
                   {(i + 1).toString().padStart(2, '0')}
                 </div>
                 <div>

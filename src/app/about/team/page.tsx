@@ -129,7 +129,7 @@ export default function TeamPage() {
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           
           {/* Top Controls: Search & Expand/Collapse */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-5 rounded-none border border-slate-200 shadow-xs">
             {/* Search Filter Bar */}
             <div className="relative flex-1 max-w-md">
               <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -138,7 +138,7 @@ export default function TeamPage() {
                 placeholder="Search team member by name or role..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm focus:outline-none focus:border-[#0B1324] transition-all"
+                className="w-full pl-10 pr-4 py-2.5 rounded-none bg-slate-50 border border-slate-200 text-xs sm:text-sm focus:outline-none focus:border-[#0B1324] transition-all"
               />
               {searchQuery && (
                 <button
@@ -157,14 +157,14 @@ export default function TeamPage() {
               <div className="flex items-center space-x-1 border-l border-slate-200 pl-3">
                 <button
                   onClick={expandAll}
-                  className="px-2.5 py-1 rounded-lg hover:bg-slate-100 text-slate-600 font-medium transition"
+                  className="px-2.5 py-1 rounded-none hover:bg-slate-100 text-slate-600 font-medium transition"
                 >
                   Expand All
                 </button>
                 <span>&bull;</span>
                 <button
                   onClick={collapseAll}
-                  className="px-2.5 py-1 rounded-lg hover:bg-slate-100 text-slate-600 font-medium transition"
+                  className="px-2.5 py-1 rounded-none hover:bg-slate-100 text-slate-600 font-medium transition"
                 >
                   Collapse All
                 </button>
@@ -182,7 +182,7 @@ export default function TeamPage() {
               return (
                 <div
                   key={dept.id}
-                  className={`bg-white rounded-2xl border border-slate-200/90 shadow-2xs overflow-hidden transition-all duration-300 ${dept.accent}`}
+                  className={`bg-white rounded-none border border-slate-200/90 shadow-2xs overflow-hidden transition-all duration-300 ${dept.accent}`}
                 >
                   {/* Accordion Header */}
                   <button
@@ -191,7 +191,7 @@ export default function TeamPage() {
                     aria-expanded={isOpen}
                   >
                     <div className="flex items-center space-x-3.5">
-                      <div className="p-2 rounded-xl bg-[#F4F2EC] text-[#0B1324] group-hover:scale-105 transition-transform">
+                      <div className="p-2 rounded-none bg-[#F4F2EC] text-[#0B1324] group-hover:scale-105 transition-transform">
                         <DeptIcon className="w-5 h-5" />
                       </div>
                       <div>
@@ -205,7 +205,7 @@ export default function TeamPage() {
                     </div>
 
                     {/* Expand/Collapse Indicator matching the original website screenshot */}
-                    <div className="h-8 w-8 rounded-lg bg-slate-100 text-slate-600 group-hover:bg-[#F4F2EC] group-hover:text-[#0B1324] flex items-center justify-center transition-colors">
+                    <div className="h-8 w-8 rounded-none bg-slate-100 text-slate-600 group-hover:bg-[#F4F2EC] group-hover:text-[#0B1324] flex items-center justify-center transition-colors">
                       {isOpen ? (
                         <Minus className="w-4 h-4 stroke-[2.5]" />
                       ) : (
@@ -226,7 +226,7 @@ export default function TeamPage() {
                           {membersInDept.map((member, idx) => (
                             <div
                               key={member.name + idx}
-                              className="p-4 rounded-2xl bg-[#FAFAFA] border border-slate-200/70 hover:border-[#0B1324]/30 hover:bg-white hover:shadow-md transition-all flex flex-col items-center text-center group"
+                              className="p-4 rounded-none bg-[#FAFAFA] border border-slate-200/70 hover:border-[#0B1324]/30 hover:bg-white hover:shadow-md transition-all flex flex-col items-center text-center group"
                             >
                               {/* Circular Avatar matching original website */}
                               <div className="relative h-24 w-24 rounded-full overflow-hidden mb-3 border-2 border-slate-200 group-hover:border-[#0B1324] shadow-sm transition-all bg-white shrink-0">

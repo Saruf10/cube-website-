@@ -30,7 +30,7 @@ export default async function NewsPage() {
             {newsList.map((item) => (
               <article
                 key={item.id}
-                className="group rounded-2xl bg-white cube-glass border border-[#E7E3D9] overflow-hidden shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                className="group rounded-none bg-white cube-glass border border-[#E7E3D9] overflow-hidden shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
                   <div className="relative h-48 w-full bg-[#F7F7F4] overflow-hidden">

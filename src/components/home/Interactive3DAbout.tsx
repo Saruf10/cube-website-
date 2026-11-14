@@ -71,10 +71,10 @@ export default function Interactive3DAbout() {
                 rotateY,
                 transformStyle: 'preserve-3d',
               }}
-              className="relative rounded-3xl p-3 bg-gradient-to-br from-white via-[#F7F7F4] to-[#F4F2EC] border border-[#E7E3D9] shadow-2xl transition-shadow duration-500 hover:shadow-[0_25px_50px_-12px_rgba(7,14,92,0.18)]"
+              className="relative rounded-none p-3 bg-gradient-to-br from-white via-[#F7F7F4] to-[#F4F2EC] border border-[#E7E3D9] shadow-2xl transition-shadow duration-500 hover:shadow-[0_25px_50px_-12px_rgba(7,14,92,0.18)]"
             >
               {/* PRIMARY 3D MAIN PHOTOGRAPH */}
-              <div className="relative h-80 sm:h-96 w-full rounded-2xl overflow-hidden shadow-lg group">
+              <div className="relative h-80 sm:h-96 w-full rounded-none overflow-hidden shadow-lg group">
                 <Image
                   src="/images/about/about_about.jpg"
                   alt="CUBE at IIT Madras Research Park"
@@ -99,7 +99,7 @@ export default function Interactive3DAbout() {
                   translateZ: 50,
                   y: floatingOffset,
                 }}
-                className="absolute -bottom-8 -right-6 w-3/4 h-44 rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-white group hidden sm:block"
+                className="absolute -bottom-8 -right-6 w-3/4 h-44 rounded-none overflow-hidden shadow-2xl border-4 border-white bg-white group hidden sm:block"
               >
                 <Image
                   src="/images/hero/slides_building-training-team.jpg"
@@ -112,7 +112,7 @@ export default function Interactive3DAbout() {
                 {/* Floating Badge */}
                 <div className="absolute top-3 left-3">
                   <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/95 text-[#0B1324] shadow-sm backdrop-blur-sm flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#C29A3E] animate-pulse" />
+                    <span className="w-1.5 h-1.5 rounded-none bg-[#C29A3E] animate-pulse" />
                     <span>Building &amp; Construction</span>
                   </span>
                 </div>
@@ -127,7 +127,7 @@ export default function Interactive3DAbout() {
               {/* FLOATING CORNER EMBLEM PILL (Z-depth 70) */}
               <motion.div
                 style={{ translateZ: 70 }}
-                className="absolute -top-5 -left-4 p-3 rounded-2xl bg-white/95 cube-glass border border-[#E7E3D9] shadow-xl backdrop-blur-md flex items-center gap-3"
+                className="absolute -top-5 -left-4 p-3 rounded-none bg-white/95 cube-glass border border-[#E7E3D9] shadow-xl backdrop-blur-md flex items-center gap-3"
               >
                 <div className="relative h-10 w-10 shrink-0">
                   <Image
@@ -154,7 +154,7 @@ export default function Interactive3DAbout() {
           <div className="lg:col-span-7 space-y-6">
             
             <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#C29A3E]">
-              <span className="w-2 h-2 rounded-full bg-[#C29A3E]" />
+              <span className="w-2 h-2 rounded-none bg-[#C29A3E]" />
               <span>About CUBE</span>
             </div>
 
@@ -170,7 +170,7 @@ export default function Interactive3DAbout() {
             <div className="pt-4 flex flex-wrap items-center gap-4">
               <Link
                 href="/about"
-                className="px-7 py-3 rounded-full bg-[#F4F2EC] text-[#0B1324] hover:bg-[#C29A3E] hover:text-white border border-[#E7E3D9] text-xs font-semibold tracking-wide transition-all shadow-sm hover:shadow-md flex items-center gap-2"
+                className="px-7 py-3 rounded-none bg-[#F4F2EC] text-[#0B1324] hover:bg-[#C29A3E] hover:text-white border border-[#E7E3D9] text-xs font-semibold tracking-wide transition-all shadow-sm hover:shadow-md flex items-center gap-2"
               >
                 <span>About CUBE</span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-[#C29A3E]" />
@@ -178,7 +178,7 @@ export default function Interactive3DAbout() {
 
               <Link
                 href="/about/team"
-                className="px-7 py-3 rounded-full bg-white text-[#1F2633] hover:bg-[#F7F7F4] border border-[#E7E3D9] text-xs font-semibold tracking-wide transition-all shadow-sm"
+                className="px-7 py-3 rounded-none bg-white text-[#1F2633] hover:bg-[#F7F7F4] border border-[#E7E3D9] text-xs font-semibold tracking-wide transition-all shadow-sm"
               >
                 Our Team
               </Link>

@@ -3,7 +3,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, MapPin } from 'lucide-react';
+import { ArrowUpRight, MapPin, Pause, Play } from 'lucide-react';
+import CountUp from '@/components/common/CountUp';
 
 interface HeroSlide {
   id: number;
@@ -29,7 +30,7 @@ const HERO_SLIDES: HeroSlide[] = [
     italicWord: "Life",
     subtitle: '',
     description: "Project Management Consultancy for Construction of Affordable Rental (Urban) Housing Complex (ARHC), Manali, Chennai, Tamil Nadu.",
-    projectHref: '/projects',
+    projectHref: '/projects/cpcl-arhc',
     projectName: "Project Management Consultancy for Construction of Affordable Rental (Urban) Housing Complex (ARHC), Manali, Chennai, Tamil Nadu.",
     location: "Manali, Chennai, Tamil Nadu",
   },
@@ -41,7 +42,7 @@ const HERO_SLIDES: HeroSlide[] = [
     italicWord: "Assurance",
     subtitle: '',
     description: "Third Party Quality Assurance (TPQA) Service for Construction of Permanent Campus for Indian Institute of Technology Tirupati, Andhra Pradesh.",
-    projectHref: '/projects',
+    projectHref: '/projects/iit-tirupathi',
     projectName: "Third Party Quality Assurance (TPQA) Service for Construction of Permanent Campus for Indian Institute of Technology Tirupati, Andhra Pradesh.",
     location: "Tirupati, Andhra Pradesh",
   },
@@ -53,7 +54,7 @@ const HERO_SLIDES: HeroSlide[] = [
     italicWord: "Future",
     subtitle: '',
     description: "Design, Engineering & Consultancy Services for Reconstruction of more than forty Housing for All schemes across Tamil Nadu under Pradhan Mantri Awas Yojana.",
-    projectHref: '/projects',
+    projectHref: '/projects/hfapmay',
     projectName: "Design, Engineering & Consultancy Services for Reconstruction of more than forty Housing for All schemes across Tamil Nadu under Pradhan Mantri Awas Yojana.",
     location: "Tamil Nadu",
   },
@@ -65,7 +66,7 @@ const HERO_SLIDES: HeroSlide[] = [
     italicWord: "Potential.",
     subtitle: '',
     description: "Re-evaluation of Structural Vulnerability, Destress Mapping & Residual Life Assessment of thirty-three dilapidated tenements across Chennai.",
-    projectHref: '/projects',
+    projectHref: '/projects/reevaluation-scheme',
     projectName: "Re-evaluation of Structural Vulnerability, Destress Mapping & Residual Life Assessment of thirty-three dilapidated tenements across Chennai.",
     location: "Chennai",
   },
@@ -77,7 +78,7 @@ const HERO_SLIDES: HeroSlide[] = [
     italicWord: "Excellence",
     subtitle: '',
     description: "Capacity Building Training Program in Best Construction Practices for High Rise Buildings for Engineers.",
-    projectHref: '/projects',
+    projectHref: '/projects/capacity-building-training-program',
     projectName: "Capacity Building Training Program in Best Construction Practices for High Rise Buildings for Engineers.",
     location: "",
   },
@@ -89,7 +90,7 @@ const HERO_SLIDES: HeroSlide[] = [
     italicWord: "Ingenuity",
     subtitle: '',
     description: "Surface Water Management and Flood Inundation Study for the Ashiana Subham - Senior Living",
-    projectHref: '/projects',
+    projectHref: '/projects/ashiana',
     projectName: "Surface Water Management and Flood Inundation Study for the Ashiana Subham - Senior Living",
     location: "",
   },
@@ -101,7 +102,7 @@ const HERO_SLIDES: HeroSlide[] = [
     italicWord: "Balance",
     subtitle: '',
     description: "Feasibility Study on Identification of Alternate Location for Parayan Kuttai Water Body & Surface Water Optimization Plan for Caterpillar India Private Limited, Thiruvallur",
-    projectHref: '/projects',
+    projectHref: '/projects/caterpillar',
     projectName: "Feasibility Study on Identification of Alternate Location for Parayan Kuttai Water Body & Surface Water Optimization Plan for Caterpillar India Private Limited, Thiruvallur",
     location: "Thiruvallur",
   },
@@ -113,7 +114,7 @@ const HERO_SLIDES: HeroSlide[] = [
     italicWord: "Life",
     subtitle: '',
     description: "Feasibility Study on the Relocation of Two Waterbodies within the Origins - Mahindra World City, Ponneri, Tamil Nadu",
-    projectHref: '/projects',
+    projectHref: '/projects/mahindara',
     projectName: "Feasibility Study on the Relocation of Two Waterbodies within the Origins - Mahindra World City, Ponneri, Tamil Nadu",
     location: "Ponneri, Tamil Nadu",
   },
@@ -125,7 +126,7 @@ const HERO_SLIDES: HeroSlide[] = [
     italicWord: "Development",
     subtitle: '',
     description: "Surface Water Management Plan for IIT Jammu Campus",
-    projectHref: '/projects',
+    projectHref: '/projects/iit-jammu',
     projectName: "Surface Water Management Plan for IIT Jammu Campus",
     location: "IIT Jammu",
   },
@@ -137,7 +138,7 @@ const HERO_SLIDES: HeroSlide[] = [
     italicWord: "Sustainability",
     subtitle: '',
     description: "NICHE Industrial Park, SIPCOT Irungattukottai",
-    projectHref: '/projects',
+    projectHref: '/projects/upt6',
     projectName: "NICHE Industrial Park, SIPCOT Irungattukottai",
     location: "SIPCOT Irungattukottai",
   },
@@ -149,7 +150,7 @@ const HERO_SLIDES: HeroSlide[] = [
     italicWord: "Treasures",
     subtitle: '',
     description: "Engineering, Structural Assessment and Mitigation Strategies for Protection and Development of Naida Caves, Diu",
-    projectHref: '/projects',
+    projectHref: '/projects/upt2',
     projectName: "Engineering, Structural Assessment and Mitigation Strategies for Protection and Development of Naida Caves, Diu",
     location: "Diu",
   },
@@ -157,17 +158,36 @@ const HERO_SLIDES: HeroSlide[] = [
 
 const SLIDE_MS = 7000;
 
+// Every figure is published on the original site (cubeiitm.org, checked 2026-11):
+// 2017: about.html "Established in May 2017 as a Centre of Excellence of Government
+//       of Tamil Nadu in collaboration with IIT Madras"
+// 40+:  homepage "more than forty Housing for All schemes across Tamil Nadu under PMAY"
+// 04:   about.html "CUBE extends its services under four verticals"
+// 80:   our-team.html lists 80 people (counted; the site gives no total)
 const HERO_STATS = [
-  { value: '2017', label: 'Established as a Centre of Excellence' },
-  { value: '40+', label: 'Public schemes assured & engineered' },
-  { value: '04', label: 'Core engineering verticals' },
-  { value: '80+', label: 'Engineers, researchers & specialists' },
+  { value: '2017', label: 'Centre of Excellence of Govt of Tamil Nadu with IIT Madras' },
+  { value: '40+', label: 'Housing for All (PMAY) schemes across Tamil Nadu' },
+  { value: '04', label: 'Service verticals' },
+  { value: '80', label: 'Team members across our verticals' },
 ];
 
 export default function ArchitecturalHero() {
   const [currentIdx, setCurrentIdx] = useState(0);
   const slide = HERO_SLIDES[currentIdx];
   const videoRef = useRef<HTMLVideoElement>(null);
+  // Paused by the visitor (button) or while they hover/focus the slide content.
+  const [userPaused, setUserPaused] = useState(false);
+  const [hoverPaused, setHoverPaused] = useState(false);
+  const isPaused = userPaused || hoverPaused;
+  // The 36 MB film is skipped on data-saver / very slow connections; the poster shows instead.
+  const [showVideo, setShowVideo] = useState(false);
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) setUserPaused(true);
+    const conn = (navigator as any).connection;
+    const constrained = conn && (conn.saveData || /(^|-)2g$/.test(conn.effectiveType || ''));
+    setShowVideo(!constrained);
+  }, []);
 
   // Keep the background video looping forever. `loop` alone is not enough in
   // practice: browsers pause muted autoplay video in background tabs, in
@@ -176,7 +196,7 @@ export default function ArchitecturalHero() {
   // first user interaction if autoplay was blocked.
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+    if (!video || !showVideo) return;
 
     const play = () => video.play().catch(() => {});
     const onEnded = () => {
@@ -210,16 +230,17 @@ export default function ArchitecturalHero() {
       document.removeEventListener('visibilitychange', onVisible);
       stopRetrying();
     };
-  }, []);
+  }, [showVideo]);
 
-  // Restarts whenever the slide changes (auto or manual), so every slide gets
-  // the full interval and the progress bar stays in sync.
+  // Restarts whenever the slide changes (auto or manual) or playback resumes,
+  // so every slide gets the full interval and the progress bar stays in sync.
   useEffect(() => {
+    if (isPaused) return;
     const timer = setTimeout(() => {
       setCurrentIdx((prev) => (prev + 1) % HERO_SLIDES.length);
     }, SLIDE_MS);
     return () => clearTimeout(timer);
-  }, [currentIdx]);
+  }, [currentIdx, isPaused]);
 
   return (
     <section className="relative w-full min-h-[100svh] bg-ink-950 text-white pt-[5.5rem] sm:pt-28 lg:pt-[7rem] flex flex-col overflow-hidden select-none">
@@ -232,12 +253,12 @@ export default function ArchitecturalHero() {
           muted
           playsInline
           preload="metadata"
+          poster="/images/hero/slides_cpcl-arc.jpg"
+          src={showVideo ? '/videos/cube-hero.mp4' : undefined}
           disablePictureInPicture
           aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover object-center contrast-[1.08] brightness-[0.8] saturate-[0.7]"
-        >
-          <source src="/videos/cube-hero.mp4" type="video/mp4" />
-        </video>
+        />
         <div className="absolute inset-0 bg-gradient-to-r from-ink-950 via-ink-950/85 to-ink-950/65" />
         <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-transparent to-ink-950/70" />
         <div
@@ -267,7 +288,15 @@ export default function ArchitecturalHero() {
       </div>
 
       {/* Main stage */}
-      <div className="relative z-10 mx-auto w-full max-w-none flex-1 px-5 sm:px-8 lg:px-12 flex items-center py-[clamp(1.5rem,4vh,3rem)]">
+      <div
+        className="relative z-10 mx-auto w-full max-w-none flex-1 px-5 sm:px-8 lg:px-12 flex items-center py-[clamp(1.5rem,4vh,3rem)]"
+        onMouseEnter={() => setHoverPaused(true)}
+        onMouseLeave={() => setHoverPaused(false)}
+        onFocusCapture={() => setHoverPaused(true)}
+        onBlurCapture={(e) => {
+          if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setHoverPaused(false);
+        }}
+      >
         <div className="grid w-full grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12 lg:items-end">
           <div className="lg:col-span-8">
             <AnimatePresence mode="wait">
@@ -337,7 +366,7 @@ export default function ArchitecturalHero() {
               >
                 <Link
                   href={slide.projectHref}
-                  className="crop-marks group block rounded-lg border border-white/15 bg-ink-950/55 p-5 lg:p-6 backdrop-blur-xl transition-colors hover:bg-ink-950/70"
+                  className="crop-marks group block rounded-none border border-white/15 bg-ink-950/55 p-5 lg:p-6 backdrop-blur-xl transition-colors hover:bg-ink-950/70"
                 >
                   <div className="flex items-center justify-between text-[10px] font-semibold uppercase tracking-[0.24em] text-white/50">
                     <span>Featured Engagement</span>
@@ -369,7 +398,16 @@ export default function ArchitecturalHero() {
 
       {/* Slide navigator: timed progress segments */}
       <div className="relative z-10 mx-auto w-full max-w-none px-5 sm:px-8 lg:px-12">
-        <div className="flex gap-2 sm:gap-4">
+        <div className="flex items-start gap-2 sm:gap-4">
+          <button
+            type="button"
+            onClick={() => setUserPaused((p) => !p)}
+            aria-label={userPaused ? 'Play slideshow' : 'Pause slideshow'}
+            aria-pressed={userPaused}
+            className="-mt-3 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/20 text-white/70 transition-colors hover:border-brass-400 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brass-400"
+          >
+            {userPaused ? <Play className="h-3 w-3" /> : <Pause className="h-3 w-3" />}
+          </button>
           {HERO_SLIDES.map((item, idx) => {
             const active = idx === currentIdx;
             return (
@@ -381,7 +419,8 @@ export default function ArchitecturalHero() {
                 className="group min-w-0 flex-1 text-left"
               >
                 <div className="relative h-[2px] w-full overflow-hidden bg-white/15">
-                  {active && (
+                  {active && isPaused && <div className="absolute inset-0 bg-brass-400/60" />}
+                  {active && !isPaused && (
                     <motion.div
                       key={`bar-${currentIdx}`}
                       initial={{ width: '0%' }}
@@ -413,7 +452,7 @@ export default function ArchitecturalHero() {
               } ${i === 2 ? 'lg:border-l' : ''}`}
             >
               <div className="font-display text-2xl sm:text-3xl lg:text-[clamp(1.5rem,3.8vh,2.25rem)] font-semibold tracking-[-0.03em] text-white">
-                {stat.value}
+                <CountUp value={stat.value} delay={i * 120} />
               </div>
               <div className="mt-1.5 text-[11px] sm:text-xs leading-snug text-white/50">{stat.label}</div>
             </div>

@@ -21,16 +21,16 @@ export function GlassPanel({
       case 'nav':
         return 'bg-white/70 backdrop-blur-[28px] saturate-[180%] border border-white/80 shadow-[0_8px_32px_rgba(36,39,43,0.06),inset_0_1px_1px_rgba(255,255,255,0.95)]';
       case 'card':
-        return 'bg-gradient-to-br from-white/90 via-[#FAF9F6]/80 to-[#F4F2EC]/85 backdrop-blur-[24px] saturate-[175%] border border-[#E7E3D9] shadow-[0_12px_36px_rgba(36,39,43,0.05),inset_0_1px_1.5px_rgba(255,255,255,0.95)] rounded-3xl';
+        return 'bg-gradient-to-br from-white/90 via-[#FAF9F6]/80 to-[#F4F2EC]/85 backdrop-blur-[24px] saturate-[175%] border border-[#E7E3D9] shadow-[0_12px_36px_rgba(36,39,43,0.05),inset_0_1px_1.5px_rgba(255,255,255,0.95)] rounded-none';
       case 'modal':
-        return 'bg-white/85 backdrop-blur-[32px] saturate-[190%] border border-white/90 shadow-[0_24px_64px_rgba(36,39,43,0.14),inset_0_1px_2px_rgba(255,255,255,1)] rounded-3xl';
+        return 'bg-white/85 backdrop-blur-[32px] saturate-[190%] border border-white/90 shadow-[0_24px_64px_rgba(36,39,43,0.14),inset_0_1px_2px_rgba(255,255,255,1)] rounded-none';
       case 'pill':
         return 'bg-white/75 backdrop-blur-[20px] saturate-[160%] border border-[#E7E3D9]/80 shadow-[0_4px_16px_rgba(36,39,43,0.04),inset_0_1px_1px_rgba(255,255,255,0.9)] rounded-full';
       case 'subtle':
-        return 'bg-white/45 backdrop-blur-[16px] border border-white/60 shadow-[0_4px_20px_rgba(36,39,43,0.03)] rounded-2xl';
+        return 'bg-white/45 backdrop-blur-[16px] border border-white/60 shadow-[0_4px_20px_rgba(36,39,43,0.03)] rounded-none';
       case 'panel':
       default:
-        return 'bg-white/72 backdrop-blur-[24px] saturate-[160%] border border-white/85 shadow-[0_16px_40px_rgba(36,39,43,0.06),inset_0_1px_1.5px_rgba(255,255,255,0.9)] rounded-3xl';
+        return 'bg-white/72 backdrop-blur-[24px] saturate-[160%] border border-white/85 shadow-[0_16px_40px_rgba(36,39,43,0.06),inset_0_1px_1.5px_rgba(255,255,255,0.9)] rounded-none';
     }
   };
 

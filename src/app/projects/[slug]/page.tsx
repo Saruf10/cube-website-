@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import PageHeader from '@/components/common/PageHeader';
+import { displayTitle } from '@/lib/displayTitle';
 import ProjectCard from '@/components/cards/ProjectCard';
 import { 
   Building2, CheckCircle2, Target, Wrench, 
@@ -18,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const project = await getProjectBySlug(slug);
   if (!project) return { title: 'Project Not Found | CUBE' };
   return {
-    title: `${project.title} | CUBE Projects`,
+    title: `${displayTitle(project.title)} | CUBE Projects`,
     description: project.description,
   };
 }
@@ -69,7 +70,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             <div className="lg:col-span-8 space-y-12">
               
               {/* Hero Image with Apple Frosted Frame */}
-              <div className="relative h-96 sm:h-[480px] w-full rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(7,14,92,0.08)] border-2 border-white ring-1 ring-[#E7E3D9] bg-slate-100">
+              <div className="relative h-96 sm:h-[480px] w-full rounded-none overflow-hidden shadow-[0_20px_50px_rgba(7,14,92,0.08)] border-2 border-white ring-1 ring-[#E7E3D9] bg-slate-100">
                 <Image
                   src={project.heroImage || '/images/hero/slides_iit-tirupathi.jpg'}
                   alt={project.title}
@@ -166,7 +167,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                     {project.scopeOfWork.map((scope: string, i: number) => (
                       <div 
                         key={i} 
-                        className="p-5 rounded-2xl bg-white cube-glass border border-[#E7E3D9] shadow-2xs hover:shadow-sm transition-all"
+                        className="p-5 rounded-none bg-white cube-glass border border-[#E7E3D9] shadow-2xs hover:shadow-sm transition-all"
                       >
                         <span className="text-[10px] font-bold text-[#C29A3E] uppercase tracking-wider block mb-1.5">
                           {String(i + 1).padStart(2, '0')}
@@ -190,7 +191,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                     {project.galleryImages.map((img: string, i: number) => (
                       <div 
                         key={i} 
-                        className="relative h-48 rounded-2xl overflow-hidden shadow-xs border border-[#E7E3D9] group"
+                        className="relative h-48 rounded-none overflow-hidden shadow-xs border border-[#E7E3D9] group"
                       >
                         <Image
                           src={img}
@@ -207,7 +208,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
             {/* Right 4 Cols: Project Metadata Sidebar in Apple Liquid Glass */}
             <div className="lg:col-span-4 space-y-6">
-              <div className="p-7 rounded-3xl apple-glass-card border border-[#E7E3D9] shadow-sm space-y-5 sticky top-[calc(var(--nav-offset,84px)+1rem)] transition-[top] duration-500">
+              <div className="p-7 rounded-none apple-glass-card border border-[#E7E3D9] shadow-sm space-y-5 sticky top-[calc(var(--nav-offset,84px)+1rem)] transition-[top] duration-500">
                 <h3 className="font-serif text-lg font-medium text-[#1F2633] pb-3 border-b border-[#E7E3D9]">
                   Facts and Figures
                 </h3>
@@ -244,7 +245,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 <div className="pt-4 border-t border-[#E7E3D9]">
                   <Link
                     href="/contact"
-                    className="w-full flex items-center justify-center py-3 px-4 rounded-full text-xs font-semibold text-[#0B1324] bg-[#F4F2EC] hover:bg-[#C29A3E] hover:text-white border border-[#E7E3D9] transition-all shadow-xs"
+                    className="w-full flex items-center justify-center py-3 px-4 rounded-none text-xs font-semibold text-[#0B1324] bg-[#F4F2EC] hover:bg-[#C29A3E] hover:text-white border border-[#E7E3D9] transition-all shadow-xs"
                   >
                     <span>Enquire for Similar Projects</span>
                     <ArrowUpRight className="w-3.5 h-3.5 ml-1.5" />

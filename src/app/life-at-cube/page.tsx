@@ -26,7 +26,7 @@ export default function LifeAtCubePage() {
         <div className="max-w-none mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {highlights.map((h, i) => (
-              <div key={i} className="rounded-3xl bg-slate-50 border border-slate-200 overflow-hidden shadow-sm hover:shadow-cube transition-all flex flex-col justify-between">
+              <div key={i} className="rounded-none bg-slate-50 border border-slate-200 overflow-hidden shadow-sm hover:shadow-cube transition-all flex flex-col justify-between">
                 <div className="relative h-64 w-full bg-slate-900">
                   <Image
                     src={h.image}
@@ -50,13 +50,13 @@ export default function LifeAtCubePage() {
           <div className="mt-6 flex justify-center gap-4">
             <Link
               href="/careers"
-              className="px-6 py-3 rounded-xl text-xs font-bold text-ink bg-teal-400 hover:bg-teal-300 transition"
+              className="px-6 py-3 rounded-none text-xs font-bold text-ink bg-teal-400 hover:bg-teal-300 transition"
             >
               <span>View Career Openings</span>
             </Link>
             <Link
               href="/about/team"
-              className="px-6 py-3 rounded-xl text-xs font-bold text-white bg-white/10 hover:bg-white/20 border border-white/20 transition"
+              className="px-6 py-3 rounded-none text-xs font-bold text-white bg-white/10 hover:bg-white/20 border border-white/20 transition"
             >
               <span>Meet the Team</span>
             </Link>

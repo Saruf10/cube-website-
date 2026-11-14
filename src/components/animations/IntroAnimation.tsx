@@ -40,7 +40,7 @@ export default function IntroAnimation() {
     >
       <div className="relative flex flex-col items-center animate-fade-in text-center px-4">
         {/* Official CUBE Logo */}
-        <div className="relative h-24 w-24 sm:h-28 sm:w-28 bg-white p-2 rounded-2xl shadow-cube-glow mb-5">
+        <div className="relative h-24 w-24 sm:h-28 sm:w-28 bg-white p-2 rounded-none shadow-cube-glow mb-5">
           <Image
             src="/images/branding/cube-primary-logo.png"
             alt="CUBE Institutional Emblem"
@@ -63,8 +63,8 @@ export default function IntroAnimation() {
         </div>
 
         {/* Subtle Loading Pulse Bar */}
-        <div className="mt-6 w-32 h-1 bg-white/10 rounded-full overflow-hidden">
-          <div className="h-full bg-teal-400 rounded-full animate-pulse-subtle" />
+        <div className="mt-6 w-32 h-1 bg-white/10 rounded-none overflow-hidden">
+          <div className="h-full bg-teal-400 rounded-none animate-pulse-subtle" />
         </div>
       </div>
     </div>

@@ -30,11 +30,11 @@ export default function CELDatasheet({ services }: { services: CELService[] }) {
   const sheetNo = `CEL-${meta.code}-${String(active + 1).padStart(2, '0')}`;
 
   return (
-    <div className="overflow-hidden rounded-xl border border-stone-200 bg-white shadow-premium-lg">
+    <div className="overflow-hidden rounded-none border border-stone-200 bg-white shadow-premium-lg">
       {/* Sheet header bar */}
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-stone-200 bg-ink px-6 py-3.5 text-[10px] font-bold uppercase tracking-[0.22em] text-white/60">
         <span className="flex items-center gap-2.5">
-          <span className="h-1.5 w-1.5 rounded-full bg-brass-400" />
+          <span className="h-1.5 w-1.5 rounded-none bg-brass-400" />
           Technical Datasheet
         </span>
         <span className="tabular-nums text-brass-300">{sheetNo}</span>
@@ -65,9 +65,9 @@ export default function CELDatasheet({ services }: { services: CELService[] }) {
                   }`}
                 />
                 <span
-                  className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg transition-colors ${
-                    on ? 'bg-ink text-brass-300' : 'bg-stone-100 text-ink/60 group-hover:text-ink'
-                  }`}
+                  className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-none transition-colors ${
+ on ? 'bg-ink text-brass-300' : 'bg-stone-100 text-ink/60 group-hover:text-ink'
+ }`}
                 >
                   <Icon className="h-5 w-5" />
                 </span>
@@ -132,7 +132,7 @@ export default function CELDatasheet({ services }: { services: CELService[] }) {
                     <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-stone-400">Key Instruments</div>
                     <div className="mt-3 flex flex-wrap gap-2">
                       {equipment.slice(0, 5).map((e) => (
-                        <span key={e} className="rounded-[3px] border border-stone-200 bg-stone-50 px-2.5 py-1 text-[12px] text-ink/75">
+                        <span key={e} className="rounded-none border border-stone-200 bg-stone-50 px-2.5 py-1 text-[12px] text-ink/75">
                           {e}
                         </span>
                       ))}

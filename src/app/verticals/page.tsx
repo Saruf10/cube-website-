@@ -52,11 +52,11 @@ export default function CompleteVerticalsExperience() {
                 data-anchor={item.id}
                 aria-current={activeVertical === item.id ? 'true' : undefined}
                 onClick={() => scrollTo(item.id)}
-                className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wider transition-all duration-300 whitespace-nowrap ${
-                  activeVertical === item.id
-                    ? 'bg-[#0B1324] text-white shadow-xs'
-                    : 'bg-white/60 text-[#1F2633] hover:bg-[#F4F2EC] hover:text-[#0B1324] border border-[#E7E3D9]/60'
-                }`}
+                className={`px-4 py-2 rounded-none text-xs font-semibold tracking-wider transition-all duration-300 whitespace-nowrap ${
+ activeVertical === item.id
+ ? 'bg-[#0B1324] text-white shadow-xs'
+ : 'bg-white/60 text-[#1F2633] hover:bg-[#F4F2EC] hover:text-[#0B1324] border border-[#E7E3D9]/60'
+ }`}
               >
                 {item.label}
               </button>
@@ -90,8 +90,8 @@ export default function CompleteVerticalsExperience() {
                   
                   <div className="lg:col-span-7 space-y-6">
                     <div className="flex items-center gap-2">
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#C29A3E]" />
-                      <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3.5 py-1 rounded-full border border-[#E7E3D9]">
+                      <span className="w-2.5 h-2.5 rounded-none bg-[#C29A3E]" />
+                      <span className="text-xs font-bold uppercase tracking-wider text-[#0B1324] bg-[#F4F2EC] px-3.5 py-1 rounded-none border border-[#E7E3D9]">
                         Vertical Division 0{vIdx + 1}
                       </span>
                     </div>
@@ -120,7 +120,7 @@ export default function CompleteVerticalsExperience() {
                       </h4>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {vert.capabilities.map((cap, cIdx) => (
-                          <div key={cIdx} className="flex items-start gap-2.5 p-3 rounded-2xl bg-white cube-glass border border-[#E7E3D9]/70 shadow-2xs">
+                          <div key={cIdx} className="flex items-start gap-2.5 p-3 rounded-none bg-white cube-glass border border-[#E7E3D9]/70 shadow-2xs">
                             <CheckCircle2 className="w-4 h-4 text-[#C29A3E] shrink-0 mt-0.5" />
                             <span className="text-xs text-[#1F2633] font-semibold">{cap}</span>
                           </div>
@@ -132,8 +132,8 @@ export default function CompleteVerticalsExperience() {
 
                   {/* Right Image Feature Card */}
                   <div className="lg:col-span-5">
-                    <div className="rounded-3xl bg-white/90 cube-glass backdrop-blur-2xl border border-[#E7E3D9] p-6 shadow-[0_20px_50px_rgba(7,14,92,0.08)] relative overflow-hidden">
-                      <div className="relative h-72 sm:h-80 w-full rounded-2xl overflow-hidden mb-6 border border-white ring-1 ring-[#E7E3D9]">
+                    <div className="rounded-none bg-white/90 cube-glass backdrop-blur-2xl border border-[#E7E3D9] p-6 shadow-[0_20px_50px_rgba(7,14,92,0.08)] relative overflow-hidden">
+                      <div className="relative h-72 sm:h-80 w-full rounded-none overflow-hidden mb-6 border border-white ring-1 ring-[#E7E3D9]">
                         <Image
                           src={vert.heroImage || '/images/hero/slides_07-cat.jpg'}
                           alt={vert.title}
@@ -172,7 +172,7 @@ export default function CompleteVerticalsExperience() {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       {vertProjects.map((proj, pIdx) => (
-                        <div key={proj.slug || pIdx} className="p-5 rounded-3xl bg-white cube-glass border border-[#E7E3D9] shadow-2xs hover:shadow-xs transition">
+                        <div key={proj.slug || pIdx} className="p-5 rounded-none bg-white cube-glass border border-[#E7E3D9] shadow-2xs hover:shadow-xs transition">
                           <span className="text-[10px] font-bold text-[#0B1324] uppercase tracking-wider">{proj.client}</span>
                           <h4 className="font-serif font-bold text-base text-[#1F2633] mt-1 leading-snug">{proj.title}</h4>
                           <p className="text-xs text-[#5B6474] mt-2 line-clamp-2">{proj.description}</p>

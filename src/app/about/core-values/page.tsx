@@ -31,10 +31,10 @@ export default function CoreValuesPage() {
               return (
                 <div
                   key={i}
-                  className="p-8 rounded-3xl bg-slate-50 border border-slate-200 shadow-sm hover:shadow-cube hover:border-teal-300 transition-all flex flex-col justify-between"
+                  className="p-8 rounded-none bg-slate-50 border border-slate-200 shadow-sm hover:shadow-cube hover:border-teal-300 transition-all flex flex-col justify-between"
                 >
                   <div>
-                    <div className="p-3 bg-teal-50 text-teal-700 rounded-2xl w-fit mb-4 border border-teal-200">
+                    <div className="p-3 bg-teal-50 text-teal-700 rounded-none w-fit mb-4 border border-teal-200">
                       <Icon className="w-6 h-6" />
                     </div>
                     <h3 className="text-xl font-bold font-display text-ink">
