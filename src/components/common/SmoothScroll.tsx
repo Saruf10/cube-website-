@@ -23,6 +23,13 @@ declare global {
 export default function SmoothScroll() {
   const pathname = usePathname();
 
+  // Always open the site at the top (the hero), instead of the browser
+  // restoring the last scroll position on reload. Links to a #section still work.
+  useEffect(() => {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    if (!window.location.hash) window.scrollTo(0, 0);
+  }, []);
+
   // Smooth scrolling
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -39,6 +46,7 @@ export default function SmoothScroll() {
       autoRaf: true,
     });
     window.__lenis = lenis;
+    if (!window.location.hash) lenis.scrollTo(0, { immediate: true });
 
     // Pause while a modal / drawer has locked the body.
     const syncLock = () => {

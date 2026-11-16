@@ -12,9 +12,12 @@ import {
 
   FlaskConical, CheckCircle2, Award, Users, ChevronRight, 
 
-  Sparkles, ExternalLink, FileText, Calendar, MapPin
+  Sparkles, ExternalLink, FileText, Calendar, MapPin, Mail, Phone
 
 } from 'lucide-react';
+
+import { contactInfo } from '@/data/contact';
+import { celOverview } from '@/data/cel';
 
 import ArchitecturalHero from '@/components/hero/ArchitecturalHero';
 
@@ -34,7 +37,7 @@ import { CMS_UPDATED_EVENT } from '@/lib/live';
 
 import { projects as fallbackProjects } from '@/data/projects';
 
-import { celOverview } from '@/data/cel';
+import { celDatasheetServices } from '@/data/celDatasheet';
 
 
 import { boardMembers as fallbackBoardMembers, executiveLeadership } from '@/data/leadership';
@@ -53,7 +56,6 @@ export default function HomePage() {
   const [activeProjectTab, setActiveProjectTab] = useState<string>('All');
   const [projectList, setProjectList] = useState<any[]>(fallbackProjects);
   const [verticalList, setVerticalList] = useState<any[]>(fallbackVerticals);
-  const [celServiceList, setCelServiceList] = useState<any[]>(celOverview.testingServices);
   const [boardList, setBoardList] = useState<any[]>(fallbackLeadershipList);
   const [clientList, setClientList] = useState<any[]>(fallbackClients);
   const [newsList, setNewsList] = useState<any[]>(fallbackNewsItems);
@@ -71,11 +73,10 @@ export default function HomePage() {
     };
 
     const load = async () => {
-      const [projectsData, verticalsData, celData, teamData, clientsData, newsData] =
+      const [projectsData, verticalsData, teamData, clientsData, newsData] =
         await Promise.all([
           getJson('/api/public/projects'),
           getJson('/api/public/verticals'),
-          getJson('/api/public/cel'),
           getJson('/api/public/team'),
           getJson('/api/public/clients'),
           getJson('/api/public/news'),
@@ -88,9 +89,6 @@ export default function HomePage() {
       }
       if (Array.isArray(verticalsData)) {
         setVerticalList(verticalsData);
-      }
-      if (Array.isArray(celData)) {
-        setCelServiceList(celData);
       }
       if (Array.isArray(teamData)) {
         const board = teamData
@@ -289,7 +287,7 @@ export default function HomePage() {
           />
 
           <div className="mt-16" data-reveal data-reveal-delay="1">
-            <CELDatasheet services={celServiceList} />
+            <CELDatasheet services={celDatasheetServices} />
           </div>
         </div>
       </section>
@@ -450,6 +448,9 @@ export default function HomePage() {
                 Let&apos;s get in{' '}
                 <span className="font-editorial italic font-medium tracking-[-0.02em] text-brass-300">touch.</span>
               </h2>
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-white/60 sm:text-lg">
+                For project enquiries, laboratory testing or collaboration with IIT Madras and the Government of Tamil Nadu, reach our team at the IIT Madras Research Park.
+              </p>
               <div className="mt-10 flex flex-wrap gap-4">
                 <Link href="/contact" className="btn-brass">
                   <span>Contact Us</span>
@@ -474,6 +475,38 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* Contact details */}
+          <div data-reveal data-reveal-delay="1" className="mt-16 grid grid-cols-1 border-t border-white/10 sm:grid-cols-2 lg:mt-24 lg:grid-cols-4">
+            {[
+              { icon: MapPin, label: 'Visit', value: 'IIT Madras Research Park, Taramani, Chennai 600 113', note: 'Module 6C, 6th Floor, Phase II', href: contactInfo.googleMapsLiveUrl, external: true },
+              { icon: Mail, label: 'Write', value: contactInfo.email, note: 'General & project enquiries', href: `mailto:${contactInfo.email}` },
+              { icon: Phone, label: 'Call', value: contactInfo.phone, note: 'CUBE office line', href: contactInfo.phoneHref },
+              { icon: FlaskConical, label: 'CEL Laboratory', value: celOverview.email, note: celOverview.phone, href: `mailto:${celOverview.email}` },
+            ].map(({ icon: Icon, label, value, note, href, external }, i) => (
+              <a
+                key={label}
+                href={href}
+                {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                className={`group relative flex flex-col gap-4 border-b border-white/10 py-8 transition-colors hover:bg-white/[0.03] sm:px-6 lg:border-b-0 lg:py-10 ${
+                  i > 0 ? 'lg:border-l' : 'sm:pl-0'
+                } ${i % 2 === 1 ? 'sm:border-l' : ''}`}
+              >
+                <span aria-hidden className="absolute inset-x-0 top-[-1px] h-[2px] origin-left scale-x-0 bg-brass-400 transition-transform duration-500 group-hover:scale-x-100" />
+                <div className="flex items-center justify-between">
+                  <span className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.24em] text-brass-300">
+                    <Icon className="h-4 w-4" />
+                    {label}
+                  </span>
+                  <ArrowUpRight className="h-4 w-4 text-white/30 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-brass-300" />
+                </div>
+                <div>
+                  <div className="font-display text-lg font-semibold leading-snug tracking-[-0.01em] text-white break-words">{value}</div>
+                  <div className="mt-1.5 text-sm text-white/50">{note}</div>
+                </div>
+              </a>
+            ))}
           </div>
         </div>
       </section>
